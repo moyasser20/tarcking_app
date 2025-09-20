@@ -1,8 +1,8 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:flower_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import '../../theme/app_colors.dart';
 import 'custom_toast.dart';
 Future<void> showCustomSnackBar(
     BuildContext context,
