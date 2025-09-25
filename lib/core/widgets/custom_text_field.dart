@@ -9,7 +9,7 @@ class CustomTextFormField extends StatefulWidget {
   final String? label;
   final String? hint;
   final String? suffixText;
-  final bool obscureText; // formerly isPassword
+  final bool obscureText; 
   final TextInputType keyboardType;
   final bool enabled;
   final bool readonly;
@@ -89,7 +89,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         suffixIcon: widget.obscureText
             ? IconButton(
                 icon: Icon(
-                  isTextObscured ? Icons.visibility_off : Icons.visibility,
+                  isTextObscured ? Icons.visibility : Icons.visibility_off,
                   color: AppColors.grey,
                 ),
                 onPressed: () {
