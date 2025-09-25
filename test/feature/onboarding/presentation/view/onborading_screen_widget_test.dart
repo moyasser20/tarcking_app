@@ -18,9 +18,12 @@ void main() {
       await tester.pumpWidget(makeTestableWidget(const OnBoardingScreen()));
 
       expect(find.byType(Image), findsOneWidget);
-      expect(find.byWidgetPredicate(
-            (widget) => widget is Image && widget.image is AssetImage,
-      ), findsOneWidget);
+      expect(
+        find.byWidgetPredicate(
+          (widget) => widget is Image && widget.image is AssetImage,
+        ),
+        findsOneWidget,
+      );
     });
 
     testWidgets('shows welcome text and app name', (WidgetTester tester) async {
@@ -36,8 +39,14 @@ void main() {
       final buttons = find.byType(CustomElevatedButton);
       expect(buttons, findsNWidgets(2));
 
-      expect(find.widgetWithText(CustomElevatedButton, 'Login'), findsOneWidget);
-      expect(find.widgetWithText(CustomElevatedButton, 'Apply Now'), findsOneWidget);
+      expect(
+        find.widgetWithText(CustomElevatedButton, 'Login'),
+        findsOneWidget,
+      );
+      expect(
+        find.widgetWithText(CustomElevatedButton, 'Apply Now'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('shows version text', (WidgetTester tester) async {

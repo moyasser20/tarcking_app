@@ -4,7 +4,6 @@ import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';
 import 'core/routes/route_names.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();

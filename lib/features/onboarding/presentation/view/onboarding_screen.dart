@@ -60,8 +60,7 @@ class OnBoardingScreen extends StatelessWidget {
               local.versionText,
               key: const Key('versionText'),
               style: const TextStyle(color: AppColors.grey),
-            )
-
+            ),
           ],
         ),
       ),
