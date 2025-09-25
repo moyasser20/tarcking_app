@@ -42,26 +42,22 @@ class CustomElevatedButton extends StatelessWidget {
               width: 1.5,
             ),
           ),
-          textStyle: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
+          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        child: isLoading
-            ? const SizedBox(
-                width: 24,
-                height: 24,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2.5,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+        child:
+            isLoading
+                ? const SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2.5,
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  ),
+                )
+                : Text(
+                  text,
+                  style: TextStyle(color: textColor ?? AppColors.white),
                 ),
-              )
-            : Text(
-                text,
-                style: TextStyle(
-                  color: textColor ?? AppColors.white,
-                ),
-              ),
       ),
     );
   }
