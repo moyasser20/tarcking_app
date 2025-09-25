@@ -19,11 +19,15 @@ class OnBoardingScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 60),
-            Image.asset(AppImages.OnboardingImage),
+            Image.asset(
+              AppImages.OnboardingImage,
+              key: const Key('onboardingImage'),
+            ),
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 local.welcomeTo,
+                key: const Key('welcomeText'),
                 textAlign: TextAlign.left,
                 style: const TextStyle(
                   fontSize: 24,
@@ -37,6 +41,7 @@ class OnBoardingScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 local.floweryRiderApp,
+                key: const Key('appNameText'),
                 textAlign: TextAlign.left,
                 style: const TextStyle(
                   fontSize: 24,
@@ -47,9 +52,14 @@ class OnBoardingScreen extends StatelessWidget {
               ),
             ).setHorizontalPadding(context, 0.045),
             const SizedBox(height: 20),
-            CustomElevatedButton(text: local.login, onPressed: () {}),
+            CustomElevatedButton(
+              key: const Key('loginButton'),
+              text: local.login,
+              onPressed: () {},
+            ),
             const SizedBox(height: 20),
             CustomElevatedButton(
+              key: const Key('applyNowButton'),
               text: local.applyNow,
               borderColor: AppColors.grey.withOpacity(0.5),
               onPressed: () {},

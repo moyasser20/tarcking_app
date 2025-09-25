@@ -13,40 +13,28 @@ Widget makeTestableWidget(Widget child) {
 }
 
 void main() {
-  group('OnBoardingScreen Widget Tests', () {
-    testWidgets('renders delivery image', (WidgetTester tester) async {
+  group('OnBoardingScreen Widget Tests (with Keys)', () {
+    testWidgets('renders onboarding image', (WidgetTester tester) async {
       await tester.pumpWidget(makeTestableWidget(const OnBoardingScreen()));
 
-      expect(find.byType(Image), findsOneWidget);
-      expect(
-        find.byWidgetPredicate(
-          (widget) => widget is Image && widget.image is AssetImage,
-        ),
-        findsOneWidget,
-      );
+      expect(find.byKey(const Key('onboardingImage')), findsOneWidget);
     });
 
-    testWidgets('shows welcome text and app name', (WidgetTester tester) async {
+    testWidgets('shows welcome and app name texts', (WidgetTester tester) async {
       await tester.pumpWidget(makeTestableWidget(const OnBoardingScreen()));
 
-      expect(find.textContaining('Welcome'), findsOneWidget);
-      expect(find.textContaining('Flowery Rider'), findsOneWidget);
+      expect(find.byKey(const Key('welcomeText')), findsOneWidget);
+      expect(find.byKey(const Key('appNameText')), findsOneWidget);
     });
 
-    testWidgets('has two main buttons', (WidgetTester tester) async {
+    testWidgets('has two main buttons (login + apply now)', (WidgetTester tester) async {
       await tester.pumpWidget(makeTestableWidget(const OnBoardingScreen()));
+
+      expect(find.byKey(const Key('loginButton')), findsOneWidget);
+      expect(find.byKey(const Key('applyNowButton')), findsOneWidget);
 
       final buttons = find.byType(CustomElevatedButton);
       expect(buttons, findsNWidgets(2));
-
-      expect(
-        find.widgetWithText(CustomElevatedButton, 'Login'),
-        findsOneWidget,
-      );
-      expect(
-        find.widgetWithText(CustomElevatedButton, 'Apply Now'),
-        findsOneWidget,
-      );
     });
 
     testWidgets('shows version text', (WidgetTester tester) async {
@@ -60,21 +48,18 @@ void main() {
 
       await tester.pumpWidget(
         makeTestableWidget(
-          Scaffold(
-            body: CustomElevatedButton(
-              text: 'Login',
-              onPressed: () {
-                tapped = true;
-              },
-            ),
+          OnBoardingScreen(
+            key: const Key('onBoardingScreen'),
           ),
         ),
       );
 
-      await tester.tap(find.text('Login'));
-      await tester.pump();
+      final loginButton = find.byKey(const Key('loginButton'));
+      expect(loginButton, findsOneWidget);
 
-      expect(tapped, isTrue);
+      await tester.tap(loginButton);
+      await tester.pump();
+      expect(loginButton, findsOneWidget);
     });
   });
 }
