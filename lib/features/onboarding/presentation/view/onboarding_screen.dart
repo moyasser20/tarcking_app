@@ -3,6 +3,7 @@ import 'package:tarcking_app/core/extensions/extensions.dart';
 import 'package:tarcking_app/core/theme/app_colors.dart';
 import 'package:tarcking_app/core/widgets/custom_Elevated_Button.dart';
 
+import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -18,7 +19,7 @@ class OnBoardingScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 60),
-            Image.asset("assets/images/delivery_image.png"),
+            Image.asset(AppImages.OnboardingImage),
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
