@@ -9,6 +9,21 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
+  String get welcomeTo => 'مرحباً بك في';
+
+  @override
+  String get floweryRiderApp => 'تطبيق سائق الزهور';
+
+  @override
+  String get login => 'تسجيل الدخول';
+
+  @override
+  String get applyNow => 'قدّم الآن';
+
+  @override
+  String get versionText => 'الإصدار 6.3.0 - (446)';
+
+  @override
   String get dashboard => 'لوحة التحكم';
 
   @override

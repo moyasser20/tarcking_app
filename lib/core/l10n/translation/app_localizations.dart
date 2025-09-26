@@ -98,6 +98,36 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
+  /// No description provided for @welcomeTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to'**
+  String get welcomeTo;
+
+  /// No description provided for @floweryRiderApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Flowery Rider App'**
+  String get floweryRiderApp;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @applyNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Now'**
+  String get applyNow;
+
+  /// No description provided for @versionText.
+  ///
+  /// In en, this message translates to:
+  /// **'v 6.3.0 - (446)'**
+  String get versionText;
+
   /// No description provided for @dashboard.
   ///
   /// In en, this message translates to:

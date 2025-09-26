@@ -134,7 +134,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       AppRoutes.dashboard,
                       (route) => false,
                     );
-                    showSuccessMessage(context, "Logged In Successfully");
                   } else if (state is LoginErrorState) {
                     showCustomSnackBar(
                       context,
