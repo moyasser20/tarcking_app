@@ -35,6 +35,10 @@ dependencies:
   loading_indicator: ^3.1.1
   smooth_page_indicator: ^1.2.1
   flutter_svg: ^2.2.0
+  shared_preferences: ^2.5.3
+  mockito: ^5.4.5
+
+
 
 dev_dependencies:
   flutter_test:
