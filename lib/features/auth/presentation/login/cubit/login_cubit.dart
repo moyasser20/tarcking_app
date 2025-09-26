@@ -16,7 +16,7 @@ class LoginCubit extends Cubit<LoginStates> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool rememberMe = false;
-    void toggleRememberMe(bool boxValue) {
+  void toggleRememberMe(bool boxValue) {
     rememberMe = boxValue;
     emit(ChangeRememberMeState());
   }
@@ -32,13 +32,13 @@ class LoginCubit extends Cubit<LoginStates> {
         password: password.trim(),
       );
 
-    final response = await  loginUsecase.invoke(request);
-        if (response.token!=null && response.token!.isNotEmpty) {
-      await AuthService.saveAuthToken(response.token ?? "");
-      if (rememberMe) {
-        await AuthService.saveRememberMe(rememberMe);
+      final response = await loginUsecase.invoke(request);
+      if (response.token != null && response.token!.isNotEmpty) {
+        await AuthService.saveAuthToken(response.token ?? "");
+        if (rememberMe) {
+          await AuthService.saveRememberMe(rememberMe);
+        }
       }
-    }
       emit(LoginSuccessState());
     } catch (e) {
       emit(LoginErrorState(errorMessage: "Failed to login. Please try again."));

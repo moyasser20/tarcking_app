@@ -129,6 +129,11 @@ class _LoginScreenState extends State<LoginScreen> {
               BlocConsumer<LoginCubit, LoginStates>(
                 listener: (context, state) {
                   if (state is LoginSuccessState) {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.dashboard,
+                      (route) => false,
+                    );
                     showSuccessMessage(context, "Logged In Successfully");
                   } else if (state is LoginErrorState) {
                     showCustomSnackBar(

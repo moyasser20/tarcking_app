@@ -13,7 +13,7 @@ class AuthService {
   }
 
   static Future<bool> isUserAuthenticated() async {
-    if (await AuthService.isLoggedIn() && await AuthService.getRememberMe() == true) {
+    if (await AuthService.isLoggedIn() && await AuthService.getRememberMe()) {
       return true;
     }
     return false;
@@ -24,9 +24,8 @@ class AuthService {
     return token != null && token.isNotEmpty;
   }
 
-  static Future<bool?> getRememberMe() async {
+  static Future<bool> getRememberMe() async {
     final value = await SecureStorage.read(rememberMeKey);
-    if (value == null) return null;
     if (value == "true") {
       return true;
     } else {

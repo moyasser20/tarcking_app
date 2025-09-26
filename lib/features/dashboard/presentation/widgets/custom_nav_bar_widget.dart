@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/contants/app_icons.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -27,21 +26,35 @@ class CustomBottomNavBarWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Expanded(
-              child: _buildNavBarItem(
-                  AppIcons.homeIcon, local.home, 0, context)),
+            child: _buildNavBarItem(AppIcons.homeIcon, local.home, 0, context),
+          ),
           Expanded(
-              child: _buildNavBarItem(
-                  AppIcons.ordersIcon, local.orders, 1, context)),
+            child: _buildNavBarItem(
+              AppIcons.ordersIcon,
+              local.orders,
+              1,
+              context,
+            ),
+          ),
           Expanded(
-              child: _buildNavBarItem(
-                  AppIcons.profileIcon, local.profile, 2, context)),
+            child: _buildNavBarItem(
+              AppIcons.profileIcon,
+              local.profile,
+              2,
+              context,
+            ),
+          ),
         ],
       ),
     );
   }
 
   Widget _buildNavBarItem(
-      String icon, String label, int index, BuildContext context) {
+    String icon,
+    String label,
+    int index,
+    BuildContext context,
+  ) {
     final bool isSelected = currentIndex == index;
     return GestureDetector(
       onTap: () => onTap(index),
@@ -50,14 +63,14 @@ class CustomBottomNavBarWidget extends StatelessWidget {
         children: [
           SvgPicture.asset(
             icon,
-            height: 30,
-            width: 30,
+            height: 20,
+            width: 20,
             colorFilter: ColorFilter.mode(
               isSelected ? AppColors.pink : AppColors.grey,
               BlendMode.srcIn,
             ),
           ),
-          const SizedBox(height: 2),
+          const SizedBox(height: 6),
           Text(
             label,
             style: TextStyle(

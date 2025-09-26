@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/config/di.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/widgets/custom_Elevated_Button.dart';
+import '../../../auth/domain/services/auth_services.dart';
 import '../cubits/nav_bar_cubit.dart';
 import '../widgets/custom_nav_bar_widget.dart';
 
@@ -15,17 +15,18 @@ class DashboardScreen extends StatelessWidget {
       Center(child: Text("home")),
       Center(child: Text("orders")),
       Center(
-          child: CustomElevatedButton(
-              text: "Logout",
-              onPressed: () async {
-                await AuthService.logout();
-                await GuestService.endGuestSession();
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  AppRoutes.login,
-                      (route) => false,
-                );
-              })),
+        child: CustomElevatedButton(
+          text: "Logout",
+          onPressed: () async {
+            await AuthService.logout();
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoutes.login,
+              (route) => false,
+            );
+          },
+        ),
+      ),
     ];
 
     return BlocProvider(

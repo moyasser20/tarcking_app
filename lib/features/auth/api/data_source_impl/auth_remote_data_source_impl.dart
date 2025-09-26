@@ -1,4 +1,3 @@
-
 import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
@@ -15,6 +14,4 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<LoginResponse> login(LoginRequest loginRequest) {
     return _apiClient.login(loginRequest);
   }
-
-
 }
