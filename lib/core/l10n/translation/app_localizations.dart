@@ -98,17 +98,11 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// No description provided for @welcomeTo.
-  ///
-  /// In en, this message translates to:
-  /// **'Welcome to'**
-  String get welcomeTo;
-
-  /// No description provided for @floweryRiderApp.
+  /// No description provided for @appName.
   ///
   /// In en, this message translates to:
   /// **'Flowery Rider App'**
-  String get floweryRiderApp;
+  String get appName;
 
   /// No description provided for @login.
   ///
@@ -116,17 +110,83 @@ abstract class AppLocalizations {
   /// **'Login'**
   String get login;
 
-  /// No description provided for @applyNow.
+  /// No description provided for @emailLabel.
   ///
   /// In en, this message translates to:
-  /// **'Apply Now'**
-  String get applyNow;
+  /// **'Email'**
+  String get emailLabel;
 
-  /// No description provided for @versionText.
+  /// No description provided for @emailHintText.
   ///
   /// In en, this message translates to:
-  /// **'v 6.3.0 - (446)'**
-  String get versionText;
+  /// **'Enter your email'**
+  String get emailHintText;
+
+  /// No description provided for @passwordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get passwordLabel;
+
+  /// No description provided for @passwordHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your password'**
+  String get passwordHintText;
+
+  /// No description provided for @emailIsEmptyErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get emailIsEmptyErrorMessage;
+
+  /// No description provided for @emailValidationErrorMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is not valid'**
+  String get emailValidationErrorMsg;
+
+  /// No description provided for @passwordRequiredErrorMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get passwordRequiredErrorMsg;
+
+  /// No description provided for @passwordValidationErrorMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters and include M#12m'**
+  String get passwordValidationErrorMsg;
+
+  /// No description provided for @rememberMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember me'**
+  String get rememberMe;
+
+  /// No description provided for @forgetPasswordTextButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get forgetPasswordTextButton;
+
+  /// No description provided for @continueAsGuestButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue as guest'**
+  String get continueAsGuestButton;
+
+  /// No description provided for @dontHaveAnAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get dontHaveAnAccount;
+
+  /// No description provided for @signUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get signUp;
 
   /// No description provided for @dashboard.
   ///
@@ -134,23 +194,17 @@ abstract class AppLocalizations {
   /// **'Dashboard'**
   String get dashboard;
 
-  /// No description provided for @home.
+  /// No description provided for @applicationSub.
   ///
   /// In en, this message translates to:
-  /// **'Home'**
-  String get home;
+  /// **'Your application has been\n submitted!'**
+  String get applicationSub;
 
-  /// No description provided for @orders.
+  /// No description provided for @applicationSubMsg.
   ///
   /// In en, this message translates to:
-  /// **'Orders'**
-  String get orders;
-
-  /// No description provided for @profile.
-  ///
-  /// In en, this message translates to:
-  /// **'Profile'**
-  String get profile;
+  /// **'Thank you for providing your application,\n we will review your application and will get back to you soon.'**
+  String get applicationSubMsg;
 }
 
 class _AppLocalizationsDelegate

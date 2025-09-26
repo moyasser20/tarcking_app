@@ -7,6 +7,8 @@ import 'package:tarcking_app/features/auth/presentation/login/cubit/login_cubit.
 import 'package:tarcking_app/features/auth/presentation/login/view/login_screen.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
 import '../../features/onboarding/presentation/view/onboarding_screen.dart';
+import 'package:tarcking_app/core/routes/route_names.dart';
+import '../../features/auth/presentation/apply/view/application_approved_screen.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -25,6 +27,13 @@ class Routes {
       case AppRoutes.initial:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
 
+      case AppRoutes.applicationApproved:
+        {
+          return MaterialPageRoute(
+            builder: (context) => const ApplicationApprovedScreen(),
+            settings: settings,
+          );
+        }
       default:
         return MaterialPageRoute(
           builder:
