@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'core/config/di.dart';
+import 'package:tarcking_app/features/auth/presentation/view/apply_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureDependencies();
+  configureDependencies();
   runApp(const MyApp());
 }
 
@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Tracking App',
-      home: const Scaffold(),
+      home: const ApplyScreen(),
     );
   }
 }
-

@@ -1,4 +1,4 @@
-abstract class EndPoints {
+class ApiEndPoints {
   static const String login = 'signin';
   static const String forgetPassword = 'forgotPassword';
   static const String resetPassword = 'resetPassword';
