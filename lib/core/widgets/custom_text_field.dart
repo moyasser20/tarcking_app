@@ -83,35 +83,35 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           fontWeight: FontWeight.w400,
         ),
         hintText: widget.hint,
-        hintStyle: TextStyle(
-          color: AppColors.grey.withValues(alpha: 0.5),
-        ),
-        suffixIcon: widget.obscureText
-            ? IconButton(
-                icon: Icon(
-                  isTextObscured ? Icons.visibility_off : Icons.visibility,
-                  color: AppColors.grey,
-                ),
-                onPressed: () {
-                  setState(() {
-                    isTextObscured = !isTextObscured;
-                  });
-                },
-              )
-            : null,
-        suffix: widget.suffixText != null
-            ? GestureDetector(
-                onTap: widget.onPressed ?? () {},
-                child: Text(
-                  widget.suffixText!,
-                  style: TextStyle(
-                    color: AppColors.pink,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
+        hintStyle: TextStyle(color: AppColors.grey.withValues(alpha: 0.5)),
+        suffixIcon:
+            widget.obscureText
+                ? IconButton(
+                  icon: Icon(
+                    isTextObscured ? Icons.visibility_off : Icons.visibility,
+                    color: AppColors.grey,
                   ),
-                ),
-              )
-            : null,
+                  onPressed: () {
+                    setState(() {
+                      isTextObscured = !isTextObscured;
+                    });
+                  },
+                )
+                : null,
+        suffix:
+            widget.suffixText != null
+                ? GestureDetector(
+                  onTap: widget.onPressed ?? () {},
+                  child: Text(
+                    widget.suffixText!,
+                    style: TextStyle(
+                      color: AppColors.pink,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                    ),
+                  ),
+                )
+                : null,
         border: const OutlineInputBorder(),
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.black),
