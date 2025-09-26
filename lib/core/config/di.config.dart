@@ -34,45 +34,50 @@ import '../api/client/api_client.dart' as _i364;
 import 'dio_module/dio_module.dart' as _i484;
 
 extension GetItInjectableX on _i174.GetIt {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
-    final gh = _i526.GetItHelper(
-      this,
-      environment,
-      environmentFilter,
-    );
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
-    gh.factory<String>(
-      () => dioModule.baseUrl,
-      instanceName: 'baseurl',
-    );
+    gh.factory<String>(() => dioModule.baseUrl, instanceName: 'baseurl');
     gh.lazySingleton<_i361.Dio>(
-        () => dioModule.dio(gh<String>(instanceName: 'baseurl')));
-    gh.factory<_i364.ApiClient>(() => _i364.ApiClient(
-          gh<_i361.Dio>(),
-          baseUrl: gh<String>(instanceName: 'baseurl'),
-        ));
+      () => dioModule.dio(gh<String>(instanceName: 'baseurl')),
+    );
+    gh.factory<_i364.ApiClient>(
+      () => _i364.ApiClient(
+        gh<_i361.Dio>(),
+        baseUrl: gh<String>(instanceName: 'baseurl'),
+      ),
+    );
     gh.factory<_i341.ResetPasswordCubit>(
-        () => _i341.ResetPasswordCubit(gh<_i364.ApiClient>()));
+      () => _i341.ResetPasswordCubit(gh<_i364.ApiClient>()),
+    );
     gh.lazySingleton<_i175.AuthRemoteDatasource>(
-        () => _i758.AuthRemoteDatasourceImpl(gh<_i364.ApiClient>()));
+      () => _i758.AuthRemoteDatasourceImpl(gh<_i364.ApiClient>()),
+    );
     gh.factory<_i723.AuthRepo>(
-        () => _i303.AuthRepoImpl(gh<_i175.AuthRemoteDatasource>()));
+      () => _i303.AuthRepoImpl(gh<_i175.AuthRemoteDatasource>()),
+    );
     gh.factory<_i948.ForgetPasswordUseCase>(
-        () => _i948.ForgetPasswordUseCase(gh<_i723.AuthRepo>()));
+      () => _i948.ForgetPasswordUseCase(gh<_i723.AuthRepo>()),
+    );
     gh.factory<_i294.VerifyCodeUseCase>(
-        () => _i294.VerifyCodeUseCase(gh<_i723.AuthRepo>()));
+      () => _i294.VerifyCodeUseCase(gh<_i723.AuthRepo>()),
+    );
     gh.factory<_i474.ResetPasswordUseCase>(
-        () => _i474.ResetPasswordUseCase(gh<_i723.AuthRepo>()));
-    gh.factory<_i215.VerifyCodeCubit>(() => _i215.VerifyCodeCubit(
-          gh<_i294.VerifyCodeUseCase>(),
-          gh<_i948.ForgetPasswordUseCase>(),
-        ));
+      () => _i474.ResetPasswordUseCase(gh<_i723.AuthRepo>()),
+    );
+    gh.factory<_i215.VerifyCodeCubit>(
+      () => _i215.VerifyCodeCubit(
+        gh<_i294.VerifyCodeUseCase>(),
+        gh<_i948.ForgetPasswordUseCase>(),
+      ),
+    );
     gh.factory<_i164.ForgetPasswordCubit>(
-        () => _i164.ForgetPasswordCubit(gh<_i948.ForgetPasswordUseCase>()));
+      () => _i164.ForgetPasswordCubit(gh<_i948.ForgetPasswordUseCase>()),
+    );
     return this;
   }
 }
