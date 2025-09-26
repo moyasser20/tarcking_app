@@ -1,4 +1,9 @@
 {
+  "welcomeTo": "مرحباً بك في",
+  "floweryRiderApp": "تطبيق سائق الزهور",
+  "login": "تسجيل الدخول",
+  "applyNow": "قدّم الآن",
+  "versionText": "الإصدار 6.3.0 - (446)",
   "dashboard": "لوحة التحكم",
   "home": "الرئيسية",
   "orders": "الطلبات",
