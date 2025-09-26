@@ -4,7 +4,7 @@ import 'package:tarcking_app/features/auth/presentation/view/apply_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies(); 
+  configureDependencies();
   runApp(const MyApp());
 }
 

@@ -25,21 +25,23 @@ void main() {
       vehicleNumber: "1234",
     );
 
-    when(() => repo.applyDriver(
-          country: any(named: 'country'),
-          firstName: any(named: 'firstName'),
-          lastName: any(named: 'lastName'),
-          vehicleType: any(named: 'vehicleType'),
-          vehicleNumber: any(named: 'vehicleNumber'),
-          vehicleLicensePath: any(named: 'vehicleLicensePath'),
-          nid: any(named: 'nid'),
-          nidImgPath: any(named: 'nidImgPath'),
-          email: any(named: 'email'),
-          password: any(named: 'password'),
-          rePassword: any(named: 'rePassword'),
-          gender: any(named: 'gender'),
-          phone: any(named: 'phone'),
-        )).thenAnswer((_) async => entity);
+    when(
+      () => repo.applyDriver(
+        country: any(named: 'country'),
+        firstName: any(named: 'firstName'),
+        lastName: any(named: 'lastName'),
+        vehicleType: any(named: 'vehicleType'),
+        vehicleNumber: any(named: 'vehicleNumber'),
+        vehicleLicensePath: any(named: 'vehicleLicensePath'),
+        nid: any(named: 'nid'),
+        nidImgPath: any(named: 'nidImgPath'),
+        email: any(named: 'email'),
+        password: any(named: 'password'),
+        rePassword: any(named: 'rePassword'),
+        gender: any(named: 'gender'),
+        phone: any(named: 'phone'),
+      ),
+    ).thenAnswer((_) async => entity);
 
     final result = await usecase(
       country: "Egypt",

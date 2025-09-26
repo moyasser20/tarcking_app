@@ -26,37 +26,38 @@ import '../api/client/api_client.dart' as _i364;
 import 'dio_module/dio_module.dart' as _i484;
 
 extension GetItInjectableX on _i174.GetIt {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
-    final gh = _i526.GetItHelper(
-      this,
-      environment,
-      environmentFilter,
-    );
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
-    gh.factory<String>(
-      () => dioModule.baseUrl,
-      instanceName: 'baseurl',
-    );
+    gh.factory<String>(() => dioModule.baseUrl, instanceName: 'baseurl');
     gh.lazySingleton<_i361.Dio>(
-        () => dioModule.dio(gh<String>(instanceName: 'baseurl')));
+      () => dioModule.dio(gh<String>(instanceName: 'baseurl')),
+    );
     gh.lazySingleton<_i901.ApplyApiClient>(
-        () => _i901.ApplyApiClient(gh<_i361.Dio>()));
-    gh.factory<_i364.ApiClient>(() => _i364.ApiClient(
-          gh<_i361.Dio>(),
-          baseUrl: gh<String>(instanceName: 'baseurl'),
-        ));
+      () => _i901.ApplyApiClient(gh<_i361.Dio>()),
+    );
+    gh.factory<_i364.ApiClient>(
+      () => _i364.ApiClient(
+        gh<_i361.Dio>(),
+        baseUrl: gh<String>(instanceName: 'baseurl'),
+      ),
+    );
     gh.lazySingleton<_i24.AuthRemoteDataSource>(
-        () => _i758.AuthRemoteDataSourceImpl(gh<_i901.ApplyApiClient>()));
+      () => _i758.AuthRemoteDataSourceImpl(gh<_i901.ApplyApiClient>()),
+    );
     gh.lazySingleton<_i170.AuthRepo>(
-        () => _i279.AuthRepoImpl(gh<_i24.AuthRemoteDataSource>()));
+      () => _i279.AuthRepoImpl(gh<_i24.AuthRemoteDataSource>()),
+    );
     gh.lazySingleton<_i159.ApplyDriverUseCase>(
-        () => _i159.ApplyDriverUseCase(gh<_i170.AuthRepo>()));
+      () => _i159.ApplyDriverUseCase(gh<_i170.AuthRepo>()),
+    );
     gh.factory<_i488.ApplyCubit>(
-        () => _i488.ApplyCubit(gh<_i159.ApplyDriverUseCase>()));
+      () => _i488.ApplyCubit(gh<_i159.ApplyDriverUseCase>()),
+    );
     return this;
   }
 }
