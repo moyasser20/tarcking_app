@@ -9,10 +9,22 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get welcomeTo => 'Welcome to';
+
+  @override
+  String get floweryRiderApp => 'Flowery Rider App';
+
+  @override
   String get appName => 'Flowery Rider App';
 
   @override
   String get login => 'Login';
+
+  @override
+  String get applyNow => 'Apply Now';
+
+  @override
+  String get versionText => 'v 6.3.0 - (446)';
 
   @override
   String get emailLabel => 'Email';
@@ -56,6 +68,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dashboard => 'Dashboard';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get orders => 'Orders';
+
+  @override
+  String get profile => 'Profile';
 
   @override
   String get applicationSub => 'Your application has been\n submitted!';

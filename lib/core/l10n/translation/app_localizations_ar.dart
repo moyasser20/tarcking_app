@@ -9,10 +9,22 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
+  String get welcomeTo => 'مرحباً بك في';
+
+  @override
+  String get floweryRiderApp => 'تطبيق سائق الزهور';
+
+  @override
   String get appName => 'تطبيق فلاوري للتوصيل';
 
   @override
   String get login => 'تسجيل الدخول';
+
+  @override
+  String get applyNow => 'قدّم الآن';
+
+  @override
+  String get versionText => 'الإصدار 6.3.0 - (446)';
 
   @override
   String get emailLabel => 'البريد الإلكتروني';
@@ -56,6 +68,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dashboard => 'لوحة التحكم';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get orders => 'الطلبات';
+
+  @override
+  String get profile => 'الملف الشخصي';
 
   @override
   String get applicationSub => 'تم إرسال طلبك!';
