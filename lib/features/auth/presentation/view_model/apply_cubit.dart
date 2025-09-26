@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/core/contants/countries.dart';
 import 'package:tarcking_app/core/contants/vehicles.dart';
-import 'package:tarcking_app/features/apply/domain/use_cases/apply_driver_usecase.dart';
+import 'package:tarcking_app/features/auth/domain/use_cases/apply_driver_usecase.dart';
 part 'apply_state.dart';
 
 @injectable

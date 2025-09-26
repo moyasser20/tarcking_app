@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:tarcking_app/features/apply/data/models/driver.dart';
+import 'package:tarcking_app/features/auth/data/models/driver.dart';
 part 'apply_response.g.dart';
 
 @JsonSerializable()

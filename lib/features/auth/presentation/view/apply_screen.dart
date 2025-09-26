@@ -9,7 +9,7 @@ import 'package:tarcking_app/core/widgets/custom_elevated_button.dart';
 import 'package:tarcking_app/core/widgets/custom_drobdown_country_filed.dart';
 import 'package:tarcking_app/core/widgets/custom_text_field.dart';
 import 'package:tarcking_app/core/widgets/coustom_app_bar.dart';
-import 'package:tarcking_app/features/apply/presentation/view_model/apply_cubit.dart';
+import 'package:tarcking_app/features/auth/presentation/view_model/apply_cubit.dart';
 
 class ApplyScreen extends StatelessWidget {
   const ApplyScreen({super.key});

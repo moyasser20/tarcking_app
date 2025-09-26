@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tarcking_app/features/apply/presentation/view/apply_screen.dart';
 import 'core/config/di.dart';
+import 'package:tarcking_app/features/auth/presentation/view/apply_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureDependencies();
+  configureDependencies(); 
   runApp(const MyApp());
 }
 

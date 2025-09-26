@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/core/api/api_constants/api_end_points.dart';
-import 'package:tarcking_app/features/apply/data/models/apply_response.dart';
+import 'package:tarcking_app/features/auth/data/models/apply_response.dart';
 
 @lazySingleton
 class ApplyApiClient {

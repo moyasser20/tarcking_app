@@ -1,10 +1,10 @@
 import 'package:injectable/injectable.dart';
-import 'package:tarcking_app/features/apply/domain/entities/driver_entity.dart';
-import 'package:tarcking_app/features/apply/domain/repo/apply_repository.dart';
+import 'package:tarcking_app/features/auth/domain/entities/driver_entity.dart';
+import 'package:tarcking_app/features/auth/domain/repo/auth_repo.dart';
 
 @lazySingleton
 class ApplyDriverUseCase {
-  final ApplyRepository _repository;
+  final AuthRepo _repository;
 
   ApplyDriverUseCase(this._repository);
 
