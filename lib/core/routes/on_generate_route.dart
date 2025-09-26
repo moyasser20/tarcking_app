@@ -73,12 +73,7 @@ class Routes {
           );
         }
       default:
-        return MaterialPageRoute(
-          builder:
-              (_) => const Scaffold(
-                body: Center(child: Text('404 - Page Not Found')),
-              ),
-        );
+        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
     }
   }
 }

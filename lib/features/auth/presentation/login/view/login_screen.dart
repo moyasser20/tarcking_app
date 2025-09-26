@@ -8,6 +8,7 @@ import 'package:tarcking_app/features/auth/presentation/login/cubit/login_cubit.
 import 'package:tarcking_app/features/auth/presentation/login/cubit/login_states.dart';
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../../core/Widgets/custom_text_field.dart';
+import '../../../../../core/contants/app_icons.dart';
 import '../../../../../core/routes/route_names.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -55,6 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               Row(
                 children: [
+                  IconButton(onPressed: (){Navigator.pushReplacementNamed(context, AppRoutes.initial);}, icon:Image.asset(AppIcons.arrowBackIcon)),
                   Text(
                     "Login",
                     style: const TextStyle(
@@ -63,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontFamily: "Inter",
                       fontStyle: FontStyle.normal,
                     ),
-                  ).setHorizontalAndVerticalPadding(context, 0.04, 0.05),
+                  ).setHorizontalAndVerticalPadding(context, 0.01, 0.05),
                 ],
               ),
               CustomTextFormField(

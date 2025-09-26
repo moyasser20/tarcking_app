@@ -44,7 +44,12 @@
   "confirmPasswordLabel": "تأكيد كلمة المرور",
   "newPasswordLabel": "كلمة المرور الجديدة",
   "newPasswordHint": "أدخل كلمة المرور الجديدة",
-  "wrongPasswordErrorMsg": "كلمة المرور غير صحيحة، حاول مرة أخرى"
+  "wrongPasswordErrorMsg": "كلمة المرور غير صحيحة، حاول مرة أخرى",
   "applicationSub": "تم إرسال طلبك!",
-  "applicationSubMsg": "شكرًا لتقديم طلبك،\n سنقوم بمراجعته والرد عليك قريبًا."
+  "applicationSubMsg": "شكرًا لتقديم طلبك،\n سنقوم بمراجعته والرد عليك قريبًا.",
+  "codeLengthError": "يجب أن بكون ٦ على الأقل",
+  "nextButton": "التالي",
+  "resend": "إعادة إرسال",
+  "passwordUpdatedSuccessMsg": "تم تغير كلمة المرور بنجاح!",
+  "cancel": "إلغاء"
 }

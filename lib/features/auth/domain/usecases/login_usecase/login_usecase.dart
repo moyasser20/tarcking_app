@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
-import 'package:tarcking_app/features/auth/domain/repo/auth_repo.dart';
+import '../../repositories/auth_repo.dart';
 
 @injectable
 class LoginUsecase {

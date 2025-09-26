@@ -2,6 +2,8 @@ import '../../domain/responses/auth_response.dart';
 import '../models/forget_password_models/forget_password_request.dart';
 import '../models/forget_password_models/reset_password_request_model.dart';
 import '../models/forget_password_models/verify_code_request_model.dart';
+import '../models/login/login_request.dart';
+import '../models/login/login_response.dart';
 
 abstract class AuthRemoteDatasource {
   Future<AuthResponse<String>> forgetPassword(
@@ -13,6 +15,7 @@ abstract class AuthRemoteDatasource {
   Future<AuthResponse<String>> resetPassword(
     ResetPasswordRequestModel resetPasswordRequestModel,
   );
+  Future<LoginResponse> login(LoginRequest loginRequest);
   // Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest);
   // Future<RegisterResponse> signUp(RegisterRequest registerRequest);
   //

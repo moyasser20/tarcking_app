@@ -19,10 +19,9 @@ class DashboardScreen extends StatelessWidget {
           text: "Logout",
           onPressed: () async {
             await AuthService.logout();
-            Navigator.pushNamedAndRemoveUntil(
+            Navigator.pushNamed(
               context,
               AppRoutes.login,
-              (route) => false,
             );
           },
         ),

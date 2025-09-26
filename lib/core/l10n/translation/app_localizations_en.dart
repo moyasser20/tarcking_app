@@ -79,9 +79,96 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile => 'Profile';
 
   @override
+  String get password => 'Password';
+
+  @override
+  String get resetPassword => 'Reset Password';
+
+  @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get invalidPasswordMsg => 'Invalid password';
+
+  @override
+  String get passwordErrorMatchingMsg => 'Passwords do not match!';
+
+  @override
+  String get updateText => 'Update';
+
+  @override
+  String get logoutAlertMsg => 'Logout';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get logoutConfirmTextCenter => 'Confirm logout!';
+
+  @override
+  String get resetPasswordUnderMsg =>
+      'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number';
+
+  @override
+  String get emailVerificationScreen => 'Email Verification';
+
+  @override
+  String get emailVerificationScreenUnderMsg =>
+      'Please enter the code that was sent to your\nemail address';
+
+  @override
+  String get codeReceiveMsgError => 'Didn\'t receive code?';
+
+  @override
+  String get forgetPasswordUnderText =>
+      'Please enter your email associated with\nyour account';
+
+  @override
+  String get forgetPassword => 'Forgot Password';
+
+  @override
+  String get validationEmailErrorMessage => 'This email is not valid';
+
+  @override
+  String get requiredEmailErrorMessage => 'Email is required';
+
+  @override
+  String get continueButton => 'Continue';
+
+  @override
+  String get confirmPasswordLabel => 'Confirm Password';
+
+  @override
+  String get newPasswordLabel => 'New Password';
+
+  @override
+  String get newPasswordHint => 'Enter new password';
+
+  @override
+  String get wrongPasswordErrorMsg => 'Wrong password, try again';
+
+  @override
   String get applicationSub => 'Your application has been\n submitted!';
 
   @override
   String get applicationSubMsg =>
       'Thank you for providing your application,\n we will review your application and will get back to you soon.';
+
+  @override
+  String get codeLengthError => 'Code must be at least 6 digits';
+
+  @override
+  String get passwordUpdatedSuccessMsg => 'Password changed successfully!';
+
+  @override
+  String get nextButton => 'Next';
+
+  @override
+  String get resend => 'Resend';
 }

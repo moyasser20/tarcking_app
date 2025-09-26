@@ -5,6 +5,8 @@ import '../datasource/auth_remote_datasource.dart';
 import '../models/forget_password_models/forget_password_request.dart';
 import '../models/forget_password_models/reset_password_request_model.dart';
 import '../models/forget_password_models/verify_code_request_model.dart';
+import '../models/login/login_request.dart';
+import '../models/login/login_response.dart';
 
 @Injectable(as: AuthRepo)
 class AuthRepoImpl implements AuthRepo {
@@ -34,6 +36,11 @@ class AuthRepoImpl implements AuthRepo {
       newPassword: newPassword,
     );
     return await _authRemoteDatasource.resetPassword(model);
+  }
+
+  @override
+  Future<LoginResponse> login(LoginRequest loginRequest) {
+    return _authRemoteDatasource.login(loginRequest);
   }
 
   // @override

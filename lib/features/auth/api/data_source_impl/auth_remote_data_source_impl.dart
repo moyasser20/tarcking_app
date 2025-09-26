@@ -90,7 +90,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   }
   @override
   Future<LoginResponse> login(LoginRequest loginRequest) {
-    return _apiClient.login(loginRequest);
+    return _authApiClient.login(loginRequest);
   }
   //
   // @override
