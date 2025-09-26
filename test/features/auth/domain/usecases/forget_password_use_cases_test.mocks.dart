@@ -27,8 +27,13 @@ import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart'
 
 class _FakeAuthResponse_0<T> extends _i1.SmartFake
     implements _i2.AuthResponse<T> {
-  _FakeAuthResponse_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeAuthResponse_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [AuthRepo].
@@ -42,28 +47,36 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
   @override
   _i4.Future<_i2.AuthResponse<String>> forgetPassword(String? email) =>
       (super.noSuchMethod(
-            Invocation.method(#forgetPassword, [email]),
-            returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
-              _FakeAuthResponse_0<String>(
-                this,
-                Invocation.method(#forgetPassword, [email]),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.AuthResponse<String>>);
+        Invocation.method(
+          #forgetPassword,
+          [email],
+        ),
+        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
+          this,
+          Invocation.method(
+            #forgetPassword,
+            [email],
+          ),
+        )),
+      ) as _i4.Future<_i2.AuthResponse<String>>);
 
   @override
   _i4.Future<_i2.AuthResponse<String>> verifyCode(String? code) =>
       (super.noSuchMethod(
-            Invocation.method(#verifyCode, [code]),
-            returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
-              _FakeAuthResponse_0<String>(
-                this,
-                Invocation.method(#verifyCode, [code]),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.AuthResponse<String>>);
+        Invocation.method(
+          #verifyCode,
+          [code],
+        ),
+        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
+          this,
+          Invocation.method(
+            #verifyCode,
+            [code],
+          ),
+        )),
+      ) as _i4.Future<_i2.AuthResponse<String>>);
 
   @override
   _i4.Future<_i2.AuthResponse<String>> resetPassword(
@@ -71,13 +84,23 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
     String? newPassword,
   ) =>
       (super.noSuchMethod(
-            Invocation.method(#resetPassword, [email, newPassword]),
-            returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
-              _FakeAuthResponse_0<String>(
-                this,
-                Invocation.method(#resetPassword, [email, newPassword]),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.AuthResponse<String>>);
+        Invocation.method(
+          #resetPassword,
+          [
+            email,
+            newPassword,
+          ],
+        ),
+        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
+          this,
+          Invocation.method(
+            #resetPassword,
+            [
+              email,
+              newPassword,
+            ],
+          ),
+        )),
+      ) as _i4.Future<_i2.AuthResponse<String>>);
 }

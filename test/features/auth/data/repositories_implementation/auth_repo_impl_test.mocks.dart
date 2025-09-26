@@ -33,8 +33,13 @@ import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart'
 
 class _FakeAuthResponse_0<T> extends _i1.SmartFake
     implements _i2.AuthResponse<T> {
-  _FakeAuthResponse_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeAuthResponse_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [AuthRemoteDatasource].
@@ -48,50 +53,55 @@ class MockAuthRemoteDatasource extends _i1.Mock
 
   @override
   _i4.Future<_i2.AuthResponse<String>> forgetPassword(
-    _i5.ForgetPasswordRequestModel? forgetPasswordRequestModel,
-  ) =>
+          _i5.ForgetPasswordRequestModel? forgetPasswordRequestModel) =>
       (super.noSuchMethod(
-            Invocation.method(#forgetPassword, [forgetPasswordRequestModel]),
-            returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
-              _FakeAuthResponse_0<String>(
-                this,
-                Invocation.method(#forgetPassword, [
-                  forgetPasswordRequestModel,
-                ]),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.AuthResponse<String>>);
+        Invocation.method(
+          #forgetPassword,
+          [forgetPasswordRequestModel],
+        ),
+        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
+          this,
+          Invocation.method(
+            #forgetPassword,
+            [forgetPasswordRequestModel],
+          ),
+        )),
+      ) as _i4.Future<_i2.AuthResponse<String>>);
 
   @override
   _i4.Future<_i2.AuthResponse<String>> verifyResetPassword(
-    _i6.VerifyCodeRequestModel? verifyCodeRequestModel,
-  ) =>
+          _i6.VerifyCodeRequestModel? verifyCodeRequestModel) =>
       (super.noSuchMethod(
-            Invocation.method(#verifyResetPassword, [verifyCodeRequestModel]),
-            returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
-              _FakeAuthResponse_0<String>(
-                this,
-                Invocation.method(#verifyResetPassword, [
-                  verifyCodeRequestModel,
-                ]),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.AuthResponse<String>>);
+        Invocation.method(
+          #verifyResetPassword,
+          [verifyCodeRequestModel],
+        ),
+        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
+          this,
+          Invocation.method(
+            #verifyResetPassword,
+            [verifyCodeRequestModel],
+          ),
+        )),
+      ) as _i4.Future<_i2.AuthResponse<String>>);
 
   @override
   _i4.Future<_i2.AuthResponse<String>> resetPassword(
-    _i7.ResetPasswordRequestModel? resetPasswordRequestModel,
-  ) =>
+          _i7.ResetPasswordRequestModel? resetPasswordRequestModel) =>
       (super.noSuchMethod(
-            Invocation.method(#resetPassword, [resetPasswordRequestModel]),
-            returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
-              _FakeAuthResponse_0<String>(
-                this,
-                Invocation.method(#resetPassword, [resetPasswordRequestModel]),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.AuthResponse<String>>);
+        Invocation.method(
+          #resetPassword,
+          [resetPasswordRequestModel],
+        ),
+        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
+          this,
+          Invocation.method(
+            #resetPassword,
+            [resetPasswordRequestModel],
+          ),
+        )),
+      ) as _i4.Future<_i2.AuthResponse<String>>);
 }
