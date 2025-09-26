@@ -1,9 +1,8 @@
-
 class AuthService {
   static const String tokenKey = 'auth_token';
   static const String userIdKey = 'user_id';
 
-/*  static Future<void> saveAuthToken(String token) async {
+  /*  static Future<void> saveAuthToken(String token) async {
     await SecureStorage.write(key: tokenKey, value: token);
   }
 

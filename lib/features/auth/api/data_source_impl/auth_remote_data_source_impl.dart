@@ -38,10 +38,12 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
 
   @override
   Future<AuthResponse<String>> forgetPassword(
-      ForgetPasswordRequestModel forgetPasswordRequestModel) async {
+    ForgetPasswordRequestModel forgetPasswordRequestModel,
+  ) async {
     try {
-      final result =
-      await _authApiClient.forgetPassword(forgetPasswordRequestModel);
+      final result = await _authApiClient.forgetPassword(
+        forgetPasswordRequestModel,
+      );
       return AuthResponse.success(result);
     } on DioException catch (e) {
       String apiMessage = _extractApiMessage(e);
@@ -53,10 +55,12 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
 
   @override
   Future<AuthResponse<String>> resetPassword(
-      ResetPasswordRequestModel resetPasswordRequestModel) async {
+    ResetPasswordRequestModel resetPasswordRequestModel,
+  ) async {
     try {
-      final result =
-      await _authApiClient.resetPassword(resetPasswordRequestModel);
+      final result = await _authApiClient.resetPassword(
+        resetPasswordRequestModel,
+      );
       return AuthResponse.success(result);
     } on DioException catch (e) {
       String apiMessage = _extractApiMessage(e);
@@ -68,10 +72,12 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
 
   @override
   Future<AuthResponse<String>> verifyResetPassword(
-      VerifyCodeRequestModel verifyCodeRequestModel) async {
+    VerifyCodeRequestModel verifyCodeRequestModel,
+  ) async {
     try {
-      final result =
-      await _authApiClient.verifyResetCode(verifyCodeRequestModel);
+      final result = await _authApiClient.verifyResetCode(
+        verifyCodeRequestModel,
+      );
       return AuthResponse.success(result);
     } on DioException catch (e) {
       String apiMessage = _extractApiMessage(e);
@@ -80,6 +86,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       return AuthResponse.error(e.toString());
     }
   }
+
   //
   // @override
   // Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest) async {

@@ -28,9 +28,10 @@ class VerificationCodeField extends StatelessWidget {
           focusedBorderColor:
               state is VerifyCodeErrorStates ? Colors.red : Colors.blue,
           filled: true,
-          fillColor: state is VerifyCodeErrorStates
-              ? Colors.red.withOpacity(0.2)
-              : AppColors.white[60]!,
+          fillColor:
+              state is VerifyCodeErrorStates
+                  ? Colors.red.withOpacity(0.2)
+                  : AppColors.white[60]!,
           showFieldAsBox: true,
           onSubmit: (code) => cubit.updateCode(code),
           onCodeChanged: (code) => cubit.updateCode(code),

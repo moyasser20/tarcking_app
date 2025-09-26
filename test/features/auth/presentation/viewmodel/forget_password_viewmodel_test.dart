@@ -65,6 +65,5 @@ void main() {
         subscription.cancel();
       });
     });
-
   });
 }

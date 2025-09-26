@@ -20,7 +20,7 @@ class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
   Timer? _resendTimer;
 
   VerifyCodeCubit(this._verifyCodeUseCase, this._forgetPasswordUseCase)
-      : super(VerifyCodeInitialStates());
+    : super(VerifyCodeInitialStates());
 
   void setEmail(String emailAddress) {
     email = emailAddress;

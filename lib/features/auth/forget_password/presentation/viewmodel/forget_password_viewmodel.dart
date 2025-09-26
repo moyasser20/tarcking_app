@@ -10,7 +10,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
   final ForgetPasswordUseCase _forgetPasswordUseCase;
 
   ForgetPasswordCubit(this._forgetPasswordUseCase)
-      : super(ForgetPasswordInitialState());
+    : super(ForgetPasswordInitialState());
 
   final TextEditingController emailController = TextEditingController();
   bool isFormValid = false;

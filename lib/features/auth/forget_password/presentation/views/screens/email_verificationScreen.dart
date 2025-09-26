@@ -35,9 +35,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     var local = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AppBar(
-        title: Text(local.password),
-      ),
+      appBar: AppBar(title: Text(local.password)),
       body: BlocConsumer<VerifyCodeCubit, VerifyCodeStates>(
         listener: (context, state) {
           if (state is VerifyCodeSuccessStates) {
@@ -61,7 +59,9 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   Text(
                     local.emailVerificationScreen,
                     style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 20),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   Text(
@@ -79,41 +79,44 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                         style: const TextStyle(fontSize: 16),
                       ),
                       TextButton(
-                        onPressed: cubit.isResendEnabled
-                            ? () => cubit.resendCode()
-                            : null,
+                        onPressed:
+                            cubit.isResendEnabled
+                                ? () => cubit.resendCode()
+                                : null,
                         child: Text(
                           cubit.isResendEnabled ? local.resend : local.resend,
                           style: TextStyle(
                             decoration: TextDecoration.underline,
                             fontSize: 17,
-                            color: cubit.isResendEnabled
-                                ? Colors.blue
-                                : Colors.grey,
+                            color:
+                                cubit.isResendEnabled
+                                    ? Colors.blue
+                                    : Colors.grey,
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   state is VerifyCodeLoadingStates
                       ? const SizedBox(
-                          height: 50,
-                          width: 50,
-                          child: LoadingIndicator(
-                            indicatorType: Indicator.lineScalePulseOut,
-                            colors: [AppColors.pink],
-                            strokeWidth: 2,
-                            backgroundColor: Colors.transparent,
-                          ),
-                        )
+                        height: 50,
+                        width: 50,
+                        child: LoadingIndicator(
+                          indicatorType: Indicator.lineScalePulseOut,
+                          colors: [AppColors.pink],
+                          strokeWidth: 2,
+                          backgroundColor: Colors.transparent,
+                        ),
+                      )
                       : CustomElevatedButton(
-                          text: local.nextButton,
-                          onPressed: cubit.enteredCode.length == 6
-                              ? () {
+                        text: local.nextButton,
+                        onPressed:
+                            cubit.enteredCode.length == 6
+                                ? () {
                                   cubit.verify(context);
                                 }
-                              : null,
-                        ),
+                                : null,
+                      ),
                 ],
               ).setVerticalPadding(context, 0.04),
             ),

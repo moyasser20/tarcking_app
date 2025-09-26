@@ -25,8 +25,9 @@ void main() {
 
   group('ForgetPasswordUseCase', () {
     test('should return success', () async {
-      when(mockAuthRepo.forgetPassword(any))
-          .thenAnswer((_) async => AuthResponse.success('email sent'));
+      when(
+        mockAuthRepo.forgetPassword(any),
+      ).thenAnswer((_) async => AuthResponse.success('email sent'));
 
       final result = await forgetPasswordUseCase('test@example.com');
 
@@ -35,8 +36,9 @@ void main() {
     });
 
     test('should return error', () async {
-      when(mockAuthRepo.forgetPassword(any))
-          .thenAnswer((_) async => AuthResponse.error('error message'));
+      when(
+        mockAuthRepo.forgetPassword(any),
+      ).thenAnswer((_) async => AuthResponse.error('error message'));
 
       final result = await forgetPasswordUseCase('test@example.com');
 
@@ -46,23 +48,30 @@ void main() {
 
   group('ResetPasswordUseCase', () {
     test('should return success', () async {
-      when(mockAuthRepo.resetPassword(any, any))
-          .thenAnswer((_) async => AuthResponse.success('reset done'));
+      when(
+        mockAuthRepo.resetPassword(any, any),
+      ).thenAnswer((_) async => AuthResponse.success('reset done'));
 
-      final result =
-          await resetPasswordUseCase('test@example.com', 'newPass123');
+      final result = await resetPasswordUseCase(
+        'test@example.com',
+        'newPass123',
+      );
 
       expect(result.data, 'reset done');
-      verify(mockAuthRepo.resetPassword('test@example.com', 'newPass123'))
-          .called(1);
+      verify(
+        mockAuthRepo.resetPassword('test@example.com', 'newPass123'),
+      ).called(1);
     });
 
     test('should return error', () async {
-      when(mockAuthRepo.resetPassword(any, any))
-          .thenAnswer((_) async => AuthResponse.error('reset error'));
+      when(
+        mockAuthRepo.resetPassword(any, any),
+      ).thenAnswer((_) async => AuthResponse.error('reset error'));
 
-      final result =
-          await resetPasswordUseCase('test@example.com', 'newPass123');
+      final result = await resetPasswordUseCase(
+        'test@example.com',
+        'newPass123',
+      );
 
       expect(result.error, 'reset error');
     });
@@ -70,8 +79,9 @@ void main() {
 
   group('VerifyCodeUseCase', () {
     test('should return success', () async {
-      when(mockAuthRepo.verifyCode(any))
-          .thenAnswer((_) async => AuthResponse.success('verified'));
+      when(
+        mockAuthRepo.verifyCode(any),
+      ).thenAnswer((_) async => AuthResponse.success('verified'));
 
       final result = await verifyCodeUseCase('123456');
 
@@ -80,8 +90,9 @@ void main() {
     });
 
     test('should return error', () async {
-      when(mockAuthRepo.verifyCode(any))
-          .thenAnswer((_) async => AuthResponse.error('invalid code'));
+      when(
+        mockAuthRepo.verifyCode(any),
+      ).thenAnswer((_) async => AuthResponse.error('invalid code'));
 
       final result = await verifyCodeUseCase('123456');
 

@@ -3,11 +3,9 @@ class UseCaseResult<T> {
   final String? error;
   final bool isSuccess;
 
-  UseCaseResult.success(this.data)
-      : isSuccess = true, error = null;
+  UseCaseResult.success(this.data) : isSuccess = true, error = null;
 
-  UseCaseResult.error(this.error)
-      : isSuccess = false, data = null;
+  UseCaseResult.error(this.error) : isSuccess = false, data = null;
 
   bool get isError => !isSuccess;
 }

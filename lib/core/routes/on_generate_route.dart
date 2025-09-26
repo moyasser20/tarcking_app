@@ -15,35 +15,39 @@ class Routes {
     switch (settings.name) {
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<ForgetPasswordCubit>(
-            create: (context) => getIt<ForgetPasswordCubit>(),
-            child: const ForgetPasswordScreen(),
-          ),
+          builder:
+              (_) => BlocProvider<ForgetPasswordCubit>(
+                create: (context) => getIt<ForgetPasswordCubit>(),
+                child: const ForgetPasswordScreen(),
+              ),
         );
 
       case AppRoutes.emailVerification:
         final email = settings.arguments as String? ?? '';
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<VerifyCodeCubit>(
-            create: (context) => getIt<VerifyCodeCubit>(),
-            child: EmailVerificationScreen(email: email),
-          ),
+          builder:
+              (_) => BlocProvider<VerifyCodeCubit>(
+                create: (context) => getIt<VerifyCodeCubit>(),
+                child: EmailVerificationScreen(email: email),
+              ),
         );
 
       case AppRoutes.resetPassword:
         final email = settings.arguments as String? ?? '';
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<ResetPasswordCubit>(
-            create: (context) => getIt<ResetPasswordCubit>(),
-            child: ResetPasswordScreen(email: email),
-          ),
+          builder:
+              (_) => BlocProvider<ResetPasswordCubit>(
+                create: (context) => getIt<ResetPasswordCubit>(),
+                child: ResetPasswordScreen(email: email),
+              ),
         );
 
       default:
         return MaterialPageRoute(
-          builder: (_) => const Scaffold(
-            body: Center(child: Text('404 - Page Not Found')),
-          ),
+          builder:
+              (_) => const Scaffold(
+                body: Center(child: Text('404 - Page Not Found')),
+              ),
         );
     }
   }

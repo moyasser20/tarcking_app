@@ -40,26 +40,27 @@ class ResetPasswordForm extends StatelessWidget {
           const SizedBox(height: 35),
           state is ResetPasswordLoadingState
               ? const SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: LoadingIndicator(
-                    indicatorType: Indicator.lineScalePulseOut,
-                    colors: [AppColors.pink],
-                    strokeWidth: 2,
-                    backgroundColor: Colors.transparent,
-                  ),
-                )
+                height: 50,
+                width: 50,
+                child: LoadingIndicator(
+                  indicatorType: Indicator.lineScalePulseOut,
+                  colors: [AppColors.pink],
+                  strokeWidth: 2,
+                  backgroundColor: Colors.transparent,
+                ),
+              )
               : CustomElevatedButton(
-                  text: local.continueButton,
-                  onPressed: cubit.isFormValid
-                      ? () {
+                text: local.continueButton,
+                onPressed:
+                    cubit.isFormValid
+                        ? () {
                           if (formKey.currentState!.validate()) {
                             cubit.resetPassword();
                           }
                         }
-                      : null,
-                  color: cubit.isFormValid ? AppColors.pink : Colors.grey,
-                ),
+                        : null,
+                color: cubit.isFormValid ? AppColors.pink : Colors.grey,
+              ),
         ],
       ),
     );

@@ -42,13 +42,19 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         title: Text(
           local.password,
           style: const TextStyle(
-              color: AppColors.black, fontWeight: FontWeight.w500),
+            color: AppColors.black,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
       body: BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
         listener: (context, state) {
           if (state is ResetPasswordSuccessState) {
-            showCustomSnackBar(context, local.passwordUpdatedSuccessMsg, isError: false);
+            showCustomSnackBar(
+              context,
+              local.passwordUpdatedSuccessMsg,
+              isError: false,
+            );
             Navigator.pushNamed(context, AppRoutes.login);
           } else if (state is ResetPasswordErrorState) {
             showCustomSnackBar(context, state.message, isError: true);
@@ -61,14 +67,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               children: [
                 Text(
                   local.resetPassword,
-                  style:
-                      const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20,
+                  ),
                 ),
                 const SizedBox(height: 10),
-                Text(
-                  local.resetPasswordUnderMsg,
-                  textAlign: TextAlign.center,
-                ),
+                Text(local.resetPasswordUnderMsg, textAlign: TextAlign.center),
                 const SizedBox(height: 25),
                 ResetPasswordForm(formKey: _formKey),
               ],

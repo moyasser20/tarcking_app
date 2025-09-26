@@ -43,9 +43,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     if (local == null) {
       return Scaffold(
         backgroundColor: AppColors.white,
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
+        body: Center(child: CircularProgressIndicator()),
       );
     }
 
@@ -54,10 +52,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
       appBar: AppBar(
         title: Text(
           local.password,
-          style: TextStyle(
-            color: AppColors.black,
-            fontWeight: FontWeight.w500,
-          ),
+          style: TextStyle(color: AppColors.black, fontWeight: FontWeight.w500),
         ),
       ),
       body: BlocConsumer<ForgetPasswordCubit, ForgetPasswordStates>(
@@ -72,11 +67,15 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 Text(
                   local.forgetPassword,
                   style: const TextStyle(
-                      fontWeight: FontWeight.w600, fontSize: 20),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20,
+                  ),
                 ),
                 const SizedBox(height: 10),
-                Text(local.forgetPasswordUnderText,
-                    textAlign: TextAlign.center),
+                Text(
+                  local.forgetPasswordUnderText,
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 40),
                 CustomTextFormField(
                   controller: cubit.emailController,
@@ -95,26 +94,27 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 const SizedBox(height: 50),
                 state is ForgetPasswordLoadingState
                     ? SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: LoadingIndicator(
-                    indicatorType: Indicator.lineScalePulseOut,
-                    colors: [AppColors.pink],
-                    strokeWidth: 2,
-                    backgroundColor: Colors.transparent,
-                  ),
-                )
+                      height: 50,
+                      width: 50,
+                      child: LoadingIndicator(
+                        indicatorType: Indicator.lineScalePulseOut,
+                        colors: [AppColors.pink],
+                        strokeWidth: 2,
+                        backgroundColor: Colors.transparent,
+                      ),
+                    )
                     : CustomElevatedButton(
-                  text: local.continueButton,
-                  onPressed: cubit.isFormValid
-                      ? () {
-                    if (_formState.currentState!.validate()) {
-                      cubit.sendResetCode();
-                    }
-                  }
-                      : null,
-                  color: cubit.isFormValid ? AppColors.pink : Colors.grey,
-                )
+                      text: local.continueButton,
+                      onPressed:
+                          cubit.isFormValid
+                              ? () {
+                                if (_formState.currentState!.validate()) {
+                                  cubit.sendResetCode();
+                                }
+                              }
+                              : null,
+                      color: cubit.isFormValid ? AppColors.pink : Colors.grey,
+                    ),
               ],
             ).setHorizontalAndVerticalPadding(context, 0.055, 0.05),
           );
