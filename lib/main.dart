@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'core/config/di.dart';
 import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';

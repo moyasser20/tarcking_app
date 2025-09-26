@@ -18,6 +18,9 @@ import '../../features/auth/data/datasource/auth_remote_data_source.dart'
     as _i24;
 import '../../features/auth/data/repo_impl/auth_repo_impl.dart' as _i279;
 import '../../features/auth/domain/repo/auth_repo.dart' as _i170;
+import '../../features/auth/domain/usecases/login_usecase/login_usecase.dart'
+    as _i517;
+import '../../features/auth/presentation/login/cubit/login_cubit.dart' as _i179;
 import '../api/client/api_client.dart' as _i364;
 import 'dio_module/dio_module.dart' as _i484;
 
@@ -46,6 +49,12 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i24.AuthRemoteDataSource>(
         () => _i758.AuthRemoteDataSourceImpl(gh<_i364.ApiClient>()));
+    gh.factory<_i170.AuthRepo>(
+        () => _i279.AuthRepoImpl(gh<_i24.AuthRemoteDataSource>()));
+    gh.factory<_i517.LoginUsecase>(
+        () => _i517.LoginUsecase(gh<_i170.AuthRepo>()));
+    gh.factory<_i179.LoginCubit>(
+        () => _i179.LoginCubit(loginUsecase: gh<_i517.LoginUsecase>()));
     return this;
   }
 }
