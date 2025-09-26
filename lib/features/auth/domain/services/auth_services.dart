@@ -1,23 +1,21 @@
-
 import '../../../../core/contants/secure_storage.dart';
 
 class AuthService {
   static const String tokenKey = 'auth_token';
-  static const String userIdKey = 'user_id';
+  static const String rememberMeKey = 'remember_me';
 
   static Future<void> saveAuthToken(String token) async {
     await SecureStorage.write(key: tokenKey, value: token);
   }
 
-  static Future<void> saveUserId(String userId) async {
-    await SecureStorage.write(key: userIdKey, value: userId);
+  static Future<void> saveRememberMe(bool rememberMe) async {
+    await SecureStorage.write(key: rememberMeKey, value: "$rememberMe");
   }
 
   static Future<bool> isUserAuthenticated() async {
-    if (await AuthService.isLoggedIn()) {
+    if (await AuthService.isLoggedIn() && await AuthService.getRememberMe() == true) {
       return true;
     }
-
     return false;
   }
 
@@ -26,8 +24,14 @@ class AuthService {
     return token != null && token.isNotEmpty;
   }
 
-  static Future<String?> getUserId() async {
-    return await SecureStorage.read(userIdKey);
+  static Future<bool?> getRememberMe() async {
+    final value = await SecureStorage.read(rememberMeKey);
+    if (value == null) return null;
+    if (value == "true") {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   static Future<String?> getToken() async {
@@ -36,6 +40,6 @@ class AuthService {
 
   static Future<void> logout() async {
     await SecureStorage.delete(tokenKey);
-    await SecureStorage.delete(userIdKey);
+    await SecureStorage.delete(rememberMeKey);
   }
 }

@@ -32,14 +32,13 @@ class LoginCubit extends Cubit<LoginStates> {
         password: password.trim(),
       );
 
-    // final response =
-      await  loginUsecase.invoke(request);
-    //     if (response.message == "success") {
-    //   await AuthService.saveAuthToken(response.token ?? "");
-    //   if (rememberMe) {
-    //     await AuthService.saveUserId(response.data!.user!.Id.toString());
-    //   }
-    // }
+    final response = await  loginUsecase.invoke(request);
+        if (response.token!=null && response.token!.isNotEmpty) {
+      await AuthService.saveAuthToken(response.token ?? "");
+      if (rememberMe) {
+        await AuthService.saveRememberMe(rememberMe);
+      }
+    }
       emit(LoginSuccessState());
     } catch (e) {
       emit(LoginErrorState(errorMessage: "Failed to login. Please try again."));
