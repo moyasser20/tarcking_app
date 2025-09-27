@@ -205,6 +205,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Thank you for providing your application,\n we will review your application and will get back to you soon.'**
   String get applicationSubMsg;
+
+  /// No description provided for @welcomeTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to'**
+  String get welcomeTo;
+
+  /// No description provided for @floweryRiderApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Flowery Rider App'**
+  String get floweryRiderApp;
+
+  /// No description provided for @applyNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Now'**
+  String get applyNow;
+
+  /// No description provided for @versionText.
+  ///
+  /// In en, this message translates to:
+  /// **'v 6.3.0 - (446)'**
+  String get versionText;
 }
 
 class _AppLocalizationsDelegate

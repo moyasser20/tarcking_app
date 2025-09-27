@@ -63,4 +63,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get applicationSubMsg =>
       'Thank you for providing your application,\n we will review your application and will get back to you soon.';
+
+  @override
+  String get welcomeTo => 'Welcome to';
+
+  @override
+  String get floweryRiderApp => 'Flowery Rider App';
+
+  @override
+  String get applyNow => 'Apply Now';
+
+  @override
+  String get versionText => 'v 6.3.0 - (446)';
 }

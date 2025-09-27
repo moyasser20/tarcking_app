@@ -63,4 +63,16 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get applicationSubMsg =>
       'شكرًا لتقديم طلبك،\n سنقوم بمراجعته والرد عليك قريبًا.';
+
+  @override
+  String get welcomeTo => 'مرحباً بك في';
+
+  @override
+  String get floweryRiderApp => 'تطبيق سائق الزهور';
+
+  @override
+  String get applyNow => 'قدّم الآن';
+
+  @override
+  String get versionText => 'الإصدار 6.3.0 - (446)';
 }

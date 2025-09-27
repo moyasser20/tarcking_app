@@ -5,7 +5,6 @@ import 'core/routes/on_generate_route.dart';
 import 'core/routes/route_names.dart';
 import 'core/theme/app_theme.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
@@ -20,7 +19,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Tracking App',
-      debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.initial,
       onGenerateRoute: Routes.onGenerateRoute,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
