@@ -42,23 +42,13 @@ import 'package:tarcking_app/features/auth/domain/usecases/verify_code_usecase.d
 
 class _FakeAuthResponse_0<T> extends _i1.SmartFake
     implements _i2.AuthResponse<T> {
-  _FakeAuthResponse_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeAuthResponse_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeLoginResponse_1 extends _i1.SmartFake implements _i3.LoginResponse {
-  _FakeLoginResponse_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeLoginResponse_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ForgetPasswordUseCase].
@@ -73,19 +63,15 @@ class MockForgetPasswordUseCase extends _i1.Mock
   @override
   _i5.Future<_i2.AuthResponse<String>> call(String? email) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [email],
-        ),
-        returnValue: _i5.Future<_i2.AuthResponse<String>>.value(
-            _FakeAuthResponse_0<String>(
-          this,
-          Invocation.method(
-            #call,
-            [email],
-          ),
-        )),
-      ) as _i5.Future<_i2.AuthResponse<String>>);
+            Invocation.method(#call, [email]),
+            returnValue: _i5.Future<_i2.AuthResponse<String>>.value(
+              _FakeAuthResponse_0<String>(
+                this,
+                Invocation.method(#call, [email]),
+              ),
+            ),
+          )
+          as _i5.Future<_i2.AuthResponse<String>>);
 }
 
 /// A class which mocks [VerifyCodeUseCase].
@@ -99,19 +85,15 @@ class MockVerifyCodeUseCase extends _i1.Mock implements _i6.VerifyCodeUseCase {
   @override
   _i5.Future<_i2.AuthResponse<String>> call(String? code) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [code],
-        ),
-        returnValue: _i5.Future<_i2.AuthResponse<String>>.value(
-            _FakeAuthResponse_0<String>(
-          this,
-          Invocation.method(
-            #call,
-            [code],
-          ),
-        )),
-      ) as _i5.Future<_i2.AuthResponse<String>>);
+            Invocation.method(#call, [code]),
+            returnValue: _i5.Future<_i2.AuthResponse<String>>.value(
+              _FakeAuthResponse_0<String>(
+                this,
+                Invocation.method(#call, [code]),
+              ),
+            ),
+          )
+          as _i5.Future<_i2.AuthResponse<String>>);
 }
 
 /// A class which mocks [ApiClient].
@@ -124,70 +106,63 @@ class MockApiClient extends _i1.Mock implements _i7.ApiClient {
 
   @override
   _i5.Future<String> forgetPassword(
-          _i8.ForgetPasswordRequestModel? forgetPasswordRequestModel) =>
+    _i8.ForgetPasswordRequestModel? forgetPasswordRequestModel,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #forgetPassword,
-          [forgetPasswordRequestModel],
-        ),
-        returnValue: _i5.Future<String>.value(_i9.dummyValue<String>(
-          this,
-          Invocation.method(
-            #forgetPassword,
-            [forgetPasswordRequestModel],
-          ),
-        )),
-      ) as _i5.Future<String>);
+            Invocation.method(#forgetPassword, [forgetPasswordRequestModel]),
+            returnValue: _i5.Future<String>.value(
+              _i9.dummyValue<String>(
+                this,
+                Invocation.method(#forgetPassword, [
+                  forgetPasswordRequestModel,
+                ]),
+              ),
+            ),
+          )
+          as _i5.Future<String>);
 
   @override
   _i5.Future<String> verifyResetCode(
-          _i10.VerifyCodeRequestModel? verifyResetCode) =>
+    _i10.VerifyCodeRequestModel? verifyResetCode,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #verifyResetCode,
-          [verifyResetCode],
-        ),
-        returnValue: _i5.Future<String>.value(_i9.dummyValue<String>(
-          this,
-          Invocation.method(
-            #verifyResetCode,
-            [verifyResetCode],
-          ),
-        )),
-      ) as _i5.Future<String>);
+            Invocation.method(#verifyResetCode, [verifyResetCode]),
+            returnValue: _i5.Future<String>.value(
+              _i9.dummyValue<String>(
+                this,
+                Invocation.method(#verifyResetCode, [verifyResetCode]),
+              ),
+            ),
+          )
+          as _i5.Future<String>);
 
   @override
   _i5.Future<String> resetPassword(
-          _i11.ResetPasswordRequestModel? resetPasswordRequestModel) =>
+    _i11.ResetPasswordRequestModel? resetPasswordRequestModel,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #resetPassword,
-          [resetPasswordRequestModel],
-        ),
-        returnValue: _i5.Future<String>.value(_i9.dummyValue<String>(
-          this,
-          Invocation.method(
-            #resetPassword,
-            [resetPasswordRequestModel],
-          ),
-        )),
-      ) as _i5.Future<String>);
+            Invocation.method(#resetPassword, [resetPasswordRequestModel]),
+            returnValue: _i5.Future<String>.value(
+              _i9.dummyValue<String>(
+                this,
+                Invocation.method(#resetPassword, [resetPasswordRequestModel]),
+              ),
+            ),
+          )
+          as _i5.Future<String>);
 
   @override
   _i5.Future<_i3.LoginResponse> login(_i12.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #login,
-          [loginRequest],
-        ),
-        returnValue: _i5.Future<_i3.LoginResponse>.value(_FakeLoginResponse_1(
-          this,
-          Invocation.method(
-            #login,
-            [loginRequest],
-          ),
-        )),
-      ) as _i5.Future<_i3.LoginResponse>);
+            Invocation.method(#login, [loginRequest]),
+            returnValue: _i5.Future<_i3.LoginResponse>.value(
+              _FakeLoginResponse_1(
+                this,
+                Invocation.method(#login, [loginRequest]),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.LoginResponse>);
 }
 
 /// A class which mocks [NavigatorObserver].
@@ -202,31 +177,15 @@ class MockNavigatorObserver extends _i1.Mock implements _i13.NavigatorObserver {
   void didPush(
     _i13.Route<dynamic>? route,
     _i13.Route<dynamic>? previousRoute,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #didPush,
-          [
-            route,
-            previousRoute,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  ) => super.noSuchMethod(
+    Invocation.method(#didPush, [route, previousRoute]),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  void didPop(
-    _i13.Route<dynamic>? route,
-    _i13.Route<dynamic>? previousRoute,
-  ) =>
+  void didPop(_i13.Route<dynamic>? route, _i13.Route<dynamic>? previousRoute) =>
       super.noSuchMethod(
-        Invocation.method(
-          #didPop,
-          [
-            route,
-            previousRoute,
-          ],
-        ),
+        Invocation.method(#didPop, [route, previousRoute]),
         returnValueForMissingStub: null,
       );
 
@@ -234,73 +193,44 @@ class MockNavigatorObserver extends _i1.Mock implements _i13.NavigatorObserver {
   void didRemove(
     _i13.Route<dynamic>? route,
     _i13.Route<dynamic>? previousRoute,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #didRemove,
-          [
-            route,
-            previousRoute,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  ) => super.noSuchMethod(
+    Invocation.method(#didRemove, [route, previousRoute]),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void didReplace({
     _i13.Route<dynamic>? newRoute,
     _i13.Route<dynamic>? oldRoute,
-  }) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #didReplace,
-          [],
-          {
-            #newRoute: newRoute,
-            #oldRoute: oldRoute,
-          },
-        ),
-        returnValueForMissingStub: null,
-      );
+  }) => super.noSuchMethod(
+    Invocation.method(#didReplace, [], {
+      #newRoute: newRoute,
+      #oldRoute: oldRoute,
+    }),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void didChangeTop(
     _i13.Route<dynamic>? topRoute,
     _i13.Route<dynamic>? previousTopRoute,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #didChangeTop,
-          [
-            topRoute,
-            previousTopRoute,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  ) => super.noSuchMethod(
+    Invocation.method(#didChangeTop, [topRoute, previousTopRoute]),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void didStartUserGesture(
     _i13.Route<dynamic>? route,
     _i13.Route<dynamic>? previousRoute,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #didStartUserGesture,
-          [
-            route,
-            previousRoute,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  ) => super.noSuchMethod(
+    Invocation.method(#didStartUserGesture, [route, previousRoute]),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void didStopUserGesture() => super.noSuchMethod(
-        Invocation.method(
-          #didStopUserGesture,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#didStopUserGesture, []),
+    returnValueForMissingStub: null,
+  );
 }

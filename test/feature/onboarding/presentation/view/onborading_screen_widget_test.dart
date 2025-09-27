@@ -20,14 +20,18 @@ void main() {
       expect(find.byKey(const Key('onboardingImage')), findsOneWidget);
     });
 
-    testWidgets('shows welcome and app name texts', (WidgetTester tester) async {
+    testWidgets('shows welcome and app name texts', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(makeTestableWidget(const OnBoardingScreen()));
 
       expect(find.byKey(const Key('welcomeText')), findsOneWidget);
       expect(find.byKey(const Key('appNameText')), findsOneWidget);
     });
 
-    testWidgets('has two main buttons (login + apply now)', (WidgetTester tester) async {
+    testWidgets('has two main buttons (login + apply now)', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(makeTestableWidget(const OnBoardingScreen()));
 
       expect(find.byKey(const Key('loginButton')), findsOneWidget);
@@ -48,9 +52,7 @@ void main() {
 
       await tester.pumpWidget(
         makeTestableWidget(
-          OnBoardingScreen(
-            key: const Key('onBoardingScreen'),
-          ),
+          OnBoardingScreen(key: const Key('onBoardingScreen')),
         ),
       );
 

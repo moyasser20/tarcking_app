@@ -1,18 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
+import '../../features/auth/presentation/view/apply_screen.dart';
 import '../../features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/config/di.dart';
 import 'package:tarcking_app/features/auth/presentation/login/cubit/login_cubit.dart';
 import 'package:tarcking_app/features/auth/presentation/login/view/login_screen.dart';
-import 'package:tarcking_app/core/routes/route_names.dart';
 import '../../features/onboarding/presentation/view/onboarding_screen.dart';
-import 'package:tarcking_app/core/routes/route_names.dart';
 import '../../features/auth/presentation/apply/view/application_approved_screen.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tarcking_app/core/config/di.dart'; // Import your DI
-import 'package:tarcking_app/core/routes/route_names.dart';
+// Import your DI
 import 'package:tarcking_app/features/auth/forget_password/presentation/viewmodel/forget_password_viewmodel.dart';
 import 'package:tarcking_app/features/auth/forget_password/presentation/views/screens/forget_password_screen.dart';
 import 'package:tarcking_app/features/auth/forget_password/presentation/views/screens/email_verificationScreen.dart';
@@ -65,13 +61,14 @@ class Routes {
       case AppRoutes.initial:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
 
+      case AppRoutes.apply:
+        return MaterialPageRoute(builder: (_) => const ApplyScreen());
+
       case AppRoutes.applicationApproved:
-        {
-          return MaterialPageRoute(
-            builder: (context) => const ApplicationApprovedScreen(),
-            settings: settings,
-          );
-        }
+        return MaterialPageRoute(
+          builder: (_) => const ApplicationApprovedScreen(),
+        );
+
       default:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
     }

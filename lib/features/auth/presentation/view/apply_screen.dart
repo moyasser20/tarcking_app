@@ -11,6 +11,8 @@ import 'package:tarcking_app/core/widgets/custom_text_field.dart';
 import 'package:tarcking_app/core/widgets/coustom_app_bar.dart';
 import 'package:tarcking_app/features/auth/presentation/view_model/apply_cubit.dart';
 
+import '../../../../core/routes/route_names.dart';
+
 class ApplyScreen extends StatelessWidget {
   const ApplyScreen({super.key});
 
@@ -24,6 +26,7 @@ class ApplyScreen extends StatelessWidget {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(SnackBar(content: Text(state.message)));
+            Navigator.pushNamed(context, AppRoutes.applicationApproved);
           } else if (state is ApplyError) {
             ScaffoldMessenger.of(
               context,

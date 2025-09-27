@@ -58,7 +58,7 @@ class OnBoardingScreen extends StatelessWidget {
               text: local.login,
               onPressed: () async {
                 final initialRoute = await _getInitialRoute();
-                Navigator.pushReplacementNamed(context,initialRoute);
+                Navigator.pushReplacementNamed(context, initialRoute);
               },
             ),
             const SizedBox(height: 20),
@@ -66,7 +66,9 @@ class OnBoardingScreen extends StatelessWidget {
               key: const Key('applyNowButton'),
               text: local.applyNow,
               borderColor: AppColors.grey.withOpacity(0.5),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, AppRoutes.apply);
+              },
               color: AppColors.white,
               textColor: AppColors.grey.withOpacity(0.8),
             ),

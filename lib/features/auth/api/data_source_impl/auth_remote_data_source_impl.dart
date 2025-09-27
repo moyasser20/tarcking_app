@@ -5,18 +5,19 @@ import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
 import 'dart:convert';
 import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
-
 import '../../../../core/api/client/api_client.dart';
 import '../../../../core/errors/failure.dart';
+import '../../data/models/driver.dart';
 import '../../data/models/forget_password_models/forget_password_request.dart';
 import '../../data/models/forget_password_models/reset_password_request_model.dart';
 import '../../data/models/forget_password_models/verify_code_request_model.dart';
+import '../api_client/apply_api_client.dart';
 
 @LazySingleton(as: AuthRemoteDatasource)
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   final ApiClient _authApiClient;
   final ApplyApiClient _apiClient;
-  AuthRemoteDatasourceImpl(this._authApiClient,this._apiClient);
+  AuthRemoteDatasourceImpl(this._authApiClient, this._apiClient);
 
   String _extractApiMessage(DioException e) {
     final data = e.response?.data;
@@ -88,6 +89,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       return AuthResponse.error(e.toString());
     }
   }
+
   @override
   Future<LoginResponse> login(LoginRequest loginRequest) {
     return _authApiClient.login(loginRequest);
@@ -127,6 +129,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
 
     return response.driver;
   }
+
   //
   // @override
   // Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest) async {

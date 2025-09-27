@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/common/widgets/custom_snackbar_widget.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
 import 'package:tarcking_app/core/theme/app_colors.dart';
-import 'package:tarcking_app/core/widgets/messages/messages_methods.dart';
 import 'package:tarcking_app/features/auth/presentation/login/cubit/login_cubit.dart';
 import 'package:tarcking_app/features/auth/presentation/login/cubit/login_states.dart';
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
@@ -56,7 +55,15 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               Row(
                 children: [
-                  IconButton(onPressed: (){Navigator.pushReplacementNamed(context, AppRoutes.initial);}, icon:Image.asset(AppIcons.arrowBackIcon)),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                        context,
+                        AppRoutes.initial,
+                      );
+                    },
+                    icon: Image.asset(AppIcons.arrowBackIcon),
+                  ),
                   Text(
                     "Login",
                     style: const TextStyle(

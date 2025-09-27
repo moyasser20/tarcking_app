@@ -5,6 +5,7 @@ import 'package:tarcking_app/core/widgets/custom_Elevated_Button.dart';
 import '../../../../../core/contants/app_icons.dart';
 import '../../../../../core/contants/app_images.dart';
 import '../../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../../core/routes/route_names.dart';
 
 class ApplicationApprovedScreen extends StatelessWidget {
   const ApplicationApprovedScreen({super.key});
@@ -37,7 +38,13 @@ class ApplicationApprovedScreen extends StatelessWidget {
                 SizedBox(height: 25),
                 CustomElevatedButton(
                   text: local.login,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.login,
+                      (route) => false,
+                    );
+                  },
                   height: 55,
                   borderRadius: 24,
                 ),
