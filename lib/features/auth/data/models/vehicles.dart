@@ -1,21 +1,35 @@
-// import 'package:json_annotation/json_annotation.dart';
-//
-// import '../../../../core/contants/vehicles.dart';
-//
-// part 'vehicles_response.g.dart';
-//
-// @JsonSerializable()
-// class VehiclesResponse {
-//   final String? message;
-//   final List<Vehicles>? vehicles;
-//
-//   VehiclesResponse({
-//     this.message,
-//     this.vehicles,
-//   });
-//
-//   factory VehiclesResponse.fromJson(Map<String, dynamic> json) =>
-//       _$VehiclesResponseFromJson(json);
-//
-//   Map<String, dynamic> toJson() => _$VehiclesResponseToJson(this);
-// }
+import 'package:json_annotation/json_annotation.dart';
+
+part 'vehicles.g.dart';
+@JsonSerializable()
+class Vehicles {
+  @JsonKey(name: "_id")
+  final String? Id;
+  @JsonKey(name: "type")
+  final String? type;
+  @JsonKey(name: "image")
+  final String? image;
+  @JsonKey(name: "createdAt")
+  final String? createdAt;
+  @JsonKey(name: "updatedAt")
+  final String? updatedAt;
+
+
+  Vehicles ({
+    this.Id,
+    this.type,
+    this.image,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  factory Vehicles.fromJson(Map<String, dynamic> json) {
+    return _$VehiclesFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$VehiclesToJson(this);
+  }
+}
+
+

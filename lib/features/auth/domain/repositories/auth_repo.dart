@@ -2,6 +2,7 @@ import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
 import '../../data/models/login/login_request.dart';
 import '../../data/models/login/login_response.dart';
 import '../entities/driver_entity.dart';
+import '../entities/vehicles_entity.dart';
 
 abstract class AuthRepo {
   Future<AuthResponse<String>> forgetPassword(String email);
@@ -23,5 +24,7 @@ abstract class AuthRepo {
     required String gender,
     required String phone,
   });
-  // Future<String> logout();
+  Future<List<VehicleEntity>> getVehicles();
+
+// Future<String> logout();
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tarcking_app/features/auth/presentation/view_model/apply_cubit.dart';
-import 'package:tarcking_app/features/auth/presentation/view/apply_screen.dart';
-import 'package:tarcking_app/features/auth/domain/use_cases/apply_driver_usecase.dart';
+import 'package:tarcking_app/features/auth/domain/usecases/apply/apply_driver_usecase.dart';
+import 'package:tarcking_app/features/auth/presentation/apply/view_model/apply_cubit.dart';
+import 'package:tarcking_app/features/auth/presentation/apply/view/apply_screen.dart';
 import '../mocks/mocks.dart';
 
 void main() {

@@ -7,6 +7,8 @@ import '../models/login/login_response.dart';
 import 'package:dio/dio.dart';
 import 'package:tarcking_app/features/auth/data/models/driver.dart';
 
+import '../models/vehicles_response.dart';
+
 abstract class AuthRemoteDatasource {
   Future<AuthResponse<String>> forgetPassword(
     ForgetPasswordRequestModel forgetPasswordRequestModel,
@@ -34,5 +36,7 @@ abstract class AuthRemoteDatasource {
     required String gender,
     required String phone,
   });
+
+  Future<VehiclesResponse> getVehicles();
   // Future<String> logout();
 }

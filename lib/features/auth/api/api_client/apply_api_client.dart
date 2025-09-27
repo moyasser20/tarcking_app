@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:tarcking_app/core/api/api_constants/api_end_points.dart';
 import 'package:tarcking_app/features/auth/data/models/apply_response.dart';
+import '../../data/models/vehicles_response.dart';
 
 @lazySingleton
 class ApplyApiClient {
   final Dio _dio;
+
+  static const String _baseUrl = "https://flower.elevateegy.com/api/v1";
 
   ApplyApiClient(this._dio);
 
@@ -40,8 +42,16 @@ class ApplyApiClient {
       'phone': phone,
     });
 
-    final response = await _dio.post(ApiEndPoints.apply, data: formData);
+    final response = await _dio.post(
+      "$_baseUrl/drivers/apply",
+      data: formData,
+    );
 
     return ApplyResponse.fromJson(response.data);
+  }
+
+  Future<VehiclesResponse> getVehicles() async {
+    final response = await _dio.get("$_baseUrl/vehicles");
+    return VehiclesResponse.fromJson(response.data);
   }
 }

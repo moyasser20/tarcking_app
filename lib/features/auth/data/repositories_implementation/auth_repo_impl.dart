@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/features/auth/domain/repositories/auth_repo.dart';
+import '../../domain/entities/vehicles_entity.dart';
 import '../../domain/responses/auth_response.dart';
 import '../datasource/auth_remote_datasource.dart';
 import '../models/forget_password_models/forget_password_request.dart';
@@ -45,12 +46,6 @@ class AuthRepoImpl implements AuthRepo {
     return _authRemoteDatasource.login(loginRequest);
   }
 
-  String _toHex(String input) {
-    return input.codeUnits
-        .map((unit) => unit.toRadixString(16).toUpperCase())
-        .join();
-  }
-
 
   @override
   Future<DriverEntity> applyDriver({
@@ -68,12 +63,11 @@ class AuthRepoImpl implements AuthRepo {
     required String gender,
     required String phone,
   }) async {
-    final hexVehicleType = _toHex(vehicleType);
     final driver = await _authRemoteDatasource.applyDriver(
       country: country,
       firstName: firstName,
       lastName: lastName,
-      vehicleType: hexVehicleType,
+      vehicleType:vehicleType ,
       vehicleNumber: vehicleNumber,
       vehicleLicense: await MultipartFile.fromFile(vehicleLicensePath),
       nid: nid,
@@ -95,6 +89,22 @@ class AuthRepoImpl implements AuthRepo {
       vehicleType: driver.vehicleType,
       vehicleNumber: driver.vehicleNumber,
     );
+  }
+
+
+  @override
+  Future<List<VehicleEntity>> getVehicles() async {
+    final response = await _authRemoteDatasource.getVehicles();
+
+    return response.vehicles!.map((v) {
+      return VehicleEntity(
+        id: v.Id ?? '',
+        type: v.type ?? '',
+        image: v.image ?? '',
+        createdAt: v.createdAt ?? '',
+        updatedAt: v.updatedAt ?? '',
+      );
+    }).toList();
   }
 
   //

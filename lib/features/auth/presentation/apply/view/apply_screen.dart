@@ -3,15 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:tarcking_app/core/contants/countries.dart';
-import 'package:tarcking_app/core/contants/vehicles.dart';
 import 'package:tarcking_app/core/extensions/countryes_flages.dart';
 import 'package:tarcking_app/core/widgets/custom_elevated_button.dart';
 import 'package:tarcking_app/core/widgets/custom_drobdown_country_filed.dart';
 import 'package:tarcking_app/core/widgets/custom_text_field.dart';
 import 'package:tarcking_app/core/widgets/coustom_app_bar.dart';
-import 'package:tarcking_app/features/auth/presentation/view_model/apply_cubit.dart';
 
-import '../../../../core/routes/route_names.dart';
+import '../../../../../core/routes/route_names.dart';
+import '../../../../../core/theme/app_colors.dart';
+import '../../../domain/entities/vehicles_entity.dart';
+import '../view_model/apply_cubit.dart';
 
 class ApplyScreen extends StatelessWidget {
   const ApplyScreen({super.key});
@@ -19,18 +20,18 @@ class ApplyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => GetIt.I<ApplyCubit>(),
+      create: (_) => GetIt.I<ApplyCubit>()..loadVehicles(),
       child: BlocListener<ApplyCubit, ApplyState>(
         listener: (context, state) {
           if (state is ApplySuccess) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.message)));
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.message)),
+            );
             Navigator.pushNamed(context, AppRoutes.applicationApproved);
           } else if (state is ApplyError) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.message)));
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.message)),
+            );
           }
         },
         child: BlocBuilder<ApplyCubit, ApplyState>(
@@ -38,6 +39,7 @@ class ApplyScreen extends StatelessWidget {
             final cubit = context.read<ApplyCubit>();
 
             return Scaffold(
+              backgroundColor: AppColors.white,
               body: SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -48,9 +50,7 @@ class ApplyScreen extends StatelessWidget {
                       const SizedBox(height: 25.0),
                       Text(
                         'Welcome!!',
-                        style: Theme.of(
-                          context,
-                        ).textTheme.headlineSmall?.copyWith(
+                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Inter',
                         ),
@@ -78,11 +78,23 @@ class ApplyScreen extends StatelessWidget {
                                     label: 'Country',
                                     value: cubit.selectedCountry,
                                     items: Countries.countryes,
-                                    itemLabel:
-                                        (country) =>
-                                            "${country.code.toFlag} ${country.name}",
+                                    itemLabel: (country) =>
+                                    "${country.code.toFlag} ${country.name}",
                                     onChanged: cubit.setCountry,
                                   ),
+
+                                  if (state is ApplyLoading && cubit.vehicles.isEmpty)
+                                    const Center(child: CircularProgressIndicator())
+                                  else if (cubit.vehicles.isNotEmpty)
+                                    CustomDropdownField<VehicleEntity>(
+                                      label: 'Vehicle type',
+                                      value: cubit.selectedVehicle ?? cubit.vehicles.first,
+                                      items: cubit.vehicles,
+                                      itemLabel: (v) => v.type ?? '',
+                                      onChanged: cubit.setVehicleType,
+                                    )
+                                  else
+                                    const Text("No vehicles available"),
 
                                   CustomTextFormField(
                                     label: 'First legal name',
@@ -106,13 +118,7 @@ class ApplyScreen extends StatelessWidget {
                                       return null;
                                     },
                                   ),
-                                  CustomDropdownField<String>(
-                                    label: 'Vehicle type',
-                                    value: cubit.selectedVehicle!,
-                                    items: Vehicles.vehicles,
-                                    itemLabel: (String vehicle) => vehicle,
-                                    onChanged: cubit.setVehicleType,
-                                  ),
+
                                   CustomTextFormField(
                                     label: 'Vehicle number',
                                     hint: 'Enter vehicle number',
@@ -124,30 +130,28 @@ class ApplyScreen extends StatelessWidget {
                                       return null;
                                     },
                                   ),
+
                                   CustomTextFormField(
                                     label: 'Vehicle license',
                                     hint: 'Upload license photo',
                                     controller: cubit.vehicleLicenseController,
                                     readonly: true,
                                     onPressed: () async {
-                                      final result = await FilePicker.platform
-                                          .pickFiles(type: FileType.image);
-                                      if (result != null &&
-                                          result.files.single.path != null) {
-                                        cubit.setVehicleLicensePath(
-                                          result.files.single.path,
-                                        );
+                                      final result = await FilePicker.platform.pickFiles(
+                                        type: FileType.image,
+                                      );
+                                      if (result != null && result.files.single.path != null) {
+                                        cubit.setVehicleLicensePath(result.files.single.path);
                                       }
                                     },
-
                                     validator: (v) {
-                                      if ((cubit.vehicleLicensePath ?? '')
-                                          .isEmpty) {
+                                      if ((cubit.vehicleLicensePath ?? '').isEmpty) {
                                         return 'Vehicle license image is required';
                                       }
                                       return null;
                                     },
                                   ),
+
                                   CustomTextFormField(
                                     label: 'Email',
                                     hint: 'Enter your email',
@@ -159,6 +163,7 @@ class ApplyScreen extends StatelessWidget {
                                       return null;
                                     },
                                   ),
+
                                   CustomTextFormField(
                                     label: 'Phone number',
                                     hint: 'Enter phone number',
@@ -170,6 +175,7 @@ class ApplyScreen extends StatelessWidget {
                                       return null;
                                     },
                                   ),
+
                                   CustomTextFormField(
                                     label: 'ID number',
                                     hint: 'Enter national ID number',
@@ -187,16 +193,13 @@ class ApplyScreen extends StatelessWidget {
                                     controller: cubit.nidImgController,
                                     readonly: true,
                                     onPressed: () async {
-                                      final result = await FilePicker.platform
-                                          .pickFiles(type: FileType.image);
-                                      if (result != null &&
-                                          result.files.single.path != null) {
-                                        cubit.setNidImagePath(
-                                          result.files.single.path,
-                                        );
+                                      final result = await FilePicker.platform.pickFiles(
+                                        type: FileType.image,
+                                      );
+                                      if (result != null && result.files.single.path != null) {
+                                        cubit.setNidImagePath(result.files.single.path);
                                       }
                                     },
-
                                     validator: (v) {
                                       if ((cubit.nidImagePath ?? '').isEmpty) {
                                         return 'ID image is required';
@@ -204,6 +207,7 @@ class ApplyScreen extends StatelessWidget {
                                       return null;
                                     },
                                   ),
+
                                   Row(
                                     children: [
                                       Expanded(
@@ -228,15 +232,13 @@ class ApplyScreen extends StatelessWidget {
                                         child: CustomTextFormField(
                                           label: 'Confirm password',
                                           hint: 'Confirm password',
-                                          controller:
-                                              cubit.rePasswordController,
+                                          controller: cubit.rePasswordController,
                                           obscureText: true,
                                           validator: (v) {
                                             if (v == null || v.isEmpty) {
                                               return 'Confirm your password';
                                             }
-                                            if (v !=
-                                                cubit.passwordController.text) {
+                                            if (v != cubit.passwordController.text) {
                                               return 'Passwords do not match';
                                             }
                                             return null;
@@ -245,14 +247,14 @@ class ApplyScreen extends StatelessWidget {
                                       ),
                                     ],
                                   ),
+
                                   const SizedBox(height: 25),
+
                                   Row(
                                     children: [
                                       Text(
                                         'Gender',
-                                        style: Theme.of(
-                                          context,
-                                        ).textTheme.titleMedium?.copyWith(
+                                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -260,7 +262,7 @@ class ApplyScreen extends StatelessWidget {
                                       Row(
                                         children: [
                                           Radio<String>(
-                                            value: 'Female',
+                                            value: 'female',
                                             groupValue: cubit.gender,
                                             onChanged: cubit.setGender,
                                           ),
@@ -270,7 +272,7 @@ class ApplyScreen extends StatelessWidget {
                                       Row(
                                         children: [
                                           Radio<String>(
-                                            value: 'Male',
+                                            value: 'male',
                                             groupValue: cubit.gender,
                                             onChanged: cubit.setGender,
                                           ),
@@ -285,7 +287,9 @@ class ApplyScreen extends StatelessWidget {
                           ),
                         ),
                       ),
+
                       const SizedBox(height: 25.0),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

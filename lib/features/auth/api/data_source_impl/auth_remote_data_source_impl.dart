@@ -11,6 +11,7 @@ import '../../data/models/driver.dart';
 import '../../data/models/forget_password_models/forget_password_request.dart';
 import '../../data/models/forget_password_models/reset_password_request_model.dart';
 import '../../data/models/forget_password_models/verify_code_request_model.dart';
+import '../../data/models/vehicles_response.dart';
 import '../api_client/apply_api_client.dart';
 
 @LazySingleton(as: AuthRemoteDatasource)
@@ -95,11 +96,6 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     return _authApiClient.login(loginRequest);
   }
 
-  String _toHex(String input) {
-    return input.codeUnits
-        .map((unit) => unit.toRadixString(16).toUpperCase())
-        .join();
-  }
 
 
   @override
@@ -118,12 +114,11 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     required String gender,
     required String phone,
   }) async {
-    final hexVehicleType = _toHex(vehicleType);
     final response = await _apiClient.applyDriver(
       country: country,
       firstName: firstName,
       lastName: lastName,
-      vehicleType: hexVehicleType,
+      vehicleType: vehicleType  ,
       vehicleNumber: vehicleNumber,
       vehicleLicense: vehicleLicense,
       nid: nid,
@@ -136,6 +131,18 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     );
 
     return response.driver;
+  }
+
+  @override
+  Future<VehiclesResponse> getVehicles() async {
+    try {
+      final response = await _apiClient.getVehicles();
+      return response;
+    } on DioException catch (e) {
+      throw Exception(_extractApiMessage(e));
+    } catch (e) {
+      throw Exception(e.toString());
+    }
   }
 
   //

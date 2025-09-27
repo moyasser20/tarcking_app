@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
-import '../../features/auth/presentation/view/apply_screen.dart';
+import '../../features/auth/presentation/apply/view/apply_screen.dart';
 import '../../features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/config/di.dart';
