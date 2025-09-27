@@ -34,10 +34,11 @@ dependencies:
   google_fonts: ^6.2.1
   loading_indicator: ^3.1.1
   smooth_page_indicator: ^1.2.1
+  country_flags: ^4.0.1
+  file_picker: ^8.1.2
   flutter_svg: ^2.2.0
   shared_preferences: ^2.5.3
   mockito: ^5.4.5
-
 
 
 dev_dependencies:
@@ -49,6 +50,9 @@ dev_dependencies:
   json_serializable: ^6.8.0
   retrofit_generator: ^8.1.0
   flutter_lints: ^5.0.0
+  mocktail: ^1.0.4
+  bloc_test: ^10.0.0
+
 
 flutter:
   generate: true

@@ -15,8 +15,8 @@ import '../../data/models/forget_password_models/verify_code_request_model.dart'
 @LazySingleton(as: AuthRemoteDatasource)
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   final ApiClient _authApiClient;
-
-  AuthRemoteDatasourceImpl(this._authApiClient);
+  final ApplyApiClient _apiClient;
+  AuthRemoteDatasourceImpl(this._authApiClient,this._apiClient);
 
   String _extractApiMessage(DioException e) {
     final data = e.response?.data;
@@ -92,6 +92,41 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   Future<LoginResponse> login(LoginRequest loginRequest) {
     return _authApiClient.login(loginRequest);
   }
+
+  @override
+  Future<Driver> applyDriver({
+    required String country,
+    required String firstName,
+    required String lastName,
+    required String vehicleType,
+    required String vehicleNumber,
+    required MultipartFile vehicleLicense,
+    required String nid,
+    required MultipartFile nidImg,
+    required String email,
+    required String password,
+    required String rePassword,
+    required String gender,
+    required String phone,
+  }) async {
+    final response = await _apiClient.applyDriver(
+      country: country,
+      firstName: firstName,
+      lastName: lastName,
+      vehicleType: vehicleType,
+      vehicleNumber: vehicleNumber,
+      vehicleLicense: vehicleLicense,
+      nid: nid,
+      nidImg: nidImg,
+      email: email,
+      password: password,
+      rePassword: rePassword,
+      gender: gender,
+      phone: phone,
+    );
+
+    return response.driver;
+  }
   //
   // @override
   // Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest) async {
@@ -106,14 +141,6 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   //   }
   // }
   //
-  // @override
-  // Future<RegisterResponse> signUp(RegisterRequest registerRequest) {
-  //   try {
-  //     return _authApiClient.signUp(registerRequest);
-  //   } catch (e) {
-  //     throw ("Error: ${e.toString()}");
-  //   }
-  // }
   //
   // @override
   // Future<String> logout() async {
