@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'core/config/di.dart';
+import 'core/l10n/translation/app_localizations.dart';
+import 'core/routes/on_generate_route.dart';
+import 'core/routes/route_names.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
   runApp(const MyApp());
@@ -14,9 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Tracking App',
-      home: const Scaffold(),
+      onGenerateRoute: Routes.onGenerateRoute,
+      initialRoute: AppRoutes.initial,
+      //locale: const Locale('en'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
     );
   }
 }
-
