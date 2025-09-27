@@ -45,14 +45,16 @@ dev_dependencies:
   json_serializable: ^6.8.0
   retrofit_generator: ^8.1.0
   flutter_lints: ^5.0.0
+  bloc_test: ^10.0.0
+  mockito: ^5.4.4
 
 flutter:
   uses-material-design: true
 
-  assets:
-    - assets/icons/
-    - assets/images/
-    - assets/json/
+  # assets:
+  #   - assets/icons/
+  #   - assets/images/
+  #   - assets/json/
 
   fonts:
     - family: Inter
