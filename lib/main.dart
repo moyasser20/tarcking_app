@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/l10n/translation/app_localizations.dart'; // Add this import
 import 'package:tarcking_app/core/routes/on_generate_route.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
+import 'package:tarcking_app/core/theme/app_theme.dart';
 import 'core/config/di.dart';
 import 'core/contants/secure_storage.dart';
 import 'features/localization/data/localization_preference.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Tracking App',
+          theme: AppTheme.lightTheme,
           initialRoute: AppRoutes.initial,
           onGenerateRoute: Routes.onGenerateRoute,
           supportedLocales: AppLocalizations.supportedLocales,

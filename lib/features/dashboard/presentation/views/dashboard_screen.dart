@@ -15,12 +15,26 @@ class DashboardScreen extends StatelessWidget {
       Center(child: Text("home")),
       Center(child: Text("orders")),
       Center(
-        child: CustomElevatedButton(
-          text: "Logout",
-          onPressed: () async {
-            await AuthService.logout();
-            Navigator.pushNamed(context, AppRoutes.login);
-          },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomElevatedButton(
+              text: "Logout",
+              onPressed: () async {
+                await AuthService.logout();
+                Navigator.pushNamed(context, AppRoutes.login);
+              },
+            ),
+            const SizedBox(height: 20),
+            CustomElevatedButton(
+              text: "Apply Success Screen",
+              onPressed: () async {
+                await AuthService.logout();
+                Navigator.pushNamed(context, AppRoutes.applicationApproved);
+              },
+            ),
+
+          ],
         ),
       ),
     ];
