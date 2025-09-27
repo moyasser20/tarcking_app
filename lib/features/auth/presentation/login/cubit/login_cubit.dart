@@ -9,39 +9,36 @@ import 'package:tarcking_app/features/auth/presentation/login/cubit/login_states
 @injectable
 class LoginCubit extends Cubit<LoginStates> {
   final LoginUsecase loginUsecase;
-  final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   LoginCubit({required this.loginUsecase}) : super(LoginInitialState());
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool rememberMe = false;
-    void toggleRememberMe(bool boxValue) {
+  void toggleRememberMe(bool boxValue) {
     rememberMe = boxValue;
     emit(ChangeRememberMeState());
   }
 
   Future<void> login({required String email, required String password}) async {
-    if (!loginFormKey.currentState!.validate()) {
-      return;
-    }
     emit(LoginLoadingState());
-    try {
-      final request = LoginRequest(
-        email: email.trim(),
-        password: password.trim(),
-      );
 
-    final response = await  loginUsecase.invoke(request);
-        if (response.token!=null && response.token!.isNotEmpty) {
-      await AuthService.saveAuthToken(response.token ?? "");
+    final request = LoginRequest(
+      email: email.trim(),
+      password: password.trim(),
+    );
+
+    final response = await loginUsecase.invoke(request);
+    if (response.data?.token != null && response.data!.token!.isNotEmpty) {
+      await AuthService.saveAuthToken(response.data!.token!);
       if (rememberMe) {
         await AuthService.saveRememberMe(rememberMe);
       }
-    }
       emit(LoginSuccessState());
-    } catch (e) {
-      emit(LoginErrorState(errorMessage: "Failed to login. Please try again."));
+    } else {
+      if (response.error != null) {
+        emit(LoginErrorState(errorMessage: response.error!));
+      }
     }
   }
 

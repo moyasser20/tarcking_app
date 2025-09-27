@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/common/widgets/custom_snackbar_widget.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
+import 'package:tarcking_app/core/extensions/validations.dart';
 import 'package:tarcking_app/core/theme/app_colors.dart';
-import 'package:tarcking_app/core/widgets/messages/messages_methods.dart';
 import 'package:tarcking_app/features/auth/presentation/login/cubit/login_cubit.dart';
 import 'package:tarcking_app/features/auth/presentation/login/cubit/login_states.dart';
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
@@ -18,6 +18,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
   bool _isButtonEnabled = false;
   late final LoginCubit _loginCubit;
 
@@ -49,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Form(
-        key: _loginCubit.loginFormKey,
+        key: _formKey,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -72,9 +73,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 hint: "Email",
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Email is required.";
+                    return "Email is required";
                   }
-
+                  if (!Validations.validateEmail(value)) {
+                    return "Invalid email format";
+                  }
                   return null;
                 },
               ),
@@ -86,9 +89,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Password is required.";
+                    return "Password is required";
                   }
-
+                  if (!Validations.validatePassword(value)) {
+                    return "Invalid password format";
+                  }
                   return null;
                 },
               ),
@@ -129,13 +134,13 @@ class _LoginScreenState extends State<LoginScreen> {
               BlocConsumer<LoginCubit, LoginStates>(
                 listener: (context, state) {
                   if (state is LoginSuccessState) {
-                    showSuccessMessage(context, "Logged In Successfully");
-                  } else if (state is LoginErrorState) {
                     showCustomSnackBar(
                       context,
-                      state.errorMessage,
-                      isError: true,
+                      "logged in successfully",
+                      isError: false,
                     );
+                  } else if (state is LoginErrorState) {
+                    showCustomSnackBar(context, state.errorMessage);
                   }
                 },
                 builder: (context, state) {
@@ -146,10 +151,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed:
                         _isButtonEnabled
                             ? () {
-                              _loginCubit.login(
-                                email: _loginCubit.emailController.text,
-                                password: _loginCubit.passwordController.text,
-                              );
+                              if (_formKey.currentState!.validate()) {
+                                _loginCubit.login(
+                                  email: _loginCubit.emailController.text,
+                                  password: _loginCubit.passwordController.text,
+                                );
+                              }
                             }
                             : null,
                   );

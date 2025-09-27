@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/config/di.dart';
+import 'package:tarcking_app/core/contants/secure_storage.dart';
 import 'package:tarcking_app/features/auth/presentation/login/cubit/login_cubit.dart';
 import 'package:tarcking_app/features/auth/presentation/login/view/login_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
+  await SecureStorage.initialize();
   runApp(const MyApp());
 }
 
@@ -22,7 +24,6 @@ class MyApp extends StatelessWidget {
         child: const LoginScreen(),
       ),
       debugShowCheckedModeBanner: false,
-
     );
   }
 }

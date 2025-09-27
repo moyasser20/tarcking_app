@@ -13,7 +13,8 @@ class AuthService {
   }
 
   static Future<bool> isUserAuthenticated() async {
-    if (await AuthService.isLoggedIn() && await AuthService.getRememberMe() == true) {
+    if (await AuthService.isLoggedIn() &&
+        await AuthService.getRememberMe() == true) {
       return true;
     }
     return false;

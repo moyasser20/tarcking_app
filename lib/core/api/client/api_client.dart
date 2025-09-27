@@ -7,12 +7,12 @@ import 'package:tarcking_app/features/auth/data/models/login/login_request.dart'
 import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
 
 part 'api_client.g.dart';
+
 @injectable
 @RestApi()
 abstract class ApiClient {
-
   @factoryMethod
   factory ApiClient(Dio dio, {@Named('baseurl') String? baseUrl}) = _ApiClient;
-   @POST(ApiConstant.login)
+  @POST(ApiConstant.login)
   Future<LoginResponse> login(@Body() LoginRequest loginRequest);
 }
