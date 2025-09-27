@@ -3,6 +3,7 @@ import 'core/config/di.dart';
 import 'core/l10n/translation/app_localizations.dart';
 import 'core/routes/on_generate_route.dart';
 import 'core/routes/route_names.dart';
+import 'core/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,11 +19,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Tracking App',
-      onGenerateRoute: Routes.onGenerateRoute,
       initialRoute: AppRoutes.initial,
-      //locale: const Locale('en'),
+      onGenerateRoute: Routes.onGenerateRoute,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale("en"),
+      theme: AppTheme.lightTheme,
     );
   }
 }
