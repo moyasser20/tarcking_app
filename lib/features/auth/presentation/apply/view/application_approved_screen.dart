@@ -6,6 +6,7 @@ import '../../../../../core/contants/app_icons.dart';
 import '../../../../../core/contants/app_images.dart';
 import '../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../core/routes/route_names.dart';
+import '../../../../../core/theme/app_colors.dart';
 
 class ApplicationApprovedScreen extends StatelessWidget {
   const ApplicationApprovedScreen({super.key});
@@ -15,6 +16,7 @@ class ApplicationApprovedScreen extends StatelessWidget {
     var theme = Theme.of(context);
     var local = AppLocalizations.of(context)!;
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,

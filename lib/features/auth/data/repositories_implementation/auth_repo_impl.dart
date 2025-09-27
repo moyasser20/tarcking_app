@@ -45,6 +45,13 @@ class AuthRepoImpl implements AuthRepo {
     return _authRemoteDatasource.login(loginRequest);
   }
 
+  String _toHex(String input) {
+    return input.codeUnits
+        .map((unit) => unit.toRadixString(16).toUpperCase())
+        .join();
+  }
+
+
   @override
   Future<DriverEntity> applyDriver({
     required String country,
@@ -61,11 +68,12 @@ class AuthRepoImpl implements AuthRepo {
     required String gender,
     required String phone,
   }) async {
+    final hexVehicleType = _toHex(vehicleType);
     final driver = await _authRemoteDatasource.applyDriver(
       country: country,
       firstName: firstName,
       lastName: lastName,
-      vehicleType: vehicleType,
+      vehicleType: hexVehicleType,
       vehicleNumber: vehicleNumber,
       vehicleLicense: await MultipartFile.fromFile(vehicleLicensePath),
       nid: nid,

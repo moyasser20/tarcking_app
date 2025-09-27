@@ -95,6 +95,13 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     return _authApiClient.login(loginRequest);
   }
 
+  String _toHex(String input) {
+    return input.codeUnits
+        .map((unit) => unit.toRadixString(16).toUpperCase())
+        .join();
+  }
+
+
   @override
   Future<Driver> applyDriver({
     required String country,
@@ -111,11 +118,12 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     required String gender,
     required String phone,
   }) async {
+    final hexVehicleType = _toHex(vehicleType);
     final response = await _apiClient.applyDriver(
       country: country,
       firstName: firstName,
       lastName: lastName,
-      vehicleType: vehicleType,
+      vehicleType: hexVehicleType,
       vehicleNumber: vehicleNumber,
       vehicleLicense: vehicleLicense,
       nid: nid,

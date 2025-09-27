@@ -4,4 +4,5 @@ class ApiEndPoints {
   static const String resetPassword = 'resetPassword';
   static const String verifyReset = 'verifyResetCode';
   static const String apply = 'apply';
+  static const String vehicles = 'vehicles';
 }
