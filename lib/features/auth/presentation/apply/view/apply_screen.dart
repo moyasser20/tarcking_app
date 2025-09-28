@@ -93,18 +93,6 @@ class ApplyScreen extends StatelessWidget {
                                           "${country.code.toFlag} ${country.name}",
                                   onChanged: cubit.setCountry,
                                 ),
-                                if (cubit.vehicles.isNotEmpty)
-                                  CustomDropdownField<VehicleEntity>(
-                                    label: 'Vehicle type',
-                                    value:
-                                        cubit.selectedVehicle ??
-                                        cubit.vehicles.first,
-                                    items: cubit.vehicles,
-                                    itemLabel: (v) => v.type ?? '',
-                                    onChanged: cubit.setVehicleType,
-                                  )
-                                else
-                                  const Text("No vehicles available"),
                                 CustomTextFormField(
                                   label: 'First legal name',
                                   hint: 'Enter first legal name',
@@ -127,6 +115,18 @@ class ApplyScreen extends StatelessWidget {
                                     return null;
                                   },
                                 ),
+                                if (cubit.vehicles.isNotEmpty)
+                                  CustomDropdownField<VehicleEntity>(
+                                    label: 'Vehicle type',
+                                    value:
+                                    cubit.selectedVehicle ??
+                                        cubit.vehicles.first,
+                                    items: cubit.vehicles,
+                                    itemLabel: (v) => v.type ?? '',
+                                    onChanged: cubit.setVehicleType,
+                                  )
+                                else
+                                  const Text("No vehicles available"),
                                 CustomTextFormField(
                                   label: 'Vehicle number',
                                   hint: 'Enter vehicle number',

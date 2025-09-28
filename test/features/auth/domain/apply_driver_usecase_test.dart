@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tarcking_app/features/auth/domain/use_cases/apply_driver_usecase.dart';
 import 'package:tarcking_app/features/auth/domain/entities/apply_entites/driver_entity.dart';
+import 'package:tarcking_app/features/auth/domain/usecases/apply/apply_driver_usecase.dart';
 import '../mocks/mocks.dart';
 
 void main() {

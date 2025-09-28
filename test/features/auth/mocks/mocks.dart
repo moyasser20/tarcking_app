@@ -8,6 +8,6 @@ class MockDio extends Mock implements Dio {}
 
 class MockApplyApiClient extends Mock implements ApplyApiClient {}
 
-class MockAuthRemoteDataSource extends Mock implements AuthRemoteDataSource {}
+class MockAuthRemoteDataSource extends Mock implements AuthRemoteDatasource {}
 
 class MockAuthRepo extends Mock implements AuthRepo {}

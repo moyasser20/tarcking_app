@@ -29,44 +29,41 @@ import '../api/client/api_client.dart' as _i364;
 import 'dio_module/dio_module.dart' as _i484;
 
 extension GetItInjectableX on _i174.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
-    final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    final gh = _i526.GetItHelper(
+      this,
+      environment,
+      environmentFilter,
+    );
     final dioModule = _$DioModule();
-    gh.factory<String>(() => dioModule.baseUrl, instanceName: 'baseurl');
+    gh.factory<String>(
+      () => dioModule.baseUrl,
+      instanceName: 'baseurl',
+    );
     gh.lazySingleton<_i361.Dio>(
-      () => dioModule.dio(gh<String>(instanceName: 'baseurl')),
-    );
+        () => dioModule.dio(gh<String>(instanceName: 'baseurl')));
     gh.lazySingleton<_i901.ApplyApiClient>(
-      () => _i901.ApplyApiClient(gh<_i361.Dio>()),
-    );
+        () => _i901.ApplyApiClient(gh<_i361.Dio>()));
     gh.lazySingleton<_i24.AuthRemoteDatasource>(
-      () => _i758.AuthRemoteDatasourceImpl(gh<_i901.ApplyApiClient>()),
-    );
-    gh.factory<_i364.ApiClient>(
-      () => _i364.ApiClient(
-        gh<_i361.Dio>(),
-        baseUrl: gh<String>(instanceName: 'baseurl'),
-      ),
-    );
+        () => _i758.AuthRemoteDatasourceImpl(gh<_i901.ApplyApiClient>()));
+    gh.factory<_i364.ApiClient>(() => _i364.ApiClient(
+          gh<_i361.Dio>(),
+          baseUrl: gh<String>(instanceName: 'baseurl'),
+        ));
     gh.lazySingleton<_i170.AuthRepo>(
-      () => _i279.AuthRepoImpl(gh<_i24.AuthRemoteDatasource>()),
-    );
+        () => _i279.AuthRepoImpl(gh<_i24.AuthRemoteDatasource>()));
     gh.lazySingleton<_i712.ApplyDriverUseCase>(
-      () => _i712.ApplyDriverUseCase(gh<_i170.AuthRepo>()),
-    );
+        () => _i712.ApplyDriverUseCase(gh<_i170.AuthRepo>()));
     gh.lazySingleton<_i770.GetVehiclesUseCase>(
-      () => _i770.GetVehiclesUseCase(gh<_i170.AuthRepo>()),
-    );
-    gh.factory<_i616.ApplyCubit>(
-      () => _i616.ApplyCubit(
-        gh<_i712.ApplyDriverUseCase>(),
-        gh<_i770.GetVehiclesUseCase>(),
-      ),
-    );
+        () => _i770.GetVehiclesUseCase(gh<_i170.AuthRepo>()));
+    gh.factory<_i616.ApplyCubit>(() => _i616.ApplyCubit(
+          gh<_i712.ApplyDriverUseCase>(),
+          gh<_i770.GetVehiclesUseCase>(),
+        ));
     return this;
   }
 }
