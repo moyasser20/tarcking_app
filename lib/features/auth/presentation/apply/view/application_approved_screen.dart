@@ -6,9 +6,6 @@ class ApplicationApprovedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-      backgroundColor: AppColors.white,
-    );
+    return Scaffold(backgroundColor: AppColors.white);
   }
 }

@@ -43,10 +43,7 @@ class ApplyApiClient {
       'phone': phone,
     });
 
-    final response = await _dio.post(
-      "$_baseUrl/drivers/apply",
-      data: formData,
-    );
+    final response = await _dio.post("$_baseUrl/drivers/apply", data: formData);
 
     return ApplyResponse.fromJson(response.data);
   }

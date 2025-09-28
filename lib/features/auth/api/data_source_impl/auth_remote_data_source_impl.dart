@@ -32,7 +32,6 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     return ServerFailure.fromDio(e).errorMessage;
   }
 
-
   @override
   Future<Driver> applyDriver({
     required String country,
@@ -85,5 +84,4 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       throw Exception(e.toString());
     }
   }
-
 }

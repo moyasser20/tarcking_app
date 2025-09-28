@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 part 'vehicles.g.dart';
+
 @JsonSerializable()
 class Vehicles {
   @JsonKey(name: "_id")
@@ -14,14 +15,7 @@ class Vehicles {
   @JsonKey(name: "updatedAt")
   final String? updatedAt;
 
-
-  Vehicles ({
-    this.Id,
-    this.type,
-    this.image,
-    this.createdAt,
-    this.updatedAt,
-  });
+  Vehicles({this.Id, this.type, this.image, this.createdAt, this.updatedAt});
 
   factory Vehicles.fromJson(Map<String, dynamic> json) {
     return _$VehiclesFromJson(json);

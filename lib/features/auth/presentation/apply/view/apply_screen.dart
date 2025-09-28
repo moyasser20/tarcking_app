@@ -24,14 +24,14 @@ class ApplyScreen extends StatelessWidget {
       child: BlocListener<ApplyCubit, ApplyState>(
         listener: (context, state) {
           if (state is ApplySuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.message)));
             Navigator.pushNamed(context, AppRoutes.applicationApproved);
           } else if (state is ApplyError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.message)));
           }
         },
         child: BlocBuilder<ApplyCubit, ApplyState>(
@@ -58,7 +58,9 @@ class ApplyScreen extends StatelessWidget {
                         const SizedBox(height: 25.0),
                         Text(
                           'Welcome!!',
-                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          style: Theme.of(
+                            context,
+                          ).textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Inter',
                           ),
@@ -66,7 +68,9 @@ class ApplyScreen extends StatelessWidget {
                         const SizedBox(height: 16.0),
                         Text(
                           'You want to be a delivery man?\nJoin our team ',
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Inter',
                             color: Colors.blueGrey,
@@ -84,14 +88,17 @@ class ApplyScreen extends StatelessWidget {
                                   label: 'Country',
                                   value: cubit.selectedCountry,
                                   items: Countries.countryes,
-                                  itemLabel: (country) =>
-                                  "${country.code.toFlag} ${country.name}",
+                                  itemLabel:
+                                      (country) =>
+                                          "${country.code.toFlag} ${country.name}",
                                   onChanged: cubit.setCountry,
                                 ),
                                 if (cubit.vehicles.isNotEmpty)
                                   CustomDropdownField<VehicleEntity>(
                                     label: 'Vehicle type',
-                                    value: cubit.selectedVehicle ?? cubit.vehicles.first,
+                                    value:
+                                        cubit.selectedVehicle ??
+                                        cubit.vehicles.first,
                                     items: cubit.vehicles,
                                     itemLabel: (v) => v.type ?? '',
                                     onChanged: cubit.setVehicleType,
@@ -137,15 +144,18 @@ class ApplyScreen extends StatelessWidget {
                                   controller: cubit.vehicleLicenseController,
                                   readonly: true,
                                   onPressed: () async {
-                                    final result = await FilePicker.platform.pickFiles(
-                                      type: FileType.image,
-                                    );
-                                    if (result != null && result.files.single.path != null) {
-                                      cubit.setVehicleLicensePath(result.files.single.path);
+                                    final result = await FilePicker.platform
+                                        .pickFiles(type: FileType.image);
+                                    if (result != null &&
+                                        result.files.single.path != null) {
+                                      cubit.setVehicleLicensePath(
+                                        result.files.single.path,
+                                      );
                                     }
                                   },
                                   validator: (v) {
-                                    if ((cubit.vehicleLicensePath ?? '').isEmpty) {
+                                    if ((cubit.vehicleLicensePath ?? '')
+                                        .isEmpty) {
                                       return 'Vehicle license image is required';
                                     }
                                     return null;
@@ -190,11 +200,13 @@ class ApplyScreen extends StatelessWidget {
                                   controller: cubit.nidImgController,
                                   readonly: true,
                                   onPressed: () async {
-                                    final result = await FilePicker.platform.pickFiles(
-                                      type: FileType.image,
-                                    );
-                                    if (result != null && result.files.single.path != null) {
-                                      cubit.setNidImagePath(result.files.single.path);
+                                    final result = await FilePicker.platform
+                                        .pickFiles(type: FileType.image);
+                                    if (result != null &&
+                                        result.files.single.path != null) {
+                                      cubit.setNidImagePath(
+                                        result.files.single.path,
+                                      );
                                     }
                                   },
                                   validator: (v) {
@@ -234,7 +246,8 @@ class ApplyScreen extends StatelessWidget {
                                           if (v == null || v.isEmpty) {
                                             return 'Confirm your password';
                                           }
-                                          if (v != cubit.passwordController.text) {
+                                          if (v !=
+                                              cubit.passwordController.text) {
                                             return 'Passwords do not match';
                                           }
                                           return null;
@@ -247,7 +260,9 @@ class ApplyScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Gender',
-                                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.titleMedium?.copyWith(
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),

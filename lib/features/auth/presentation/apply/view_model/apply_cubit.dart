@@ -13,7 +13,7 @@ class ApplyCubit extends Cubit<ApplyState> {
   final GetVehiclesUseCase _getVehiclesUseCase;
 
   ApplyCubit(this._applyDriverUseCase, this._getVehiclesUseCase)
-      : super(ApplyInitial()) {
+    : super(ApplyInitial()) {
     selectedCountry = Countries.countryes.first;
   }
 
@@ -32,7 +32,6 @@ class ApplyCubit extends Cubit<ApplyState> {
 
   List<VehicleEntity> vehicles = [];
   VehicleEntity? selectedVehicle;
-
 
   dynamic selectedCountry;
   String? gender;
@@ -64,7 +63,6 @@ class ApplyCubit extends Cubit<ApplyState> {
     selectedVehicle = vehicle;
     emit(ApplyChanged());
   }
-
 
   void setGender(String? value) {
     gender = value;

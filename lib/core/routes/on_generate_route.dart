@@ -6,8 +6,6 @@ import '../../features/auth/presentation/apply/view/application_approved_screen.
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-
-
       case AppRoutes.applicationApproved:
         return MaterialPageRoute(
           builder: (_) => const ApplicationApprovedScreen(),

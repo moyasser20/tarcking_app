@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import '../models/apply_models/driver.dart';
 import '../models/apply_models/vehicles_response.dart';
-abstract class AuthRemoteDatasource {
 
+abstract class AuthRemoteDatasource {
   Future<Driver> applyDriver({
     required String country,
     required String firstName,
@@ -20,5 +20,5 @@ abstract class AuthRemoteDatasource {
   });
 
   Future<VehiclesResponse> getVehicles();
-// Future<String> logout();
+  // Future<String> logout();
 }

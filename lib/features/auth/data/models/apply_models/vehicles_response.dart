@@ -8,10 +8,7 @@ class VehiclesResponse {
   final String? message;
   final List<Vehicles>? vehicles;
 
-  VehiclesResponse({
-    this.message,
-    this.vehicles,
-  });
+  VehiclesResponse({this.message, this.vehicles});
 
   factory VehiclesResponse.fromJson(Map<String, dynamic> json) =>
       _$VehiclesResponseFromJson(json);

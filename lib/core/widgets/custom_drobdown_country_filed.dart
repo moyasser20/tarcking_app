@@ -25,27 +25,26 @@ class CustomDropdownField<T> extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
         filled: true,
-        fillColor:AppColors.white,
+        fillColor: AppColors.white,
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.pink, width: 2),
           borderRadius: BorderRadius.circular(12),
         ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       ),
       dropdownColor: AppColors.white,
       isDense: false,
-      items: items.map((item) {
-        return DropdownMenuItem<T>(
-          value: item,
-          child: Text(
-            itemLabel(item),
-            style: const TextStyle(fontSize: 20),
-          ),
-        );
-      }).toList(),
+      items:
+          items.map((item) {
+            return DropdownMenuItem<T>(
+              value: item,
+              child: Text(
+                itemLabel(item),
+                style: const TextStyle(fontSize: 20),
+              ),
+            );
+          }).toList(),
       onChanged: onChanged,
     );
   }
