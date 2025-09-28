@@ -247,8 +247,7 @@ class ApplyScreen extends StatelessWidget {
                                   ],
                                 ),
                                               
-                                const SizedBox(height: 25),
-                                              
+
                                 Row(
                                   children: [
                                     Text(

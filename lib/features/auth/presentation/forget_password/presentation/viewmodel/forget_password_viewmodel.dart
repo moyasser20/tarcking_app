@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/features/auth/domain/usecases/forget_password_usecase.dart';
+import '../../../../../../core/extensions/validations.dart';
 import 'states/forget_password_states.dart';
-import '../../../../../core/extensions/validations.dart';
 
 @injectable
 class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
