@@ -119,7 +119,7 @@ class ApplyScreen extends StatelessWidget {
                                   CustomDropdownField<VehicleEntity>(
                                     label: 'Vehicle type',
                                     value:
-                                    cubit.selectedVehicle ??
+                                        cubit.selectedVehicle ??
                                         cubit.vehicles.first,
                                     items: cubit.vehicles,
                                     itemLabel: (v) => v.type ?? '',

@@ -43,21 +43,23 @@ void main() {
           role: 'driver',
           createdAt: '2024-01-01T00:00:00.000Z',
         );
-        when(() => remote.applyDriver(
-          country: any(named: 'country'),
-          firstName: any(named: 'firstName'),
-          lastName: any(named: 'lastName'),
-          vehicleType: any(named: 'vehicleType'),
-          vehicleNumber: any(named: 'vehicleNumber'),
-          vehicleLicense: any(named: 'vehicleLicense'),
-          nid: any(named: 'nid'),
-          nidImg: any(named: 'nidImg'),
-          email: any(named: 'email'),
-          password: any(named: 'password'),
-          rePassword: any(named: 'rePassword'),
-          gender: any(named: 'gender'),
-          phone: any(named: 'phone'),
-        )).thenAnswer((_) async => driver);
+        when(
+          () => remote.applyDriver(
+            country: any(named: 'country'),
+            firstName: any(named: 'firstName'),
+            lastName: any(named: 'lastName'),
+            vehicleType: any(named: 'vehicleType'),
+            vehicleNumber: any(named: 'vehicleNumber'),
+            vehicleLicense: any(named: 'vehicleLicense'),
+            nid: any(named: 'nid'),
+            nidImg: any(named: 'nidImg'),
+            email: any(named: 'email'),
+            password: any(named: 'password'),
+            rePassword: any(named: 'rePassword'),
+            gender: any(named: 'gender'),
+            phone: any(named: 'phone'),
+          ),
+        ).thenAnswer((_) async => driver);
 
         // Act
         final result = await repo.applyDriver(
@@ -90,21 +92,23 @@ void main() {
 
       test('should throw Exception when remote data source fails', () async {
         // Arrange
-        when(() => remote.applyDriver(
-          country: any(named: 'country'),
-          firstName: any(named: 'firstName'),
-          lastName: any(named: 'lastName'),
-          vehicleType: any(named: 'vehicleType'),
-          vehicleNumber: any(named: 'vehicleNumber'),
-          vehicleLicense: any(named: 'vehicleLicense'),
-          nid: any(named: 'nid'),
-          nidImg: any(named: 'nidImg'),
-          email: any(named: 'email'),
-          password: any(named: 'password'),
-          rePassword: any(named: 'rePassword'),
-          gender: any(named: 'gender'),
-          phone: any(named: 'phone'),
-        )).thenThrow(Exception('Remote data source error'));
+        when(
+          () => remote.applyDriver(
+            country: any(named: 'country'),
+            firstName: any(named: 'firstName'),
+            lastName: any(named: 'lastName'),
+            vehicleType: any(named: 'vehicleType'),
+            vehicleNumber: any(named: 'vehicleNumber'),
+            vehicleLicense: any(named: 'vehicleLicense'),
+            nid: any(named: 'nid'),
+            nidImg: any(named: 'nidImg'),
+            email: any(named: 'email'),
+            password: any(named: 'password'),
+            rePassword: any(named: 'rePassword'),
+            gender: any(named: 'gender'),
+            phone: any(named: 'phone'),
+          ),
+        ).thenThrow(Exception('Remote data source error'));
 
         // Act & Assert
         expect(
@@ -189,13 +193,12 @@ void main() {
 
       test('should throw Exception when remote data source fails', () async {
         // Arrange
-        when(() => remote.getVehicles()).thenThrow(Exception('Remote data source error'));
+        when(
+          () => remote.getVehicles(),
+        ).thenThrow(Exception('Remote data source error'));
 
         // Act & Assert
-        expect(
-          () => repo.getVehicles(),
-          throwsA(isA<Exception>()),
-        );
+        expect(() => repo.getVehicles(), throwsA(isA<Exception>()));
       });
     });
   });

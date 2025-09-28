@@ -42,22 +42,28 @@ void main() {
           role: 'driver',
           createdAt: '2024-01-01T00:00:00.000Z',
         );
-        final response = ApplyResponse(driver: driver, message: 'ok', token: 'token');
-        when(() => apiClient.applyDriver(
-          country: any(named: 'country'),
-          firstName: any(named: 'firstName'),
-          lastName: any(named: 'lastName'),
-          vehicleType: any(named: 'vehicleType'),
-          vehicleNumber: any(named: 'vehicleNumber'),
-          vehicleLicense: any(named: 'vehicleLicense'),
-          nid: any(named: 'nid'),
-          nidImg: any(named: 'nidImg'),
-          email: any(named: 'email'),
-          password: any(named: 'password'),
-          rePassword: any(named: 'rePassword'),
-          gender: any(named: 'gender'),
-          phone: any(named: 'phone'),
-        )).thenAnswer((_) async => response);
+        final response = ApplyResponse(
+          driver: driver,
+          message: 'ok',
+          token: 'token',
+        );
+        when(
+          () => apiClient.applyDriver(
+            country: any(named: 'country'),
+            firstName: any(named: 'firstName'),
+            lastName: any(named: 'lastName'),
+            vehicleType: any(named: 'vehicleType'),
+            vehicleNumber: any(named: 'vehicleNumber'),
+            vehicleLicense: any(named: 'vehicleLicense'),
+            nid: any(named: 'nid'),
+            nidImg: any(named: 'nidImg'),
+            email: any(named: 'email'),
+            password: any(named: 'password'),
+            rePassword: any(named: 'rePassword'),
+            gender: any(named: 'gender'),
+            phone: any(named: 'phone'),
+          ),
+        ).thenAnswer((_) async => response);
 
         // Act
         final result = await dataSource.applyDriver(
@@ -98,21 +104,23 @@ void main() {
             data: {'message': 'Invalid request data'},
           ),
         );
-        when(() => apiClient.applyDriver(
-          country: any(named: 'country'),
-          firstName: any(named: 'firstName'),
-          lastName: any(named: 'lastName'),
-          vehicleType: any(named: 'vehicleType'),
-          vehicleNumber: any(named: 'vehicleNumber'),
-          vehicleLicense: any(named: 'vehicleLicense'),
-          nid: any(named: 'nid'),
-          nidImg: any(named: 'nidImg'),
-          email: any(named: 'email'),
-          password: any(named: 'password'),
-          rePassword: any(named: 'rePassword'),
-          gender: any(named: 'gender'),
-          phone: any(named: 'phone'),
-        )).thenThrow(dioException);
+        when(
+          () => apiClient.applyDriver(
+            country: any(named: 'country'),
+            firstName: any(named: 'firstName'),
+            lastName: any(named: 'lastName'),
+            vehicleType: any(named: 'vehicleType'),
+            vehicleNumber: any(named: 'vehicleNumber'),
+            vehicleLicense: any(named: 'vehicleLicense'),
+            nid: any(named: 'nid'),
+            nidImg: any(named: 'nidImg'),
+            email: any(named: 'email'),
+            password: any(named: 'password'),
+            rePassword: any(named: 'rePassword'),
+            gender: any(named: 'gender'),
+            phone: any(named: 'phone'),
+          ),
+        ).thenThrow(dioException);
 
         // Act & Assert
         expect(
@@ -137,21 +145,23 @@ void main() {
 
       test('should throw Exception when generic error occurs', () async {
         // Arrange
-        when(() => apiClient.applyDriver(
-          country: any(named: 'country'),
-          firstName: any(named: 'firstName'),
-          lastName: any(named: 'lastName'),
-          vehicleType: any(named: 'vehicleType'),
-          vehicleNumber: any(named: 'vehicleNumber'),
-          vehicleLicense: any(named: 'vehicleLicense'),
-          nid: any(named: 'nid'),
-          nidImg: any(named: 'nidImg'),
-          email: any(named: 'email'),
-          password: any(named: 'password'),
-          rePassword: any(named: 'rePassword'),
-          gender: any(named: 'gender'),
-          phone: any(named: 'phone'),
-        )).thenThrow(Exception('Generic error'));
+        when(
+          () => apiClient.applyDriver(
+            country: any(named: 'country'),
+            firstName: any(named: 'firstName'),
+            lastName: any(named: 'lastName'),
+            vehicleType: any(named: 'vehicleType'),
+            vehicleNumber: any(named: 'vehicleNumber'),
+            vehicleLicense: any(named: 'vehicleLicense'),
+            nid: any(named: 'nid'),
+            nidImg: any(named: 'nidImg'),
+            email: any(named: 'email'),
+            password: any(named: 'password'),
+            rePassword: any(named: 'rePassword'),
+            gender: any(named: 'gender'),
+            phone: any(named: 'phone'),
+          ),
+        ).thenThrow(Exception('Generic error'));
 
         // Act & Assert
         expect(
@@ -212,23 +222,26 @@ void main() {
         expect(result.vehicles!.last.type, "Motorcycle");
       });
 
-      test('should return empty VehiclesResponse when no vehicles found', () async {
-        // Arrange
-        final response = VehiclesResponse(
-          message: 'No vehicles found',
-          vehicles: [],
-        );
-        when(() => apiClient.getVehicles()).thenAnswer((_) async => response);
+      test(
+        'should return empty VehiclesResponse when no vehicles found',
+        () async {
+          // Arrange
+          final response = VehiclesResponse(
+            message: 'No vehicles found',
+            vehicles: [],
+          );
+          when(() => apiClient.getVehicles()).thenAnswer((_) async => response);
 
-        // Act
-        final result = await dataSource.getVehicles();
+          // Act
+          final result = await dataSource.getVehicles();
 
-        // Assert
-        expect(result, isA<VehiclesResponse>());
-        expect(result.message, 'No vehicles found');
-        expect(result.vehicles, isNotNull);
-        expect(result.vehicles!.isEmpty, isTrue);
-      });
+          // Assert
+          expect(result, isA<VehiclesResponse>());
+          expect(result.message, 'No vehicles found');
+          expect(result.vehicles, isNotNull);
+          expect(result.vehicles!.isEmpty, isTrue);
+        },
+      );
 
       test('should throw Exception when DioException occurs', () async {
         // Arrange
@@ -243,21 +256,17 @@ void main() {
         when(() => apiClient.getVehicles()).thenThrow(dioException);
 
         // Act & Assert
-        expect(
-          () => dataSource.getVehicles(),
-          throwsA(isA<Exception>()),
-        );
+        expect(() => dataSource.getVehicles(), throwsA(isA<Exception>()));
       });
 
       test('should throw Exception when generic error occurs', () async {
         // Arrange
-        when(() => apiClient.getVehicles()).thenThrow(Exception('Network error'));
+        when(
+          () => apiClient.getVehicles(),
+        ).thenThrow(Exception('Network error'));
 
         // Act & Assert
-        expect(
-          () => dataSource.getVehicles(),
-          throwsA(isA<Exception>()),
-        );
+        expect(() => dataSource.getVehicles(), throwsA(isA<Exception>()));
       });
     });
   });
