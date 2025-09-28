@@ -2,7 +2,6 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
-import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
 import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
 import 'package:tarcking_app/features/auth/domain/usecases/login_usecase/login_usecase.dart';
 import 'package:tarcking_app/features/auth/presentation/login/cubit/login_cubit.dart';
