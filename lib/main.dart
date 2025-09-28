@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tarcking_app/core/config/di.dart';
-import 'package:tarcking_app/core/contants/secure_storage.dart';
-import 'package:tarcking_app/features/auth/presentation/login/cubit/login_cubit.dart';
-import 'package:tarcking_app/features/auth/presentation/login/view/login_screen.dart';
+import 'core/config/di.dart';
+import 'core/l10n/translation/app_localizations.dart';
+import 'core/routes/on_generate_route.dart';
+import 'core/routes/route_names.dart';
+import 'core/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,12 +18,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Tracking App',
-      home: BlocProvider(
-        create: (context) => getIt<LoginCubit>(),
-        child: const LoginScreen(),
-      ),
       debugShowCheckedModeBanner: false,
+      title: 'Tracking App',
+      initialRoute: AppRoutes.initial,
+      onGenerateRoute: Routes.onGenerateRoute,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale("en"),
+      theme: AppTheme.lightTheme,
     );
   }
 }

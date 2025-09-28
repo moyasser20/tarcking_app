@@ -88,7 +88,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             widget.obscureText
                 ? IconButton(
                   icon: Icon(
-                    isTextObscured ? Icons.visibility : Icons.visibility_off,
+                    isTextObscured ? Icons.visibility_off : Icons.visibility,
                     color: AppColors.grey,
                   ),
                   onPressed: () {
