@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:tarcking_app/features/auth/domain/entities/driver_entity.dart';
+import 'package:tarcking_app/features/auth/domain/entities/apply_entites/driver_entity.dart';
 import 'package:tarcking_app/features/auth/domain/repo/auth_repo.dart';
 
 @lazySingleton

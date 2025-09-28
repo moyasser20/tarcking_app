@@ -1,6 +1,8 @@
-import 'package:tarcking_app/features/auth/domain/entities/driver_entity.dart';
+import '../entities/apply_entites/driver_entity.dart';
+import '../entities/apply_entites/vehicle_enitity.dart';
 
 abstract class AuthRepo {
+
   Future<DriverEntity> applyDriver({
     required String country,
     required String firstName,
@@ -16,4 +18,6 @@ abstract class AuthRepo {
     required String gender,
     required String phone,
   });
+  Future<List<VehicleEntity>> getVehicles();
+
 }

@@ -19,45 +19,51 @@ import '../../features/auth/data/datasource/auth_remote_data_source.dart'
     as _i24;
 import '../../features/auth/data/repo_impl/auth_repo_impl.dart' as _i279;
 import '../../features/auth/domain/repo/auth_repo.dart' as _i170;
-import '../../features/auth/domain/use_cases/apply_driver_usecase.dart'
-    as _i159;
-import '../../features/auth/presentation/view_model/apply_cubit.dart' as _i488;
+import '../../features/auth/domain/usecases/apply/apply_driver_usecase.dart'
+    as _i712;
+import '../../features/auth/domain/usecases/apply/vehicle_usecase.dart'
+    as _i770;
+import '../../features/auth/presentation/apply/view_model/apply_cubit.dart'
+    as _i616;
 import '../api/client/api_client.dart' as _i364;
 import 'dio_module/dio_module.dart' as _i484;
 
 extension GetItInjectableX on _i174.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
-    final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    final gh = _i526.GetItHelper(
+      this,
+      environment,
+      environmentFilter,
+    );
     final dioModule = _$DioModule();
-    gh.factory<String>(() => dioModule.baseUrl, instanceName: 'baseurl');
+    gh.factory<String>(
+      () => dioModule.baseUrl,
+      instanceName: 'baseurl',
+    );
     gh.lazySingleton<_i361.Dio>(
-      () => dioModule.dio(gh<String>(instanceName: 'baseurl')),
-    );
+        () => dioModule.dio(gh<String>(instanceName: 'baseurl')));
     gh.lazySingleton<_i901.ApplyApiClient>(
-      () => _i901.ApplyApiClient(gh<_i361.Dio>()),
-    );
-    gh.factory<_i364.ApiClient>(
-      () => _i364.ApiClient(
-        gh<_i361.Dio>(),
-        baseUrl: gh<String>(instanceName: 'baseurl'),
-      ),
-    );
-    gh.lazySingleton<_i24.AuthRemoteDataSource>(
-      () => _i758.AuthRemoteDataSourceImpl(gh<_i901.ApplyApiClient>()),
-    );
+        () => _i901.ApplyApiClient(gh<_i361.Dio>()));
+    gh.lazySingleton<_i24.AuthRemoteDatasource>(
+        () => _i758.AuthRemoteDatasourceImpl(gh<_i901.ApplyApiClient>()));
+    gh.factory<_i364.ApiClient>(() => _i364.ApiClient(
+          gh<_i361.Dio>(),
+          baseUrl: gh<String>(instanceName: 'baseurl'),
+        ));
     gh.lazySingleton<_i170.AuthRepo>(
-      () => _i279.AuthRepoImpl(gh<_i24.AuthRemoteDataSource>()),
-    );
-    gh.lazySingleton<_i159.ApplyDriverUseCase>(
-      () => _i159.ApplyDriverUseCase(gh<_i170.AuthRepo>()),
-    );
-    gh.factory<_i488.ApplyCubit>(
-      () => _i488.ApplyCubit(gh<_i159.ApplyDriverUseCase>()),
-    );
+        () => _i279.AuthRepoImpl(gh<_i24.AuthRemoteDatasource>()));
+    gh.lazySingleton<_i712.ApplyDriverUseCase>(
+        () => _i712.ApplyDriverUseCase(gh<_i170.AuthRepo>()));
+    gh.lazySingleton<_i770.GetVehiclesUseCase>(
+        () => _i770.GetVehiclesUseCase(gh<_i170.AuthRepo>()));
+    gh.factory<_i616.ApplyCubit>(() => _i616.ApplyCubit(
+          gh<_i712.ApplyDriverUseCase>(),
+          gh<_i770.GetVehiclesUseCase>(),
+        ));
     return this;
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_colors.dart';
+
 class CustomDropdownField<T> extends StatelessWidget {
   final T value;
   final List<T> items;
@@ -19,26 +21,31 @@ class CustomDropdownField<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<T>(
-      initialValue: value,
+      value: value,
       decoration: InputDecoration(
         labelText: label,
+        filled: true,
+        fillColor:AppColors.white,
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.pink, width: 2),
+          borderRadius: BorderRadius.circular(12),
         ),
-        border: const OutlineInputBorder(),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
         contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       ),
+      dropdownColor: AppColors.white,
       isDense: false,
-      items:
-          items.map((item) {
-            return DropdownMenuItem<T>(
-              value: item,
-              child: Text(
-                itemLabel(item),
-                style: const TextStyle(fontSize: 20),
-              ),
-            );
-          }).toList(),
+      items: items.map((item) {
+        return DropdownMenuItem<T>(
+          value: item,
+          child: Text(
+            itemLabel(item),
+            style: const TextStyle(fontSize: 20),
+          ),
+        );
+      }).toList(),
       onChanged: onChanged,
     );
   }

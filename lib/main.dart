@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/config/di.dart';
-import 'package:tarcking_app/features/auth/presentation/view/apply_screen.dart';
+import 'features/auth/presentation/apply/view/apply_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

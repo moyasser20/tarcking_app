@@ -2,17 +2,17 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:dio/dio.dart';
 import 'package:tarcking_app/features/auth/api/data_source_impl/auth_remote_data_source_impl.dart';
-import 'package:tarcking_app/features/auth/data/models/apply_response.dart';
+import 'package:tarcking_app/features/auth/data/models/apply_models/apply_response.dart';
 import 'package:tarcking_app/features/auth/data/models/driver.dart';
 import '../mocks/mocks.dart';
 
 void main() {
   late MockApplyApiClient apiClient;
-  late AuthRemoteDataSourceImpl dataSource;
+  late AuthRemoteDatasourceImpl dataSource;
 
   setUp(() {
     apiClient = MockApplyApiClient();
-    dataSource = AuthRemoteDataSourceImpl(apiClient);
+    dataSource = AuthRemoteDatasourceImpl(apiClient);
   });
 
   test('applyDriver returns Driver from ApplyResponse', () async {
