@@ -8,6 +8,7 @@ import 'package:tarcking_app/features/auth/presentation/login/cubit/login_cubit.
 import 'package:tarcking_app/features/auth/presentation/login/cubit/login_states.dart';
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../../core/Widgets/custom_text_field.dart';
+import '../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../core/routes/route_names.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -47,6 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Form(
@@ -57,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 children: [
                   Text(
-                    "Login",
+                    local.login,
                     style: const TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.w500,
@@ -69,14 +71,14 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               CustomTextFormField(
                 controller: _loginCubit.emailController,
-                label: "Email",
-                hint: "Email",
+                label: local.emailLabel,
+                hint: local.emailHintText,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Email is required";
+                    return local.emailIsEmptyErrorMessage;
                   }
                   if (!Validations.validateEmail(value)) {
-                    return "Invalid email format";
+                    return local.emailValidationErrorMsg;
                   }
                   return null;
                 },
@@ -84,15 +86,15 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 25),
               CustomTextFormField(
                 controller: _loginCubit.passwordController,
-                label: "Password",
-                hint: "Password",
+                label: local.passwordLabel,
+                hint: local.passwordHintText,
                 obscureText: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Password is required";
+                    return local.passwordRequiredErrorMsg;
                   }
                   if (!Validations.validatePassword(value)) {
-                    return "Invalid password format";
+                    return local.passwordValidationErrorMsg;
                   }
                   return null;
                 },
@@ -110,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                   Text(
-                    "Remember Me",
+                    local.rememberMe,
                     style: const TextStyle(color: AppColors.black),
                   ),
                   const Spacer(),
@@ -119,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.pushNamed(context, AppRoutes.forgetPassword);
                     },
                     child: Text(
-                      "Forget Password?",
+                      local.forgetPasswordTextButton,
                       style: TextStyle(
                         color: AppColors.black.withValues(alpha: 0.5),
                         decoration: TextDecoration.underline,
@@ -145,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 builder: (context, state) {
                   return CustomElevatedButton(
-                    text: "Continue",
+                    text: local.continueButton,
                     isLoading: state is LoginLoadingState,
                     color: _isButtonEnabled ? AppColors.pink : AppColors.grey,
                     onPressed:

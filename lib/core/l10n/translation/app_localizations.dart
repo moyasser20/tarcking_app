@@ -98,6 +98,18 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
+  /// No description provided for @welcomeTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to'**
+  String get welcomeTo;
+
+  /// No description provided for @floweryRiderApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Flowery Rider App'**
+  String get floweryRiderApp;
+
   /// No description provided for @appName.
   ///
   /// In en, this message translates to:
@@ -109,6 +121,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Login'**
   String get login;
+
+  /// No description provided for @applyNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Now'**
+  String get applyNow;
+
+  /// No description provided for @versionText.
+  ///
+  /// In en, this message translates to:
+  /// **'v 6.3.0 - (446)'**
+  String get versionText;
 
   /// No description provided for @emailLabel.
   ///
@@ -194,6 +218,168 @@ abstract class AppLocalizations {
   /// **'Dashboard'**
   String get dashboard;
 
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @orders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get orders;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @resetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPassword;
+
+  /// No description provided for @currentPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get currentPassword;
+
+  /// No description provided for @newPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPassword;
+
+  /// No description provided for @confirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
+  /// No description provided for @invalidPasswordMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid password'**
+  String get invalidPasswordMsg;
+
+  /// No description provided for @passwordErrorMatchingMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match!'**
+  String get passwordErrorMatchingMsg;
+
+  /// No description provided for @updateText.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get updateText;
+
+  /// No description provided for @logoutAlertMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logoutAlertMsg;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @logoutConfirmTextCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm logout!'**
+  String get logoutConfirmTextCenter;
+
+  /// No description provided for @resetPasswordUnderMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number'**
+  String get resetPasswordUnderMsg;
+
+  /// No description provided for @emailVerificationScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Verification'**
+  String get emailVerificationScreen;
+
+  /// No description provided for @emailVerificationScreenUnderMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the code that was sent to your\nemail address'**
+  String get emailVerificationScreenUnderMsg;
+
+  /// No description provided for @codeReceiveMsgError.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t receive code?'**
+  String get codeReceiveMsgError;
+
+  /// No description provided for @forgetPasswordUnderText.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email associated with\nyour account'**
+  String get forgetPasswordUnderText;
+
+  /// No description provided for @forgetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password'**
+  String get forgetPassword;
+
+  /// No description provided for @validationEmailErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is not valid'**
+  String get validationEmailErrorMessage;
+
+  /// No description provided for @requiredEmailErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get requiredEmailErrorMessage;
+
+  /// No description provided for @continueButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueButton;
+
+  /// No description provided for @confirmPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPasswordLabel;
+
+  /// No description provided for @newPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPasswordLabel;
+
+  /// No description provided for @newPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter new password'**
+  String get newPasswordHint;
+
+  /// No description provided for @wrongPasswordErrorMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong password, try again'**
+  String get wrongPasswordErrorMsg;
+
   /// No description provided for @applicationSub.
   ///
   /// In en, this message translates to:
@@ -206,29 +392,29 @@ abstract class AppLocalizations {
   /// **'Thank you for providing your application,\n we will review your application and will get back to you soon.'**
   String get applicationSubMsg;
 
-  /// No description provided for @welcomeTo.
+  /// No description provided for @codeLengthError.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to'**
-  String get welcomeTo;
+  /// **'Code must be at least 6 digits'**
+  String get codeLengthError;
 
-  /// No description provided for @floweryRiderApp.
+  /// No description provided for @passwordUpdatedSuccessMsg.
   ///
   /// In en, this message translates to:
-  /// **'Flowery Rider App'**
-  String get floweryRiderApp;
+  /// **'Password changed successfully!'**
+  String get passwordUpdatedSuccessMsg;
 
-  /// No description provided for @applyNow.
+  /// No description provided for @nextButton.
   ///
   /// In en, this message translates to:
-  /// **'Apply Now'**
-  String get applyNow;
+  /// **'Next'**
+  String get nextButton;
 
-  /// No description provided for @versionText.
+  /// No description provided for @resend.
   ///
   /// In en, this message translates to:
-  /// **'v 6.3.0 - (446)'**
-  String get versionText;
+  /// **'Resend'**
+  String get resend;
 }
 
 class _AppLocalizationsDelegate
