@@ -61,6 +61,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       controller: _controller,
       enabled: widget.enabled,
       readOnly: widget.readonly,
+      onTap: widget.readonly ? (widget.onPressed) : null,
+      enableInteractiveSelection: widget.readonly ? false : true,
+      contextMenuBuilder:
+          widget.readonly
+              ? (context, editableTextState) {
+                return const SizedBox.shrink();
+              }
+              : null,
       obscureText: isTextObscured,
       keyboardType: widget.keyboardType,
       validator: widget.validator,
@@ -97,7 +105,15 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                     });
                   },
                 )
-                : null,
+                : (widget.onPressed != null
+                    ? IconButton(
+                      icon: Icon(
+                        Icons.file_upload_outlined,
+                        color: AppColors.pink,
+                      ),
+                      onPressed: widget.onPressed,
+                    )
+                    : null),
         suffix:
             widget.suffixText != null
                 ? GestureDetector(

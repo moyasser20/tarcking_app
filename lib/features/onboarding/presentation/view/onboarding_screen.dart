@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
 import 'package:tarcking_app/core/theme/app_colors.dart';
 import 'package:tarcking_app/core/widgets/custom_Elevated_Button.dart';
-
 import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../core/routes/route_names.dart';
+import '../../../auth/domain/services/auth_services.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -55,14 +56,19 @@ class OnBoardingScreen extends StatelessWidget {
             CustomElevatedButton(
               key: const Key('loginButton'),
               text: local.login,
-              onPressed: () {},
+              onPressed: () async {
+                final initialRoute = await _getInitialRoute();
+                Navigator.pushReplacementNamed(context, initialRoute);
+              },
             ),
             const SizedBox(height: 20),
             CustomElevatedButton(
               key: const Key('applyNowButton'),
               text: local.applyNow,
               borderColor: AppColors.grey.withOpacity(0.5),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, AppRoutes.apply);
+              },
               color: AppColors.white,
               textColor: AppColors.grey.withOpacity(0.8),
             ),
@@ -76,5 +82,15 @@ class OnBoardingScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+Future<String> _getInitialRoute() async {
+  final isLoggedIn = await AuthService.isUserAuthenticated();
+  if (isLoggedIn) {
+    return AppRoutes.dashboard;
+  } else {
+    AuthService.logout();
+    return AppRoutes.login;
   }
 }

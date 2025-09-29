@@ -171,4 +171,124 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resend => 'Resend';
+
+  @override
+  String get applyTitle => 'Apply';
+
+  @override
+  String get welcome => 'Welcome!!';
+
+  @override
+  String get joinTeam => 'You want to be a delivery man?\nJoin our team';
+
+  @override
+  String get country => 'Country';
+
+  @override
+  String get firstLegalName => 'First legal name';
+
+  @override
+  String get firstLegalNameHint => 'Enter first legal name';
+
+  @override
+  String get firstNameRequired => 'First name is required';
+
+  @override
+  String get secondLegalName => 'Second legal name';
+
+  @override
+  String get secondLegalNameHint => 'Enter second legal name';
+
+  @override
+  String get secondNameRequired => 'Second name is required';
+
+  @override
+  String get vehicleType => 'Vehicle type';
+
+  @override
+  String get noVehiclesAvailable => 'No vehicles available';
+
+  @override
+  String get vehicleNumber => 'Vehicle number';
+
+  @override
+  String get vehicleNumberHint => 'Enter vehicle number';
+
+  @override
+  String get vehicleNumberRequired => 'Vehicle number is required';
+
+  @override
+  String get vehicleLicense => 'Vehicle license';
+
+  @override
+  String get vehicleLicenseHint => 'Upload license photo';
+
+  @override
+  String get vehicleLicenseRequired => 'Vehicle license image is required';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get emailHint => 'Enter your email';
+
+  @override
+  String get emailRequired => 'Email is required';
+
+  @override
+  String get phoneNumber => 'Phone number';
+
+  @override
+  String get phoneHint => 'Enter phone number';
+
+  @override
+  String get phoneRequired => 'Phone is required';
+
+  @override
+  String get idNumber => 'ID number';
+
+  @override
+  String get idNumberHint => 'Enter national ID number';
+
+  @override
+  String get idNumberRequired => 'ID number is required';
+
+  @override
+  String get idImage => 'ID image';
+
+  @override
+  String get idImageHint => 'Upload ID image';
+
+  @override
+  String get idImageRequired => 'ID image is required';
+
+  @override
+  String get passwordHint => 'Enter password';
+
+  @override
+  String get passwordRequired => 'Password is required';
+
+  @override
+  String get passwordMinChars => 'Minimum 8 characters';
+
+  @override
+  String get confirmPasswordHint => 'Confirm password';
+
+  @override
+  String get confirmPasswordRequired => 'Confirm your password';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get continueBtn => 'Continue';
 }
