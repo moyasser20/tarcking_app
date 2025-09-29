@@ -4,15 +4,19 @@ import 'package:tarcking_app/core/extensions/extensions.dart';
 import '../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../domain/entities/order_entity.dart';
 import 'address_widget.dart';
 
 class OrderContainerWidget extends StatelessWidget {
-  const OrderContainerWidget({super.key});
+  final OrderEntity orderEntity;
+
+  const OrderContainerWidget({super.key, required this.orderEntity});
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var local = AppLocalizations.of(context)!;
+
     return Container(
       width: size.width * 0.9,
       height: size.height * 0.43,
@@ -42,24 +46,28 @@ class OrderContainerWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 15),
+
+          // Store info
           AddressWidget(
             TitleAddress: local.pickupAddress,
-            image: 'assets/images/flowery_logo.png',
-            storeName: local.floweryStore,
-            address: local.sampleAddress,
+            image: orderEntity.store.image,
+            storeName: orderEntity.store.name,
+            address: orderEntity.store.address,
           ),
+
           const SizedBox(height: 25),
           AddressWidget(
             TitleAddress: local.userAddress,
-            image: 'assets/images/user_image.png',
-            storeName: local.userNameSample,
-            address: local.sampleAddress,
+            image: orderEntity.user.photo,
+            storeName: "${orderEntity.user.firstName} ${orderEntity.user.lastName}",
+            address: orderEntity.user.email,
           ),
+
           const SizedBox(height: 25),
           Row(
             children: [
               Text(
-                local.orderPrice,
+                "${local.orderPrice}: ${orderEntity.totalPrice}",
                 style: TextStyle(
                   color: AppColors.black,
                   fontSize: 17,
@@ -67,7 +75,7 @@ class OrderContainerWidget extends StatelessWidget {
                   fontFamily: "Inter",
                 ),
               ),
-              const SizedBox(width: 10),
+              const Spacer(),
               CustomElevatedButton(
                 text: local.reject,
                 onPressed: () {},

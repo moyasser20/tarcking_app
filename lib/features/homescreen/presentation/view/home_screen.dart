@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
 import 'package:tarcking_app/core/theme/app_colors.dart';
 
 import '../../../../core/contants/app_images.dart';
+import '../viewmodel/home_cubit.dart';
+import '../viewmodel/home_states.dart';
 import '../widgets/order_container_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,20 +16,42 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 70),
-            Image.asset(AppImages.floweryRider),
-            const SizedBox(height: 40),
-            OrderContainerWidget(),
-            const SizedBox(height: 30),
-            OrderContainerWidget(),
-            const SizedBox(height: 30),
-            OrderContainerWidget(),
-            const SizedBox(height: 50),
-          ],
-        ).setHorizontalPadding(context, 0.04),
+      body: BlocConsumer<HomeCubit, HomeStates>(
+        listener: (context, state) {
+          if (state is HomeErrorState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.message)),
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is HomeLoadingState) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is HomeSuccessState) {
+            final orders = state.ordersResponseEntity.orders;
+
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 70),
+                  Image.asset(AppImages.floweryRider),
+                  const SizedBox(height: 40),
+
+                  ...orders.map((order) => Padding(
+                    padding: const EdgeInsets.only(bottom: 30),
+                    child: OrderContainerWidget(
+                      orderEntity: order,
+                    ),
+                  )),
+
+                  const SizedBox(height: 50),
+                ],
+              ).setHorizontalPadding(context, 0.04),
+            );
+          } else {
+            return const Center(child: Text("No Data"));
+          }
+        },
       ),
     );
   }

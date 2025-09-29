@@ -30,6 +30,8 @@ import '../../features/homescreen/data/repositories/home_repo_impl.dart'
 import '../../features/homescreen/domain/repositories/home_repo.dart' as _i594;
 import '../../features/homescreen/domain/use_cases/get_order_usecase.dart'
     as _i234;
+import '../../features/homescreen/presentation/viewmodel/home_cubit.dart'
+    as _i39;
 import '../api/client/api_client.dart' as _i364;
 import 'dio_module/dio_module.dart' as _i484;
 
@@ -69,6 +71,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i179.LoginCubit(loginUsecase: gh<_i517.LoginUsecase>()));
     gh.factory<_i234.GetOrderUseCase>(
         () => _i234.GetOrderUseCase(gh<_i594.HomeRepo>()));
+    gh.factory<_i39.HomeCubit>(
+        () => _i39.HomeCubit(gh<_i234.GetOrderUseCase>()));
     return this;
   }
 }

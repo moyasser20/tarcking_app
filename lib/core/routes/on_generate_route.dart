@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
 import '../../features/auth/presentation/apply/view/application_approved_screen.dart';
 import '../../features/homescreen/presentation/view/home_screen.dart';
+import '../../features/homescreen/presentation/viewmodel/home_cubit.dart';
 import '../../features/onboarding/presentation/view/onboarding_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/config/di.dart';
@@ -30,7 +31,13 @@ class Routes {
         );
 
       case AppRoutes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create: (context) => getIt<HomeCubit>()..getOrders(),
+                child: const HomeScreen(),
+              ),
+        );
 
       default:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
