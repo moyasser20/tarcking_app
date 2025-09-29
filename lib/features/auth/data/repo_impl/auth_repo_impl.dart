@@ -4,11 +4,9 @@ import 'package:tarcking_app/features/auth/data/datasource/auth_remote_data_sour
 import 'package:tarcking_app/features/auth/domain/entities/apply_entites/driver_entity.dart';
 import 'package:tarcking_app/features/auth/domain/repo/auth_repo.dart';
 import '../../domain/entities/apply_entites/vehicle_enitity.dart';
-import 'package:tarcking_app/features/auth/data/datasource/auth_remote_data_source.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
 import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
-import '../../domain/repo/auth_repo.dart';
 
 @LazySingleton(as: AuthRepo)
 class AuthRepoImpl implements AuthRepo {
@@ -73,8 +71,9 @@ class AuthRepoImpl implements AuthRepo {
       );
     }).toList();
   }
+
   @override
   Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest) {
-    return authRemoteDataSource.login(loginRequest);
+    return _authRemoteDatasource.login(loginRequest);
   }
 }

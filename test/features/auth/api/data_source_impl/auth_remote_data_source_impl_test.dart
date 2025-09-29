@@ -6,10 +6,13 @@ import 'package:tarcking_app/features/auth/data/models/apply_models/apply_respon
 import 'package:tarcking_app/features/auth/data/models/apply_models/driver.dart';
 import 'package:tarcking_app/features/auth/data/models/apply_models/vehicles_response.dart';
 import 'package:tarcking_app/features/auth/data/models/apply_models/vehicles.dart';
+import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
+import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
 import '../../mocks/mocks.dart';
 
 void main() {
   late MockApplyApiClient apiClient;
+  late MockApiClient appApiClient;
   late AuthRemoteDatasourceImpl dataSource;
 
   setUpAll(() {
@@ -18,7 +21,69 @@ void main() {
 
   setUp(() {
     apiClient = MockApplyApiClient();
-    dataSource = AuthRemoteDatasourceImpl(apiClient);
+    appApiClient = MockApiClient();
+    dataSource = AuthRemoteDatasourceImpl(apiClient, appApiClient);
+  });
+
+  final loginRequest = LoginRequest(
+    email: "test@example.com",
+    password: "123456",
+  );
+
+  group("AuthRemoteDataSourceImpl.login", () {
+    test(
+      "should return AuthResponse.success when API call is successful",
+      () async {
+        final loginResponse = LoginResponse(token: "valid_token");
+        when(
+          () => appApiClient.login(loginRequest),
+        ).thenAnswer((_) async => loginResponse);
+
+        final result = await dataSource.login(loginRequest);
+
+        expect(result.isSuccess, true);
+        expect(result.data, isA<LoginResponse>());
+        expect(result.data!.token, equals("valid_token"));
+        verify(() => appApiClient.login(loginRequest)).called(1);
+      },
+    );
+
+    test(
+      "should return AuthResponse.error when DioException occurs with API message",
+      () async {
+        final dioError = DioException(
+          requestOptions: RequestOptions(path: "/login"),
+          response: Response(
+            requestOptions: RequestOptions(path: "/login"),
+            statusCode: 400,
+            data: {"message": "Invalid credentials"},
+          ),
+        );
+
+        when(() => appApiClient.login(loginRequest)).thenThrow(dioError);
+
+        final result = await dataSource.login(loginRequest);
+
+        expect(result.isSuccess, false);
+        expect(result.error, equals("Invalid credentials"));
+        verify(() => appApiClient.login(loginRequest)).called(1);
+      },
+    );
+
+    test(
+      "should return AuthResponse.error when unexpected error occurs",
+      () async {
+        when(
+          () => appApiClient.login(loginRequest),
+        ).thenThrow(Exception("Unexpected error"));
+
+        final result = await dataSource.login(loginRequest);
+
+        expect(result.isSuccess, false);
+        expect(result.error, contains("Unexpected error"));
+        verify(() => appApiClient.login(loginRequest)).called(1);
+      },
+    );
   });
 
   group('AuthRemoteDatasourceImpl', () {

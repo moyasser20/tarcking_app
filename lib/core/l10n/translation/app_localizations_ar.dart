@@ -171,4 +171,124 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resend => 'إعادة إرسال';
+
+  @override
+  String get applyTitle => 'تقديم';
+
+  @override
+  String get welcome => 'مرحباً!!';
+
+  @override
+  String get joinTeam => 'هل تريد أن تكون عامل توصيل؟\nانضم إلى فريقنا';
+
+  @override
+  String get country => 'الدولة';
+
+  @override
+  String get firstLegalName => 'الاسم الأول القانوني';
+
+  @override
+  String get firstLegalNameHint => 'أدخل الاسم الأول';
+
+  @override
+  String get firstNameRequired => 'الاسم الأول مطلوب';
+
+  @override
+  String get secondLegalName => 'الاسم الثاني القانوني';
+
+  @override
+  String get secondLegalNameHint => 'أدخل الاسم الثاني';
+
+  @override
+  String get secondNameRequired => 'الاسم الثاني مطلوب';
+
+  @override
+  String get vehicleType => 'نوع المركبة';
+
+  @override
+  String get noVehiclesAvailable => 'لا توجد مركبات متاحة';
+
+  @override
+  String get vehicleNumber => 'رقم المركبة';
+
+  @override
+  String get vehicleNumberHint => 'أدخل رقم المركبة';
+
+  @override
+  String get vehicleNumberRequired => 'رقم المركبة مطلوب';
+
+  @override
+  String get vehicleLicense => 'رخصة المركبة';
+
+  @override
+  String get vehicleLicenseHint => 'قم برفع صورة الرخصة';
+
+  @override
+  String get vehicleLicenseRequired => 'صورة رخصة المركبة مطلوبة';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get emailHint => 'أدخل بريدك الإلكتروني';
+
+  @override
+  String get emailRequired => 'البريد الإلكتروني مطلوب';
+
+  @override
+  String get phoneNumber => 'رقم الهاتف';
+
+  @override
+  String get phoneHint => 'أدخل رقم الهاتف';
+
+  @override
+  String get phoneRequired => 'رقم الهاتف مطلوب';
+
+  @override
+  String get idNumber => 'الرقم القومي';
+
+  @override
+  String get idNumberHint => 'أدخل الرقم القومي';
+
+  @override
+  String get idNumberRequired => 'الرقم القومي مطلوب';
+
+  @override
+  String get idImage => 'صورة الهوية';
+
+  @override
+  String get idImageHint => 'قم برفع صورة الهوية';
+
+  @override
+  String get idImageRequired => 'صورة الهوية مطلوبة';
+
+  @override
+  String get passwordHint => 'أدخل كلمة المرور';
+
+  @override
+  String get passwordRequired => 'كلمة المرور مطلوبة';
+
+  @override
+  String get passwordMinChars => '8 أحرف على الأقل';
+
+  @override
+  String get confirmPasswordHint => 'أدخل كلمة المرور مرة أخرى';
+
+  @override
+  String get confirmPasswordRequired => 'تأكيد كلمة المرور مطلوب';
+
+  @override
+  String get passwordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get gender => 'الجنس';
+
+  @override
+  String get female => 'أنثى';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get continueBtn => 'متابعة';
 }

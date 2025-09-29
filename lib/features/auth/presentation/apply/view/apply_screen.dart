@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:tarcking_app/core/common/widgets/custom_snackbar_widget.dart';
 import 'package:tarcking_app/core/contants/countries.dart';
 import 'package:tarcking_app/core/extensions/countryes_flages.dart';
 import 'package:tarcking_app/core/widgets/custom_elevated_button.dart';
@@ -9,6 +10,7 @@ import 'package:tarcking_app/core/widgets/custom_drobdown_country_filed.dart';
 import 'package:tarcking_app/core/widgets/custom_text_field.dart';
 import 'package:tarcking_app/core/widgets/coustom_app_bar.dart';
 import '../../../../../core/common/widgets/custome_loading_indicator.dart';
+import '../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../core/routes/route_names.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../domain/entities/apply_entites/vehicle_enitity.dart';
@@ -19,19 +21,20 @@ class ApplyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return BlocProvider(
       create: (_) => GetIt.I<ApplyCubit>()..loadVehicles(),
       child: BlocListener<ApplyCubit, ApplyState>(
         listener: (context, state) {
           if (state is ApplySuccess) {
-            ScaffoldMessenger.of(
+            showCustomSnackBar(context, state.message, isError: false);
+            Navigator.pushReplacementNamed(
               context,
-            ).showSnackBar(SnackBar(content: Text(state.message)));
-            Navigator.pushNamed(context, AppRoutes.applicationApproved);
+              AppRoutes.applicationApproved,
+            );
           } else if (state is ApplyError) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.message)));
+            showCustomSnackBar(context, state.message);
           }
         },
         child: BlocBuilder<ApplyCubit, ApplyState>(
@@ -54,10 +57,10 @@ class ApplyScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const CoustomAppBar(title: 'Apply'),
+                        CoustomAppBar(title: local.applyTitle),
                         const SizedBox(height: 25.0),
                         Text(
-                          'Welcome!!',
+                          local.welcome,
                           style: Theme.of(
                             context,
                           ).textTheme.headlineSmall?.copyWith(
@@ -67,7 +70,7 @@ class ApplyScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16.0),
                         Text(
-                          'You want to be a delivery man?\nJoin our team ',
+                          local.joinTeam,
                           style: Theme.of(
                             context,
                           ).textTheme.bodyLarge?.copyWith(
@@ -79,13 +82,13 @@ class ApplyScreen extends StatelessWidget {
                         Form(
                           key: cubit.formKey,
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 25),
+                            padding: const EdgeInsets.only(top: 35),
                             child: Column(
                               spacing: 20,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CustomDropdownField<Country>(
-                                  label: 'Country',
+                                  label: local.country,
                                   value: cubit.selectedCountry,
                                   items: Countries.countryes,
                                   itemLabel:
@@ -94,30 +97,30 @@ class ApplyScreen extends StatelessWidget {
                                   onChanged: cubit.setCountry,
                                 ),
                                 CustomTextFormField(
-                                  label: 'First legal name',
-                                  hint: 'Enter first legal name',
+                                  label: local.firstLegalName,
+                                  hint: local.firstLegalNameHint,
                                   controller: cubit.firstNameController,
                                   validator: (v) {
                                     if (v == null || v.trim().isEmpty) {
-                                      return 'First name is required';
+                                      return local.firstNameRequired;
                                     }
                                     return null;
                                   },
                                 ),
                                 CustomTextFormField(
-                                  label: 'Second legal name',
-                                  hint: 'Enter second legal name',
+                                  label: local.secondLegalName,
+                                  hint: local.secondLegalNameHint,
                                   controller: cubit.lastNameController,
                                   validator: (v) {
                                     if (v == null || v.trim().isEmpty) {
-                                      return 'Second name is required';
+                                      return local.secondNameRequired;
                                     }
                                     return null;
                                   },
                                 ),
                                 if (cubit.vehicles.isNotEmpty)
                                   CustomDropdownField<VehicleEntity>(
-                                    label: 'Vehicle type',
+                                    label: local.vehicleType,
                                     value:
                                         cubit.selectedVehicle ??
                                         cubit.vehicles.first,
@@ -126,21 +129,21 @@ class ApplyScreen extends StatelessWidget {
                                     onChanged: cubit.setVehicleType,
                                   )
                                 else
-                                  const Text("No vehicles available"),
+                                  Text(local.noVehiclesAvailable),
                                 CustomTextFormField(
-                                  label: 'Vehicle number',
-                                  hint: 'Enter vehicle number',
+                                  label: local.vehicleNumber,
+                                  hint: local.vehicleNumberHint,
                                   controller: cubit.vehicleNumberController,
                                   validator: (v) {
                                     if (v == null || v.trim().isEmpty) {
-                                      return 'Vehicle number is required';
+                                      return local.vehicleNumberRequired;
                                     }
                                     return null;
                                   },
                                 ),
                                 CustomTextFormField(
-                                  label: 'Vehicle license',
-                                  hint: 'Upload license photo',
+                                  label: local.vehicleLicense,
+                                  hint: local.vehicleLicenseHint,
                                   controller: cubit.vehicleLicenseController,
                                   readonly: true,
                                   onPressed: () async {
@@ -156,47 +159,47 @@ class ApplyScreen extends StatelessWidget {
                                   validator: (v) {
                                     if ((cubit.vehicleLicensePath ?? '')
                                         .isEmpty) {
-                                      return 'Vehicle license image is required';
+                                      return local.vehicleLicenseRequired;
                                     }
                                     return null;
                                   },
                                 ),
                                 CustomTextFormField(
-                                  label: 'Email',
-                                  hint: 'Enter your email',
+                                  label: local.email,
+                                  hint: local.emailHint,
                                   controller: cubit.emailController,
                                   validator: (v) {
                                     if (v == null || v.trim().isEmpty) {
-                                      return 'Email is required';
+                                      return local.emailRequired;
                                     }
                                     return null;
                                   },
                                 ),
                                 CustomTextFormField(
-                                  label: 'Phone number',
-                                  hint: 'Enter phone number',
+                                  label: local.phoneNumber,
+                                  hint: local.phoneHint,
                                   controller: cubit.phoneController,
                                   validator: (v) {
                                     if (v == null || v.trim().isEmpty) {
-                                      return 'Phone is required';
+                                      return local.phoneRequired;
                                     }
                                     return null;
                                   },
                                 ),
                                 CustomTextFormField(
-                                  label: 'ID number',
-                                  hint: 'Enter national ID number',
+                                  label: local.idNumber,
+                                  hint: local.idNumberHint,
                                   controller: cubit.nidController,
                                   validator: (v) {
                                     if (v == null || v.trim().isEmpty) {
-                                      return 'ID number is required';
+                                      return local.idNumberRequired;
                                     }
                                     return null;
                                   },
                                 ),
                                 CustomTextFormField(
-                                  label: 'ID image',
-                                  hint: 'Upload ID image',
+                                  label: local.idImage,
+                                  hint: local.idImageHint,
                                   controller: cubit.nidImgController,
                                   readonly: true,
                                   onPressed: () async {
@@ -211,7 +214,7 @@ class ApplyScreen extends StatelessWidget {
                                   },
                                   validator: (v) {
                                     if ((cubit.nidImagePath ?? '').isEmpty) {
-                                      return 'ID image is required';
+                                      return local.idImageRequired;
                                     }
                                     return null;
                                   },
@@ -220,16 +223,16 @@ class ApplyScreen extends StatelessWidget {
                                   children: [
                                     Expanded(
                                       child: CustomTextFormField(
-                                        label: 'Password',
-                                        hint: 'Enter password',
+                                        label: local.password,
+                                        hint: local.passwordHint,
                                         controller: cubit.passwordController,
                                         obscureText: true,
                                         validator: (v) {
                                           if (v == null || v.isEmpty) {
-                                            return 'Password is required';
+                                            return local.passwordRequired;
                                           }
                                           if (v.length < 8) {
-                                            return 'Minimum 8 characters';
+                                            return local.passwordMinChars;
                                           }
                                           return null;
                                         },
@@ -238,17 +241,18 @@ class ApplyScreen extends StatelessWidget {
                                     const SizedBox(width: 16),
                                     Expanded(
                                       child: CustomTextFormField(
-                                        label: 'Confirm password',
-                                        hint: 'Confirm password',
+                                        label: local.confirmPassword,
+                                        hint: local.confirmPasswordHint,
                                         controller: cubit.rePasswordController,
                                         obscureText: true,
                                         validator: (v) {
                                           if (v == null || v.isEmpty) {
-                                            return 'Confirm your password';
+                                            return local
+                                                .confirmPasswordRequired;
                                           }
                                           if (v !=
                                               cubit.passwordController.text) {
-                                            return 'Passwords do not match';
+                                            return local.passwordsDoNotMatch;
                                           }
                                           return null;
                                         },
@@ -259,7 +263,7 @@ class ApplyScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      'Gender',
+                                      local.gender,
                                       style: Theme.of(
                                         context,
                                       ).textTheme.titleMedium?.copyWith(
@@ -274,7 +278,7 @@ class ApplyScreen extends StatelessWidget {
                                           groupValue: cubit.gender,
                                           onChanged: cubit.setGender,
                                         ),
-                                        const Text('Female'),
+                                        Text(local.female),
                                       ],
                                     ),
                                     const SizedBox(width: 30),
@@ -285,7 +289,7 @@ class ApplyScreen extends StatelessWidget {
                                           groupValue: cubit.gender,
                                           onChanged: cubit.setGender,
                                         ),
-                                        const Text('Male'),
+                                        Text(local.male),
                                       ],
                                     ),
                                   ],
@@ -299,7 +303,7 @@ class ApplyScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CustomElevatedButton(
-                              text: 'Continue',
+                              text: local.continueBtn,
                               isLoading: state is ApplyLoading,
                               onPressed: () {
                                 if (cubit.formKey.currentState!.validate()) {

@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'dart:convert';
 import '../../../../core/errors/failure.dart';
-import 'package:tarcking_app/core/errors/failure.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
 import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
@@ -15,7 +14,8 @@ import '../api_client/apply_api_client.dart';
 @LazySingleton(as: AuthRemoteDatasource)
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   final ApplyApiClient _apiClient;
-  AuthRemoteDatasourceImpl(this._apiClient);
+  final ApiClient _authApiClient;
+  AuthRemoteDatasourceImpl(this._apiClient, this._authApiClient);
 
   String _extractApiMessage(DioException e) {
     final data = e.response?.data;
@@ -93,7 +93,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   @override
   Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest) async {
     try {
-      final response = await _apiClient.login(loginRequest);
+      final response = await _authApiClient.login(loginRequest);
       return AuthResponse.success(response);
     } on DioException catch (e) {
       String apiMessage = _extractApiMessage(e);
