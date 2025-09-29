@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
-import 'package:tarcking_app/features/auth/forget_password/presentation/viewmodel/forget_password_viewmodel.dart';
-import 'package:tarcking_app/features/auth/forget_password/presentation/viewmodel/states/forget_password_states.dart';
 import 'package:tarcking_app/features/auth/domain/usecases/forget_password_usecase.dart';
+import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/forget_password_viewmodel.dart';
+import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/states/forget_password_states.dart';
 
 import '../../../../../test/widget_test_helpers.mocks.dart';
 

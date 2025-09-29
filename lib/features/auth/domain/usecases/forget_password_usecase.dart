@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
-import 'package:tarcking_app/features/auth/domain/repositories/auth_repo.dart';
 import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
+import '../repo/auth_repo.dart';
 
 @injectable
 class ForgetPasswordUseCase {

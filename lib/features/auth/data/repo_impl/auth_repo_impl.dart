@@ -7,6 +7,9 @@ import '../../domain/entities/apply_entites/vehicle_enitity.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
 import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
+import '../models/forget_password_models/forget_password_request.dart';
+import '../models/forget_password_models/reset_password_request_model.dart';
+import '../models/forget_password_models/verify_code_request_model.dart';
 
 @LazySingleton(as: AuthRepo)
 class AuthRepoImpl implements AuthRepo {
@@ -75,5 +78,29 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest) {
     return _authRemoteDatasource.login(loginRequest);
+  }
+
+  @override
+  Future<AuthResponse<String>> forgetPassword(String email) async {
+    final model = ForgetPasswordRequestModel(email: email);
+    return await _authRemoteDatasource.forgetPassword(model);
+  }
+
+  @override
+  Future<AuthResponse<String>> verifyCode(String code) async {
+    final model = VerifyCodeRequestModel(resetCode: code);
+    return await _authRemoteDatasource.verifyResetPassword(model);
+  }
+
+  @override
+  Future<AuthResponse<String>> resetPassword(
+    String email,
+    String newPassword,
+  ) async {
+    final model = ResetPasswordRequestModel(
+      email: email,
+      newPassword: newPassword,
+    );
+    return await _authRemoteDatasource.resetPassword(model);
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:tarcking_app/features/auth/domain/repositories/auth_repo.dart';
+import 'package:tarcking_app/features/auth/domain/repo/auth_repo.dart';
 import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
 import 'package:tarcking_app/features/auth/domain/usecases/forget_password_usecase.dart';
 import 'package:tarcking_app/features/auth/domain/usecases/reset_password_usecase.dart';

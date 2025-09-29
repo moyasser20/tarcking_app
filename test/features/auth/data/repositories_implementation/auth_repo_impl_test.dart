@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
-import 'package:tarcking_app/features/auth/data/datasource/auth_remote_datasource.dart';
-import 'package:tarcking_app/features/auth/data/repositories_implementation/auth_repo_impl.dart';
+import 'package:tarcking_app/features/auth/data/datasource/auth_remote_data_source.dart';
+import 'package:tarcking_app/features/auth/data/repo_impl/auth_repo_impl.dart';
 import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
 
 import 'auth_repo_impl_test.mocks.dart';

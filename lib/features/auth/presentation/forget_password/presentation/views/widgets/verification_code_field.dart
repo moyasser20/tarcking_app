@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import '../../../../../../core/l10n/translation/app_localizations.dart';
-import '../../../../../../core/theme/app_colors.dart';
+import '../../../../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../../../../core/theme/app_colors.dart';
 import '../../viewmodel/states/verify_code_states.dart';
 import '../../viewmodel/verify_code_viewmodel.dart';
 

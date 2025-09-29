@@ -23,10 +23,21 @@ import '../../features/auth/domain/usecases/apply/apply_driver_usecase.dart'
     as _i712;
 import '../../features/auth/domain/usecases/apply/vehicle_usecase.dart'
     as _i770;
+import '../../features/auth/domain/usecases/forget_password_usecase.dart'
+    as _i948;
 import '../../features/auth/domain/usecases/login_usecase/login_usecase.dart'
     as _i517;
+import '../../features/auth/domain/usecases/reset_password_usecase.dart'
+    as _i474;
+import '../../features/auth/domain/usecases/verify_code_usecase.dart' as _i294;
 import '../../features/auth/presentation/apply/view_model/apply_cubit.dart'
     as _i616;
+import '../../features/auth/presentation/forget_password/presentation/viewmodel/forget_password_viewmodel.dart'
+    as _i530;
+import '../../features/auth/presentation/forget_password/presentation/viewmodel/reset_password_viewmodel.dart'
+    as _i508;
+import '../../features/auth/presentation/forget_password/presentation/viewmodel/verify_code_viewmodel.dart'
+    as _i565;
 import '../../features/auth/presentation/login/cubit/login_cubit.dart' as _i179;
 import '../api/client/api_client.dart' as _i364;
 import 'dio_module/dio_module.dart' as _i484;
@@ -52,6 +63,9 @@ extension GetItInjectableX on _i174.GetIt {
         baseUrl: gh<String>(instanceName: 'baseurl'),
       ),
     );
+    gh.factory<_i508.ResetPasswordCubit>(
+      () => _i508.ResetPasswordCubit(gh<_i364.ApiClient>()),
+    );
     gh.lazySingleton<_i24.AuthRemoteDatasource>(
       () => _i758.AuthRemoteDatasourceImpl(
         gh<_i901.ApplyApiClient>(),
@@ -76,8 +90,26 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i517.LoginUsecase>(
       () => _i517.LoginUsecase(gh<_i170.AuthRepo>()),
     );
+    gh.factory<_i948.ForgetPasswordUseCase>(
+      () => _i948.ForgetPasswordUseCase(gh<_i170.AuthRepo>()),
+    );
+    gh.factory<_i474.ResetPasswordUseCase>(
+      () => _i474.ResetPasswordUseCase(gh<_i170.AuthRepo>()),
+    );
+    gh.factory<_i294.VerifyCodeUseCase>(
+      () => _i294.VerifyCodeUseCase(gh<_i170.AuthRepo>()),
+    );
+    gh.factory<_i530.ForgetPasswordCubit>(
+      () => _i530.ForgetPasswordCubit(gh<_i948.ForgetPasswordUseCase>()),
+    );
     gh.factory<_i179.LoginCubit>(
       () => _i179.LoginCubit(loginUsecase: gh<_i517.LoginUsecase>()),
+    );
+    gh.factory<_i565.VerifyCodeCubit>(
+      () => _i565.VerifyCodeCubit(
+        gh<_i294.VerifyCodeUseCase>(),
+        gh<_i948.ForgetPasswordUseCase>(),
+      ),
     );
     return this;
   }

@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import '../repositories/auth_repo.dart';
+import '../repo/auth_repo.dart';
 import '../responses/auth_response.dart';
 
 @injectable

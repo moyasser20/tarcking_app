@@ -10,7 +10,6 @@ import '../../data/datasource/auth_remote_data_source.dart';
 import '../../data/models/apply_models/driver.dart';
 import '../../data/models/apply_models/vehicles_response.dart';
 import '../api_client/apply_api_client.dart';
-import '../../../../core/errors/failure.dart';
 import '../../data/models/forget_password_models/forget_password_request.dart';
 import '../../data/models/forget_password_models/reset_password_request_model.dart';
 import '../../data/models/forget_password_models/verify_code_request_model.dart';
@@ -106,10 +105,11 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       return AuthResponse.error(e.toString());
     }
   }
+
   @override
   Future<AuthResponse<String>> forgetPassword(
-      ForgetPasswordRequestModel forgetPasswordRequestModel,
-      ) async {
+    ForgetPasswordRequestModel forgetPasswordRequestModel,
+  ) async {
     try {
       final result = await _authApiClient.forgetPassword(
         forgetPasswordRequestModel,
@@ -125,8 +125,8 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
 
   @override
   Future<AuthResponse<String>> resetPassword(
-      ResetPasswordRequestModel resetPasswordRequestModel,
-      ) async {
+    ResetPasswordRequestModel resetPasswordRequestModel,
+  ) async {
     try {
       final result = await _authApiClient.resetPassword(
         resetPasswordRequestModel,
@@ -142,8 +142,8 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
 
   @override
   Future<AuthResponse<String>> verifyResetPassword(
-      VerifyCodeRequestModel verifyCodeRequestModel,
-      ) async {
+    VerifyCodeRequestModel verifyCodeRequestModel,
+  ) async {
     try {
       final result = await _authApiClient.verifyResetCode(
         verifyCodeRequestModel,

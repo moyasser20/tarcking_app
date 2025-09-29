@@ -8,9 +8,6 @@ import 'core/config/di.dart';
 import 'features/localization/data/localization_preference.dart';
 import 'features/localization/localization_controller/localization_cubit.dart';
 import 'features/localization/localization_controller/localization_state.dart';
-import 'core/l10n/translation/app_localizations.dart';
-import 'core/routes/on_generate_route.dart';
-import 'core/routes/route_names.dart';
 import 'core/theme/app_theme.dart';
 
 void main() async {
@@ -55,4 +52,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

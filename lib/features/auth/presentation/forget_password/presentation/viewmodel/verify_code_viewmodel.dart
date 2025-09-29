@@ -1,13 +1,12 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/core/l10n/translation/app_localizations.dart';
-import 'package:tarcking_app/features/auth/forget_password/presentation/viewmodel/states/verify_code_states.dart';
-import '../../../../../core/routes/route_names.dart';
-import '../../../domain/usecases/forget_password_usecase.dart';
-import '../../../domain/usecases/verify_code_usecase.dart';
+import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/states/verify_code_states.dart';
+import '../../../../../../core/routes/route_names.dart';
+import '../../../../domain/usecases/forget_password_usecase.dart';
+import '../../../../domain/usecases/verify_code_usecase.dart';
 
 @injectable
 class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
