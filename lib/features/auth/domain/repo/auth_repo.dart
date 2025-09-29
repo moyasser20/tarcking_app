@@ -22,6 +22,8 @@ abstract class AuthRepo {
   });
 
   Future<List<VehicleEntity>> getVehicles();
-
   Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest);
+  Future<AuthResponse<String>> forgetPassword(String email);
+  Future<AuthResponse<String>> verifyCode(String code);
+  Future<AuthResponse<String>> resetPassword(String email, String newPassword);
 }

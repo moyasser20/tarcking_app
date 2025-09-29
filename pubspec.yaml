@@ -36,6 +36,8 @@ dependencies:
   smooth_page_indicator: ^1.2.1
   country_flags: ^4.0.1
   file_picker: ^8.1.2
+  shared_preferences: ^2.5.3
+  mockito: ^5.4.5
 
 
 
