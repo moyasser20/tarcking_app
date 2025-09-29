@@ -6,6 +6,9 @@ import 'package:tarcking_app/core/api/api_constants/api_constants.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
 import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
 
+import '../../../features/homescreen/data/models/orders_list_response.dart';
+import '../api_constants/end_points.dart';
+
 part 'api_client.g.dart';
 
 @injectable
@@ -13,6 +16,10 @@ part 'api_client.g.dart';
 abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio, {@Named('baseurl') String? baseUrl}) = _ApiClient;
+
   @POST(ApiConstant.login)
   Future<LoginResponse> login(@Body() LoginRequest loginRequest);
+
+  @GET(EndPoints.orders)
+  Future<OrdersListResponse> getOrders();
 }

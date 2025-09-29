@@ -5,6 +5,7 @@ import 'package:tarcking_app/core/widgets/custom_Elevated_Button.dart';
 
 import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../core/routes/route_names.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -55,7 +56,9 @@ class OnBoardingScreen extends StatelessWidget {
             CustomElevatedButton(
               key: const Key('loginButton'),
               text: local.login,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, AppRoutes.login);
+              },
             ),
             const SizedBox(height: 20),
             CustomElevatedButton(

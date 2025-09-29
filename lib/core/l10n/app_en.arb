@@ -51,5 +51,14 @@
   "codeLengthError": "Code must be at least 6 digits",
   "passwordUpdatedSuccessMsg": "Password changed successfully!",
   "nextButton": "Next",
-  "resend": "Resend"
+  "resend": "Resend",
+  "flowerOrder": "Flower Order",
+  "pickupAddress": "Pickup address",
+  "userAddress": "User address",
+  "floweryStore": "Flowery Store",
+  "sampleAddress": "20th st, Sheikh Zayed, Giza",
+  "userNameSample": "Nour Mohamed",
+  "orderPrice": "EGP 3000",
+  "reject": "Reject",
+  "accept": "Accept"
 }

@@ -158,6 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   email: _loginCubit.emailController.text,
                                   password: _loginCubit.passwordController.text,
                                 );
+                                Navigator.pushNamed(context, AppRoutes.homeScreen);
                               }
                             }
                             : null,

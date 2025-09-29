@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
 import '../../features/auth/presentation/apply/view/application_approved_screen.dart';
+import '../../features/homescreen/presentation/view/home_screen.dart';
 import '../../features/onboarding/presentation/view/onboarding_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/config/di.dart';
@@ -28,14 +29,11 @@ class Routes {
               ),
         );
 
+      case AppRoutes.homeScreen:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+
       default:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
-        return MaterialPageRoute(
-          builder:
-              (_) => const Scaffold(
-                body: Center(child: Text('404 - Page Not Found')),
-              ),
-        );
     }
   }
 }

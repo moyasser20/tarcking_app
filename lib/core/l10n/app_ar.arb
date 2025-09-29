@@ -51,5 +51,14 @@
   "nextButton": "التالي",
   "resend": "إعادة إرسال",
   "passwordUpdatedSuccessMsg": "تم تغير كلمة المرور بنجاح!",
-  "cancel": "إلغاء"
+  "cancel": "إلغاء",
+  "flowerOrder": "طلب ورد",
+  "pickupAddress": "عنوان الاستلام",
+  "userAddress": "عنوان المستخدم",
+  "floweryStore": "متجر فلاوري",
+  "sampleAddress": "شارع 20، الشيخ زايد، الجيزة",
+  "userNameSample": "نور محمد",
+  "orderPrice": "٣٠٠٠ جنيه",
+  "reject": "رفض",
+  "accept": "قبول"
 }
