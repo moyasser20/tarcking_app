@@ -9,7 +9,7 @@ class CustomTextFormField extends StatefulWidget {
   final String? label;
   final String? hint;
   final String? suffixText;
-  final bool obscureText; // formerly isPassword
+  final bool obscureText;
   final TextInputType keyboardType;
   final bool enabled;
   final bool readonly;
