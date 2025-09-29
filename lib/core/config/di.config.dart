@@ -12,19 +12,15 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../../features/auth/api/api_client/apply_api_client.dart' as _i901;
 import '../../features/auth/api/data_source_impl/auth_remote_data_source_impl.dart'
     as _i758;
 import '../../features/auth/data/datasource/auth_remote_data_source.dart'
     as _i24;
 import '../../features/auth/data/repo_impl/auth_repo_impl.dart' as _i279;
 import '../../features/auth/domain/repo/auth_repo.dart' as _i170;
-import '../../features/auth/domain/usecases/apply/apply_driver_usecase.dart'
-    as _i712;
-import '../../features/auth/domain/usecases/apply/vehicle_usecase.dart'
-    as _i770;
-import '../../features/auth/presentation/apply/view_model/apply_cubit.dart'
-    as _i616;
+import '../../features/auth/domain/usecases/login_usecase/login_usecase.dart'
+    as _i517;
+import '../../features/auth/presentation/login/cubit/login_cubit.dart' as _i179;
 import '../api/client/api_client.dart' as _i364;
 import 'dio_module/dio_module.dart' as _i484;
 
@@ -40,32 +36,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.Dio>(
       () => dioModule.dio(gh<String>(instanceName: 'baseurl')),
     );
-    gh.lazySingleton<_i901.ApplyApiClient>(
-      () => _i901.ApplyApiClient(gh<_i361.Dio>()),
-    );
-    gh.lazySingleton<_i24.AuthRemoteDatasource>(
-      () => _i758.AuthRemoteDatasourceImpl(gh<_i901.ApplyApiClient>()),
-    );
     gh.factory<_i364.ApiClient>(
       () => _i364.ApiClient(
         gh<_i361.Dio>(),
         baseUrl: gh<String>(instanceName: 'baseurl'),
       ),
     );
-    gh.lazySingleton<_i170.AuthRepo>(
-      () => _i279.AuthRepoImpl(gh<_i24.AuthRemoteDatasource>()),
+    gh.lazySingleton<_i24.AuthRemoteDataSource>(
+      () => _i758.AuthRemoteDataSourceImpl(gh<_i364.ApiClient>()),
     );
-    gh.lazySingleton<_i712.ApplyDriverUseCase>(
-      () => _i712.ApplyDriverUseCase(gh<_i170.AuthRepo>()),
+    gh.factory<_i170.AuthRepo>(
+      () => _i279.AuthRepoImpl(gh<_i24.AuthRemoteDataSource>()),
     );
-    gh.lazySingleton<_i770.GetVehiclesUseCase>(
-      () => _i770.GetVehiclesUseCase(gh<_i170.AuthRepo>()),
+    gh.factory<_i517.LoginUsecase>(
+      () => _i517.LoginUsecase(gh<_i170.AuthRepo>()),
     );
-    gh.factory<_i616.ApplyCubit>(
-      () => _i616.ApplyCubit(
-        gh<_i712.ApplyDriverUseCase>(),
-        gh<_i770.GetVehiclesUseCase>(),
-      ),
+    gh.factory<_i179.LoginCubit>(
+      () => _i179.LoginCubit(loginUsecase: gh<_i517.LoginUsecase>()),
     );
     return this;
   }

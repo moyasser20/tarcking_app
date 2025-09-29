@@ -1,5 +1,8 @@
 import '../entities/apply_entites/driver_entity.dart';
 import '../entities/apply_entites/vehicle_enitity.dart';
+import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
+import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
+import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
 
 abstract class AuthRepo {
   Future<DriverEntity> applyDriver({
@@ -17,5 +20,8 @@ abstract class AuthRepo {
     required String gender,
     required String phone,
   });
+
   Future<List<VehicleEntity>> getVehicles();
+
+  Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest);
 }

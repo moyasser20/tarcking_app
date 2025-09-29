@@ -2,6 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'dart:convert';
 import '../../../../core/errors/failure.dart';
+import 'package:tarcking_app/core/errors/failure.dart';
+import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
+import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
+import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
+import '../../../../core/api/client/api_client.dart';
 import '../../data/datasource/auth_remote_data_source.dart';
 import '../../data/models/apply_models/driver.dart';
 import '../../data/models/apply_models/vehicles_response.dart';
@@ -82,6 +87,19 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       throw Exception(_extractApiMessage(e));
     } catch (e) {
       throw Exception(e.toString());
+    }
+  }
+
+  @override
+  Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest) async {
+    try {
+      final response = await _apiClient.login(loginRequest);
+      return AuthResponse.success(response);
+    } on DioException catch (e) {
+      String apiMessage = _extractApiMessage(e);
+      return AuthResponse.error(apiMessage);
+    } catch (e) {
+      return AuthResponse.error(e.toString());
     }
   }
 }

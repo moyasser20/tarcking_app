@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import '../models/apply_models/driver.dart';
 import '../models/apply_models/vehicles_response.dart';
+import 'package:tarcking_app/features/auth/data/models/login/login_request.dart';
+import 'package:tarcking_app/features/auth/data/models/login/login_response.dart';
+import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart';
 
 abstract class AuthRemoteDatasource {
   Future<Driver> applyDriver({
@@ -20,5 +23,6 @@ abstract class AuthRemoteDatasource {
   });
 
   Future<VehiclesResponse> getVehicles();
-  // Future<String> logout();
+
+  Future<AuthResponse<LoginResponse>> login(LoginRequest loginRequest);
 }
