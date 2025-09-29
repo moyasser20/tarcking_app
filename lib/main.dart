@@ -3,15 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/l10n/translation/app_localizations.dart'; // Add this import
 import 'package:tarcking_app/core/routes/on_generate_route.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
-
+import 'package:tarcking_app/core/contants/secure_storage.dart';
 import 'core/config/di.dart';
 import 'features/localization/data/localization_preference.dart';
 import 'features/localization/localization_controller/localization_cubit.dart';
 import 'features/localization/localization_controller/localization_state.dart';
+import 'core/l10n/translation/app_localizations.dart';
+import 'core/routes/on_generate_route.dart';
+import 'core/routes/route_names.dart';
+import 'core/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
+  await SecureStorage.initialize();
   String languageValue = await LocalizationPreference.getLanguage();
   runApp(
     MultiBlocProvider(
@@ -38,7 +43,8 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Tracking App',
-          initialRoute: AppRoutes.forgetPassword,
+          theme: AppTheme.lightTheme,
+          initialRoute: AppRoutes.initial,
           onGenerateRoute: Routes.onGenerateRoute,
           supportedLocales: AppLocalizations.supportedLocales,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -49,3 +55,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

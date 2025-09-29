@@ -9,10 +9,22 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'تطبيق متجر الزهور الإلكتروني';
+  String get welcomeTo => 'مرحباً بك في';
+
+  @override
+  String get floweryRiderApp => 'تطبيق سائق الزهور';
+
+  @override
+  String get appName => 'تطبيق فلاوري للتوصيل';
 
   @override
   String get login => 'تسجيل الدخول';
+
+  @override
+  String get applyNow => 'قدّم الآن';
+
+  @override
+  String get versionText => 'الإصدار 6.3.0 - (446)';
 
   @override
   String get emailLabel => 'البريد الإلكتروني';
@@ -61,19 +73,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get home => 'الرئيسية';
 
   @override
+  String get orders => 'الطلبات';
+
+  @override
   String get profile => 'الملف الشخصي';
-
-  @override
-  String get settings => 'الإعدادات';
-
-  @override
-  String get logout => 'خروج';
-
-  @override
-  String get categories => 'التصنيفات';
-
-  @override
-  String get cart => 'عربة التسوق';
 
   @override
   String get password => 'كلمة المرور';
@@ -151,224 +154,17 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'كلمة المرور غير صحيحة، حاول مرة أخرى';
 
   @override
-  String get notificationCount => '٣';
+  String get applicationSub => 'تم إرسال طلبك!';
 
   @override
-  String get myOrders => 'طلباتي';
+  String get applicationSubMsg =>
+      'شكرًا لتقديم طلبك،\n سنقوم بمراجعته والرد عليك قريبًا.';
 
   @override
-  String get savedAddress => 'العناوين المحفوظة';
+  String get codeLengthError => 'يجب أن بكون ٦ على الأقل';
 
   @override
-  String get language => 'اللغة';
-
-  @override
-  String get languageChanged => 'العربية';
-
-  @override
-  String get aboutUs => 'معلومات عنا';
-
-  @override
-  String get notification => 'إشعارات';
-
-  @override
-  String get termsConditions => 'الشروط والأحكام';
-
-  @override
-  String get error => 'خطأ:';
-
-  @override
-  String get profileTitle => 'تعديل الملف الشخصي';
-
-  @override
-  String get usernameLabel => 'اسم المستخدم';
-
-  @override
-  String get firstNameLabel => 'الاسم الأول';
-
-  @override
-  String get lastNameLabel => 'اسم العائلة';
-
-  @override
-  String get passwordChangeText => 'تغيير';
-
-  @override
-  String get phoneNumberLabel => 'رقم الهاتف';
-
-  @override
-  String get updateButton => 'تحديث';
-
-  @override
-  String get errorText => 'خطأ';
-
-  @override
-  String get profileUpdatedSuccessMsg => 'تم تغيير الملف الشخصي بنجاح!';
-
-  @override
-  String get addToCartBtn => 'أضف إلى السلة';
-
-  @override
-  String get mostSellingTitle => 'الأكثر مبيعًا';
-
-  @override
-  String get mostSellingSubTitle => 'ازدهر مع منتجاتنا الأكثر مبيعًا';
-
-  @override
-  String get occasionsTitle => 'المناسبات';
-
-  @override
-  String get occasionsSubTitle => 'احتفل مع أفضل زهورنا مبيعًا';
-
-  @override
-  String get versionInfo => 'الإصدار 6.3.0 - (446)';
-
-  @override
-  String get deliverTo => 'توصيل إلى';
-
-  @override
-  String get subTotal => 'المجموع الفرعي';
-
-  @override
-  String get deliveryFee => 'رسوم التوصيل';
-
-  @override
-  String get total => 'الإجمالي';
-
-  @override
-  String get checkout => 'الدفع';
-
-  @override
-  String get yourCartIsEmpty => 'سلة التسوق فارغة';
-
-  @override
-  String get addItemsToGetStarted => 'أضف منتجات للبدء';
-
-  @override
-  String get continueShopping => 'مواصلة التسوق';
-
-  @override
-  String get removeItem => 'إزالة المنتج';
-
-  @override
-  String get updateQuantity => 'تحديث الكمية';
-
-  @override
-  String get itemAddedToCart => 'تم إضافة المنتج إلى السلة';
-
-  @override
-  String get itemRemovedFromCart => 'تم إزالة المنتج من السلة';
-
-  @override
-  String get quantityUpdated => 'تم تحديث الكمية';
-
-  @override
-  String get cartLoading => 'جاري تحميل السلة...';
-
-  @override
-  String get cartError => 'خطأ في تحميل السلة';
-
-  @override
-  String get proceedToCheckout => 'المتابعة إلى الدفع';
-
-  @override
-  String get cartItems => 'عناصر السلة';
-
-  @override
-  String get price => 'السعر';
-
-  @override
-  String get quantity => 'الكمية';
-
-  @override
-  String get shoppingCart => 'سلة التسوق';
-
-  @override
-  String get emptyCartMessage =>
-      'سلة التسوق الخاصة بك فارغة. ابدأ بإضافة بعض الزهور الجميلة!';
-
-  @override
-  String get viewProducts => 'عرض المنتجات';
-
-  @override
-  String get cartSummary => 'ملخص السلة';
-
-  @override
-  String get applyCoupon => 'تطبيق الكوبون';
-
-  @override
-  String get couponCode => 'كود الكوبون';
-
-  @override
-  String get apply => 'تطبيق';
-
-  @override
-  String get remove => 'إزالة';
-
-  @override
-  String get secureCheckout => 'دفع آمن';
-
-  @override
-  String get moneyBackGuarantee => 'ضمان استعادة الأموال خلال 30 يومًا';
-
-  @override
-  String get orderSummary => 'ملخص الطلب';
-
-  @override
-  String get taxes => 'الضرائب';
-
-  @override
-  String get shipping => 'الشحن';
-
-  @override
-  String get discount => 'الخصم';
-
-  @override
-  String get placeOrder => 'تقديم الطلب';
-
-  @override
-  String get egp => 'جنيهاً';
-
-  @override
-  String get active => 'نشط';
-
-  @override
-  String get completed => 'مكتمل';
-
-  @override
-  String get trackOrder => 'تتبع الطلب';
-
-  @override
-  String get recorder => 'إعادة الطلب';
-
-  @override
-  String get clear => 'مسح';
-
-  @override
-  String get explore => 'استكشاف';
-
-  @override
-  String get bestSeller => 'الأكثر مبيعًا';
-
-  @override
-  String get occasion => 'مناسبة';
-
-  @override
-  String get noAboutInfoFound => 'لم يتم العثور على معلومات';
-
-  @override
-  String get notificationDelete => 'تم حذف الإشعار';
-
-  @override
-  String get noTermsFound => 'لم يتم العثور على شروط';
-
-  @override
-  String get errorLoadingTerms => 'خطأ في تحميل الشروط';
-
-  @override
-  String get viewAll => 'عرض الكل';
-
-  @override
-  String get search => 'بحث';
+  String get passwordUpdatedSuccessMsg => 'تم تغير كلمة المرور بنجاح!';
 
   @override
   String get nextButton => 'التالي';
@@ -377,100 +173,67 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resend => 'إعادة إرسال';
 
   @override
-  String get signup_title => 'إنشاء حساب';
+  String get applyTitle => 'تقديم';
 
   @override
-  String get loading => 'جارٍ التحميل';
+  String get welcome => 'مرحباً!!';
 
   @override
-  String get first_name => 'الاسم الأول';
+  String get joinTeam => 'هل تريد أن تكون عامل توصيل؟\nانضم إلى فريقنا';
 
   @override
-  String get first_name_required => 'الاسم الأول مطلوب';
+  String get country => 'الدولة';
 
   @override
-  String get last_name => 'اسم العائلة';
+  String get firstLegalName => 'الاسم الأول القانوني';
 
   @override
-  String get last_name_required => 'اسم العائلة مطلوب';
+  String get firstLegalNameHint => 'أدخل الاسم الأول';
+
+  @override
+  String get firstNameRequired => 'الاسم الأول مطلوب';
+
+  @override
+  String get secondLegalName => 'الاسم الثاني القانوني';
+
+  @override
+  String get secondLegalNameHint => 'أدخل الاسم الثاني';
+
+  @override
+  String get secondNameRequired => 'الاسم الثاني مطلوب';
+
+  @override
+  String get vehicleType => 'نوع المركبة';
+
+  @override
+  String get noVehiclesAvailable => 'لا توجد مركبات متاحة';
+
+  @override
+  String get vehicleNumber => 'رقم المركبة';
+
+  @override
+  String get vehicleNumberHint => 'أدخل رقم المركبة';
+
+  @override
+  String get vehicleNumberRequired => 'رقم المركبة مطلوب';
+
+  @override
+  String get vehicleLicense => 'رخصة المركبة';
+
+  @override
+  String get vehicleLicenseHint => 'قم برفع صورة الرخصة';
+
+  @override
+  String get vehicleLicenseRequired => 'صورة رخصة المركبة مطلوبة';
 
   @override
   String get email => 'البريد الإلكتروني';
 
   @override
-  String get enter_email => 'أدخل بريدك الإلكتروني';
+  String get emailHint => 'أدخل بريدك الإلكتروني';
 
   @override
-  String get confirm_password => 'تأكيد كلمة المرور';
-
-  @override
-  String get password_mismatch => 'كلمة المرور غير متطابقة';
-
-  @override
-  String get phone_number => 'رقم الهاتف';
-
-  @override
-  String get enter_phone_number => 'أدخل رقم الهاتف';
-
-  @override
-  String get phone_number_required => 'رقم الهاتف مطلوب';
-
-  @override
-  String get gender => 'النوع';
-
-  @override
-  String get male => 'ذكر';
-
-  @override
-  String get female => 'أنثى';
-
-  @override
-  String get gender_required => 'اختيار النوع مطلوب';
-
-  @override
-  String get terms_prefix => 'بإنشاء حساب، فإنك توافق على ';
-
-  @override
-  String get terms_conditions => 'الشروط والأحكام';
-
-  @override
-  String get signup_button => 'إنشاء حساب';
-
-  @override
-  String get already_have_account => 'هل لديك حساب بالفعل؟';
-
-  @override
-  String get signup_success => 'تم إنشاء الحساب بنجاح';
-
-  @override
-  String get loginRequiredTitle => 'تسجيل الدخول مطلوب';
-
-  @override
-  String get loginRequiredMessage => 'يجب تسجيل الدخول للوصول إلى هذه الميزة.';
-
-  @override
-  String get changeLanguage => 'تغير اللغه';
-
-  @override
-  String get address => 'عنوان';
-
-  @override
-  String get addAddress => 'إضافة عنوان';
-
-  @override
-  String get savedAddresses => 'العناوين المحفوظة';
-
-  @override
-  String get selectLocation => 'حدد الموقع على الخريطة';
-
-  @override
-  String get addressField => 'العنوان';
-
-  @override
-  String get addressHint => 'أدخل العنوان';
-
-  @override
-  String get addressRequired => 'العنوان مطلوب';
+  String get emailRequired => 'البريد الإلكتروني مطلوب';
 
   @override
   String get phoneNumber => 'رقم الهاتف';
@@ -482,210 +245,50 @@ class AppLocalizationsAr extends AppLocalizations {
   String get phoneRequired => 'رقم الهاتف مطلوب';
 
   @override
-  String get recipientName => 'اسم المستلم';
+  String get idNumber => 'الرقم القومي';
 
   @override
-  String get recipientHint => 'أدخل اسم المستلم';
+  String get idNumberHint => 'أدخل الرقم القومي';
 
   @override
-  String get recipientRequired => 'اسم المستلم مطلوب';
+  String get idNumberRequired => 'الرقم القومي مطلوب';
 
   @override
-  String get city => 'المدينة';
+  String get idImage => 'صورة الهوية';
 
   @override
-  String get cityHint => 'القاهرة';
+  String get idImageHint => 'قم برفع صورة الهوية';
 
   @override
-  String get cityRequired => 'المدينة مطلوبة';
+  String get idImageRequired => 'صورة الهوية مطلوبة';
 
   @override
-  String get area => 'المنطقة';
+  String get passwordHint => 'أدخل كلمة المرور';
 
   @override
-  String get areaHint => 'أكتوبر';
+  String get passwordRequired => 'كلمة المرور مطلوبة';
 
   @override
-  String get areaRequired => 'المنطقة مطلوبة';
+  String get passwordMinChars => '8 أحرف على الأقل';
 
   @override
-  String get saveAddress => 'حفظ العنوان';
+  String get confirmPasswordHint => 'أدخل كلمة المرور مرة أخرى';
 
   @override
-  String get selectLocationError => 'يرجى تحديد موقع على الخريطة';
+  String get confirmPasswordRequired => 'تأكيد كلمة المرور مطلوب';
 
   @override
-  String get noAddresses => 'لا توجد عناوين محفوظة';
+  String get passwordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
 
   @override
-  String get addNewAddress => 'إضافة عنوان جديد';
+  String get gender => 'الجنس';
 
   @override
-  String get errorLoading => 'خطأ في تحميل العناوين';
+  String get female => 'أنثى';
 
   @override
-  String get retry => 'إعادة المحاولة';
+  String get male => 'ذكر';
 
   @override
-  String get deleteAddress => 'حذف العنوان';
-
-  @override
-  String get deleteConfirmation => 'هل أنت متأكد أنك تريد حذف هذا العنوان؟';
-
-  @override
-  String get delete => 'حذف';
-
-  @override
-  String get required => 'الإذن بالموقع مطلوب';
-
-  @override
-  String get grant => 'منح الإذن';
-
-  @override
-  String get permanentlyDenied => 'تم رفض إذن الموقع بشكل دائم';
-
-  @override
-  String get openSettings => 'فتح الإعدادات';
-
-  @override
-  String get serviceDisabled => 'خدمات الموقع معطلة';
-
-  @override
-  String get enableLocation => 'تمكين الموقع';
-
-  @override
-  String get selected => 'المحدد: ';
-
-  @override
-  String get locationServicesDisabled => 'خدمات الموقع معطلة';
-
-  @override
-  String get permissionDenied => 'تم رفض إذن الموقع';
-
-  @override
-  String get permissionPermanentlyDenied =>
-      'تم رفض إذن الموقع بشكل دائم. يرجى تمكينه من الإعدادات.';
-
-  @override
-  String get errorGettingLocation => 'خطأ في الحصول على الموقع: ';
-
-  @override
-  String get enterAddress => 'ادخل العنوان';
-
-  @override
-  String get enterPhoneNumber => 'ادخل رقم الهاتف';
-
-  @override
-  String get updateAddress => 'تحديث العنوان';
-
-  @override
-  String get editAddress => 'تعديل العنوان';
-
-  @override
-  String get swipeDownToRefresh => 'اسحب لأسفل لإعادة التحميل';
-
-  @override
-  String get selectAnAddress => 'اختر عنواناً';
-
-  @override
-  String get errorLoadingAddress => 'خطأ حاول مرةاخرى';
-
-  @override
-  String get noProductsForCategory => 'لا توجد منتجات لهذه الفئة';
-
-  @override
-  String get noProductsForOccasion => 'لا توجد منتجات لهذه المناسبة';
-
-  @override
-  String get english => 'الإنجليزية';
-
-  @override
-  String get arabic => 'العربية';
-
-  @override
-  String get deliveryAddress => 'عنوان التوصيل';
-
-  @override
-  String get addNew => 'إضافة جديد';
-
-  @override
-  String get deliveryTime => 'وقت التوصيل';
-
-  @override
-  String get schedule => 'جدولة';
-
-  @override
-  String get instant => 'فوري';
-
-  @override
-  String get arrivesBy => ' سيصل في 03 سبتمبر 2024، الساعة 11:00 صباحًا';
-
-  @override
-  String get itIsAGift => 'إنها هدية';
-
-  @override
-  String get enterName => 'أدخل الاسم';
-
-  @override
-  String get name => 'الاسم';
-
-  @override
-  String get enterPhone => 'أدخل رقم الهاتف';
-
-  @override
-  String get completePayment => 'إتمام الدفع';
-
-  @override
-  String get cashOnDelivery => 'الدفع عند الاستلام';
-
-  @override
-  String get creditCard => 'بطاقة ائتمان';
-
-  @override
-  String get placing => 'جارٍ التنفيذ...';
-
-  @override
-  String get clearCartTitle => 'مسح السلة';
-
-  @override
-  String get clearCartMessage => 'هل أنت متأكد أنك تريد مسح كل العناصر؟';
-
-  @override
-  String get addressChanged => 'تم تغيير عنوان التوصيل بنجاح';
-
-  @override
-  String get warning => 'تحذير';
-
-  @override
-  String get success => 'تمت بنجاح';
-
-  @override
-  String get productAddedToCart => 'تم إضافة المنتج بنجاح';
-
-  @override
-  String get thisItemIsSoldOut => 'لقد نفذت الكمية من هذا المنتج';
-
-  @override
-  String get outOfStock => 'نفذ من الخزون';
-
-  @override
-  String get addressAddedSuccessfully => 'تم إضافة العنوان بنجاح';
-
-  @override
-  String get addressUpdatedSuccessfully => 'تم تحديث العنوان بنجاح';
-
-  @override
-  String get addressDeletedSuccessfully => 'تم إلغاء العنوان بنجاح';
-
-  @override
-  String get cartClearedSuccessfully => 'تم مسح عربة التسوق بالكامل';
-
-  @override
-  String get profilePhotoUpdatedSuccessfully => 'تم تحديث صورة الهوية بنجاح';
-
-  @override
-  String get passwordUpdatedSuccessMsg => 'تم تغير كلمة المرور بنجاح!';
-
-  @override
-  String get codeLengthError => 'يجب أن بكون ٦ على الأقل';
+  String get continueBtn => 'متابعة';
 }

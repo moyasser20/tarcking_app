@@ -9,10 +9,22 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appName => 'Flower E-Commerce App';
+  String get welcomeTo => 'Welcome to';
+
+  @override
+  String get floweryRiderApp => 'Flowery Rider App';
+
+  @override
+  String get appName => 'Flowery Rider App';
 
   @override
   String get login => 'Login';
+
+  @override
+  String get applyNow => 'Apply Now';
+
+  @override
+  String get versionText => 'v 6.3.0 - (446)';
 
   @override
   String get emailLabel => 'Email';
@@ -61,19 +73,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get home => 'Home';
 
   @override
+  String get orders => 'Orders';
+
+  @override
   String get profile => 'Profile';
-
-  @override
-  String get settings => 'Settings';
-
-  @override
-  String get logout => 'Logout';
-
-  @override
-  String get categories => 'Categories';
-
-  @override
-  String get cart => 'Cart';
 
   @override
   String get password => 'Password';
@@ -151,224 +154,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get wrongPasswordErrorMsg => 'Wrong password, try again';
 
   @override
-  String get notificationCount => '3';
+  String get applicationSub => 'Your application has been\n submitted!';
 
   @override
-  String get myOrders => 'My Orders';
+  String get applicationSubMsg =>
+      'Thank you for providing your application,\n we will review your application and will get back to you soon.';
 
   @override
-  String get savedAddress => 'Saved Address';
+  String get codeLengthError => 'Code must be at least 6 digits';
 
   @override
-  String get language => 'Language';
-
-  @override
-  String get languageChanged => 'English';
-
-  @override
-  String get aboutUs => 'About Us';
-
-  @override
-  String get notification => 'Notification';
-
-  @override
-  String get termsConditions => 'Terms & Conditions';
-
-  @override
-  String get error => 'Error:';
-
-  @override
-  String get profileTitle => 'Edit Profile';
-
-  @override
-  String get usernameLabel => 'User Name';
-
-  @override
-  String get firstNameLabel => 'First Name';
-
-  @override
-  String get lastNameLabel => 'Last Name';
-
-  @override
-  String get passwordChangeText => 'Change';
-
-  @override
-  String get phoneNumberLabel => 'Phone Number';
-
-  @override
-  String get updateButton => 'Update';
-
-  @override
-  String get errorText => 'Error';
-
-  @override
-  String get profileUpdatedSuccessMsg => 'Profile updated successfully!';
-
-  @override
-  String get addToCartBtn => 'Add to cart';
-
-  @override
-  String get mostSellingTitle => 'Best Seller';
-
-  @override
-  String get mostSellingSubTitle => 'Bloom with our best-selling products';
-
-  @override
-  String get occasionsTitle => 'Occasions';
-
-  @override
-  String get occasionsSubTitle => 'Celebrate with our top-selling flowers';
-
-  @override
-  String get versionInfo => 'v 6.3.0 - (446)';
-
-  @override
-  String get deliverTo => 'Deliver to';
-
-  @override
-  String get subTotal => 'Sub Total';
-
-  @override
-  String get deliveryFee => 'Delivery Fee';
-
-  @override
-  String get total => 'Total';
-
-  @override
-  String get checkout => 'Checkout';
-
-  @override
-  String get yourCartIsEmpty => 'Your cart is empty';
-
-  @override
-  String get addItemsToGetStarted => 'Add items to get started';
-
-  @override
-  String get continueShopping => 'Continue Shopping';
-
-  @override
-  String get removeItem => 'Remove item';
-
-  @override
-  String get updateQuantity => 'Update quantity';
-
-  @override
-  String get itemAddedToCart => 'Item added to cart';
-
-  @override
-  String get itemRemovedFromCart => 'Item removed from cart';
-
-  @override
-  String get quantityUpdated => 'Quantity updated';
-
-  @override
-  String get cartLoading => 'Loading cart...';
-
-  @override
-  String get cartError => 'Error loading cart';
-
-  @override
-  String get proceedToCheckout => 'Proceed to Checkout';
-
-  @override
-  String get cartItems => 'Cart Items';
-
-  @override
-  String get price => 'Price';
-
-  @override
-  String get quantity => 'Quantity';
-
-  @override
-  String get shoppingCart => 'Shopping Cart';
-
-  @override
-  String get emptyCartMessage =>
-      'Your shopping cart is empty. Start adding some beautiful flowers!';
-
-  @override
-  String get viewProducts => 'View Products';
-
-  @override
-  String get cartSummary => 'Cart Summary';
-
-  @override
-  String get applyCoupon => 'Apply Coupon';
-
-  @override
-  String get couponCode => 'Coupon Code';
-
-  @override
-  String get apply => 'Apply';
-
-  @override
-  String get remove => 'Remove';
-
-  @override
-  String get secureCheckout => 'Secure Checkout';
-
-  @override
-  String get moneyBackGuarantee => '30-Day Money Back Guarantee';
-
-  @override
-  String get orderSummary => 'Order Summary';
-
-  @override
-  String get taxes => 'Taxes';
-
-  @override
-  String get shipping => 'Shipping';
-
-  @override
-  String get discount => 'Discount';
-
-  @override
-  String get placeOrder => 'Place Order';
-
-  @override
-  String get egp => 'EGP';
-
-  @override
-  String get active => 'Active';
-
-  @override
-  String get completed => 'Completed';
-
-  @override
-  String get trackOrder => 'Track Order';
-
-  @override
-  String get recorder => 'Reorder';
-
-  @override
-  String get clear => 'Clear';
-
-  @override
-  String get explore => 'Explore';
-
-  @override
-  String get bestSeller => 'Best Seller';
-
-  @override
-  String get occasion => 'Occasion';
-
-  @override
-  String get noAboutInfoFound => 'No about info found';
-
-  @override
-  String get notificationDelete => 'Notification deleted';
-
-  @override
-  String get noTermsFound => 'No terms found';
-
-  @override
-  String get errorLoadingTerms => 'Error loading terms';
-
-  @override
-  String get viewAll => 'View All';
-
-  @override
-  String get search => 'Search';
+  String get passwordUpdatedSuccessMsg => 'Password changed successfully!';
 
   @override
   String get nextButton => 'Next';
@@ -377,318 +173,122 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resend => 'Resend';
 
   @override
-  String get signup_title => 'Sign up';
+  String get applyTitle => 'Apply';
 
   @override
-  String get loading => 'Loading';
+  String get welcome => 'Welcome!!';
 
   @override
-  String get first_name => 'First name';
+  String get joinTeam => 'You want to be a delivery man?\nJoin our team';
 
   @override
-  String get first_name_required => 'First name is required';
+  String get country => 'Country';
 
   @override
-  String get last_name => 'Last name';
+  String get firstLegalName => 'First legal name';
 
   @override
-  String get last_name_required => 'Last name is required';
+  String get firstLegalNameHint => 'Enter first legal name';
+
+  @override
+  String get firstNameRequired => 'First name is required';
+
+  @override
+  String get secondLegalName => 'Second legal name';
+
+  @override
+  String get secondLegalNameHint => 'Enter second legal name';
+
+  @override
+  String get secondNameRequired => 'Second name is required';
+
+  @override
+  String get vehicleType => 'Vehicle type';
+
+  @override
+  String get noVehiclesAvailable => 'No vehicles available';
+
+  @override
+  String get vehicleNumber => 'Vehicle number';
+
+  @override
+  String get vehicleNumberHint => 'Enter vehicle number';
+
+  @override
+  String get vehicleNumberRequired => 'Vehicle number is required';
+
+  @override
+  String get vehicleLicense => 'Vehicle license';
+
+  @override
+  String get vehicleLicenseHint => 'Upload license photo';
+
+  @override
+  String get vehicleLicenseRequired => 'Vehicle license image is required';
 
   @override
   String get email => 'Email';
 
   @override
-  String get enter_email => 'Enter your email';
+  String get emailHint => 'Enter your email';
 
   @override
-  String get confirm_password => 'Confirm Password';
-
-  @override
-  String get password_mismatch => 'Password does not match';
-
-  @override
-  String get phone_number => 'Phone number';
-
-  @override
-  String get enter_phone_number => 'Enter phone number';
-
-  @override
-  String get phone_number_required => 'Phone number is required';
-
-  @override
-  String get gender => 'Gender';
-
-  @override
-  String get male => 'Male';
-
-  @override
-  String get female => 'Female';
-
-  @override
-  String get gender_required => 'Gender is required';
-
-  @override
-  String get terms_prefix => 'Creating an account, you agree to our ';
-
-  @override
-  String get terms_conditions => 'Terms & Conditions';
-
-  @override
-  String get signup_button => 'Sign up';
-
-  @override
-  String get already_have_account => 'Already have an account?';
-
-  @override
-  String get signup_success => 'Account created successfully';
-
-  @override
-  String get loginRequiredTitle => 'Login Required';
-
-  @override
-  String get loginRequiredMessage =>
-      'You need to login to access this feature.';
-
-  @override
-  String get changeLanguage => 'Change Language';
-
-  @override
-  String get address => 'Address';
-
-  @override
-  String get addAddress => 'Add Address';
-
-  @override
-  String get savedAddresses => 'Saved Addresses';
-
-  @override
-  String get selectLocation => 'Select Location on Map';
-
-  @override
-  String get addressField => 'Address';
-
-  @override
-  String get addressHint => 'Enter the address';
-
-  @override
-  String get addressRequired => 'Address is required';
+  String get emailRequired => 'Email is required';
 
   @override
   String get phoneNumber => 'Phone number';
 
   @override
-  String get phoneHint => 'Enter the phone number';
+  String get phoneHint => 'Enter phone number';
 
   @override
-  String get phoneRequired => 'Phone number is required';
+  String get phoneRequired => 'Phone is required';
 
   @override
-  String get recipientName => 'Recipient name';
+  String get idNumber => 'ID number';
 
   @override
-  String get recipientHint => 'Enter the recipient name';
+  String get idNumberHint => 'Enter national ID number';
 
   @override
-  String get recipientRequired => 'Recipient name is required';
+  String get idNumberRequired => 'ID number is required';
 
   @override
-  String get city => 'City';
+  String get idImage => 'ID image';
 
   @override
-  String get cityHint => 'Cairo';
+  String get idImageHint => 'Upload ID image';
 
   @override
-  String get cityRequired => 'City is required';
+  String get idImageRequired => 'ID image is required';
 
   @override
-  String get area => 'Area';
+  String get passwordHint => 'Enter password';
 
   @override
-  String get areaHint => 'October';
+  String get passwordRequired => 'Password is required';
 
   @override
-  String get areaRequired => 'Area is required';
+  String get passwordMinChars => 'Minimum 8 characters';
 
   @override
-  String get saveAddress => 'Save Address';
+  String get confirmPasswordHint => 'Confirm password';
 
   @override
-  String get selectLocationError => 'Please select a location on the map';
+  String get confirmPasswordRequired => 'Confirm your password';
 
   @override
-  String get noAddresses => 'No addresses saved';
+  String get passwordsDoNotMatch => 'Passwords do not match';
 
   @override
-  String get addNewAddress => 'Add New Address';
+  String get gender => 'Gender';
 
   @override
-  String get errorLoading => 'Error loading addresses';
+  String get female => 'Female';
 
   @override
-  String get retry => 'Retry';
+  String get male => 'Male';
 
   @override
-  String get deleteAddress => 'Delete Address';
-
-  @override
-  String get deleteConfirmation =>
-      'Are you sure you want to delete this address?';
-
-  @override
-  String get delete => 'Delete';
-
-  @override
-  String get required => 'Location permission required';
-
-  @override
-  String get grant => 'Grant Permission';
-
-  @override
-  String get permanentlyDenied => 'Location permission permanently denied';
-
-  @override
-  String get openSettings => 'Open Settings';
-
-  @override
-  String get serviceDisabled => 'Location services are disabled';
-
-  @override
-  String get enableLocation => 'Enable Location';
-
-  @override
-  String get selected => 'Selected: ';
-
-  @override
-  String get locationServicesDisabled => 'Location services are disabled';
-
-  @override
-  String get permissionDenied => 'Location permission denied';
-
-  @override
-  String get permissionPermanentlyDenied =>
-      'Location permission permanently denied. Enable it in settings.';
-
-  @override
-  String get errorGettingLocation => 'Error getting location: ';
-
-  @override
-  String get enterAddress => 'Enter the address';
-
-  @override
-  String get enterPhoneNumber => 'Enter the phone number';
-
-  @override
-  String get updateAddress => 'Update Address';
-
-  @override
-  String get editAddress => 'Edit Address';
-
-  @override
-  String get swipeDownToRefresh => 'Swipe down to refresh';
-
-  @override
-  String get selectAnAddress => 'Select an address';
-
-  @override
-  String get errorLoadingAddress => 'Error loading addresses';
-
-  @override
-  String get noProductsForCategory => 'No products found for this category';
-
-  @override
-  String get noProductsForOccasion => 'No products found for this occasion';
-
-  @override
-  String get english => 'English';
-
-  @override
-  String get arabic => 'Arabic';
-
-  @override
-  String get deliveryAddress => 'Delivery address';
-
-  @override
-  String get addNew => 'Add new';
-
-  @override
-  String get deliveryTime => 'Delivery time';
-
-  @override
-  String get schedule => 'Schedule';
-
-  @override
-  String get instant => 'Instant';
-
-  @override
-  String get arrivesBy => ' Arrive by 03 Sep 2024, 11:00 AM';
-
-  @override
-  String get itIsAGift => 'It is a gift';
-
-  @override
-  String get enterName => 'Enter the name';
-
-  @override
-  String get name => 'Name';
-
-  @override
-  String get enterPhone => 'Enter the phone number';
-
-  @override
-  String get completePayment => 'Complete Payment';
-
-  @override
-  String get cashOnDelivery => 'Cash on delivery';
-
-  @override
-  String get creditCard => 'Credit card';
-
-  @override
-  String get placing => 'Placing...';
-
-  @override
-  String get clearCartTitle => 'Clear Cart';
-
-  @override
-  String get clearCartMessage => 'Are you sure you want to clear all items?';
-
-  @override
-  String get addressChanged => 'Delivery address changed successfully';
-
-  @override
-  String get warning => 'Warning';
-
-  @override
-  String get success => 'Success';
-
-  @override
-  String get productAddedToCart => 'Product added to cart';
-
-  @override
-  String get thisItemIsSoldOut => 'This item is sold out';
-
-  @override
-  String get outOfStock => 'Out of Stock';
-
-  @override
-  String get addressAddedSuccessfully => 'Address added Successfully';
-
-  @override
-  String get addressUpdatedSuccessfully => 'Address updated Successfully';
-
-  @override
-  String get addressDeletedSuccessfully => 'Address deleted Successfully';
-
-  @override
-  String get cartClearedSuccessfully => 'Cart cleared successfully';
-
-  @override
-  String get profilePhotoUpdatedSuccessfully =>
-      'Profile photo updated successfully';
-
-  @override
-  String get passwordUpdatedSuccessMsg => 'Password changed successfully!';
-
-  @override
-  String get codeLengthError => 'Code must be at least 6 digits';
+  String get continueBtn => 'Continue';
 }
