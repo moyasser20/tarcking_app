@@ -141,6 +141,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       "logged in successfully",
                       isError: false,
                     );
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.dashboard,
+                      (route) => false,
+                    );
                   } else if (state is LoginErrorState) {
                     showCustomSnackBar(context, state.errorMessage);
                   }

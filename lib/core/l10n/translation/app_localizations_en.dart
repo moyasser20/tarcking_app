@@ -48,7 +48,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'Password is required';
 
   @override
-  String get passwordValidationErrorMsg => 'Password must be at least 6 characters and include M#12m';
+  String get passwordValidationErrorMsg =>
+      'Password must be at least 6 characters and include M#12m';
 
   @override
   String get rememberMe => 'Remember me';
@@ -111,19 +112,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutConfirmTextCenter => 'Confirm logout!';
 
   @override
-  String get resetPasswordUnderMsg => 'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number';
+  String get resetPasswordUnderMsg =>
+      'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number';
 
   @override
   String get emailVerificationScreen => 'Email Verification';
 
   @override
-  String get emailVerificationScreenUnderMsg => 'Please enter the code that was sent to your\nemail address';
+  String get emailVerificationScreenUnderMsg =>
+      'Please enter the code that was sent to your\nemail address';
 
   @override
   String get codeReceiveMsgError => 'Didn\'t receive code?';
 
   @override
-  String get forgetPasswordUnderText => 'Please enter your email associated with\nyour account';
+  String get forgetPasswordUnderText =>
+      'Please enter your email associated with\nyour account';
 
   @override
   String get forgetPassword => 'Forgot Password';
@@ -153,7 +157,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get applicationSub => 'Your application has been\n submitted!';
 
   @override
-  String get applicationSubMsg => 'Thank you for providing your application,\n we will review your application and will get back to you soon.';
+  String get applicationSubMsg =>
+      'Thank you for providing your application,\n we will review your application and will get back to you soon.';
 
   @override
   String get codeLengthError => 'Code must be at least 6 digits';
@@ -168,29 +173,122 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resend => 'Resend';
 
   @override
-  String get flowerOrder => 'Flower Order';
+  String get applyTitle => 'Apply';
 
   @override
-  String get pickupAddress => 'Pickup address';
+  String get welcome => 'Welcome!!';
 
   @override
-  String get userAddress => 'User address';
+  String get joinTeam => 'You want to be a delivery man?\nJoin our team';
 
   @override
-  String get floweryStore => 'Flowery Store';
+  String get country => 'Country';
 
   @override
-  String get sampleAddress => '20th st, Sheikh Zayed, Giza';
+  String get firstLegalName => 'First legal name';
 
   @override
-  String get userNameSample => 'Nour Mohamed';
+  String get firstLegalNameHint => 'Enter first legal name';
 
   @override
-  String get orderPrice => 'EGP 3000';
+  String get firstNameRequired => 'First name is required';
 
   @override
-  String get reject => 'Reject';
+  String get secondLegalName => 'Second legal name';
 
   @override
-  String get accept => 'Accept';
+  String get secondLegalNameHint => 'Enter second legal name';
+
+  @override
+  String get secondNameRequired => 'Second name is required';
+
+  @override
+  String get vehicleType => 'Vehicle type';
+
+  @override
+  String get noVehiclesAvailable => 'No vehicles available';
+
+  @override
+  String get vehicleNumber => 'Vehicle number';
+
+  @override
+  String get vehicleNumberHint => 'Enter vehicle number';
+
+  @override
+  String get vehicleNumberRequired => 'Vehicle number is required';
+
+  @override
+  String get vehicleLicense => 'Vehicle license';
+
+  @override
+  String get vehicleLicenseHint => 'Upload license photo';
+
+  @override
+  String get vehicleLicenseRequired => 'Vehicle license image is required';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get emailHint => 'Enter your email';
+
+  @override
+  String get emailRequired => 'Email is required';
+
+  @override
+  String get phoneNumber => 'Phone number';
+
+  @override
+  String get phoneHint => 'Enter phone number';
+
+  @override
+  String get phoneRequired => 'Phone is required';
+
+  @override
+  String get idNumber => 'ID number';
+
+  @override
+  String get idNumberHint => 'Enter national ID number';
+
+  @override
+  String get idNumberRequired => 'ID number is required';
+
+  @override
+  String get idImage => 'ID image';
+
+  @override
+  String get idImageHint => 'Upload ID image';
+
+  @override
+  String get idImageRequired => 'ID image is required';
+
+  @override
+  String get passwordHint => 'Enter password';
+
+  @override
+  String get passwordRequired => 'Password is required';
+
+  @override
+  String get passwordMinChars => 'Minimum 8 characters';
+
+  @override
+  String get confirmPasswordHint => 'Confirm password';
+
+  @override
+  String get confirmPasswordRequired => 'Confirm your password';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get continueBtn => 'Continue';
 }

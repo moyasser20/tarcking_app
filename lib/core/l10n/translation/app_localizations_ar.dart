@@ -48,7 +48,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'كلمة المرور مطلوبة';
 
   @override
-  String get passwordValidationErrorMsg => 'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
+  String get passwordValidationErrorMsg =>
+      'يجب أن تكون على الأقل 6 أحرف وتحتوي على M#12m';
 
   @override
   String get rememberMe => 'تذكرني';
@@ -111,19 +112,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get logoutConfirmTextCenter => 'تأكيد تسجيل الخروج!';
 
   @override
-  String get resetPasswordUnderMsg => 'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
+  String get resetPasswordUnderMsg =>
+      'يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل';
 
   @override
   String get emailVerificationScreen => 'التحقق من البريد الإلكتروني';
 
   @override
-  String get emailVerificationScreenUnderMsg => 'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
+  String get emailVerificationScreenUnderMsg =>
+      'يرجى إدخال الرمز الذي تم إرساله إلى\nعنوان بريدك الإلكتروني';
 
   @override
   String get codeReceiveMsgError => 'لم تستلم الرمز؟';
 
   @override
-  String get forgetPasswordUnderText => 'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
+  String get forgetPasswordUnderText =>
+      'يرجى إدخال البريد الإلكتروني المرتبط\nبحسابك';
 
   @override
   String get forgetPassword => 'نسيت كلمة المرور';
@@ -153,7 +157,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get applicationSub => 'تم إرسال طلبك!';
 
   @override
-  String get applicationSubMsg => 'شكرًا لتقديم طلبك،\n سنقوم بمراجعته والرد عليك قريبًا.';
+  String get applicationSubMsg =>
+      'شكرًا لتقديم طلبك،\n سنقوم بمراجعته والرد عليك قريبًا.';
 
   @override
   String get codeLengthError => 'يجب أن بكون ٦ على الأقل';
@@ -168,29 +173,122 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resend => 'إعادة إرسال';
 
   @override
-  String get flowerOrder => 'طلب ورد';
+  String get applyTitle => 'تقديم';
 
   @override
-  String get pickupAddress => 'عنوان الاستلام';
+  String get welcome => 'مرحباً!!';
 
   @override
-  String get userAddress => 'عنوان المستخدم';
+  String get joinTeam => 'هل تريد أن تكون عامل توصيل؟\nانضم إلى فريقنا';
 
   @override
-  String get floweryStore => 'متجر فلاوري';
+  String get country => 'الدولة';
 
   @override
-  String get sampleAddress => 'شارع 20، الشيخ زايد، الجيزة';
+  String get firstLegalName => 'الاسم الأول القانوني';
 
   @override
-  String get userNameSample => 'نور محمد';
+  String get firstLegalNameHint => 'أدخل الاسم الأول';
 
   @override
-  String get orderPrice => '٣٠٠٠ جنيه';
+  String get firstNameRequired => 'الاسم الأول مطلوب';
 
   @override
-  String get reject => 'رفض';
+  String get secondLegalName => 'الاسم الثاني القانوني';
 
   @override
-  String get accept => 'قبول';
+  String get secondLegalNameHint => 'أدخل الاسم الثاني';
+
+  @override
+  String get secondNameRequired => 'الاسم الثاني مطلوب';
+
+  @override
+  String get vehicleType => 'نوع المركبة';
+
+  @override
+  String get noVehiclesAvailable => 'لا توجد مركبات متاحة';
+
+  @override
+  String get vehicleNumber => 'رقم المركبة';
+
+  @override
+  String get vehicleNumberHint => 'أدخل رقم المركبة';
+
+  @override
+  String get vehicleNumberRequired => 'رقم المركبة مطلوب';
+
+  @override
+  String get vehicleLicense => 'رخصة المركبة';
+
+  @override
+  String get vehicleLicenseHint => 'قم برفع صورة الرخصة';
+
+  @override
+  String get vehicleLicenseRequired => 'صورة رخصة المركبة مطلوبة';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get emailHint => 'أدخل بريدك الإلكتروني';
+
+  @override
+  String get emailRequired => 'البريد الإلكتروني مطلوب';
+
+  @override
+  String get phoneNumber => 'رقم الهاتف';
+
+  @override
+  String get phoneHint => 'أدخل رقم الهاتف';
+
+  @override
+  String get phoneRequired => 'رقم الهاتف مطلوب';
+
+  @override
+  String get idNumber => 'الرقم القومي';
+
+  @override
+  String get idNumberHint => 'أدخل الرقم القومي';
+
+  @override
+  String get idNumberRequired => 'الرقم القومي مطلوب';
+
+  @override
+  String get idImage => 'صورة الهوية';
+
+  @override
+  String get idImageHint => 'قم برفع صورة الهوية';
+
+  @override
+  String get idImageRequired => 'صورة الهوية مطلوبة';
+
+  @override
+  String get passwordHint => 'أدخل كلمة المرور';
+
+  @override
+  String get passwordRequired => 'كلمة المرور مطلوبة';
+
+  @override
+  String get passwordMinChars => '8 أحرف على الأقل';
+
+  @override
+  String get confirmPasswordHint => 'أدخل كلمة المرور مرة أخرى';
+
+  @override
+  String get confirmPasswordRequired => 'تأكيد كلمة المرور مطلوب';
+
+  @override
+  String get passwordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get gender => 'الجنس';
+
+  @override
+  String get female => 'أنثى';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get continueBtn => 'متابعة';
 }
