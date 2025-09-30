@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import '../../../features/auth/domain/services/auth_services.dart';
 import '../../api/api_constants/api_constants.dart';
 
 @module
@@ -15,7 +16,6 @@ abstract class DioModule {
       ),
     );
 
-    // Logging
     dio.interceptors.add(
       LogInterceptor(
         request: true,
@@ -25,22 +25,22 @@ abstract class DioModule {
       ),
     );
 
-    // dio.interceptors.add(
-    //   InterceptorsWrapper(
-    //     onRequest: (options, handler) async {
-    //       final requiresAuth = options.extra['auth'] == true;
-    //
-    //       if (requiresAuth) {
-    //         final token = await AuthService.getToken();
-    //         if (token != null && token.isNotEmpty) {
-    //           options.headers['Authorization'] = 'Bearer $token';
-    //         }
-    //       }
-    //
-    //       return handler.next(options);
-    //     },
-    //   ),
-    // );
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          final requiresAuth = options.extra['auth'] == true;
+
+          if (requiresAuth) {
+            final token = await AuthService.getToken();
+            if (token != null && token.isNotEmpty) {
+              options.headers['Authorization'] = 'Bearer $token';
+            }
+          }
+
+          return handler.next(options);
+        },
+      ),
+    );
 
     return dio;
   }

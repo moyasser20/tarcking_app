@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
 import 'package:tarcking_app/core/theme/app_colors.dart';
 import 'package:tarcking_app/core/widgets/custom_Elevated_Button.dart';
-
 import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../core/routes/route_names.dart';
+import '../../../auth/domain/services/auth_services.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -55,8 +56,9 @@ class OnBoardingScreen extends StatelessWidget {
             CustomElevatedButton(
               key: const Key('loginButton'),
               text: local.login,
-              onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.login);
+              onPressed: () async {
+                final initialRoute = await _getInitialRoute();
+                Navigator.pushReplacementNamed(context, initialRoute);
               },
             ),
             const SizedBox(height: 20),

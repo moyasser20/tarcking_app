@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
 import 'package:tarcking_app/core/theme/app_colors.dart';
 
+import '../../../../core/common/widgets/custome_loading_indicator.dart';
 import '../../../../core/contants/app_images.dart';
 import '../viewmodel/home_cubit.dart';
 import '../viewmodel/home_states.dart';
@@ -26,7 +28,7 @@ class HomeScreen extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is HomeLoadingState) {
-            return const Center(child: CircularProgressIndicator());
+            return AppLoadingIndicator();
           } else if (state is HomeSuccessState) {
             final orders = state.ordersResponseEntity.orders;
 

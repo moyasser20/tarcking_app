@@ -23,23 +23,28 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<String> forgetPassword(
-    ForgetPasswordRequestModel forgetPasswordRequestModel,
-  ) async {
+      ForgetPasswordRequestModel forgetPasswordRequestModel) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(forgetPasswordRequestModel.toJson());
-    final _options = _setStreamType<String>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'forgotPassword',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options = _setStreamType<String>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'drivers/forgotPassword',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
     final _result = await _dio.fetch<String>(_options);
     late String _value;
     try {
@@ -58,16 +63,22 @@ class _ApiClient implements ApiClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(verifyResetCode.toJson());
-    final _options = _setStreamType<String>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'verifyResetCode',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options = _setStreamType<String>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'drivers/verifyResetCode',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
     final _result = await _dio.fetch<String>(_options);
     late String _value;
     try {
@@ -81,23 +92,28 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<String> resetPassword(
-    ResetPasswordRequestModel resetPasswordRequestModel,
-  ) async {
+      ResetPasswordRequestModel resetPasswordRequestModel) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(resetPasswordRequestModel.toJson());
-    final _options = _setStreamType<String>(
-      Options(method: 'PUT', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'resetPassword',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options = _setStreamType<String>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'drivers/resetPassword',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
     final _result = await _dio.fetch<String>(_options);
     late String _value;
     try {
@@ -123,7 +139,7 @@ class _ApiClient implements ApiClient {
     )
         .compose(
           _dio.options,
-          'signin',
+          'drivers/signin',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -145,7 +161,7 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<OrdersListResponse> getOrders() async {
-    final _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{'auth': true};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

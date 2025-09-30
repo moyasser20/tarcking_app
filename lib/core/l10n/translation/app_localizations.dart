@@ -62,8 +62,7 @@ import 'app_localizations_en.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -71,8 +70,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -84,18 +82,17 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
-    Locale('en'),
+    Locale('en')
   ];
 
   /// No description provided for @welcomeTo.
@@ -415,10 +412,303 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Resend'**
   String get resend;
+
+  /// No description provided for @flowerOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Flower Order'**
+  String get flowerOrder;
+
+  /// No description provided for @pickupAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup address'**
+  String get pickupAddress;
+
+  /// No description provided for @userAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'User address'**
+  String get userAddress;
+
+  /// No description provided for @floweryStore.
+  ///
+  /// In en, this message translates to:
+  /// **'Flowery Store'**
+  String get floweryStore;
+
+  /// No description provided for @sampleAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'20th st, Sheikh Zayed, Giza'**
+  String get sampleAddress;
+
+  /// No description provided for @userNameSample.
+  ///
+  /// In en, this message translates to:
+  /// **'Nour Mohamed'**
+  String get userNameSample;
+
+  /// No description provided for @orderPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP 3000'**
+  String get orderPrice;
+
+  /// No description provided for @reject.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get reject;
+
+  /// No description provided for @accept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get accept;
+
+  /// No description provided for @applyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get applyTitle;
+
+  /// No description provided for @welcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome!!'**
+  String get welcome;
+
+  /// No description provided for @joinTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'You want to be a delivery man?\nJoin our team'**
+  String get joinTeam;
+
+  /// No description provided for @country.
+  ///
+  /// In en, this message translates to:
+  /// **'Country'**
+  String get country;
+
+  /// No description provided for @firstLegalName.
+  ///
+  /// In en, this message translates to:
+  /// **'First legal name'**
+  String get firstLegalName;
+
+  /// No description provided for @firstLegalNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter first legal name'**
+  String get firstLegalNameHint;
+
+  /// No description provided for @firstNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'First name is required'**
+  String get firstNameRequired;
+
+  /// No description provided for @secondLegalName.
+  ///
+  /// In en, this message translates to:
+  /// **'Second legal name'**
+  String get secondLegalName;
+
+  /// No description provided for @secondLegalNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter second legal name'**
+  String get secondLegalNameHint;
+
+  /// No description provided for @secondNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Second name is required'**
+  String get secondNameRequired;
+
+  /// No description provided for @vehicleType.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle type'**
+  String get vehicleType;
+
+  /// No description provided for @noVehiclesAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No vehicles available'**
+  String get noVehiclesAvailable;
+
+  /// No description provided for @vehicleNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle number'**
+  String get vehicleNumber;
+
+  /// No description provided for @vehicleNumberHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter vehicle number'**
+  String get vehicleNumberHint;
+
+  /// No description provided for @vehicleNumberRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle number is required'**
+  String get vehicleNumberRequired;
+
+  /// No description provided for @vehicleLicense.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle license'**
+  String get vehicleLicense;
+
+  /// No description provided for @vehicleLicenseHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload license photo'**
+  String get vehicleLicenseHint;
+
+  /// No description provided for @vehicleLicenseRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle license image is required'**
+  String get vehicleLicenseRequired;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @emailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get emailHint;
+
+  /// No description provided for @emailRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get emailRequired;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get phoneNumber;
+
+  /// No description provided for @phoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter phone number'**
+  String get phoneHint;
+
+  /// No description provided for @phoneRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone is required'**
+  String get phoneRequired;
+
+  /// No description provided for @idNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'ID number'**
+  String get idNumber;
+
+  /// No description provided for @idNumberHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter national ID number'**
+  String get idNumberHint;
+
+  /// No description provided for @idNumberRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'ID number is required'**
+  String get idNumberRequired;
+
+  /// No description provided for @idImage.
+  ///
+  /// In en, this message translates to:
+  /// **'ID image'**
+  String get idImage;
+
+  /// No description provided for @idImageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload ID image'**
+  String get idImageHint;
+
+  /// No description provided for @idImageRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'ID image is required'**
+  String get idImageRequired;
+
+  /// No description provided for @passwordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter password'**
+  String get passwordHint;
+
+  /// No description provided for @passwordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get passwordRequired;
+
+  /// No description provided for @passwordMinChars.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum 8 characters'**
+  String get passwordMinChars;
+
+  /// No description provided for @confirmPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password'**
+  String get confirmPasswordHint;
+
+  /// No description provided for @confirmPasswordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your password'**
+  String get confirmPasswordRequired;
+
+  /// No description provided for @passwordsDoNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordsDoNotMatch;
+
+  /// No description provided for @gender.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get gender;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get female;
+
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get male;
+
+  /// No description provided for @continueBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueBtn;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -427,26 +717,25 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['ar', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar':
-      return AppLocalizationsAr();
-    case 'en':
-      return AppLocalizationsEn();
+    case 'ar': return AppLocalizationsAr();
+    case 'en': return AppLocalizationsEn();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }
