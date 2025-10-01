@@ -21,7 +21,7 @@ void main() {
   group('ChangePasswordUseCases', () {
     test(
       'should return ChangePasswordResponseModel when repository call is successful',
-          () async {
+      () async {
         // Arrange
         final request = ChangePasswordRequestModel(
           password: "old_password_placeholder",
