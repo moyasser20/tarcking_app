@@ -83,7 +83,9 @@ class OrderContainerWidget extends StatelessWidget {
               CustomElevatedButton(
                 text: local.reject,
                 onPressed: () {
-                  context.read<HomeCubit>().rejectOrderLocally(orderEntity.wrapperId);
+                  context.read<HomeCubit>().rejectOrderLocally(
+                    orderEntity.wrapperId,
+                  );
                   showCustomSnackBar(
                     context,
                     local.orderRejectedSuccessfully,

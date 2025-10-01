@@ -19,42 +19,43 @@ class HomeRepoImpl implements HomeRepo {
   Future<OrdersResponseEntity> getOrders() async {
     final dto = await remoteDataSource.getOrders();
 
-    final orders = (dto.orders ?? []).map((orderWrapper) {
-      final orderDto = orderWrapper.order;
-      final storeDto = orderWrapper.store;
+    final orders =
+        (dto.orders ?? []).map((orderWrapper) {
+          final orderDto = orderWrapper.order;
+          final storeDto = orderWrapper.store;
 
-      final orderItems = <OrderItemEntity>[];
+          final orderItems = <OrderItemEntity>[];
 
-      return OrderEntity(
-        wrapperId: orderWrapper.id ?? "",
-        id: orderDto?.id ?? "",
-        user: UserEntity(
-          id: orderDto?.user?.id ?? "",
-          firstName: orderDto?.user?.firstName ?? "",
-          lastName: orderDto?.user?.lastName ?? "",
-          email: orderDto?.user?.email ?? "",
-          gender: orderDto?.user?.gender ?? "",
-          phone: orderDto?.user?.phone ?? "",
-          photo: orderDto?.user?.photo ?? "",
-        ),
-        orderItems: orderItems,
-        totalPrice: orderDto?.totalPrice ?? 0,
-        paymentType: orderDto?.paymentType ?? "",
-        isPaid: orderDto?.isPaid ?? false,
-        isDelivered: orderDto?.isDelivered ?? false,
-        state: orderDto?.state ?? "",
-        orderNumber: orderDto?.orderNumber ?? "",
-        store: StoreEntity(
-          name: storeDto?.name ?? "",
-          image: storeDto?.image ?? "",
-          address: storeDto?.address ?? "",
-          phoneNumber: storeDto?.phoneNumber ?? "",
-          latLong: storeDto?.latLong ?? "",
-        ),
-        createdAt: _safeParseDate(orderDto?.createdAt),
-        updatedAt: _safeParseDate(orderDto?.updatedAt),
-      );
-    }).toList();
+          return OrderEntity(
+            wrapperId: orderWrapper.id ?? "",
+            id: orderDto?.id ?? "",
+            user: UserEntity(
+              id: orderDto?.user?.id ?? "",
+              firstName: orderDto?.user?.firstName ?? "",
+              lastName: orderDto?.user?.lastName ?? "",
+              email: orderDto?.user?.email ?? "",
+              gender: orderDto?.user?.gender ?? "",
+              phone: orderDto?.user?.phone ?? "",
+              photo: orderDto?.user?.photo ?? "",
+            ),
+            orderItems: orderItems,
+            totalPrice: orderDto?.totalPrice ?? 0,
+            paymentType: orderDto?.paymentType ?? "",
+            isPaid: orderDto?.isPaid ?? false,
+            isDelivered: orderDto?.isDelivered ?? false,
+            state: orderDto?.state ?? "",
+            orderNumber: orderDto?.orderNumber ?? "",
+            store: StoreEntity(
+              name: storeDto?.name ?? "",
+              image: storeDto?.image ?? "",
+              address: storeDto?.address ?? "",
+              phoneNumber: storeDto?.phoneNumber ?? "",
+              latLong: storeDto?.latLong ?? "",
+            ),
+            createdAt: _safeParseDate(orderDto?.createdAt),
+            updatedAt: _safeParseDate(orderDto?.updatedAt),
+          );
+        }).toList();
 
     final metadata = Metadata(
       currentPage: dto.metadata?['currentPage'] ?? 1,

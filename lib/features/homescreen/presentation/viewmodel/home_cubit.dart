@@ -27,9 +27,10 @@ class HomeCubit extends Cubit<HomeStates> {
     if (state is HomeSuccessState) {
       final currentState = state as HomeSuccessState;
 
-      final updatedOrders = currentState.ordersResponseEntity.orders
-          .where((o) => o.wrapperId != wrapperId)
-          .toList();
+      final updatedOrders =
+          currentState.ordersResponseEntity.orders
+              .where((o) => o.wrapperId != wrapperId)
+              .toList();
 
       emit(
         HomeSuccessState(
