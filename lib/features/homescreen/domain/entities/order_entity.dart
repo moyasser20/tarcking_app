@@ -3,6 +3,7 @@ import 'package:tarcking_app/features/homescreen/domain/entities/store_entity.da
 import 'package:tarcking_app/features/homescreen/domain/entities/user_entity.dart';
 
 class OrderEntity {
+  final String wrapperId;
   final String id;
   final UserEntity user;
   final List<OrderItemEntity> orderItems;
@@ -18,6 +19,7 @@ class OrderEntity {
   final DateTime updatedAt;
 
   const OrderEntity({
+    required this.wrapperId,
     required this.id,
     required this.user,
     required this.orderItems,

@@ -23,13 +23,13 @@ class HomeCubit extends Cubit<HomeStates> {
     }
   }
 
-  void rejectOrderLocally(String orderId) {
+  void rejectOrderLocally(String wrapperId) {
     if (state is HomeSuccessState) {
       final currentState = state as HomeSuccessState;
-      final updatedOrders =
-          currentState.ordersResponseEntity.orders
-              .where((o) => o.id != orderId)
-              .toList();
+
+      final updatedOrders = currentState.ordersResponseEntity.orders
+          .where((o) => o.wrapperId != wrapperId)
+          .toList();
 
       emit(
         HomeSuccessState(

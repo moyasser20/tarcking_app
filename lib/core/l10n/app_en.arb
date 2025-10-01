@@ -51,7 +51,6 @@
   "codeLengthError": "Code must be at least 6 digits",
   "passwordUpdatedSuccessMsg": "Password changed successfully!",
   "nextButton": "Next",
-  "resend": "Resend",
   "flowerOrder": "Flower Order",
   "pickupAddress": "Pickup address",
   "userAddress": "User address",
@@ -101,5 +100,6 @@
   "gender": "Gender",
   "female": "Female",
   "male": "Male",
-  "continueBtn": "Continue"
+  "continueBtn": "Continue",
+  "orderRejectedSuccessfully": "Order rejected successfully"
 }

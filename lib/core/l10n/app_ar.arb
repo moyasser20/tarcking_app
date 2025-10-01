@@ -51,7 +51,6 @@
   "nextButton": "التالي",
   "resend": "إعادة إرسال",
   "passwordUpdatedSuccessMsg": "تم تغير كلمة المرور بنجاح!",
-  "cancel": "إلغاء",
   "applyTitle": "تقديم",
   "welcome": "مرحباً!!",
   "joinTeam": "هل تريد أن تكون عامل توصيل؟\nانضم إلى فريقنا",
@@ -101,5 +100,7 @@
   "userNameSample": "نور محمد",
   "orderPrice": "٣٠٠٠ جنيه",
   "reject": "رفض",
-  "accept": "قبول"
+  "accept": "قبول",
+  "orderRejectedSuccessfully": "تم رفض الطلب بنجاح"
+
 }

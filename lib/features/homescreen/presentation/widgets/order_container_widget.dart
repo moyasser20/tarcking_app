@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
 
 import '../../../../core/Widgets/Custom_Elevated_Button.dart';
+import '../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/order_entity.dart';
@@ -82,7 +83,12 @@ class OrderContainerWidget extends StatelessWidget {
               CustomElevatedButton(
                 text: local.reject,
                 onPressed: () {
-                  context.read<HomeCubit>().rejectOrderLocally(orderEntity.id);
+                  context.read<HomeCubit>().rejectOrderLocally(orderEntity.wrapperId);
+                  showCustomSnackBar(
+                    context,
+                    local.orderRejectedSuccessfully,
+                    isError: false,
+                  );
                 },
                 width: size.width * 0.27,
                 height: size.height * 0.05,
