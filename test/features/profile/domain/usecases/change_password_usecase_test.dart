@@ -24,13 +24,13 @@ void main() {
       () async {
         // Arrange
         final request = ChangePasswordRequestModel(
-          password: "old123",
-          newPassword: "new123",
+          password: "oldd123",
+          newPassword: "neww123",
         );
 
         final response = ChangePasswordResponseModel(
           message: "Password updated successfully",
-          token: "newToken456",
+          token: "newTT456",
         );
 
         when(
@@ -42,7 +42,7 @@ void main() {
 
         // Assert
         expect(result.message, "Password updated successfully");
-        expect(result.token, "newToken456");
+        expect(result.token, "newTT456");
         verify(mockProfileRepository.changePassword(request)).called(1);
         verifyNoMoreInteractions(mockProfileRepository);
       },
@@ -50,8 +50,8 @@ void main() {
 
     test('should throw Exception when repository throws error', () async {
       final request = ChangePasswordRequestModel(
-        password: "old123",
-        newPassword: "new123",
+        password: "oldd123",
+        newPassword: "neww123",
       );
 
       when(
