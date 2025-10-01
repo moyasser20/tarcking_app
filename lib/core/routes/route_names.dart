@@ -1,5 +1,6 @@
 abstract class AppRoutes {
-  static const String initial = "/onboarding";
+  static const String initial = "/splashScreen";
+  static const String onboarding = "/onboarding";
   static const String login = "/login";
   static const String apply = "/apply";
   static const String forgetPassword = "/forgetPassword";

@@ -299,19 +299,17 @@ class ApplyScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 25.0),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CustomElevatedButton(
-                              text: local.continueBtn,
-                              isLoading: state is ApplyLoading,
-                              onPressed: () {
-                                if (cubit.formKey.currentState!.validate()) {
-                                  cubit.applyDriver();
-                                }
-                              },
-                            ),
-                          ],
+                        SizedBox(
+                          width: double.infinity,
+                          child: CustomElevatedButton(
+                            text: local.continueBtn,
+                            isLoading: state is ApplyLoading,
+                            onPressed: () {
+                              if (cubit.formKey.currentState!.validate()) {
+                                cubit.applyDriver();
+                              }
+                            },
+                          ),
                         ),
                       ],
                     ),

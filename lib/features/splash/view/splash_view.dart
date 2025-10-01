@@ -35,7 +35,7 @@ class _SplashViewState extends State<SplashView> {
     if (isLoggedIn && token != null) {
       return AppRoutes.dashboard;
     } else {
-      return AppRoutes.login;
+      return AppRoutes.onboarding;
     }
   }
 

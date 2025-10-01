@@ -14,6 +14,7 @@ import 'package:tarcking_app/features/auth/presentation/forget_password/presenta
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/views/screens/reset_password_screen.dart';
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/verify_code_viewmodel.dart';
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/reset_password_viewmodel.dart';
+import '../../features/onboarding/presentation/view/onboarding_screen.dart';
 import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
 import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
@@ -29,6 +30,9 @@ class Routes {
             settings: settings,
           );
         }
+      case AppRoutes.onboarding:
+        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
+
       case AppRoutes.login:
         return MaterialPageRoute(
           builder:
