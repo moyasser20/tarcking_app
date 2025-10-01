@@ -36,4 +36,5 @@ abstract class AuthRemoteDatasource {
   Future<AuthResponse<String>> resetPassword(
     ResetPasswordRequestModel resetPasswordRequestModel,
   );
+  Future<String> logout();
 }

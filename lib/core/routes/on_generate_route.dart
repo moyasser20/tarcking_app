@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
+import 'package:tarcking_app/features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart';
 import '../../features/auth/presentation/apply/view/apply_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/config/di.dart';
@@ -14,13 +15,21 @@ import 'package:tarcking_app/features/auth/presentation/forget_password/presenta
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/views/screens/reset_password_screen.dart';
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/verify_code_viewmodel.dart';
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/reset_password_viewmodel.dart';
+import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
+import '../../features/profile/domain/entity/user_entity.dart';
+import '../../features/profile/presentation/view/edit_profile_screen.dart';
+import '../../features/splash/view/splash_view.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.initial:
-        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
-
+        {
+          return MaterialPageRoute(
+            builder: (context) => const SplashView(),
+            settings: settings,
+          );
+        }
       case AppRoutes.login:
         return MaterialPageRoute(
           builder:
@@ -49,6 +58,18 @@ class Routes {
                 child: const ForgetPasswordScreen(),
               ),
         );
+      case AppRoutes.changePasswordScreen:
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider<ChangePasswordViewModel>(
+                create: (context) => getIt<ChangePasswordViewModel>(),
+                child: const ChangePasswordScreen(),
+              ),
+        );
+
+      case AppRoutes.editProfile:
+        final user = settings.arguments as UserEntity;
+        return MaterialPageRoute(builder: (_) => EditProfileScreen(user: user));
 
       case AppRoutes.emailVerification:
         final email = settings.arguments as String? ?? '';
@@ -71,7 +92,7 @@ class Routes {
         );
 
       default:
-        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
+        return MaterialPageRoute(builder: (_) => const DashboardScreen());
     }
   }
 }

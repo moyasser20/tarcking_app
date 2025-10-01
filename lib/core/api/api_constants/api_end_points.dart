@@ -4,4 +4,9 @@ class ApiEndPoints {
   static const String resetPassword = 'resetPassword';
   static const String verifyReset = 'verifyResetCode';
   static const String apply = 'apply';
+  static const String logout = 'logout';
+  static const String profileData = 'profile-data';
+  static const String changePassword = 'change-password';
+  static const String editProfile = 'editProfile';
+  static const String uploadPhoto = 'uploadPhoto';
 }

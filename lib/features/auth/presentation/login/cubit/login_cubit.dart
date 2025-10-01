@@ -30,9 +30,10 @@ class LoginCubit extends Cubit<LoginStates> {
 
     final response = await loginUsecase.invoke(request);
     if (response.data?.token != null && response.data!.token!.isNotEmpty) {
-      await AuthService.saveAuthToken(response.data!.token!);
+      await AuthService.saveAuthToken(response.data?.token ?? "");
       if (rememberMe) {
         await AuthService.saveRememberMe(rememberMe);
+        await AuthService.saveToken(response.data?.token ?? "");
       }
       emit(LoginSuccessState());
     } else {

@@ -48,8 +48,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'Password is required';
 
   @override
-  String get passwordValidationErrorMsg =>
-      'Password must be at least 6 characters and include M#12m';
+  String get passwordValidationErrorMsg => 'Password must be at least 6 characters and include M#12m';
 
   @override
   String get rememberMe => 'Remember me';
@@ -112,22 +111,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutConfirmTextCenter => 'Confirm logout!';
 
   @override
-  String get resetPasswordUnderMsg =>
-      'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number';
+  String get resetPasswordUnderMsg => 'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number';
 
   @override
   String get emailVerificationScreen => 'Email Verification';
 
   @override
-  String get emailVerificationScreenUnderMsg =>
-      'Please enter the code that was sent to your\nemail address';
+  String get emailVerificationScreenUnderMsg => 'Please enter the code that was sent to your\nemail address';
 
   @override
   String get codeReceiveMsgError => 'Didn\'t receive code?';
 
   @override
-  String get forgetPasswordUnderText =>
-      'Please enter your email associated with\nyour account';
+  String get forgetPasswordUnderText => 'Please enter your email associated with\nyour account';
 
   @override
   String get forgetPassword => 'Forgot Password';
@@ -157,8 +153,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get applicationSub => 'Your application has been\n submitted!';
 
   @override
-  String get applicationSubMsg =>
-      'Thank you for providing your application,\n we will review your application and will get back to you soon.';
+  String get applicationSubMsg => 'Thank you for providing your application,\n we will review your application and will get back to you soon.';
 
   @override
   String get codeLengthError => 'Code must be at least 6 digits';
@@ -204,6 +199,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get vehicleType => 'Vehicle type';
+
+  @override
+  String get vehicleInfo => 'Vehicle info';
 
   @override
   String get noVehiclesAvailable => 'No vehicles available';
@@ -291,4 +289,85 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continueBtn => 'Continue';
+
+  @override
+  String get profileTitle => 'Edit Profile';
+
+  @override
+  String get profileUpdatedSuccessMsg => 'Profile updated successfully!';
+
+  @override
+  String get errorText => 'Error';
+
+  @override
+  String get profilePhotoUpdatedSuccessfully => 'Profile photo updated successfully';
+
+  @override
+  String get firstNameLabel => 'First Name';
+
+  @override
+  String get lastNameLabel => 'Last Name';
+
+  @override
+  String get passwordChangeText => 'Change';
+
+  @override
+  String get phoneNumberLabel => 'Phone Number';
+
+  @override
+  String get updateButton => 'Update';
+
+  @override
+  String get myOrders => 'My Orders';
+
+  @override
+  String get savedAddresses => 'Saved Addresses';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get versionInfo => 'v 6.3.0 - (446)';
+
+  @override
+  String get aboutUs => 'About Us';
+
+  @override
+  String get notification => 'Notification';
+
+  @override
+  String get termsConditions => 'Terms & Conditions';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get changeLanguage => 'Change Language';
+
+  @override
+  String get savedAddress => 'Saved Address';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get languageChanged => 'English';
+
+  @override
+  String get noAboutInfoFound => 'No about info found';
+
+  @override
+  String get notificationDelete => 'Notification deleted';
+
+  @override
+  String get noTermsFound => 'No terms found';
+
+  @override
+  String get errorLoadingTerms => 'Error loading terms';
 }
