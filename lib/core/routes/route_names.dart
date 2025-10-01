@@ -8,4 +8,5 @@ abstract class AppRoutes {
   static const String dashboard = "/dashboard";
   static const String applicationApproved = "/applicationApproved";
   static const String homeScreen = "/homeScreen";
+  static const String orderDetails = "/orderDetails";
 }

@@ -316,4 +316,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get orderRejectedSuccessfully => 'Order rejected successfully';
+
+  @override
+  String get orderDetails => 'Order Details';
 }

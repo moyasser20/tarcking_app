@@ -5,6 +5,7 @@ import 'package:tarcking_app/core/extensions/extensions.dart';
 import '../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/order_entity.dart';
 import '../viewmodel/home_cubit.dart';
@@ -101,7 +102,9 @@ class OrderContainerWidget extends StatelessWidget {
               const SizedBox(width: 5),
               CustomElevatedButton(
                 text: local.accept,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.orderDetails);
+                },
                 width: size.width * 0.27,
                 height: size.height * 0.05,
                 color: AppColors.pink,

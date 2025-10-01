@@ -316,4 +316,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get orderRejectedSuccessfully => 'تم رفض الطلب بنجاح';
+
+  @override
+  String get orderDetails => 'تفاصيل الطلب';
 }

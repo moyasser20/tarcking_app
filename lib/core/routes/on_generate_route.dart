@@ -17,6 +17,8 @@ import 'package:tarcking_app/features/auth/presentation/forget_password/presenta
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/verify_code_viewmodel.dart';
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/reset_password_viewmodel.dart';
 
+import '../../features/orderdetailes/presentation/view/order_details_screen.dart';
+
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -81,6 +83,9 @@ class Routes {
                 child: const HomeScreen(),
               ),
         );
+
+      case AppRoutes.orderDetails:
+        return MaterialPageRoute(builder: (_) => const OrderDetailsScreen());
 
       default:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());

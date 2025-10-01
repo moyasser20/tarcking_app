@@ -101,6 +101,6 @@
   "orderPrice": "٣٠٠٠ جنيه",
   "reject": "رفض",
   "accept": "قبول",
-  "orderRejectedSuccessfully": "تم رفض الطلب بنجاح"
-
+  "orderRejectedSuccessfully": "تم رفض الطلب بنجاح",
+  "orderDetails": "تفاصيل الطلب"
 }
