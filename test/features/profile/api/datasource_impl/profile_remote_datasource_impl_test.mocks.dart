@@ -47,57 +47,32 @@ import 'package:tarcking_app/features/profile/data/models/upload_photo_response.
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeLoginResponse_0 extends _i1.SmartFake implements _i2.LoginResponse {
-  _FakeLoginResponse_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeLoginResponse_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeProfileResponse_1 extends _i1.SmartFake
     implements _i3.ProfileResponse {
-  _FakeProfileResponse_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeProfileResponse_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeChangePasswordResponseModel_2 extends _i1.SmartFake
     implements _i4.ChangePasswordResponseModel {
-  _FakeChangePasswordResponseModel_2(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeChangePasswordResponseModel_2(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeEditProfileResponseModel_3 extends _i1.SmartFake
     implements _i5.EditProfileResponseModel {
-  _FakeEditProfileResponseModel_3(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeEditProfileResponseModel_3(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeUploadPhotoResponse_4 extends _i1.SmartFake
     implements _i6.UploadPhotoResponse {
-  _FakeUploadPhotoResponse_4(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeUploadPhotoResponse_4(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ApiClient].
@@ -110,152 +85,126 @@ class MockApiClient extends _i1.Mock implements _i7.ApiClient {
 
   @override
   _i8.Future<String> forgetPassword(
-          _i9.ForgetPasswordRequestModel? forgetPasswordRequestModel) =>
+    _i9.ForgetPasswordRequestModel? forgetPasswordRequestModel,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #forgetPassword,
-          [forgetPasswordRequestModel],
-        ),
-        returnValue: _i8.Future<String>.value(_i10.dummyValue<String>(
-          this,
-          Invocation.method(
-            #forgetPassword,
-            [forgetPasswordRequestModel],
-          ),
-        )),
-      ) as _i8.Future<String>);
+            Invocation.method(#forgetPassword, [forgetPasswordRequestModel]),
+            returnValue: _i8.Future<String>.value(
+              _i10.dummyValue<String>(
+                this,
+                Invocation.method(#forgetPassword, [
+                  forgetPasswordRequestModel,
+                ]),
+              ),
+            ),
+          )
+          as _i8.Future<String>);
 
   @override
   _i8.Future<String> verifyResetCode(
-          _i11.VerifyCodeRequestModel? verifyResetCode) =>
+    _i11.VerifyCodeRequestModel? verifyResetCode,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #verifyResetCode,
-          [verifyResetCode],
-        ),
-        returnValue: _i8.Future<String>.value(_i10.dummyValue<String>(
-          this,
-          Invocation.method(
-            #verifyResetCode,
-            [verifyResetCode],
-          ),
-        )),
-      ) as _i8.Future<String>);
+            Invocation.method(#verifyResetCode, [verifyResetCode]),
+            returnValue: _i8.Future<String>.value(
+              _i10.dummyValue<String>(
+                this,
+                Invocation.method(#verifyResetCode, [verifyResetCode]),
+              ),
+            ),
+          )
+          as _i8.Future<String>);
 
   @override
   _i8.Future<String> resetPassword(
-          _i12.ResetPasswordRequestModel? resetPasswordRequestModel) =>
+    _i12.ResetPasswordRequestModel? resetPasswordRequestModel,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #resetPassword,
-          [resetPasswordRequestModel],
-        ),
-        returnValue: _i8.Future<String>.value(_i10.dummyValue<String>(
-          this,
-          Invocation.method(
-            #resetPassword,
-            [resetPasswordRequestModel],
-          ),
-        )),
-      ) as _i8.Future<String>);
+            Invocation.method(#resetPassword, [resetPasswordRequestModel]),
+            returnValue: _i8.Future<String>.value(
+              _i10.dummyValue<String>(
+                this,
+                Invocation.method(#resetPassword, [resetPasswordRequestModel]),
+              ),
+            ),
+          )
+          as _i8.Future<String>);
 
   @override
   _i8.Future<_i2.LoginResponse> login(_i13.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #login,
-          [loginRequest],
-        ),
-        returnValue: _i8.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
-          this,
-          Invocation.method(
-            #login,
-            [loginRequest],
-          ),
-        )),
-      ) as _i8.Future<_i2.LoginResponse>);
+            Invocation.method(#login, [loginRequest]),
+            returnValue: _i8.Future<_i2.LoginResponse>.value(
+              _FakeLoginResponse_0(
+                this,
+                Invocation.method(#login, [loginRequest]),
+              ),
+            ),
+          )
+          as _i8.Future<_i2.LoginResponse>);
 
   @override
-  _i8.Future<String> logout() => (super.noSuchMethod(
-        Invocation.method(
-          #logout,
-          [],
-        ),
-        returnValue: _i8.Future<String>.value(_i10.dummyValue<String>(
-          this,
-          Invocation.method(
-            #logout,
-            [],
-          ),
-        )),
-      ) as _i8.Future<String>);
+  _i8.Future<String> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i8.Future<String>.value(
+              _i10.dummyValue<String>(this, Invocation.method(#logout, [])),
+            ),
+          )
+          as _i8.Future<String>);
 
   @override
-  _i8.Future<_i3.ProfileResponse> getProfile() => (super.noSuchMethod(
-        Invocation.method(
-          #getProfile,
-          [],
-        ),
-        returnValue:
-            _i8.Future<_i3.ProfileResponse>.value(_FakeProfileResponse_1(
-          this,
-          Invocation.method(
-            #getProfile,
-            [],
-          ),
-        )),
-      ) as _i8.Future<_i3.ProfileResponse>);
+  _i8.Future<_i3.ProfileResponse> getProfile() =>
+      (super.noSuchMethod(
+            Invocation.method(#getProfile, []),
+            returnValue: _i8.Future<_i3.ProfileResponse>.value(
+              _FakeProfileResponse_1(this, Invocation.method(#getProfile, [])),
+            ),
+          )
+          as _i8.Future<_i3.ProfileResponse>);
 
   @override
   _i8.Future<_i4.ChangePasswordResponseModel> changePassword(
-          _i14.ChangePasswordRequestModel? changePasswordRequestModel) =>
+    _i14.ChangePasswordRequestModel? changePasswordRequestModel,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #changePassword,
-          [changePasswordRequestModel],
-        ),
-        returnValue: _i8.Future<_i4.ChangePasswordResponseModel>.value(
-            _FakeChangePasswordResponseModel_2(
-          this,
-          Invocation.method(
-            #changePassword,
-            [changePasswordRequestModel],
-          ),
-        )),
-      ) as _i8.Future<_i4.ChangePasswordResponseModel>);
+            Invocation.method(#changePassword, [changePasswordRequestModel]),
+            returnValue: _i8.Future<_i4.ChangePasswordResponseModel>.value(
+              _FakeChangePasswordResponseModel_2(
+                this,
+                Invocation.method(#changePassword, [
+                  changePasswordRequestModel,
+                ]),
+              ),
+            ),
+          )
+          as _i8.Future<_i4.ChangePasswordResponseModel>);
 
   @override
   _i8.Future<_i5.EditProfileResponseModel> editProfile(
-          _i15.EditProfileRequestModel? model) =>
+    _i15.EditProfileRequestModel? model,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #editProfile,
-          [model],
-        ),
-        returnValue: _i8.Future<_i5.EditProfileResponseModel>.value(
-            _FakeEditProfileResponseModel_3(
-          this,
-          Invocation.method(
-            #editProfile,
-            [model],
-          ),
-        )),
-      ) as _i8.Future<_i5.EditProfileResponseModel>);
+            Invocation.method(#editProfile, [model]),
+            returnValue: _i8.Future<_i5.EditProfileResponseModel>.value(
+              _FakeEditProfileResponseModel_3(
+                this,
+                Invocation.method(#editProfile, [model]),
+              ),
+            ),
+          )
+          as _i8.Future<_i5.EditProfileResponseModel>);
 
   @override
   _i8.Future<_i6.UploadPhotoResponse> uploadPhoto(_i16.File? photo) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #uploadPhoto,
-          [photo],
-        ),
-        returnValue: _i8.Future<_i6.UploadPhotoResponse>.value(
-            _FakeUploadPhotoResponse_4(
-          this,
-          Invocation.method(
-            #uploadPhoto,
-            [photo],
-          ),
-        )),
-      ) as _i8.Future<_i6.UploadPhotoResponse>);
+            Invocation.method(#uploadPhoto, [photo]),
+            returnValue: _i8.Future<_i6.UploadPhotoResponse>.value(
+              _FakeUploadPhotoResponse_4(
+                this,
+                Invocation.method(#uploadPhoto, [photo]),
+              ),
+            ),
+          )
+          as _i8.Future<_i6.UploadPhotoResponse>);
 }
