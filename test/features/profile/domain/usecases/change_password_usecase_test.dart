@@ -21,16 +21,16 @@ void main() {
   group('ChangePasswordUseCases', () {
     test(
       'should return ChangePasswordResponseModel when repository call is successful',
-      () async {
+          () async {
         // Arrange
         final request = ChangePasswordRequestModel(
-          password: "oldd123",
-          newPassword: "neww123",
+          password: "old_password_placeholder",
+          newPassword: "new_password_placeholder",
         );
 
         final response = ChangePasswordResponseModel(
           message: "Password updated successfully",
-          token: "newTT456",
+          token: "test_token_placeholder",
         );
 
         when(
@@ -42,7 +42,7 @@ void main() {
 
         // Assert
         expect(result.message, "Password updated successfully");
-        expect(result.token, "newTT456");
+        expect(result.token, "test_token_placeholder");
         verify(mockProfileRepository.changePassword(request)).called(1);
         verifyNoMoreInteractions(mockProfileRepository);
       },
@@ -50,8 +50,8 @@ void main() {
 
     test('should throw Exception when repository throws error', () async {
       final request = ChangePasswordRequestModel(
-        password: "oldd123",
-        newPassword: "neww123",
+        password: "old_password_placeholder",
+        newPassword: "new_password_placeholder",
       );
 
       when(
