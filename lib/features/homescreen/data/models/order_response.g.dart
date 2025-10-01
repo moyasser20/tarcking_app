@@ -8,18 +8,22 @@ part of 'order_response.dart';
 
 OrderResponse _$OrderResponseFromJson(Map<String, dynamic> json) =>
     OrderResponse(
-      id: json['_id'] as String,
-      totalPrice: (json['totalPrice'] as num).toInt(),
-      state: json['state'] as String,
-      paymentType: json['paymentType'] as String,
-      orderNumber: json['orderNumber'] as String,
-      store: StoreResponse.fromJson(json['store'] as Map<String, dynamic>),
-      user: UserResponse.fromJson(json['user'] as Map<String, dynamic>),
-      orderItems: json['orderItems'] as List<dynamic>,
-      isPaid: json['isPaid'] as bool,
-      isDelivered: json['isDelivered'] as bool,
-      createdAt: json['createdAt'] as String,
-      updatedAt: json['updatedAt'] as String,
+      id: json['_id'] as String?,
+      totalPrice: (json['totalPrice'] as num?)?.toInt(),
+      state: json['state'] as String?,
+      paymentType: json['paymentType'] as String?,
+      orderNumber: json['orderNumber'] as String?,
+      store: json['store'] == null
+          ? null
+          : StoreResponse.fromJson(json['store'] as Map<String, dynamic>),
+      user: json['user'] == null
+          ? null
+          : UserResponse.fromJson(json['user'] as Map<String, dynamic>),
+      orderItems: json['orderItems'] as List<dynamic>?,
+      isPaid: json['isPaid'] as bool?,
+      isDelivered: json['isDelivered'] as bool?,
+      createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
     );
 
 Map<String, dynamic> _$OrderResponseToJson(OrderResponse instance) =>

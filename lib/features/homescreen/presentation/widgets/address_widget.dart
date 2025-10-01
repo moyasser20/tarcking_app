@@ -50,7 +50,7 @@ class AddressWidget extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset(image),
+                child: image == "default-profile.png" ? Image.asset("assets/images/empty_profile_image.jpg"):Image.network(image)  ,
               ),
               const SizedBox(width: 10),
               Column(

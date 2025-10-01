@@ -36,7 +36,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   @override
   Future<OrdersListResponse> getOrders() async {
     try {
-      return await apiClient.getOrders();
+      return await apiClient.getOrders("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOiI2NzhhNTlmYTNjMzc5NzQ5Mjc0N2M4ZDQiLCJpYXQiOjE3MzcxMjAyNTB9.f-A1rvElymvDhEQM9bjqGl56O4c5Z8mhh7MkevnpqVQ");
     } on DioException catch (e) {
       throw ServerFailure(errorMessage: _extractApiMessage(e));
     } catch (e) {

@@ -8,11 +8,11 @@ part of 'store_response.dart';
 
 StoreResponse _$StoreResponseFromJson(Map<String, dynamic> json) =>
     StoreResponse(
-      name: json['name'] as String,
-      image: json['image'] as String,
-      address: json['address'] as String,
-      phoneNumber: json['phoneNumber'] as String,
-      latLong: json['latLong'] as String,
+      name: json['name'] as String?,
+      image: json['image'] as String?,
+      address: json['address'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+      latLong: json['latLong'] as String?,
     );
 
 Map<String, dynamic> _$StoreResponseToJson(StoreResponse instance) =>

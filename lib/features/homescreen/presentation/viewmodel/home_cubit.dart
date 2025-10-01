@@ -15,6 +15,7 @@ class HomeCubit extends Cubit<HomeStates> {
     emit(HomeLoadingState());
     try {
       final ordersResponse = await _getOrdersUseCase();
+      print("========================${ordersResponse.orders.length}========================");
       emit(HomeSuccessState(ordersResponse));
     } on Failure catch (failure) {
       emit(HomeErrorState(failure.errorMessage));

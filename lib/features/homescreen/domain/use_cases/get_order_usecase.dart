@@ -11,6 +11,8 @@ class GetOrderUseCase {
   GetOrderUseCase(this._homeRepo);
 
   Future<OrdersResponseEntity> call() async {
+    print("========================${_homeRepo.getOrders()}========================");
     return await _homeRepo.getOrders();
+
   }
 }

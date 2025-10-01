@@ -160,10 +160,11 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<OrdersListResponse> getOrders() async {
-    final _extra = <String, dynamic>{'auth': true};
+  Future<OrdersListResponse> getOrders(String bearerToken) async {
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': bearerToken};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<OrdersListResponse>(Options(
       method: 'GET',

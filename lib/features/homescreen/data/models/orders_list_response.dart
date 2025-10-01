@@ -6,16 +6,18 @@ part 'orders_list_response.g.dart';
 @JsonSerializable()
 class OrdersListResponse {
   @JsonKey(name: "message")
-  final String message;
+  final String? message;
+
   @JsonKey(name: "orders")
-  final List<OrderResponse> orders;
+  final List<OrderResponse>? orders;
+
   @JsonKey(name: "metadata")
-  final Map<String, dynamic> metadata;
+  final Map<String, dynamic>? metadata;
 
   OrdersListResponse({
-    required this.message,
-    required this.orders,
-    required this.metadata,
+    this.message,
+    this.orders,
+    this.metadata,
   });
 
   factory OrdersListResponse.fromJson(Map<String, dynamic> json) =>

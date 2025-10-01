@@ -20,50 +20,59 @@ class HomeRepoImpl implements HomeRepo {
   Future<OrdersResponseEntity> getOrders() async {
     final OrdersListResponse dto = await remoteDataSource.getOrders();
 
-    final orders = dto.orders.map((OrderResponse orderDto) {
+    final orders = (dto.orders ?? []).map((OrderResponse orderDto) {
       final orderItems = <OrderItemEntity>[];
+
       return OrderEntity(
-        id: orderDto.id,
+        id: orderDto.id ?? "",
         user: UserEntity(
-          id: orderDto.user.id,
-          firstName: orderDto.user.firstName,
-          lastName: orderDto.user.lastName,
-          email: orderDto.user.email,
-          gender: orderDto.user.gender,
-          phone: orderDto.user.phone,
-          photo: orderDto.user.photo,
+          id: orderDto.user?.id ?? "",
+          firstName: orderDto.user?.firstName ?? "",
+          lastName: orderDto.user?.lastName ?? "",
+          email: orderDto.user?.email ?? "",
+          gender: orderDto.user?.gender ?? "",
+          phone: orderDto.user?.phone ?? "",
+          photo: orderDto.user?.photo ?? "",
         ),
         orderItems: orderItems,
-        totalPrice: orderDto.totalPrice,
-        paymentType: orderDto.paymentType,
-        isPaid: orderDto.isPaid,
-        isDelivered: orderDto.isDelivered,
-        state: orderDto.state,
-        orderNumber: orderDto.orderNumber,
+        totalPrice: orderDto.totalPrice ?? 0,
+        paymentType: orderDto.paymentType ?? "",
+        isPaid: orderDto.isPaid ?? false,
+        isDelivered: orderDto.isDelivered ?? false,
+        state: orderDto.state ?? "",
+        orderNumber: orderDto.orderNumber ?? "",
         store: StoreEntity(
-          name: orderDto.store.name,
-          image: orderDto.store.image,
-          address: orderDto.store.address,
-          phoneNumber: orderDto.store.phoneNumber,
-          latLong: orderDto.store.latLong,
+          name: orderDto.store?.name ?? "",
+          image: orderDto.store?.image ?? "",
+          address: orderDto.store?.address ?? "",
+          phoneNumber: orderDto.store?.phoneNumber ?? "",
+          latLong: orderDto.store?.latLong ?? "",
         ),
-        createdAt: DateTime.parse(orderDto.createdAt),
-        updatedAt: DateTime.parse(orderDto.updatedAt),
+        createdAt: _safeParseDate(orderDto.createdAt),
+        updatedAt: _safeParseDate(orderDto.updatedAt),
       );
     }).toList();
 
     final metadata = Metadata(
-      currentPage: dto.metadata['currentPage'] ?? 1,
-      totalPages: dto.metadata['totalPages'] ?? 1,
-      totalItems: dto.metadata['totalItems'] ?? 0,
-      limit: dto.metadata['limit'] ?? 10,
+      currentPage: dto.metadata?['currentPage'] ?? 1,
+      totalPages: dto.metadata?['totalPages'] ?? 1,
+      totalItems: dto.metadata?['totalItems'] ?? 0,
+      limit: dto.metadata?['limit'] ?? 10,
     );
 
     return OrdersResponseEntity(
-      message: dto.message,
+      message: dto.message ?? "",
       metadata: metadata,
       orders: orders,
     );
   }
 
+  DateTime _safeParseDate(String? date) {
+    if (date == null) return DateTime.now();
+    try {
+      return DateTime.parse(date);
+    } catch (_) {
+      return DateTime.now();
+    }
+  }
 }

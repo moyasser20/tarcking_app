@@ -39,6 +39,7 @@ abstract class ApiClient {
   Future<LoginResponse> login(@Body() LoginRequest loginRequest);
 
   @GET(EndPoints.orders)
-  @Extra({'auth': true})
-  Future<OrdersListResponse> getOrders();
+  Future<OrdersListResponse> getOrders(
+    @Header("Authorization") String bearerToken,
+  );
 }
