@@ -10,8 +10,10 @@ import '../entity/user_entity.dart';
 abstract class ProfileRepository {
   Future<ApiResult<UserEntity>> getProfile();
   Future<ChangePasswordResponseModel> changePassword(
-      ChangePasswordRequestModel changePasswordRequestModel);
+    ChangePasswordRequestModel changePasswordRequestModel,
+  );
   Future<ApiResult<EditProfileResponseModel>> editProfile(
-      EditProfileRequestModel model);
+    EditProfileRequestModel model,
+  );
   Future<ApiResult<UploadPhotoResponse>> uploadPhoto(File photo);
 }

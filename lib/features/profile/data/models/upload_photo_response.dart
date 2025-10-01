@@ -7,9 +7,7 @@ class UploadPhotoResponse {
   @JsonKey(name: "message")
   final String message;
 
-  UploadPhotoResponse({
-    required this.message,
-  });
+  UploadPhotoResponse({required this.message});
 
   factory UploadPhotoResponse.fromJson(Map<String, dynamic> json) {
     return _$UploadPhotoResponseFromJson(json);

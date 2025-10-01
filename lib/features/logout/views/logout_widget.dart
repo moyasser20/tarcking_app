@@ -23,9 +23,9 @@ class LogoutDialogWidget extends StatelessWidget {
             (route) => false,
           );
         } else if (state is LogoutError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message)),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message)));
         }
       },
       builder: (context, state) {
@@ -69,21 +69,21 @@ class LogoutDialogWidget extends StatelessWidget {
                 const SizedBox(width: 20),
                 state is LogoutLoading
                     ? const SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: AppColors.pink,
-                        ),
-                      )
-                    : CustomElevatedButton(
-                        width: 120,
-                        height: 50,
-                        text: locale.logout,
-                        onPressed: () {
-                          context.read<LogoutViewModel>().logout();
-                        },
+                      width: 40,
+                      height: 40,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: AppColors.pink,
                       ),
+                    )
+                    : CustomElevatedButton(
+                      width: 120,
+                      height: 50,
+                      text: locale.logout,
+                      onPressed: () {
+                        context.read<LogoutViewModel>().logout();
+                      },
+                    ),
               ],
             ),
           ],

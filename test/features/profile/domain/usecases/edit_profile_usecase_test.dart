@@ -68,8 +68,9 @@ void main() {
   group('EditProfileDataUseCase', () {
     test('should return ApiSuccessResult when repository succeeds', () async {
       // arrange
-      when(mockProfileRepository.editProfile(fakeRequest))
-          .thenAnswer((_) async => ApiSuccessResult(fakeResponse));
+      when(
+        mockProfileRepository.editProfile(fakeRequest),
+      ).thenAnswer((_) async => ApiSuccessResult(fakeResponse));
 
       // act
       final result = await useCase(fakeRequest);
@@ -84,8 +85,9 @@ void main() {
 
     test('should return ApiErrorResult when repository fails', () async {
       // arrange
-      when(mockProfileRepository.editProfile(fakeRequest))
-          .thenAnswer((_) async => ApiErrorResult("Update failed"));
+      when(
+        mockProfileRepository.editProfile(fakeRequest),
+      ).thenAnswer((_) async => ApiErrorResult("Update failed"));
 
       // act
       final result = await useCase(fakeRequest);

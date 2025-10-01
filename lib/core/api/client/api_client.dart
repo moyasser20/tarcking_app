@@ -46,7 +46,6 @@ abstract class ApiClient {
   @Extra({'auth': true})
   Future<String> logout();
 
-
   /// PROFILE ENDPOINTS ///
   @GET(ApiEndPoints.profileData)
   @Extra({'auth': true})
@@ -55,16 +54,17 @@ abstract class ApiClient {
   @PATCH(ApiEndPoints.changePassword)
   @Extra({'auth': true})
   Future<ChangePasswordResponseModel> changePassword(
-      @Body() ChangePasswordRequestModel changePasswordRequestModel);
+    @Body() ChangePasswordRequestModel changePasswordRequestModel,
+  );
 
   @PUT(ApiEndPoints.editProfile)
   @Extra({'auth': true})
   Future<EditProfileResponseModel> editProfile(
-      @Body() EditProfileRequestModel model);
+    @Body() EditProfileRequestModel model,
+  );
 
   @PUT(ApiEndPoints.uploadPhoto)
   @MultiPart()
   @Extra({'auth': true})
   Future<UploadPhotoResponse> uploadPhoto(@Part(name: "photo") File photo);
-
 }

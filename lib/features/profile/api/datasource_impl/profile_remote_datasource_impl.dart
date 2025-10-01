@@ -12,13 +12,12 @@ import '../../data/models/edit_profile_response_model.dart';
 import '../../data/models/profile_response.dart';
 import '../../data/models/upload_photo_response.dart';
 
-
 @LazySingleton(as: ProfileRemoteDatasource)
 class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
   final ApiClient _profileApiClient;
 
   ProfileRemoteDatasourceImpl({required ApiClient apiClient})
-      : _profileApiClient = apiClient;
+    : _profileApiClient = apiClient;
 
   @override
   Future<ApiResult<ProfileResponse>> getProfile() async {
@@ -34,10 +33,12 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
 
   @override
   Future<ChangePasswordResponseModel> changePassword(
-      ChangePasswordRequestModel changePasswordRequestModel) async {
+    ChangePasswordRequestModel changePasswordRequestModel,
+  ) async {
     try {
-      final response =
-      await _profileApiClient.changePassword(changePasswordRequestModel);
+      final response = await _profileApiClient.changePassword(
+        changePasswordRequestModel,
+      );
       return response;
     } catch (e) {
       throw Exception("Unexpected error: $e");
@@ -46,7 +47,8 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
 
   @override
   Future<ApiResult<EditProfileResponseModel>> editProfile(
-      EditProfileRequestModel model) async {
+    EditProfileRequestModel model,
+  ) async {
     try {
       final response = await _profileApiClient.editProfile(model);
       return ApiSuccessResult(response);

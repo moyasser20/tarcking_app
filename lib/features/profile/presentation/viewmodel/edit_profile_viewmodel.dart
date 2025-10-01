@@ -15,10 +15,8 @@ class EditProfileViewModel extends Cubit<EditProfileStates> {
   final EditProfileDataUseCase _editProfileDataUseCase;
   final UploadPhotoUseCase _uploadPhotoUseCase;
 
-  EditProfileViewModel(
-    this._editProfileDataUseCase,
-    this._uploadPhotoUseCase,
-  ) : super(EditProfileInitialState());
+  EditProfileViewModel(this._editProfileDataUseCase, this._uploadPhotoUseCase)
+    : super(EditProfileInitialState());
 
   final TextEditingController firstnameController = TextEditingController();
   final TextEditingController lastnameController = TextEditingController();
@@ -35,8 +33,7 @@ class EditProfileViewModel extends Cubit<EditProfileStates> {
     currentPhotoUrl = user.photo;
     if (currentPhotoUrl != null) {
       emit(ProfilePhotoUpdatedState(currentPhotoUrl!));
-    }
-    else if (firstnameController.text.isEmpty) {
+    } else if (firstnameController.text.isEmpty) {
       emit(EditProfileErrorState(message: 'First name is required'));
     } else if (lastnameController.text.isEmpty) {
       emit(EditProfileErrorState(message: 'Last name is required'));
@@ -44,10 +41,18 @@ class EditProfileViewModel extends Cubit<EditProfileStates> {
       emit(EditProfileErrorState(message: 'Email is required'));
     } else if (phoneController.text.isEmpty) {
       emit(EditProfileErrorState(message: 'Phone is required'));
-    } else if(firstnameController.text.length < 3){
-      emit(EditProfileErrorState(message: 'First name must be at least 3 characters'));
-    } else if(lastnameController.text.length < 3){
-      emit(EditProfileErrorState(message: 'Last name must be at least 3 characters'));
+    } else if (firstnameController.text.length < 3) {
+      emit(
+        EditProfileErrorState(
+          message: 'First name must be at least 3 characters',
+        ),
+      );
+    } else if (lastnameController.text.length < 3) {
+      emit(
+        EditProfileErrorState(
+          message: 'Last name must be at least 3 characters',
+        ),
+      );
     }
   }
 

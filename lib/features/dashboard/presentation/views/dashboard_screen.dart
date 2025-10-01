@@ -16,7 +16,6 @@ class DashboardScreen extends StatelessWidget {
       Center(child: Text("home")),
       Center(child: Text("orders")),
       const ProfileScreen(),
-
     ];
 
     return BlocProvider(

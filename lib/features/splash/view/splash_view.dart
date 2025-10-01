@@ -26,11 +26,7 @@ class _SplashViewState extends State<SplashView> {
 
     if (!mounted) return;
 
-    Navigator.pushNamedAndRemoveUntil(
-      context,
-      route,
-          (r) => false,
-    );
+    Navigator.pushNamedAndRemoveUntil(context, route, (r) => false);
   }
 
   Future<String> _getInitialRoute() async {
@@ -48,13 +44,7 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.lightPink,
-      body: Center(
-        child: SizedBox(
-          height: 350,
-          width: 350,
-          child: SizedBox(),
-        ),
-      ),
+      body: Center(child: SizedBox(height: 350, width: 350, child: SizedBox())),
     );
   }
 }

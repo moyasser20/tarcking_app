@@ -1,4 +1,3 @@
-
 import '../../../domain/entity/user_entity.dart';
 
 abstract class ProfileStates {}

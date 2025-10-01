@@ -85,8 +85,9 @@ void main() {
         message: "Password updated successfully",
         token: "newToken456",
       );
-      when(mockRemoteDatasource.changePassword(request))
-          .thenAnswer((_) async => response);
+      when(
+        mockRemoteDatasource.changePassword(request),
+      ).thenAnswer((_) async => response);
 
       // act
       final result = await repository.changePassword(request);
@@ -98,27 +99,29 @@ void main() {
       verifyNoMoreInteractions(mockRemoteDatasource);
     });
 
-    test('should throw DioException when datasource throws DioException',
-        () async {
-      // arrange
-      when(mockRemoteDatasource.changePassword(request)).thenThrow(
-        DioException(
-          requestOptions: RequestOptions(path: '/change-password'),
-          type: DioExceptionType.badResponse,
-          response: Response(
+    test(
+      'should throw DioException when datasource throws DioException',
+      () async {
+        // arrange
+        when(mockRemoteDatasource.changePassword(request)).thenThrow(
+          DioException(
             requestOptions: RequestOptions(path: '/change-password'),
-            statusCode: 400,
-            statusMessage: "Bad Request",
+            type: DioExceptionType.badResponse,
+            response: Response(
+              requestOptions: RequestOptions(path: '/change-password'),
+              statusCode: 400,
+              statusMessage: "Bad Request",
+            ),
           ),
-        ),
-      );
+        );
 
-      // assert
-      expect(
-        () => repository.changePassword(request),
-        throwsA(isA<DioException>()),
-      );
-    });
+        // assert
+        expect(
+          () => repository.changePassword(request),
+          throwsA(isA<DioException>()),
+        );
+      },
+    );
   });
 
   group('ProfileRepositoryImpl - getProfile', () {
@@ -137,10 +140,13 @@ void main() {
       );
 
       final fakeResponse = ProfileResponse(
-          message: "Profile fetched successfully", driver: fakeUser);
+        message: "Profile fetched successfully",
+        driver: fakeUser,
+      );
 
-      when(mockRemoteDatasource.getProfile())
-          .thenAnswer((_) async => ApiSuccessResult(fakeResponse));
+      when(
+        mockRemoteDatasource.getProfile(),
+      ).thenAnswer((_) async => ApiSuccessResult(fakeResponse));
 
       // act
       final result = await repository.getProfile();
@@ -155,17 +161,20 @@ void main() {
       verify(mockRemoteDatasource.getProfile()).called(1);
     });
 
-    test('should return ApiErrorResult when datasource returns error',
-        () async {
-      when(mockRemoteDatasource.getProfile())
-          .thenAnswer((_) async => ApiErrorResult("Unauthorized"));
+    test(
+      'should return ApiErrorResult when datasource returns error',
+      () async {
+        when(
+          mockRemoteDatasource.getProfile(),
+        ).thenAnswer((_) async => ApiErrorResult("Unauthorized"));
 
-      final result = await repository.getProfile();
+        final result = await repository.getProfile();
 
-      expect(result, isA<ApiErrorResult>());
-      expect((result as ApiErrorResult).errorMessage, "Unauthorized");
-      verify(mockRemoteDatasource.getProfile()).called(1);
-    });
+        expect(result, isA<ApiErrorResult>());
+        expect((result as ApiErrorResult).errorMessage, "Unauthorized");
+        verify(mockRemoteDatasource.getProfile()).called(1);
+      },
+    );
   });
 
   group('ProfileRepositoryImpl - editProfile', () {
@@ -188,12 +197,15 @@ void main() {
       createdAt: "2025-09-01T00:00:00Z",
     );
 
-    final fakeResponse =
-        EditProfileResponseModel(message: "Profile updated", driver: fakeUser);
+    final fakeResponse = EditProfileResponseModel(
+      message: "Profile updated",
+      driver: fakeUser,
+    );
 
     test('should return ApiSuccessResult when succeeds', () async {
-      when(mockRemoteDatasource.editProfile(fakeRequest))
-          .thenAnswer((_) async => ApiSuccessResult(fakeResponse));
+      when(
+        mockRemoteDatasource.editProfile(fakeRequest),
+      ).thenAnswer((_) async => ApiSuccessResult(fakeResponse));
 
       final result = await repository.editProfile(fakeRequest);
       final success = result as ApiSuccessResult<EditProfileResponseModel>;
@@ -205,8 +217,9 @@ void main() {
     });
 
     test('should return ApiErrorResult when fails', () async {
-      when(mockRemoteDatasource.editProfile(fakeRequest))
-          .thenAnswer((_) async => ApiErrorResult("Bad request"));
+      when(
+        mockRemoteDatasource.editProfile(fakeRequest),
+      ).thenAnswer((_) async => ApiErrorResult("Bad request"));
 
       final result = await repository.editProfile(fakeRequest);
 
@@ -221,8 +234,9 @@ void main() {
     final fakeResponse = UploadPhotoResponse(message: "Photo uploaded");
 
     test('should return ApiSuccessResult when succeeds', () async {
-      when(mockRemoteDatasource.uploadPhoto(fakeFile))
-          .thenAnswer((_) async => ApiSuccessResult(fakeResponse));
+      when(
+        mockRemoteDatasource.uploadPhoto(fakeFile),
+      ).thenAnswer((_) async => ApiSuccessResult(fakeResponse));
 
       final result = await repository.uploadPhoto(fakeFile);
       final success = result as ApiSuccessResult<UploadPhotoResponse>;
@@ -233,8 +247,9 @@ void main() {
     });
 
     test('should return ApiErrorResult when fails', () async {
-      when(mockRemoteDatasource.uploadPhoto(fakeFile))
-          .thenAnswer((_) async => ApiErrorResult("Upload failed"));
+      when(
+        mockRemoteDatasource.uploadPhoto(fakeFile),
+      ).thenAnswer((_) async => ApiErrorResult("Upload failed"));
 
       final result = await repository.uploadPhoto(fakeFile);
 

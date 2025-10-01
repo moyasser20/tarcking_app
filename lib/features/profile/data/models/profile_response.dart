@@ -11,10 +11,7 @@ class ProfileResponse {
   @JsonKey(name: "driver")
   final User driver;
 
-  ProfileResponse({
-    required this.message,
-    required this.driver,
-  });
+  ProfileResponse({required this.message, required this.driver});
 
   factory ProfileResponse.fromJson(Map<String, dynamic> json) {
     return _$ProfileResponseFromJson(json);

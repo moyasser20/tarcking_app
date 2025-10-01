@@ -11,7 +11,8 @@ class EditProfileDataUseCase {
   EditProfileDataUseCase(this._profileRepo);
 
   Future<ApiResult<EditProfileResponseModel>> call(
-      EditProfileRequestModel model) async {
+    EditProfileRequestModel model,
+  ) async {
     return await _profileRepo.editProfile(model);
   }
 }

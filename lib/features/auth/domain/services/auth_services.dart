@@ -8,9 +8,11 @@ class AuthService {
   static Future<void> saveAuthToken(String token) async {
     await SecureStorage.write(key: tokenKey, value: token);
   }
+
   static Future<void> saveToken(String userId) async {
     await SecureStorage.write(key: token, value: userId);
   }
+
   static Future<void> saveRememberMe(bool rememberMe) async {
     await SecureStorage.write(key: rememberMeKey, value: "$rememberMe");
   }

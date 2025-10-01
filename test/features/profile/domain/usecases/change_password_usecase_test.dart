@@ -20,31 +20,33 @@ void main() {
 
   group('ChangePasswordUseCases', () {
     test(
-        'should return ChangePasswordResponseModel when repository call is successful',
-        () async {
-      // Arrange
-      final request = ChangePasswordRequestModel(
-        password: "old123",
-        newPassword: "new123",
-      );
+      'should return ChangePasswordResponseModel when repository call is successful',
+      () async {
+        // Arrange
+        final request = ChangePasswordRequestModel(
+          password: "old123",
+          newPassword: "new123",
+        );
 
-      final response = ChangePasswordResponseModel(
-        message: "Password updated successfully",
-        token: "newToken456",
-      );
+        final response = ChangePasswordResponseModel(
+          message: "Password updated successfully",
+          token: "newToken456",
+        );
 
-      when(mockProfileRepository.changePassword(request))
-          .thenAnswer((_) async => response);
+        when(
+          mockProfileRepository.changePassword(request),
+        ).thenAnswer((_) async => response);
 
-      // Act
-      final result = await changePasswordUseCases(request);
+        // Act
+        final result = await changePasswordUseCases(request);
 
-      // Assert
-      expect(result.message, "Password updated successfully");
-      expect(result.token, "newToken456");
-      verify(mockProfileRepository.changePassword(request)).called(1);
-      verifyNoMoreInteractions(mockProfileRepository);
-    });
+        // Assert
+        expect(result.message, "Password updated successfully");
+        expect(result.token, "newToken456");
+        verify(mockProfileRepository.changePassword(request)).called(1);
+        verifyNoMoreInteractions(mockProfileRepository);
+      },
+    );
 
     test('should throw Exception when repository throws error', () async {
       final request = ChangePasswordRequestModel(
@@ -52,14 +54,12 @@ void main() {
         newPassword: "new123",
       );
 
-      when(mockProfileRepository.changePassword(request))
-          .thenThrow(Exception("Something went wrong"));
+      when(
+        mockProfileRepository.changePassword(request),
+      ).thenThrow(Exception("Something went wrong"));
 
       // Assert
-      expect(
-        () => changePasswordUseCases(request),
-        throwsA(isA<Exception>()),
-      );
+      expect(() => changePasswordUseCases(request), throwsA(isA<Exception>()));
 
       verify(mockProfileRepository.changePassword(request)).called(1);
     });

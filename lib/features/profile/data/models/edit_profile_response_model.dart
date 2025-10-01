@@ -10,10 +10,7 @@ class EditProfileResponseModel {
   @JsonKey(name: "driver")
   final User driver;
 
-  EditProfileResponseModel({
-    required this.message,
-    required this.driver,
-  });
+  EditProfileResponseModel({required this.message, required this.driver});
 
   factory EditProfileResponseModel.fromJson(Map<String, dynamic> json) {
     return _$EditProfileResponseModelFromJson(json);

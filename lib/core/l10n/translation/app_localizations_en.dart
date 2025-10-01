@@ -48,7 +48,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequiredErrorMsg => 'Password is required';
 
   @override
-  String get passwordValidationErrorMsg => 'Password must be at least 6 characters and include M#12m';
+  String get passwordValidationErrorMsg =>
+      'Password must be at least 6 characters and include M#12m';
 
   @override
   String get rememberMe => 'Remember me';
@@ -111,19 +112,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutConfirmTextCenter => 'Confirm logout!';
 
   @override
-  String get resetPasswordUnderMsg => 'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number';
+  String get resetPasswordUnderMsg =>
+      'Password must not be empty and must contain at least 6 characters with one uppercase letter and one number';
 
   @override
   String get emailVerificationScreen => 'Email Verification';
 
   @override
-  String get emailVerificationScreenUnderMsg => 'Please enter the code that was sent to your\nemail address';
+  String get emailVerificationScreenUnderMsg =>
+      'Please enter the code that was sent to your\nemail address';
 
   @override
   String get codeReceiveMsgError => 'Didn\'t receive code?';
 
   @override
-  String get forgetPasswordUnderText => 'Please enter your email associated with\nyour account';
+  String get forgetPasswordUnderText =>
+      'Please enter your email associated with\nyour account';
 
   @override
   String get forgetPassword => 'Forgot Password';
@@ -153,7 +157,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get applicationSub => 'Your application has been\n submitted!';
 
   @override
-  String get applicationSubMsg => 'Thank you for providing your application,\n we will review your application and will get back to you soon.';
+  String get applicationSubMsg =>
+      'Thank you for providing your application,\n we will review your application and will get back to you soon.';
 
   @override
   String get codeLengthError => 'Code must be at least 6 digits';
@@ -300,7 +305,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorText => 'Error';
 
   @override
-  String get profilePhotoUpdatedSuccessfully => 'Profile photo updated successfully';
+  String get profilePhotoUpdatedSuccessfully =>
+      'Profile photo updated successfully';
 
   @override
   String get firstNameLabel => 'First Name';

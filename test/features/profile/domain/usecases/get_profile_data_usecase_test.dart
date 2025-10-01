@@ -36,39 +36,43 @@ void main() {
   });
 
   group('GetProfileDataUseCase', () {
-    test('should return ApiSuccessResult<UserEntity> when repository succeeds',
-        () async {
-      // arrange
-      final fakeUser = UserEntity(
-        id: "123",
-        firstName: "Mouayed",
-        lastName: "Mohamed",
-        email: "mouayed@example.com",
-        gender: "male",
-        phone: "01000000000",
-        photo: "https://example.com/photo.jpg",
-        role: "customer",
-      );
+    test(
+      'should return ApiSuccessResult<UserEntity> when repository succeeds',
+      () async {
+        // arrange
+        final fakeUser = UserEntity(
+          id: "123",
+          firstName: "Mouayed",
+          lastName: "Mohamed",
+          email: "mouayed@example.com",
+          gender: "male",
+          phone: "01000000000",
+          photo: "https://example.com/photo.jpg",
+          role: "customer",
+        );
 
-      when(mockProfileRepository.getProfile())
-          .thenAnswer((_) async => ApiSuccessResult(fakeUser));
+        when(
+          mockProfileRepository.getProfile(),
+        ).thenAnswer((_) async => ApiSuccessResult(fakeUser));
 
-      // act
-      final result = await getProfileDataUseCase;
+        // act
+        final result = await getProfileDataUseCase;
 
-      // assert
-      expect(result, isA<ApiSuccessResult<UserEntity>>());
-      final success = result as ApiSuccessResult<UserEntity>;
-      expect(success.data.id, "123");
-      expect(success.data.firstName, "Mouayed");
-      expect(success.data.email, "mouayed@example.com");
-      verify(mockProfileRepository.getProfile()).called(1);
-    });
+        // assert
+        expect(result, isA<ApiSuccessResult<UserEntity>>());
+        final success = result as ApiSuccessResult<UserEntity>;
+        expect(success.data.id, "123");
+        expect(success.data.firstName, "Mouayed");
+        expect(success.data.email, "mouayed@example.com");
+        verify(mockProfileRepository.getProfile()).called(1);
+      },
+    );
 
     test('should return ApiErrorResult when repository fails', () async {
       // arrange
-      when(mockProfileRepository.getProfile())
-          .thenAnswer((_) async => ApiErrorResult("Unauthorized"));
+      when(
+        mockProfileRepository.getProfile(),
+      ).thenAnswer((_) async => ApiErrorResult("Unauthorized"));
 
       // act
       final result = await getProfileDataUseCase;

@@ -34,10 +34,7 @@ void main() async {
                   LocalizationCubit(language: languageValue),
         ),
       ],
-      child: const MyApp(
-        initialRoute: AppRoutes.initial,
-
-      ),
+      child: const MyApp(initialRoute: AppRoutes.initial),
     ),
   );
 }

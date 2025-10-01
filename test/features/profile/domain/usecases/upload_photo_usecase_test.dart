@@ -31,8 +31,9 @@ void main() {
   group('UploadPhotoUseCase', () {
     test('should return ApiSuccessResult when repository succeeds', () async {
       // arrange
-      when(mockProfileRepository.uploadPhoto(fakeFile))
-          .thenAnswer((_) async => ApiSuccessResult(fakeResponse));
+      when(
+        mockProfileRepository.uploadPhoto(fakeFile),
+      ).thenAnswer((_) async => ApiSuccessResult(fakeResponse));
 
       // act
       final result = await useCase(fakeFile);
@@ -46,8 +47,9 @@ void main() {
 
     test('should return ApiErrorResult when repository fails', () async {
       // arrange
-      when(mockProfileRepository.uploadPhoto(fakeFile))
-          .thenAnswer((_) async => ApiErrorResult("Upload failed"));
+      when(
+        mockProfileRepository.uploadPhoto(fakeFile),
+      ).thenAnswer((_) async => ApiErrorResult("Upload failed"));
 
       // act
       final result = await useCase(fakeFile);

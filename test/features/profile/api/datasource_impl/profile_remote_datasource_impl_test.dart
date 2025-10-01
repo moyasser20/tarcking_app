@@ -29,31 +29,33 @@ void main() {
 
   group('ProfileRemoteDatasourceImpl - changePassword', () {
     test(
-        'should return ChangePasswordResponseModel when API call is successful',
-        () async {
-      // arrange
-      final request = ChangePasswordRequestModel(
-        password: "old123",
-        newPassword: "new123",
-      );
+      'should return ChangePasswordResponseModel when API call is successful',
+      () async {
+        // arrange
+        final request = ChangePasswordRequestModel(
+          password: "old123",
+          newPassword: "new123",
+        );
 
-      final response = ChangePasswordResponseModel(
-        message: "Password changed successfully",
-        token: "newToken123",
-      );
+        final response = ChangePasswordResponseModel(
+          message: "Password changed successfully",
+          token: "newToken123",
+        );
 
-      when(mockProfileApiClient.changePassword(request))
-          .thenAnswer((_) async => response);
+        when(
+          mockProfileApiClient.changePassword(request),
+        ).thenAnswer((_) async => response);
 
-      // act
-      final result = await datasource.changePassword(request);
+        // act
+        final result = await datasource.changePassword(request);
 
-      // assert
-      expect(result, isA<ChangePasswordResponseModel>());
-      expect((result.message), "Password changed successfully");
-      expect(result.token, "newToken123");
-      verify(mockProfileApiClient.changePassword(request)).called(1);
-    });
+        // assert
+        expect(result, isA<ChangePasswordResponseModel>());
+        expect((result.message), "Password changed successfully");
+        expect(result.token, "newToken123");
+        verify(mockProfileApiClient.changePassword(request)).called(1);
+      },
+    );
 
     test('should throw DioException when API call fails', () async {
       final request = ChangePasswordRequestModel(
@@ -98,55 +100,61 @@ void main() {
         driver: fakeUser,
       );
 
-      when(mockProfileApiClient.getProfile())
-          .thenAnswer((_) async => fakeResponse);
+      when(
+        mockProfileApiClient.getProfile(),
+      ).thenAnswer((_) async => fakeResponse);
 
       // act
       final result = await datasource.getProfile();
 
       // assert
       expect(result, isA<ApiSuccessResult<ProfileResponse>>());
-      expect((result as ApiSuccessResult).data.message,
-          "Profile fetched successfully");
+      expect(
+        (result as ApiSuccessResult).data.message,
+        "Profile fetched successfully",
+      );
       verify(mockProfileApiClient.getProfile()).called(1);
     });
 
     test(
-        'should return ApiErrorResult with server message when DioException thrown',
-        () async {
-      final dioError = DioException(
-        requestOptions: RequestOptions(path: '/profile'),
-        response: Response(
+      'should return ApiErrorResult with server message when DioException thrown',
+      () async {
+        final dioError = DioException(
           requestOptions: RequestOptions(path: '/profile'),
-          statusCode: 401,
-          data: {'message': 'Unauthorized'},
-        ),
-        type: DioExceptionType.badResponse,
-      );
+          response: Response(
+            requestOptions: RequestOptions(path: '/profile'),
+            statusCode: 401,
+            data: {'message': 'Unauthorized'},
+          ),
+          type: DioExceptionType.badResponse,
+        );
 
-      when(mockProfileApiClient.getProfile()).thenThrow(dioError);
+        when(mockProfileApiClient.getProfile()).thenThrow(dioError);
 
-      // act
-      final result = await datasource.getProfile();
+        // act
+        final result = await datasource.getProfile();
 
-      // assert
-      expect(result, isA<ApiErrorResult>());
-      expect((result as ApiErrorResult).errorMessage, 'Unauthorized');
-    });
+        // assert
+        expect(result, isA<ApiErrorResult>());
+        expect((result as ApiErrorResult).errorMessage, 'Unauthorized');
+      },
+    );
 
     test(
-        'should return ApiErrorResult with "Unexpected error" on generic exception',
-        () async {
-      when(mockProfileApiClient.getProfile())
-          .thenThrow(Exception('Something went wrong'));
+      'should return ApiErrorResult with "Unexpected error" on generic exception',
+      () async {
+        when(
+          mockProfileApiClient.getProfile(),
+        ).thenThrow(Exception('Something went wrong'));
 
-      // act
-      final result = await datasource.getProfile();
+        // act
+        final result = await datasource.getProfile();
 
-      // assert
-      expect(result, isA<ApiErrorResult>());
-      expect((result as ApiErrorResult).errorMessage, 'Unexpected error');
-    });
+        // assert
+        expect(result, isA<ApiErrorResult>());
+        expect((result as ApiErrorResult).errorMessage, 'Unexpected error');
+      },
+    );
   });
 
   group('ProfileRemoteDatasourceImpl - editProfile', () {
@@ -169,12 +177,15 @@ void main() {
       createdAt: "2025-09-01T00:00:00Z",
     );
 
-    final fakeResponse =
-        EditProfileResponseModel(message: "Profile updated", driver: fakeUser);
+    final fakeResponse = EditProfileResponseModel(
+      message: "Profile updated",
+      driver: fakeUser,
+    );
 
     test('should return ApiSuccessResult when API call succeeds', () async {
-      when(mockProfileApiClient.editProfile(fakeRequest))
-          .thenAnswer((_) async => fakeResponse);
+      when(
+        mockProfileApiClient.editProfile(fakeRequest),
+      ).thenAnswer((_) async => fakeResponse);
 
       // act
       final result = await datasource.editProfile(fakeRequest);
@@ -186,16 +197,19 @@ void main() {
     });
 
     test('should return ApiErrorResult when API throws exception', () async {
-      when(mockProfileApiClient.editProfile(fakeRequest))
-          .thenThrow(Exception("Failed to update"));
+      when(
+        mockProfileApiClient.editProfile(fakeRequest),
+      ).thenThrow(Exception("Failed to update"));
 
       // act
       final result = await datasource.editProfile(fakeRequest);
 
       // assert
       expect(result, isA<ApiErrorResult>());
-      expect((result as ApiErrorResult).errorMessage,
-          contains("Failed to update"));
+      expect(
+        (result as ApiErrorResult).errorMessage,
+        contains("Failed to update"),
+      );
     });
   });
 
@@ -204,8 +218,9 @@ void main() {
     final fakeResponse = UploadPhotoResponse(message: "Photo uploaded");
 
     test('should return ApiSuccessResult when API call succeeds', () async {
-      when(mockProfileApiClient.uploadPhoto(fakeFile))
-          .thenAnswer((_) async => fakeResponse);
+      when(
+        mockProfileApiClient.uploadPhoto(fakeFile),
+      ).thenAnswer((_) async => fakeResponse);
 
       // act
       final result = await datasource.uploadPhoto(fakeFile);
@@ -217,8 +232,9 @@ void main() {
     });
 
     test('should return ApiErrorResult when API throws exception', () async {
-      when(mockProfileApiClient.uploadPhoto(fakeFile))
-          .thenThrow(Exception("Upload failed"));
+      when(
+        mockProfileApiClient.uploadPhoto(fakeFile),
+      ).thenThrow(Exception("Upload failed"));
 
       // act
       final result = await datasource.uploadPhoto(fakeFile);
@@ -226,7 +242,9 @@ void main() {
       // assert
       expect(result, isA<ApiErrorResult>());
       expect(
-          (result as ApiErrorResult).errorMessage, contains("Upload failed"));
+        (result as ApiErrorResult).errorMessage,
+        contains("Upload failed"),
+      );
     });
   });
 }
