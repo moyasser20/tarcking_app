@@ -40,13 +40,8 @@ import 'package:tarcking_app/features/profile/data/models/upload_photo_response.
 
 class _FakeChangePasswordResponseModel_0 extends _i1.SmartFake
     implements _i2.ChangePasswordResponseModel {
-  _FakeChangePasswordResponseModel_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeChangePasswordResponseModel_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ProfileRemoteDatasource].
@@ -61,72 +56,62 @@ class MockProfileRemoteDatasource extends _i1.Mock
   @override
   _i4.Future<_i5.ApiResult<_i6.ProfileResponse>> getProfile() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getProfile,
-          [],
-        ),
-        returnValue: _i4.Future<_i5.ApiResult<_i6.ProfileResponse>>.value(
-            _i7.dummyValue<_i5.ApiResult<_i6.ProfileResponse>>(
-          this,
-          Invocation.method(
-            #getProfile,
-            [],
-          ),
-        )),
-      ) as _i4.Future<_i5.ApiResult<_i6.ProfileResponse>>);
+            Invocation.method(#getProfile, []),
+            returnValue: _i4.Future<_i5.ApiResult<_i6.ProfileResponse>>.value(
+              _i7.dummyValue<_i5.ApiResult<_i6.ProfileResponse>>(
+                this,
+                Invocation.method(#getProfile, []),
+              ),
+            ),
+          )
+          as _i4.Future<_i5.ApiResult<_i6.ProfileResponse>>);
 
   @override
   _i4.Future<_i2.ChangePasswordResponseModel> changePassword(
-          _i8.ChangePasswordRequestModel? changePasswordRequestModel) =>
+    _i8.ChangePasswordRequestModel? changePasswordRequestModel,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #changePassword,
-          [changePasswordRequestModel],
-        ),
-        returnValue: _i4.Future<_i2.ChangePasswordResponseModel>.value(
-            _FakeChangePasswordResponseModel_0(
-          this,
-          Invocation.method(
-            #changePassword,
-            [changePasswordRequestModel],
-          ),
-        )),
-      ) as _i4.Future<_i2.ChangePasswordResponseModel>);
+            Invocation.method(#changePassword, [changePasswordRequestModel]),
+            returnValue: _i4.Future<_i2.ChangePasswordResponseModel>.value(
+              _FakeChangePasswordResponseModel_0(
+                this,
+                Invocation.method(#changePassword, [
+                  changePasswordRequestModel,
+                ]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.ChangePasswordResponseModel>);
 
   @override
   _i4.Future<_i5.ApiResult<_i9.EditProfileResponseModel>> editProfile(
-          _i10.EditProfileRequestModel? model) =>
+    _i10.EditProfileRequestModel? model,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #editProfile,
-          [model],
-        ),
-        returnValue:
-            _i4.Future<_i5.ApiResult<_i9.EditProfileResponseModel>>.value(
-                _i7.dummyValue<_i5.ApiResult<_i9.EditProfileResponseModel>>(
-          this,
-          Invocation.method(
-            #editProfile,
-            [model],
-          ),
-        )),
-      ) as _i4.Future<_i5.ApiResult<_i9.EditProfileResponseModel>>);
+            Invocation.method(#editProfile, [model]),
+            returnValue:
+                _i4.Future<_i5.ApiResult<_i9.EditProfileResponseModel>>.value(
+                  _i7.dummyValue<_i5.ApiResult<_i9.EditProfileResponseModel>>(
+                    this,
+                    Invocation.method(#editProfile, [model]),
+                  ),
+                ),
+          )
+          as _i4.Future<_i5.ApiResult<_i9.EditProfileResponseModel>>);
 
   @override
   _i4.Future<_i5.ApiResult<_i11.UploadPhotoResponse>> uploadPhoto(
-          _i12.File? photo) =>
+    _i12.File? photo,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #uploadPhoto,
-          [photo],
-        ),
-        returnValue: _i4.Future<_i5.ApiResult<_i11.UploadPhotoResponse>>.value(
-            _i7.dummyValue<_i5.ApiResult<_i11.UploadPhotoResponse>>(
-          this,
-          Invocation.method(
-            #uploadPhoto,
-            [photo],
-          ),
-        )),
-      ) as _i4.Future<_i5.ApiResult<_i11.UploadPhotoResponse>>);
+            Invocation.method(#uploadPhoto, [photo]),
+            returnValue:
+                _i4.Future<_i5.ApiResult<_i11.UploadPhotoResponse>>.value(
+                  _i7.dummyValue<_i5.ApiResult<_i11.UploadPhotoResponse>>(
+                    this,
+                    Invocation.method(#uploadPhoto, [photo]),
+                  ),
+                ),
+          )
+          as _i4.Future<_i5.ApiResult<_i11.UploadPhotoResponse>>);
 }
