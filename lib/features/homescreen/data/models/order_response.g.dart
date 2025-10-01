@@ -13,12 +13,14 @@ OrderResponse _$OrderResponseFromJson(Map<String, dynamic> json) =>
       state: json['state'] as String?,
       paymentType: json['paymentType'] as String?,
       orderNumber: json['orderNumber'] as String?,
-      store: json['store'] == null
-          ? null
-          : StoreResponse.fromJson(json['store'] as Map<String, dynamic>),
-      user: json['user'] == null
-          ? null
-          : UserResponse.fromJson(json['user'] as Map<String, dynamic>),
+      store:
+          json['store'] == null
+              ? null
+              : StoreResponse.fromJson(json['store'] as Map<String, dynamic>),
+      user:
+          json['user'] == null
+              ? null
+              : UserResponse.fromJson(json['user'] as Map<String, dynamic>),
       orderItems: json['orderItems'] as List<dynamic>?,
       isPaid: json['isPaid'] as bool?,
       isDelivered: json['isDelivered'] as bool?,

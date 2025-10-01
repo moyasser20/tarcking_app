@@ -31,10 +31,11 @@ class Routes {
 
       case AppRoutes.login:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<LoginCubit>(),
-            child: const LoginScreen(),
-          ),
+          builder:
+              (context) => BlocProvider(
+                create: (context) => getIt<LoginCubit>(),
+                child: const LoginScreen(),
+              ),
         );
 
       case AppRoutes.dashboard:
@@ -45,36 +46,40 @@ class Routes {
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<ForgetPasswordCubit>(
-            create: (context) => getIt<ForgetPasswordCubit>(),
-            child: const ForgetPasswordScreen(),
-          ),
+          builder:
+              (_) => BlocProvider<ForgetPasswordCubit>(
+                create: (context) => getIt<ForgetPasswordCubit>(),
+                child: const ForgetPasswordScreen(),
+              ),
         );
 
       case AppRoutes.emailVerification:
         final email = settings.arguments as String? ?? '';
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<VerifyCodeCubit>(
-            create: (context) => getIt<VerifyCodeCubit>(),
-            child: EmailVerificationScreen(email: email),
-          ),
+          builder:
+              (_) => BlocProvider<VerifyCodeCubit>(
+                create: (context) => getIt<VerifyCodeCubit>(),
+                child: EmailVerificationScreen(email: email),
+              ),
         );
 
       case AppRoutes.resetPassword:
         final email = settings.arguments as String? ?? '';
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<ResetPasswordCubit>(
-            create: (context) => getIt<ResetPasswordCubit>(),
-            child: ResetPasswordScreen(email: email),
-          ),
+          builder:
+              (_) => BlocProvider<ResetPasswordCubit>(
+                create: (context) => getIt<ResetPasswordCubit>(),
+                child: ResetPasswordScreen(email: email),
+              ),
         );
 
       case AppRoutes.homeScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<HomeCubit>()..getOrders(),
-            child: const HomeScreen(),
-          ),
+          builder:
+              (_) => BlocProvider(
+                create: (context) => getIt<HomeCubit>()..getOrders(),
+                child: const HomeScreen(),
+              ),
         );
 
       default:

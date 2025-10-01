@@ -30,7 +30,7 @@ class DashboardScreen extends StatelessWidget {
             Navigator.pushNamedAndRemoveUntil(
               context,
               AppRoutes.login,
-                  (route) => false,
+              (route) => false,
             );
           },
         ),

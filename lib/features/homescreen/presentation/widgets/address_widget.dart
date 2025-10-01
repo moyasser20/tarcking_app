@@ -8,6 +8,7 @@ class AddressWidget extends StatelessWidget {
   final String image;
   final String storeName;
   final String address;
+
   const AddressWidget({
     super.key,
     required this.TitleAddress,
@@ -24,7 +25,7 @@ class AddressWidget extends StatelessWidget {
       children: [
         Text(
           TitleAddress,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 15,
             color: AppColors.grey,
             fontFamily: "Inter",
@@ -50,7 +51,28 @@ class AddressWidget extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: image == "default-profile.png" ? Image.asset("assets/images/empty_profile_image.jpg"):Image.network(image)  ,
+                child:
+                    image == "default-profile.png"
+                        ? Image.asset(
+                          "assets/images/empty_profile_image.jpg",
+                          width: size.width * 0.15,
+                          height: size.height * 0.08,
+                          fit: BoxFit.cover,
+                        )
+                        : Image.network(
+                          image,
+                          width: size.width * 0.15,
+                          height: size.height * 0.08,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Image.asset(
+                              "assets/images/empty_profile_image.jpg",
+                              width: size.width * 0.15,
+                              height: size.height * 0.08,
+                              fit: BoxFit.cover,
+                            );
+                          },
+                        ),
               ),
               const SizedBox(width: 10),
               Column(
@@ -59,29 +81,32 @@ class AddressWidget extends StatelessWidget {
                 children: [
                   Text(
                     storeName,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       color: AppColors.grey,
                       fontFamily: "Inter",
                     ),
-                  ).setHorizontalPadding(context, 0.01),
+                  ).setHorizontalPadding(context, 0.001),
                   const SizedBox(height: 5),
                   Row(
                     children: [
-                      Icon(Icons.location_on_outlined),
+                      const Icon(Icons.location_on_outlined),
                       const SizedBox(width: 5),
-                      Text(address, style: TextStyle(
-                        fontSize: 13,
-                        color: AppColors.black,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.w600,
-                      ),),
+                      Text(
+                        address,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: AppColors.black,
+                          fontFamily: "Inter",
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ],
-          ).setHorizontalPadding(context, 0.03),
+          ),
         ),
       ],
     ).setHorizontalPadding(context, 0.01);

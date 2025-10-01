@@ -6,9 +6,21 @@ class OrdersResponseEntity {
   final Metadata metadata;
   final List<OrderEntity> orders;
 
-  const OrdersResponseEntity({
+  OrdersResponseEntity({
     required this.message,
     required this.metadata,
     required this.orders,
   });
+
+  OrdersResponseEntity copyWith({
+    String? message,
+    Metadata? metadata,
+    List<OrderEntity>? orders,
+  }) {
+    return OrdersResponseEntity(
+      message: message ?? this.message,
+      metadata: metadata ?? this.metadata,
+      orders: orders ?? this.orders,
+    );
+  }
 }

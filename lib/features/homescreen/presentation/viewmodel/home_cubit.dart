@@ -15,7 +15,6 @@ class HomeCubit extends Cubit<HomeStates> {
     emit(HomeLoadingState());
     try {
       final ordersResponse = await _getOrdersUseCase();
-      print("========================${ordersResponse.orders.length}========================");
       emit(HomeSuccessState(ordersResponse));
     } on Failure catch (failure) {
       emit(HomeErrorState(failure.errorMessage));
@@ -24,4 +23,19 @@ class HomeCubit extends Cubit<HomeStates> {
     }
   }
 
+  void rejectOrderLocally(String orderId) {
+    if (state is HomeSuccessState) {
+      final currentState = state as HomeSuccessState;
+      final updatedOrders =
+          currentState.ordersResponseEntity.orders
+              .where((o) => o.id != orderId)
+              .toList();
+
+      emit(
+        HomeSuccessState(
+          currentState.ordersResponseEntity.copyWith(orders: updatedOrders),
+        ),
+      );
+    }
+  }
 }

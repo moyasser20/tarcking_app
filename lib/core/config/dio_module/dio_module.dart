@@ -36,7 +36,7 @@ abstract class DioModule {
               final driverToken = await AuthService.getDriverTestToken();
               options.headers['Authorization'] = 'Bearer $driverToken';
             } else {
-             final token = await AuthService.getToken();
+              final token = await AuthService.getToken();
               if (token != null && token.isNotEmpty) {
                 options.headers['Authorization'] = 'Bearer $token';
               }

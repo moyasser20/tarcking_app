@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
 
 import '../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/order_entity.dart';
+import '../viewmodel/home_cubit.dart';
 import 'address_widget.dart';
 
 class OrderContainerWidget extends StatelessWidget {
@@ -59,15 +61,16 @@ class OrderContainerWidget extends StatelessWidget {
           AddressWidget(
             TitleAddress: local.userAddress,
             image: orderEntity.user.photo,
-            storeName: "${orderEntity.user.firstName} ${orderEntity.user.lastName}",
-            address: orderEntity.user.email,
+            storeName:
+                "${orderEntity.user.firstName} ${orderEntity.user.lastName}",
+            address: "20th st, Sheikh Zayed, Giza ", //orderEntity.user.email,
           ),
 
           const SizedBox(height: 25),
           Row(
             children: [
               Text(
-                "${local.orderPrice}: ${orderEntity.totalPrice}",
+                "${orderEntity.totalPrice}",
                 style: TextStyle(
                   color: AppColors.black,
                   fontSize: 17,
@@ -78,7 +81,9 @@ class OrderContainerWidget extends StatelessWidget {
               const Spacer(),
               CustomElevatedButton(
                 text: local.reject,
-                onPressed: () {},
+                onPressed: () {
+                  context.read<HomeCubit>().rejectOrderLocally(orderEntity.id);
+                },
                 width: size.width * 0.27,
                 height: size.height * 0.05,
                 color: AppColors.white,

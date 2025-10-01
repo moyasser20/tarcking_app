@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:loading_indicator/loading_indicator.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
 import 'package:tarcking_app/core/theme/app_colors.dart';
 
@@ -21,9 +19,9 @@ class HomeScreen extends StatelessWidget {
       body: BlocConsumer<HomeCubit, HomeStates>(
         listener: (context, state) {
           if (state is HomeErrorState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.message)));
           }
         },
         builder: (context, state) {
@@ -32,23 +30,28 @@ class HomeScreen extends StatelessWidget {
           } else if (state is HomeSuccessState) {
             final orders = state.ordersResponseEntity.orders;
 
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  const SizedBox(height: 70),
-                  Image.asset(AppImages.floweryRider),
-                  const SizedBox(height: 40),
+            return RefreshIndicator(
+              onRefresh: () async {
+                await context.read<HomeCubit>().getOrders();
+              },
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 70),
+                    Image.asset(AppImages.floweryRider),
+                    const SizedBox(height: 40),
 
-                  ...orders.map((order) => Padding(
-                    padding: const EdgeInsets.only(bottom: 30),
-                    child: OrderContainerWidget(
-                      orderEntity: order,
+                    ...orders.map(
+                      (order) => Padding(
+                        padding: const EdgeInsets.only(bottom: 30),
+                        child: OrderContainerWidget(orderEntity: order),
+                      ),
                     ),
-                  )),
 
-                  const SizedBox(height: 50),
-                ],
-              ).setHorizontalPadding(context, 0.04),
+                    const SizedBox(height: 50),
+                  ],
+                ).setHorizontalPadding(context, 0.04),
+              ),
             );
           } else {
             return const Center(child: Text("No Data"));

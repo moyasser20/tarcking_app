@@ -33,24 +33,14 @@ import 'package:tarcking_app/features/auth/domain/responses/auth_response.dart'
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeDriverEntity_0 extends _i1.SmartFake implements _i2.DriverEntity {
-  _FakeDriverEntity_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeDriverEntity_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeAuthResponse_1<T> extends _i1.SmartFake
     implements _i3.AuthResponse<T> {
-  _FakeAuthResponse_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeAuthResponse_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [AuthRepo].
@@ -78,31 +68,7 @@ class MockAuthRepo extends _i1.Mock implements _i4.AuthRepo {
     required String? phone,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #applyDriver,
-          [],
-          {
-            #country: country,
-            #firstName: firstName,
-            #lastName: lastName,
-            #vehicleType: vehicleType,
-            #vehicleNumber: vehicleNumber,
-            #vehicleLicensePath: vehicleLicensePath,
-            #nid: nid,
-            #nidImgPath: nidImgPath,
-            #email: email,
-            #password: password,
-            #rePassword: rePassword,
-            #gender: gender,
-            #phone: phone,
-          },
-        ),
-        returnValue: _i5.Future<_i2.DriverEntity>.value(_FakeDriverEntity_0(
-          this,
-          Invocation.method(
-            #applyDriver,
-            [],
-            {
+            Invocation.method(#applyDriver, [], {
               #country: country,
               #firstName: firstName,
               #lastName: lastName,
@@ -116,72 +82,80 @@ class MockAuthRepo extends _i1.Mock implements _i4.AuthRepo {
               #rePassword: rePassword,
               #gender: gender,
               #phone: phone,
-            },
-          ),
-        )),
-      ) as _i5.Future<_i2.DriverEntity>);
+            }),
+            returnValue: _i5.Future<_i2.DriverEntity>.value(
+              _FakeDriverEntity_0(
+                this,
+                Invocation.method(#applyDriver, [], {
+                  #country: country,
+                  #firstName: firstName,
+                  #lastName: lastName,
+                  #vehicleType: vehicleType,
+                  #vehicleNumber: vehicleNumber,
+                  #vehicleLicensePath: vehicleLicensePath,
+                  #nid: nid,
+                  #nidImgPath: nidImgPath,
+                  #email: email,
+                  #password: password,
+                  #rePassword: rePassword,
+                  #gender: gender,
+                  #phone: phone,
+                }),
+              ),
+            ),
+          )
+          as _i5.Future<_i2.DriverEntity>);
 
   @override
-  _i5.Future<List<_i6.VehicleEntity>> getVehicles() => (super.noSuchMethod(
-        Invocation.method(
-          #getVehicles,
-          [],
-        ),
-        returnValue:
-            _i5.Future<List<_i6.VehicleEntity>>.value(<_i6.VehicleEntity>[]),
-      ) as _i5.Future<List<_i6.VehicleEntity>>);
+  _i5.Future<List<_i6.VehicleEntity>> getVehicles() =>
+      (super.noSuchMethod(
+            Invocation.method(#getVehicles, []),
+            returnValue: _i5.Future<List<_i6.VehicleEntity>>.value(
+              <_i6.VehicleEntity>[],
+            ),
+          )
+          as _i5.Future<List<_i6.VehicleEntity>>);
 
   @override
   _i5.Future<_i3.AuthResponse<_i7.LoginResponse>> login(
-          _i8.LoginRequest? loginRequest) =>
+    _i8.LoginRequest? loginRequest,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #login,
-          [loginRequest],
-        ),
-        returnValue: _i5.Future<_i3.AuthResponse<_i7.LoginResponse>>.value(
-            _FakeAuthResponse_1<_i7.LoginResponse>(
-          this,
-          Invocation.method(
-            #login,
-            [loginRequest],
-          ),
-        )),
-      ) as _i5.Future<_i3.AuthResponse<_i7.LoginResponse>>);
+            Invocation.method(#login, [loginRequest]),
+            returnValue: _i5.Future<_i3.AuthResponse<_i7.LoginResponse>>.value(
+              _FakeAuthResponse_1<_i7.LoginResponse>(
+                this,
+                Invocation.method(#login, [loginRequest]),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.AuthResponse<_i7.LoginResponse>>);
 
   @override
   _i5.Future<_i3.AuthResponse<String>> forgetPassword(String? email) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #forgetPassword,
-          [email],
-        ),
-        returnValue: _i5.Future<_i3.AuthResponse<String>>.value(
-            _FakeAuthResponse_1<String>(
-          this,
-          Invocation.method(
-            #forgetPassword,
-            [email],
-          ),
-        )),
-      ) as _i5.Future<_i3.AuthResponse<String>>);
+            Invocation.method(#forgetPassword, [email]),
+            returnValue: _i5.Future<_i3.AuthResponse<String>>.value(
+              _FakeAuthResponse_1<String>(
+                this,
+                Invocation.method(#forgetPassword, [email]),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.AuthResponse<String>>);
 
   @override
   _i5.Future<_i3.AuthResponse<String>> verifyCode(String? code) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #verifyCode,
-          [code],
-        ),
-        returnValue: _i5.Future<_i3.AuthResponse<String>>.value(
-            _FakeAuthResponse_1<String>(
-          this,
-          Invocation.method(
-            #verifyCode,
-            [code],
-          ),
-        )),
-      ) as _i5.Future<_i3.AuthResponse<String>>);
+            Invocation.method(#verifyCode, [code]),
+            returnValue: _i5.Future<_i3.AuthResponse<String>>.value(
+              _FakeAuthResponse_1<String>(
+                this,
+                Invocation.method(#verifyCode, [code]),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.AuthResponse<String>>);
 
   @override
   _i5.Future<_i3.AuthResponse<String>> resetPassword(
@@ -189,23 +163,13 @@ class MockAuthRepo extends _i1.Mock implements _i4.AuthRepo {
     String? newPassword,
   ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #resetPassword,
-          [
-            email,
-            newPassword,
-          ],
-        ),
-        returnValue: _i5.Future<_i3.AuthResponse<String>>.value(
-            _FakeAuthResponse_1<String>(
-          this,
-          Invocation.method(
-            #resetPassword,
-            [
-              email,
-              newPassword,
-            ],
-          ),
-        )),
-      ) as _i5.Future<_i3.AuthResponse<String>>);
+            Invocation.method(#resetPassword, [email, newPassword]),
+            returnValue: _i5.Future<_i3.AuthResponse<String>>.value(
+              _FakeAuthResponse_1<String>(
+                this,
+                Invocation.method(#resetPassword, [email, newPassword]),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.AuthResponse<String>>);
 }
