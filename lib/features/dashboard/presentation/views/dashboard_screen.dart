@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/routes/route_names.dart';
-import '../../../../core/widgets/custom_Elevated_Button.dart';
-import '../../../auth/domain/services/auth_services.dart';
 import '../../../profile/presentation/view/profile_screen.dart';
 import '../cubits/nav_bar_cubit.dart';
 import '../widgets/custom_nav_bar_widget.dart';

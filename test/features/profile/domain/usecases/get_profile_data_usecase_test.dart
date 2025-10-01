@@ -56,7 +56,7 @@ void main() {
         ).thenAnswer((_) async => ApiSuccessResult(fakeUser));
 
         // act
-        final result = await getProfileDataUseCase;
+        final result = getProfileDataUseCase;
 
         // assert
         expect(result, isA<ApiSuccessResult<UserEntity>>());
@@ -75,7 +75,7 @@ void main() {
       ).thenAnswer((_) async => ApiErrorResult("Unauthorized"));
 
       // act
-      final result = await getProfileDataUseCase;
+      final result = getProfileDataUseCase;
 
       // assert
       expect(result, isA<ApiErrorResult>());

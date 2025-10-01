@@ -7,7 +7,6 @@ import 'package:tarcking_app/core/config/di.dart';
 import 'package:tarcking_app/features/auth/presentation/login/cubit/login_cubit.dart';
 import 'package:tarcking_app/features/auth/presentation/login/view/login_screen.dart';
 import '../../features/dashboard/presentation/views/dashboard_screen.dart';
-import '../../features/onboarding/presentation/view/onboarding_screen.dart';
 import '../../features/auth/presentation/apply/view/application_approved_screen.dart';
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/forget_password_viewmodel.dart';
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/views/screens/forget_password_screen.dart';

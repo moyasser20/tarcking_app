@@ -9,7 +9,6 @@ import '../../../../core/Widgets/custom_text_field.dart';
 import '../../../../core/common/widgets/custom_snackbar_widget.dart';
 import '../../../../core/config/di.dart';
 import '../../../../core/contants/app_icons.dart';
-import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entity/user_entity.dart';

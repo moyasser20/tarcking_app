@@ -4,14 +4,12 @@ import 'package:tarcking_app/core/l10n/translation/app_localizations.dart'; // A
 import 'package:tarcking_app/core/routes/on_generate_route.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
 import 'package:tarcking_app/core/contants/secure_storage.dart';
-import 'package:tarcking_app/features/profile/domain/usecases/upload_photo_usecase.dart';
 import 'package:tarcking_app/features/profile/presentation/viewmodel/edit_profile_viewmodel.dart';
 import 'core/config/di.dart';
 import 'features/localization/data/localization_preference.dart';
 import 'features/localization/localization_controller/localization_cubit.dart';
 import 'features/localization/localization_controller/localization_state.dart';
 import 'core/theme/app_theme.dart';
-import 'features/profile/domain/entity/user_entity.dart';
 import 'features/profile/presentation/viewmodel/profile_viewmodel.dart';
 
 void main() async {
