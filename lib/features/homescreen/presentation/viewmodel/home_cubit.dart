@@ -11,10 +11,28 @@ class HomeCubit extends Cubit<HomeStates> {
 
   HomeCubit(this._getOrdersUseCase) : super(HomeInitialState());
 
+  final Map<String, String> orderAddressMap = {};
+
+  final List<String> addresses = [
+    "Nasr City, Cairo",
+    "6th of October, Giza",
+    "Maadi, Cairo",
+    "Dokki, Giza",
+    "Heliopolis, Cairo",
+  ];
+
   Future<void> getOrders() async {
     emit(HomeLoadingState());
     try {
       final ordersResponse = await _getOrdersUseCase();
+
+      for (int i = 0; i < ordersResponse.orders.length; i++) {
+        final order = ordersResponse.orders[i];
+        orderAddressMap.putIfAbsent(order.wrapperId, () {
+          return addresses[i % addresses.length];
+        });
+      }
+
       emit(HomeSuccessState(ordersResponse));
     } on Failure catch (failure) {
       emit(HomeErrorState(failure.errorMessage));

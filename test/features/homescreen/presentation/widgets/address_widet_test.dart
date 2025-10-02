@@ -15,7 +15,7 @@ void main() {
       await tester.pumpWidget(
         MediaQuery(
           data: const MediaQueryData(size: Size(400, 800)), // fix overflow
-          child: const MaterialApp(
+          child: MaterialApp(
             home: Scaffold(
               body: AddressWidget(
                 TitleAddress: title,
@@ -45,7 +45,7 @@ void main() {
       await tester.pumpWidget(
         MediaQuery(
           data: const MediaQueryData(size: Size(400, 800)),
-          child: const MaterialApp(
+          child: MaterialApp(
             home: Scaffold(
               body: AddressWidget(
                 TitleAddress: title,
@@ -75,7 +75,7 @@ void main() {
       await tester.pumpWidget(
         MediaQuery(
           data: const MediaQueryData(size: Size(400, 800)),
-          child: const MaterialApp(
+          child: MaterialApp(
             home: Scaffold(
               body: AddressWidget(
                 TitleAddress: title,

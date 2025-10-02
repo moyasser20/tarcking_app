@@ -41,12 +41,18 @@ class HomeScreen extends StatelessWidget {
                     Image.asset(AppImages.floweryRider),
                     const SizedBox(height: 40),
 
-                    ...orders.map(
-                      (order) => Padding(
+                    ...orders.asMap().entries.map((entry) {
+                      final index = entry.key;
+                      final order = entry.value;
+                      return Padding(
                         padding: const EdgeInsets.only(bottom: 30),
-                        child: OrderContainerWidget(orderEntity: order),
-                      ),
-                    ),
+                        child: OrderContainerWidget(
+                          key: ValueKey(order.wrapperId),
+                          orderEntity: order,
+                          orderIndex: index,
+                        ),
+                      );
+                    }),
 
                     const SizedBox(height: 50),
                   ],

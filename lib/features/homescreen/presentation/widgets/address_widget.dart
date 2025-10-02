@@ -1,30 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
-
 import '../../../../core/theme/app_colors.dart';
 
 class AddressWidget extends StatelessWidget {
-  final String TitleAddress;
+  final String titleAddress;
   final String image;
   final String storeName;
   final String address;
+  final int fallbackIndex;
 
-  const AddressWidget({
+  AddressWidget({
     super.key,
-    required this.TitleAddress,
+    required this.titleAddress,
     required this.image,
     required this.storeName,
     required this.address,
+    required this.fallbackIndex,
   });
+
+  final List<String> imagesList = [
+    "assets/images/yasser2.jpg",
+    "assets/images/edo.png",
+    "assets/images/nasser.png",
+    "assets/images/empty_profile_image.jpg",
+  ];
+
+  Widget _getFallbackImage(BuildContext context, Size size) {
+    final index = fallbackIndex % imagesList.length;
+
+    return Image.asset(
+      imagesList[index],
+      width: size.width * 0.15,
+      height: size.height * 0.08,
+      fit: BoxFit.cover,
+      errorBuilder: (context, error, stackTrace) {
+        return Image.asset(
+          "assets/images/empty_profile_image.jpg",
+          width: size.width * 0.15,
+          height: size.height * 0.08,
+          fit: BoxFit.cover,
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          TitleAddress,
+          titleAddress,
           style: const TextStyle(
             fontSize: 15,
             color: AppColors.grey,
@@ -53,24 +81,14 @@ class AddressWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 child:
                     image == "default-profile.png"
-                        ? Image.asset(
-                          "assets/images/empty_profile_image.jpg",
-                          width: size.width * 0.15,
-                          height: size.height * 0.08,
-                          fit: BoxFit.cover,
-                        )
+                        ? _getFallbackImage(context, size)
                         : Image.network(
                           image,
                           width: size.width * 0.15,
                           height: size.height * 0.08,
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
-                            return Image.asset(
-                              "assets/images/empty_profile_image.jpg",
-                              width: size.width * 0.15,
-                              height: size.height * 0.08,
-                              fit: BoxFit.cover,
-                            );
+                            return _getFallbackImage(context, size);
                           },
                         ),
               ),

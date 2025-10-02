@@ -13,13 +13,22 @@ import 'address_widget.dart';
 
 class OrderContainerWidget extends StatelessWidget {
   final OrderEntity orderEntity;
+  final int orderIndex;
 
-  const OrderContainerWidget({super.key, required this.orderEntity});
+  const OrderContainerWidget({
+    super.key,
+    required this.orderEntity,
+    required this.orderIndex,
+  });
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var local = AppLocalizations.of(context)!;
+
+    final homeCubit = context.read<HomeCubit>();
+    final address =
+        homeCubit.orderAddressMap[orderEntity.wrapperId] ?? "Unknown Address";
 
     return Container(
       width: size.width * 0.9,
@@ -42,7 +51,7 @@ class OrderContainerWidget extends StatelessWidget {
           const SizedBox(height: 25),
           Text(
             local.flowerOrder,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w600,
               color: AppColors.black,
@@ -53,19 +62,23 @@ class OrderContainerWidget extends StatelessWidget {
 
           // Store info
           AddressWidget(
-            TitleAddress: local.pickupAddress,
+            titleAddress: local.pickupAddress,
             image: orderEntity.store.image,
             storeName: orderEntity.store.name,
             address: orderEntity.store.address,
+            fallbackIndex: orderEntity.wrapperId.hashCode,
           ),
 
           const SizedBox(height: 25),
+
+          // User info with address from cubit
           AddressWidget(
-            TitleAddress: local.userAddress,
+            titleAddress: local.userAddress,
             image: orderEntity.user.photo,
             storeName:
                 "${orderEntity.user.firstName} ${orderEntity.user.lastName}",
-            address: "20th st, Sheikh Zayed, Giza ", //orderEntity.user.email,
+            address: address,
+            fallbackIndex: orderEntity.wrapperId.hashCode,
           ),
 
           const SizedBox(height: 25),
@@ -73,7 +86,7 @@ class OrderContainerWidget extends StatelessWidget {
             children: [
               Text(
                 "${orderEntity.totalPrice}",
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.black,
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
@@ -90,7 +103,7 @@ class OrderContainerWidget extends StatelessWidget {
                   showCustomSnackBar(
                     context,
                     local.orderRejectedSuccessfully,
-                    isError: false,
+                    isError: true,
                   );
                 },
                 width: size.width * 0.27,
@@ -103,7 +116,14 @@ class OrderContainerWidget extends StatelessWidget {
               CustomElevatedButton(
                 text: local.accept,
                 onPressed: () {
-                  Navigator.pushNamed(context, AppRoutes.orderDetails);
+                  showCustomSnackBar(
+                    context,
+                    local.orderAcceptedSuccessfully,
+                    isError: false,
+                  );
+                  Future.delayed(const Duration(milliseconds: 800), () {
+                    Navigator.pushNamed(context, AppRoutes.orderDetails);
+                  });
                 },
                 width: size.width * 0.27,
                 height: size.height * 0.05,

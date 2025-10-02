@@ -102,5 +102,6 @@
   "male": "Male",
   "continueBtn": "Continue",
   "orderRejectedSuccessfully": "Order rejected successfully",
+  "orderAcceptedSuccessfully": "Order accepted successfully",
   "orderDetails": "Order Details"
 }
