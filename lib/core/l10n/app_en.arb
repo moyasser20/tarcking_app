@@ -103,5 +103,6 @@
   "continueBtn": "Continue",
   "orderRejectedSuccessfully": "Order rejected successfully",
   "orderAcceptedSuccessfully": "Order accepted successfully",
-  "orderDetails": "Order Details"
+  "orderDetails": "Order Details",
+  "unknownAddress": "Unknown Address"
 }

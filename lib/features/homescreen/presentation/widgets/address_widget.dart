@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
 import '../../../../core/theme/app_colors.dart';
+import 'get_fall_back_image.dart';
 
 class AddressWidget extends StatelessWidget {
   final String titleAddress;
@@ -9,7 +10,7 @@ class AddressWidget extends StatelessWidget {
   final String address;
   final int fallbackIndex;
 
-  AddressWidget({
+  const AddressWidget({
     super.key,
     required this.titleAddress,
     required this.image,
@@ -17,32 +18,6 @@ class AddressWidget extends StatelessWidget {
     required this.address,
     required this.fallbackIndex,
   });
-
-  final List<String> imagesList = [
-    "assets/images/yasser2.jpg",
-    "assets/images/edo.png",
-    "assets/images/nasser.png",
-    "assets/images/empty_profile_image.jpg",
-  ];
-
-  Widget _getFallbackImage(BuildContext context, Size size) {
-    final index = fallbackIndex % imagesList.length;
-
-    return Image.asset(
-      imagesList[index],
-      width: size.width * 0.15,
-      height: size.height * 0.08,
-      fit: BoxFit.cover,
-      errorBuilder: (context, error, stackTrace) {
-        return Image.asset(
-          "assets/images/empty_profile_image.jpg",
-          width: size.width * 0.15,
-          height: size.height * 0.08,
-          fit: BoxFit.cover,
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,18 +54,12 @@ class AddressWidget extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child:
-                    image == "default-profile.png"
-                        ? _getFallbackImage(context, size)
-                        : Image.network(
-                          image,
-                          width: size.width * 0.15,
-                          height: size.height * 0.08,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return _getFallbackImage(context, size);
-                          },
-                        ),
+                child: FallbackImageWidget(
+                  image: image,
+                  fallbackIndex: fallbackIndex,
+                  width: size.width * 0.15,
+                  height: size.height * 0.08,
+                ),
               ),
               const SizedBox(width: 10),
               Column(

@@ -103,5 +103,6 @@
   "accept": "قبول",
   "orderRejectedSuccessfully": "تم رفض الطلب بنجاح",
   "orderAcceptedSuccessfully": "تم قبول الطلب بنجاح",
-  "orderDetails": "تفاصيل الطلب"
+  "orderDetails": "تفاصيل الطلب",
+  "unknownAddress": "عنوان غير معروف"
 }
