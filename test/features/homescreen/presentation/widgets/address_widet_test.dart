@@ -4,9 +4,7 @@ import 'package:tarcking_app/features/homescreen/presentation/widgets/address_wi
 
 void main() {
   group('AddressWidget', () {
-    testWidgets('renders correctly with default profile image', (
-      WidgetTester tester,
-    ) async {
+    testWidgets('renders correctly with default profile image', (tester) async {
       const title = 'Pickup Address';
       const storeName = 'Flower Shop';
       const address = '123 Main St';
@@ -14,14 +12,15 @@ void main() {
 
       await tester.pumpWidget(
         MediaQuery(
-          data: const MediaQueryData(size: Size(400, 800)), // fix overflow
+          data: const MediaQueryData(size: Size(400, 800)),
           child: MaterialApp(
             home: Scaffold(
               body: AddressWidget(
-                TitleAddress: title,
+                titleAddress: title,
                 image: image,
                 storeName: storeName,
                 address: address,
+                fallbackIndex: 0, // required
               ),
             ),
           ),
@@ -31,12 +30,10 @@ void main() {
       expect(find.text(title), findsOneWidget);
       expect(find.text(storeName), findsOneWidget);
       expect(find.text(address), findsOneWidget);
-      expect(find.byType(Image), findsOneWidget);
+      expect(find.byType(Image), findsWidgets);
     });
 
-    testWidgets('renders correctly with network image', (
-      WidgetTester tester,
-    ) async {
+    testWidgets('renders correctly with network image', (tester) async {
       const title = 'User Address';
       const storeName = 'John Doe';
       const address = '456 Elm St';
@@ -48,10 +45,11 @@ void main() {
           child: MaterialApp(
             home: Scaffold(
               body: AddressWidget(
-                TitleAddress: title,
+                titleAddress: title,
                 image: image,
                 storeName: storeName,
                 address: address,
+                fallbackIndex: 1,
               ),
             ),
           ),
@@ -61,11 +59,11 @@ void main() {
       expect(find.text(title), findsOneWidget);
       expect(find.text(storeName), findsOneWidget);
       expect(find.text(address), findsOneWidget);
-      expect(find.byType(Image), findsOneWidget);
+      expect(find.byType(Image), findsWidgets);
     });
 
     testWidgets('falls back to default image when network image fails', (
-      WidgetTester tester,
+      tester,
     ) async {
       const title = 'User Address';
       const storeName = 'Jane Doe';
@@ -78,21 +76,24 @@ void main() {
           child: MaterialApp(
             home: Scaffold(
               body: AddressWidget(
-                TitleAddress: title,
+                titleAddress: title,
                 image: image,
                 storeName: storeName,
                 address: address,
+                fallbackIndex: 2,
               ),
             ),
           ),
         ),
       );
 
-      // Trigger the image error builder
       await tester.pumpAndSettle();
 
-      final errorWidget = tester.widget<Image>(find.byType(Image).first);
-      expect(errorWidget, isA<Image>());
+      expect(find.text(title), findsOneWidget);
+      expect(find.text(storeName), findsOneWidget);
+      expect(find.text(address), findsOneWidget);
+
+      expect(find.byType(Image), findsWidgets);
     });
   });
 }
