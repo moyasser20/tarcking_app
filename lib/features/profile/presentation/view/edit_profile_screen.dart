@@ -48,11 +48,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         });
       }
     } catch (e) {
-      debugPrint("❌ Failed to pick image: $e");
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Unsupported image type. Please pick JPG or PNG."),
-        ),
+      debugPrint("Failed to pick image: $e");
+      showCustomSnackBar(
+        context,
+        "Unsupported image type. Please pick JPG or PNG.",
+        isError: false,
       );
     }
   }
@@ -68,6 +68,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         title: Text(
           local.profileTitle,
           style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
+        ),
+        leading: IconButton(
+          iconSize: 24,
+          icon: Icon(Icons.arrow_back_ios_new_sharp),
+          onPressed: () {
+            Navigator.pop(context, isEdit);
+          },
         ),
         actions: [
           Stack(
@@ -150,9 +157,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 isError: false,
               );
             } else if (state is ProfilePhotoErrorState) {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(state.message)));
+              showCustomSnackBar(context, state.message, isError: true);
             }
           },
           builder: (context, state) {

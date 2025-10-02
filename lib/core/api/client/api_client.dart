@@ -46,7 +46,6 @@ abstract class ApiClient {
   @Extra({'auth': true})
   Future<String> logout();
 
-  /// PROFILE ENDPOINTS ///
   @GET(ApiEndPoints.profileData)
   @Extra({'auth': true})
   Future<ProfileResponse> getProfile();

@@ -8,5 +8,5 @@ class ApiEndPoints {
   static const String profileData = 'profile-data';
   static const String changePassword = 'change-password';
   static const String editProfile = 'editProfile';
-  static const String uploadPhoto = 'uploadPhoto';
+  static const String uploadPhoto = 'upload-photo';
 }

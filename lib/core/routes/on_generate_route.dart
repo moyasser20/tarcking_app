@@ -18,7 +18,6 @@ import '../../features/onboarding/presentation/view/onboarding_screen.dart';
 import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
 import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
-import '../../features/splash/view/splash_view.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -26,7 +25,7 @@ class Routes {
       case AppRoutes.initial:
         {
           return MaterialPageRoute(
-            builder: (context) => const SplashView(),
+            builder: (context) => const OnBoardingScreen(),
             settings: settings,
           );
         }
