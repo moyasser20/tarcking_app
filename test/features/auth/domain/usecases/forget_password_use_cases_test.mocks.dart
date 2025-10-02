@@ -6,6 +6,7 @@
 import 'dart:async' as _i5;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i9;
 import 'package:tarcking_app/features/auth/data/models/login/login_request.dart'
     as _i8;
 import 'package:tarcking_app/features/auth/data/models/login/login_response.dart'
@@ -172,4 +173,14 @@ class MockAuthRepo extends _i1.Mock implements _i4.AuthRepo {
             ),
           )
           as _i5.Future<_i3.AuthResponse<String>>);
+
+  @override
+  _i5.Future<String> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i5.Future<String>.value(
+              _i9.dummyValue<String>(this, Invocation.method(#logout, [])),
+            ),
+          )
+          as _i5.Future<String>);
 }

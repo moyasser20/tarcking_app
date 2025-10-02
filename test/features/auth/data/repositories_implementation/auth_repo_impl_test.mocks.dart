@@ -7,6 +7,7 @@ import 'dart:async' as _i6;
 
 import 'package:dio/dio.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i13;
 import 'package:tarcking_app/features/auth/data/datasource/auth_remote_data_source.dart'
     as _i5;
 import 'package:tarcking_app/features/auth/data/models/apply_models/driver.dart'
@@ -197,4 +198,14 @@ class MockAuthRemoteDatasource extends _i1.Mock
             ),
           )
           as _i6.Future<_i4.AuthResponse<String>>);
+
+  @override
+  _i6.Future<String> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i6.Future<String>.value(
+              _i13.dummyValue<String>(this, Invocation.method(#logout, [])),
+            ),
+          )
+          as _i6.Future<String>);
 }

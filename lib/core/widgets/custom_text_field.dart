@@ -13,6 +13,7 @@ class CustomTextFormField extends StatefulWidget {
   final TextInputType keyboardType;
   final bool enabled;
   final bool readonly;
+  final bool showUploadIcon;
   final String? initialText;
 
   const CustomTextFormField({
@@ -29,6 +30,7 @@ class CustomTextFormField extends StatefulWidget {
     this.enabled = true,
     this.readonly = false,
     this.initialText,
+    this.showUploadIcon = false,
   });
 
   @override
@@ -105,7 +107,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                     });
                   },
                 )
-                : (widget.onPressed != null
+                : (widget.onPressed != null && widget.showUploadIcon
                     ? IconButton(
                       icon: Icon(
                         Icons.file_upload_outlined,
@@ -121,7 +123,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   child: Text(
                     widget.suffixText!,
                     style: TextStyle(
-                      color: AppColors.pink,
+                      color: AppColors.black,
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
                     ),

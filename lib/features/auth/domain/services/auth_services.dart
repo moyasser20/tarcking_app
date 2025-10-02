@@ -3,9 +3,14 @@ import '../../../../core/contants/secure_storage.dart';
 class AuthService {
   static const String tokenKey = 'auth_token';
   static const String rememberMeKey = 'remember_me';
+  static const String token = 'user_id';
 
   static Future<void> saveAuthToken(String token) async {
     await SecureStorage.write(key: tokenKey, value: token);
+  }
+
+  static Future<void> saveToken(String userId) async {
+    await SecureStorage.write(key: token, value: userId);
   }
 
   static Future<void> saveRememberMe(bool rememberMe) async {

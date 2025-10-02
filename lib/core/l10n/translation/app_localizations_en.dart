@@ -206,6 +206,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get vehicleType => 'Vehicle type';
 
   @override
+  String get vehicleInfo => 'Vehicle info';
+
+  @override
   String get noVehiclesAvailable => 'No vehicles available';
 
   @override
@@ -291,4 +294,86 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continueBtn => 'Continue';
+
+  @override
+  String get profileTitle => 'Edit Profile';
+
+  @override
+  String get profileUpdatedSuccessMsg => 'Profile updated successfully!';
+
+  @override
+  String get errorText => 'Error';
+
+  @override
+  String get profilePhotoUpdatedSuccessfully =>
+      'Profile photo updated successfully';
+
+  @override
+  String get firstNameLabel => 'First Name';
+
+  @override
+  String get lastNameLabel => 'Last Name';
+
+  @override
+  String get passwordChangeText => 'Change';
+
+  @override
+  String get phoneNumberLabel => 'Phone Number';
+
+  @override
+  String get updateButton => 'Update';
+
+  @override
+  String get myOrders => 'My Orders';
+
+  @override
+  String get savedAddresses => 'Saved Addresses';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get versionInfo => 'v 6.3.0 - (446)';
+
+  @override
+  String get aboutUs => 'About Us';
+
+  @override
+  String get notification => 'Notification';
+
+  @override
+  String get termsConditions => 'Terms & Conditions';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get changeLanguage => 'Change Language';
+
+  @override
+  String get savedAddress => 'Saved Address';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get languageChanged => 'English';
+
+  @override
+  String get noAboutInfoFound => 'No about info found';
+
+  @override
+  String get notificationDelete => 'Notification deleted';
+
+  @override
+  String get noTermsFound => 'No terms found';
+
+  @override
+  String get errorLoadingTerms => 'Error loading terms';
 }

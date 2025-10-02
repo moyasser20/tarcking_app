@@ -206,6 +206,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get vehicleType => 'نوع المركبة';
 
   @override
+  String get vehicleInfo => 'معلومات المركبة';
+
+  @override
   String get noVehiclesAvailable => 'لا توجد مركبات متاحة';
 
   @override
@@ -291,4 +294,85 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get continueBtn => 'متابعة';
+
+  @override
+  String get profileTitle => 'تعديل الملف الشخصي';
+
+  @override
+  String get profileUpdatedSuccessMsg => 'تم تغيير الملف الشخصي بنجاح!';
+
+  @override
+  String get errorText => 'خطأ';
+
+  @override
+  String get profilePhotoUpdatedSuccessfully => 'تم تحديث صورة الهوية بنجاح';
+
+  @override
+  String get firstNameLabel => 'الاسم الأول';
+
+  @override
+  String get lastNameLabel => 'اسم العائلة';
+
+  @override
+  String get passwordChangeText => 'تغيير';
+
+  @override
+  String get phoneNumberLabel => 'رقم الهاتف';
+
+  @override
+  String get updateButton => 'تحديث';
+
+  @override
+  String get myOrders => 'طلباتي';
+
+  @override
+  String get savedAddresses => 'العناوين المحفوظة';
+
+  @override
+  String get logout => 'تسحيل الخروج';
+
+  @override
+  String get error => 'خطأ';
+
+  @override
+  String get versionInfo => 'الإصدار 6.3.0 - (446)';
+
+  @override
+  String get aboutUs => 'معلومات عنا';
+
+  @override
+  String get notification => 'إشعارات';
+
+  @override
+  String get termsConditions => 'الشروط والأحكام';
+
+  @override
+  String get english => 'الإنجليزية';
+
+  @override
+  String get arabic => 'العربية';
+
+  @override
+  String get changeLanguage => 'تغير اللغه';
+
+  @override
+  String get savedAddress => 'العناوين المحفوظة';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get languageChanged => 'العربية';
+
+  @override
+  String get noAboutInfoFound => 'لم يتم العثور على معلومات';
+
+  @override
+  String get notificationDelete => 'تم حذف الإشعار';
+
+  @override
+  String get noTermsFound => 'لم يتم العثور على شروط';
+
+  @override
+  String get errorLoadingTerms => 'خطأ في تحميل الشروط';
 }
