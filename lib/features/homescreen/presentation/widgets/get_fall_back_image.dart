@@ -6,7 +6,7 @@ class FallbackImageWidget extends StatelessWidget {
   final double width;
   final double height;
 
-  FallbackImageWidget({
+  const FallbackImageWidget({
     super.key,
     required this.image,
     required this.fallbackIndex,

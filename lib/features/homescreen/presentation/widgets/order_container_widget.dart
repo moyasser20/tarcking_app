@@ -28,7 +28,8 @@ class OrderContainerWidget extends StatelessWidget {
 
     final homeCubit = context.read<HomeCubit>();
     final address =
-        homeCubit.orderAddressMap[orderEntity.wrapperId] ?? local.unknownAddress;
+        homeCubit.orderAddressMap[orderEntity.wrapperId] ??
+        local.unknownAddress;
 
     return Container(
       width: size.width * 0.9,
