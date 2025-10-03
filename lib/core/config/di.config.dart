@@ -60,6 +60,8 @@ import '../../features/profile/domain/usecases/get_profile_data_usecase.dart'
     as _i68;
 import '../../features/profile/domain/usecases/upload_photo_usecase.dart'
     as _i971;
+import '../../features/profile/presentation/viewmodel/edit_vehicle_viewmodel.dart'
+    as _i239;
 import '../../features/profile/presentation/viewmodel/profile_viewmodel.dart'
     as _i351;
 import '../api/client/api_client.dart' as _i364;
@@ -157,6 +159,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i179.LoginCubit>(
       () => _i179.LoginCubit(loginUsecase: gh<_i517.LoginUsecase>()),
+    );
+    gh.factory<_i239.EditVehicleViewModel>(
+      () => _i239.EditVehicleViewModel(
+        gh<_i691.EditProfileDataUseCase>(),
+        gh<_i770.GetVehiclesUseCase>(),
+      ),
     );
     gh.factory<_i565.VerifyCodeCubit>(
       () => _i565.VerifyCodeCubit(

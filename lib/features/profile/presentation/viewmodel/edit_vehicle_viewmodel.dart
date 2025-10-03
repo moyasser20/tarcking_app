@@ -2,11 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/features/profile/presentation/viewmodel/states/edit_vehicle_states.dart';
-
-import '../../../../core/errors/api_result.dart';
 import '../../../auth/domain/entities/apply_entites/vehicle_enitity.dart';
 import '../../../auth/domain/usecases/apply/vehicle_usecase.dart';
-import '../../data/models/edit_profile_request_model.dart';
 import '../../domain/usecases/edit_profile_data_usecase.dart';
 
 @injectable
@@ -28,7 +25,7 @@ class EditVehicleViewModel extends Cubit<EditVehicleStates> {
 
   void setVehicleType(VehicleEntity? vehicle) {
     selectedVehicle = vehicle;
-    emit(EditVehicleChangedState());
+    emit(EditVehicleSuccessState(message: "vehicle changed successfully"));
   }
 
   void setVehicleLicensePath(String? path) {
@@ -36,17 +33,18 @@ class EditVehicleViewModel extends Cubit<EditVehicleStates> {
     if (path != null) {
       vehicleLicenseController.text = path.split('/').last;
     }
-    emit(EditVehicleChangedState());
+    emit(EditVehicleSuccessState(message: ""));
   }
 
   Future<void> loadVehicles() async {
+    emit(EditVehicleLoadingState());
     try {
       final response = await _getVehiclesUseCase();
       vehicles = response;
       if (vehicles.isNotEmpty) {
         selectedVehicle = vehicles.first;
       }
-      emit(EditVehicleChangedState());
+      emit(EditVehicleSuccessState(message: "vehicle loaded successfully"));
     } catch (e) {
       emit(EditVehicleErrorState(message: 'Failed to load vehicles: $e'));
     }
