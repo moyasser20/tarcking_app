@@ -38,34 +38,19 @@ import 'package:tarcking_app/features/profile/domain/usecases/get_profile_data_u
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeLogoutUseCase_0 extends _i1.SmartFake implements _i2.LogoutUseCase {
-  _FakeLogoutUseCase_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeLogoutUseCase_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeLogoutStates_1 extends _i1.SmartFake implements _i3.LogoutStates {
-  _FakeLogoutStates_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeLogoutStates_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeLocalizationState_2 extends _i1.SmartFake
     implements _i4.LocalizationState {
-  _FakeLocalizationState_2(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeLocalizationState_2(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [GetProfileDataUseCase].
@@ -78,20 +63,17 @@ class MockGetProfileDataUseCase extends _i1.Mock
   }
 
   @override
-  _i6.Future<_i7.ApiResult<_i8.UserEntity>> call() => (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [],
-        ),
-        returnValue: _i6.Future<_i7.ApiResult<_i8.UserEntity>>.value(
-            _i9.dummyValue<_i7.ApiResult<_i8.UserEntity>>(
-          this,
-          Invocation.method(
-            #call,
-            [],
-          ),
-        )),
-      ) as _i6.Future<_i7.ApiResult<_i8.UserEntity>>);
+  _i6.Future<_i7.ApiResult<_i8.UserEntity>> call() =>
+      (super.noSuchMethod(
+            Invocation.method(#call, []),
+            returnValue: _i6.Future<_i7.ApiResult<_i8.UserEntity>>.value(
+              _i9.dummyValue<_i7.ApiResult<_i8.UserEntity>>(
+                this,
+                Invocation.method(#call, []),
+              ),
+            ),
+          )
+          as _i6.Future<_i7.ApiResult<_i8.UserEntity>>);
 }
 
 /// A class which mocks [LogoutViewModel].
@@ -103,104 +85,78 @@ class MockLogoutViewModel extends _i1.Mock implements _i10.LogoutViewModel {
   }
 
   @override
-  _i2.LogoutUseCase get logoutUseCase => (super.noSuchMethod(
-        Invocation.getter(#logoutUseCase),
-        returnValue: _FakeLogoutUseCase_0(
-          this,
-          Invocation.getter(#logoutUseCase),
-        ),
-      ) as _i2.LogoutUseCase);
+  _i2.LogoutUseCase get logoutUseCase =>
+      (super.noSuchMethod(
+            Invocation.getter(#logoutUseCase),
+            returnValue: _FakeLogoutUseCase_0(
+              this,
+              Invocation.getter(#logoutUseCase),
+            ),
+          )
+          as _i2.LogoutUseCase);
 
   @override
-  _i3.LogoutStates get state => (super.noSuchMethod(
-        Invocation.getter(#state),
-        returnValue: _FakeLogoutStates_1(
-          this,
-          Invocation.getter(#state),
-        ),
-      ) as _i3.LogoutStates);
+  _i3.LogoutStates get state =>
+      (super.noSuchMethod(
+            Invocation.getter(#state),
+            returnValue: _FakeLogoutStates_1(this, Invocation.getter(#state)),
+          )
+          as _i3.LogoutStates);
 
   @override
-  _i6.Stream<_i3.LogoutStates> get stream => (super.noSuchMethod(
-        Invocation.getter(#stream),
-        returnValue: _i6.Stream<_i3.LogoutStates>.empty(),
-      ) as _i6.Stream<_i3.LogoutStates>);
+  _i6.Stream<_i3.LogoutStates> get stream =>
+      (super.noSuchMethod(
+            Invocation.getter(#stream),
+            returnValue: _i6.Stream<_i3.LogoutStates>.empty(),
+          )
+          as _i6.Stream<_i3.LogoutStates>);
 
   @override
-  bool get isClosed => (super.noSuchMethod(
-        Invocation.getter(#isClosed),
-        returnValue: false,
-      ) as bool);
+  bool get isClosed =>
+      (super.noSuchMethod(Invocation.getter(#isClosed), returnValue: false)
+          as bool);
 
   @override
-  _i6.Future<void> logout() => (super.noSuchMethod(
-        Invocation.method(
-          #logout,
-          [],
-        ),
-        returnValue: _i6.Future<void>.value(),
-        returnValueForMissingStub: _i6.Future<void>.value(),
-      ) as _i6.Future<void>);
+  _i6.Future<void> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i6.Future<void>.value(),
+            returnValueForMissingStub: _i6.Future<void>.value(),
+          )
+          as _i6.Future<void>);
 
   @override
   void emit(_i3.LogoutStates? state) => super.noSuchMethod(
-        Invocation.method(
-          #emit,
-          [state],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#emit, [state]),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void onChange(_i11.Change<_i3.LogoutStates>? change) => super.noSuchMethod(
-        Invocation.method(
-          #onChange,
-          [change],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#onChange, [change]),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  void addError(
-    Object? error, [
-    StackTrace? stackTrace,
-  ]) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #addError,
-          [
-            error,
-            stackTrace,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void addError(Object? error, [StackTrace? stackTrace]) => super.noSuchMethod(
+    Invocation.method(#addError, [error, stackTrace]),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  void onError(
-    Object? error,
-    StackTrace? stackTrace,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #onError,
-          [
-            error,
-            stackTrace,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void onError(Object? error, StackTrace? stackTrace) => super.noSuchMethod(
+    Invocation.method(#onError, [error, stackTrace]),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  _i6.Future<void> close() => (super.noSuchMethod(
-        Invocation.method(
-          #close,
-          [],
-        ),
-        returnValue: _i6.Future<void>.value(),
-        returnValueForMissingStub: _i6.Future<void>.value(),
-      ) as _i6.Future<void>);
+  _i6.Future<void> close() =>
+      (super.noSuchMethod(
+            Invocation.method(#close, []),
+            returnValue: _i6.Future<void>.value(),
+            returnValueForMissingStub: _i6.Future<void>.value(),
+          )
+          as _i6.Future<void>);
 }
 
 /// A class which mocks [LocalizationCubit].
@@ -212,138 +168,108 @@ class MockLocalizationCubit extends _i1.Mock implements _i12.LocalizationCubit {
   }
 
   @override
-  String get language => (super.noSuchMethod(
-        Invocation.getter(#language),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.getter(#language),
-        ),
-      ) as String);
+  String get language =>
+      (super.noSuchMethod(
+            Invocation.getter(#language),
+            returnValue: _i9.dummyValue<String>(
+              this,
+              Invocation.getter(#language),
+            ),
+          )
+          as String);
 
   @override
   set language(String? _language) => super.noSuchMethod(
-        Invocation.setter(
-          #language,
-          _language,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#language, _language),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  String get selectedLanguage => (super.noSuchMethod(
-        Invocation.getter(#selectedLanguage),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.getter(#selectedLanguage),
-        ),
-      ) as String);
+  String get selectedLanguage =>
+      (super.noSuchMethod(
+            Invocation.getter(#selectedLanguage),
+            returnValue: _i9.dummyValue<String>(
+              this,
+              Invocation.getter(#selectedLanguage),
+            ),
+          )
+          as String);
 
   @override
   set selectedLanguage(String? _selectedLanguage) => super.noSuchMethod(
-        Invocation.setter(
-          #selectedLanguage,
-          _selectedLanguage,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#selectedLanguage, _selectedLanguage),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  _i4.LocalizationState get state => (super.noSuchMethod(
-        Invocation.getter(#state),
-        returnValue: _FakeLocalizationState_2(
-          this,
-          Invocation.getter(#state),
-        ),
-      ) as _i4.LocalizationState);
+  _i4.LocalizationState get state =>
+      (super.noSuchMethod(
+            Invocation.getter(#state),
+            returnValue: _FakeLocalizationState_2(
+              this,
+              Invocation.getter(#state),
+            ),
+          )
+          as _i4.LocalizationState);
 
   @override
-  _i6.Stream<_i4.LocalizationState> get stream => (super.noSuchMethod(
-        Invocation.getter(#stream),
-        returnValue: _i6.Stream<_i4.LocalizationState>.empty(),
-      ) as _i6.Stream<_i4.LocalizationState>);
+  _i6.Stream<_i4.LocalizationState> get stream =>
+      (super.noSuchMethod(
+            Invocation.getter(#stream),
+            returnValue: _i6.Stream<_i4.LocalizationState>.empty(),
+          )
+          as _i6.Stream<_i4.LocalizationState>);
 
   @override
-  bool get isClosed => (super.noSuchMethod(
-        Invocation.getter(#isClosed),
-        returnValue: false,
-      ) as bool);
+  bool get isClosed =>
+      (super.noSuchMethod(Invocation.getter(#isClosed), returnValue: false)
+          as bool);
 
   @override
   void selectLanguage(String? lang) => super.noSuchMethod(
-        Invocation.method(
-          #selectLanguage,
-          [lang],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#selectLanguage, [lang]),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  bool isSelected(String? lang) => (super.noSuchMethod(
-        Invocation.method(
-          #isSelected,
-          [lang],
-        ),
-        returnValue: false,
-      ) as bool);
+  bool isSelected(String? lang) =>
+      (super.noSuchMethod(
+            Invocation.method(#isSelected, [lang]),
+            returnValue: false,
+          )
+          as bool);
 
   @override
   void emit(_i4.LocalizationState? state) => super.noSuchMethod(
-        Invocation.method(
-          #emit,
-          [state],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#emit, [state]),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void onChange(_i11.Change<_i4.LocalizationState>? change) =>
       super.noSuchMethod(
-        Invocation.method(
-          #onChange,
-          [change],
-        ),
+        Invocation.method(#onChange, [change]),
         returnValueForMissingStub: null,
       );
 
   @override
-  void addError(
-    Object? error, [
-    StackTrace? stackTrace,
-  ]) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #addError,
-          [
-            error,
-            stackTrace,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void addError(Object? error, [StackTrace? stackTrace]) => super.noSuchMethod(
+    Invocation.method(#addError, [error, stackTrace]),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  void onError(
-    Object? error,
-    StackTrace? stackTrace,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #onError,
-          [
-            error,
-            stackTrace,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void onError(Object? error, StackTrace? stackTrace) => super.noSuchMethod(
+    Invocation.method(#onError, [error, stackTrace]),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  _i6.Future<void> close() => (super.noSuchMethod(
-        Invocation.method(
-          #close,
-          [],
-        ),
-        returnValue: _i6.Future<void>.value(),
-        returnValueForMissingStub: _i6.Future<void>.value(),
-      ) as _i6.Future<void>);
+  _i6.Future<void> close() =>
+      (super.noSuchMethod(
+            Invocation.method(#close, []),
+            returnValue: _i6.Future<void>.value(),
+            returnValueForMissingStub: _i6.Future<void>.value(),
+          )
+          as _i6.Future<void>);
 }

@@ -51,11 +51,13 @@ void main() {
           role: "customer",
         );
 
-        when(mockProfileRepository.getProfile())
-            .thenAnswer((_) async => ApiSuccessResult(fakeUser));
+        when(
+          mockProfileRepository.getProfile(),
+        ).thenAnswer((_) async => ApiSuccessResult(fakeUser));
 
         // act
-        final result = await getProfileDataUseCase(); // Fixed: Invoke the use case
+        final result =
+            await getProfileDataUseCase(); // Fixed: Invoke the use case
 
         // assert
         expect(result, isA<ApiSuccessResult<UserEntity>>());
@@ -69,11 +71,13 @@ void main() {
 
     test('should return ApiErrorResult when repository fails', () async {
       // arrange
-      when(mockProfileRepository.getProfile())
-          .thenAnswer((_) async => ApiErrorResult("Unauthorized"));
+      when(
+        mockProfileRepository.getProfile(),
+      ).thenAnswer((_) async => ApiErrorResult("Unauthorized"));
 
       // act
-      final result = await getProfileDataUseCase(); // Fixed: Invoke the use case
+      final result =
+          await getProfileDataUseCase(); // Fixed: Invoke the use case
 
       // assert
       expect(result, isA<ApiErrorResult>());

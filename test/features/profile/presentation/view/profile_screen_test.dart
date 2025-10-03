@@ -10,7 +10,6 @@ import 'package:tarcking_app/features/profile/domain/entity/user_entity.dart';
 import 'package:tarcking_app/features/profile/presentation/view/profile_screen.dart';
 import 'package:tarcking_app/features/profile/presentation/viewmodel/profile_viewmodel.dart';
 import 'package:tarcking_app/features/profile/presentation/viewmodel/states/profile_states.dart';
-
 import '../../../../widget_test_helpers.mocks.dart';
 import '../../profile_mocks.dart';
 import 'profile_screen_test.mocks.dart' hide MockGetProfileDataUseCase;
@@ -66,13 +65,16 @@ void main() {
   }
 
   group('ProfileScreen', () {
-    testWidgets('should show loading indicator when loading profile data',
-        (WidgetTester tester) async {
+    testWidgets('should show loading indicator when loading profile data', (
+      WidgetTester tester,
+    ) async {
       // Arrange
-      when(mockGetProfileDataUseCase()).thenAnswer((_) async => Future.delayed(
-            const Duration(milliseconds: 100),
-            () => ApiSuccessResult(testUser),
-          ));
+      when(mockGetProfileDataUseCase()).thenAnswer(
+        (_) async => Future.delayed(
+          const Duration(milliseconds: 100),
+          () => ApiSuccessResult(testUser),
+        ),
+      );
 
       // Act
       await tester.pumpWidget(createTestableWidget());
@@ -82,11 +84,13 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
     });
 
-    testWidgets('should show profile data when loaded successfully',
-        (WidgetTester tester) async {
+    testWidgets('should show profile data when loaded successfully', (
+      WidgetTester tester,
+    ) async {
       // Arrange
-      when(mockGetProfileDataUseCase())
-          .thenAnswer((_) async => ApiSuccessResult(testUser));
+      when(
+        mockGetProfileDataUseCase(),
+      ).thenAnswer((_) async => ApiSuccessResult(testUser));
 
       // Act
       await tester.pumpWidget(createTestableWidget());
@@ -98,11 +102,13 @@ void main() {
       expect(find.text('1234567890'), findsOneWidget);
     });
 
-    testWidgets('should show error message when profile loading fails',
-        (WidgetTester tester) async {
+    testWidgets('should show error message when profile loading fails', (
+      WidgetTester tester,
+    ) async {
       // Arrange
-      when(mockGetProfileDataUseCase())
-          .thenAnswer((_) async => ApiErrorResult('Failed to load profile'));
+      when(
+        mockGetProfileDataUseCase(),
+      ).thenAnswer((_) async => ApiErrorResult('Failed to load profile'));
 
       // Act
       await tester.pumpWidget(createTestableWidget());
@@ -111,14 +117,19 @@ void main() {
       // Assert
       expect(find.text('Failed to load profile'), findsOneWidget);
       expect(viewModel.state, isA<ProfileErrorState>());
-      expect((viewModel.state as ProfileErrorState).message, 'Failed to load profile');
+      expect(
+        (viewModel.state as ProfileErrorState).message,
+        'Failed to load profile',
+      );
     });
 
-    testWidgets('should call getProfile on initialization',
-        (WidgetTester tester) async {
+    testWidgets('should call getProfile on initialization', (
+      WidgetTester tester,
+    ) async {
       // Arrange
-      when(mockGetProfileDataUseCase())
-          .thenAnswer((_) async => ApiSuccessResult(testUser));
+      when(
+        mockGetProfileDataUseCase(),
+      ).thenAnswer((_) async => ApiSuccessResult(testUser));
 
       // Act
       await tester.pumpWidget(createTestableWidget());
@@ -128,22 +139,25 @@ void main() {
       verify(mockGetProfileDataUseCase()).called(1);
     });
 
-    testWidgets('should navigate to edit profile screen when edit button is tapped',
-        (WidgetTester tester) async {
-      // Arrange
-      when(mockGetProfileDataUseCase())
-          .thenAnswer((_) async => ApiSuccessResult(testUser));
+    testWidgets(
+      'should navigate to edit profile screen when edit button is tapped',
+      (WidgetTester tester) async {
+        // Arrange
+        when(
+          mockGetProfileDataUseCase(),
+        ).thenAnswer((_) async => ApiSuccessResult(testUser));
 
-      // Act
-      await tester.pumpWidget(createTestableWidget());
-      await tester.pumpAndSettle();
+        // Act
+        await tester.pumpWidget(createTestableWidget());
+        await tester.pumpAndSettle();
 
-      final editButton = find.byKey(const Key('edit_profile_button'));
-      await tester.tap(editButton);
-      await tester.pumpAndSettle();
+        final editButton = find.byKey(const Key('edit_profile_button'));
+        await tester.tap(editButton);
+        await tester.pumpAndSettle();
 
-      // Assert
-      verify(mockNavigatorObserver.didPush(any, any)).called(1);
-    });
+        // Assert
+        verify(mockNavigatorObserver.didPush(any, any)).called(1);
+      },
+    );
   });
 }

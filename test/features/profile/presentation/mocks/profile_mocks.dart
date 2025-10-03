@@ -9,7 +9,6 @@ import 'package:tarcking_app/features/profile/domain/usecases/get_profile_data_u
 import 'package:tarcking_app/features/profile/domain/usecases/upload_photo_usecase.dart';
 import 'package:tarcking_app/features/profile/presentation/viewmodel/profile_viewmodel.dart';
 
-
 // Generate mocks for the classes we need
 @GenerateMocks([
   GetProfileDataUseCase,

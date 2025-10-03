@@ -10,20 +10,22 @@ import 'package:tarcking_app/features/profile/presentation/viewmodel/states/prof
 class MockGetProfileDataUseCase extends Mock implements GetProfileDataUseCase {
   @override
   Future<ApiResult<UserEntity>> call() => super.noSuchMethod(
-        Invocation.method(#call, []),
-        returnValue: Future.value(ApiSuccessResult<UserEntity>(
-          UserEntity(
-            id: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            gender: '',
-            phone: '',
-            photo: '',
-            role: '',
-          ),
-        )),
-      );
+    Invocation.method(#call, []),
+    returnValue: Future.value(
+      ApiSuccessResult<UserEntity>(
+        UserEntity(
+          id: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          gender: '',
+          phone: '',
+          photo: '',
+          role: '',
+        ),
+      ),
+    ),
+  );
 }
 
 void main() {
@@ -34,7 +36,7 @@ void main() {
   setUp(() {
     mockGetProfileDataUseCase = MockGetProfileDataUseCase();
     viewModel = ProfileViewModel(mockGetProfileDataUseCase);
-    
+
     testUser = UserEntity(
       id: '123',
       firstName: 'John',
@@ -53,34 +55,48 @@ void main() {
     });
 
     group('getProfile', () {
-      test('should emit ProfileSuccessState when usecase returns success', () async {
-        // Arrange
-        when(mockGetProfileDataUseCase())
-            .thenAnswer((_) async => ApiSuccessResult(testUser));
+      test(
+        'should emit ProfileSuccessState when usecase returns success',
+        () async {
+          // Arrange
+          when(
+            mockGetProfileDataUseCase(),
+          ).thenAnswer((_) async => ApiSuccessResult(testUser));
 
-        // Act
-        await viewModel.getProfile();
+          // Act
+          await viewModel.getProfile();
 
-        // Assert
-        verify(mockGetProfileDataUseCase()).called(1);
-        expect(viewModel.state, isA<ProfileSuccessState>());
-        expect((viewModel.state as ProfileSuccessState).user, equals(testUser));
-      });
+          // Assert
+          verify(mockGetProfileDataUseCase()).called(1);
+          expect(viewModel.state, isA<ProfileSuccessState>());
+          expect(
+            (viewModel.state as ProfileSuccessState).user,
+            equals(testUser),
+          );
+        },
+      );
 
-      test('should emit ProfileErrorState when usecase returns error', () async {
-        // Arrange
-        const errorMessage = 'Network error';
-        when(mockGetProfileDataUseCase())
-            .thenAnswer((_) async => ApiErrorResult(errorMessage));
+      test(
+        'should emit ProfileErrorState when usecase returns error',
+        () async {
+          // Arrange
+          const errorMessage = 'Network error';
+          when(
+            mockGetProfileDataUseCase(),
+          ).thenAnswer((_) async => ApiErrorResult(errorMessage));
 
-        // Act
-        await viewModel.getProfile();
+          // Act
+          await viewModel.getProfile();
 
-        // Assert
-        verify(mockGetProfileDataUseCase()).called(1);
-        expect(viewModel.state, isA<ProfileErrorState>());
-        expect((viewModel.state as ProfileErrorState).message, equals(errorMessage));
-      });
+          // Assert
+          verify(mockGetProfileDataUseCase()).called(1);
+          expect(viewModel.state, isA<ProfileErrorState>());
+          expect(
+            (viewModel.state as ProfileErrorState).message,
+            equals(errorMessage),
+          );
+        },
+      );
     });
 
     test('should not call usecase when already loading', () async {
@@ -98,7 +114,7 @@ void main() {
     test('clearProfileCache should reset state', () {
       // Act
       viewModel.clearProfileCache();
-      
+
       // Assert
       expect(viewModel.state, isA<ProfileInitialState>());
     });

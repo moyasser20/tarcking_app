@@ -36,18 +36,15 @@ class MockGetProfileDataUseCase extends _i1.Mock
   }
 
   @override
-  _i3.Future<_i4.ApiResult<_i5.UserEntity>> call() => (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [],
-        ),
-        returnValue: _i3.Future<_i4.ApiResult<_i5.UserEntity>>.value(
-            _i6.dummyValue<_i4.ApiResult<_i5.UserEntity>>(
-          this,
-          Invocation.method(
-            #call,
-            [],
-          ),
-        )),
-      ) as _i3.Future<_i4.ApiResult<_i5.UserEntity>>);
+  _i3.Future<_i4.ApiResult<_i5.UserEntity>> call() =>
+      (super.noSuchMethod(
+            Invocation.method(#call, []),
+            returnValue: _i3.Future<_i4.ApiResult<_i5.UserEntity>>.value(
+              _i6.dummyValue<_i4.ApiResult<_i5.UserEntity>>(
+                this,
+                Invocation.method(#call, []),
+              ),
+            ),
+          )
+          as _i3.Future<_i4.ApiResult<_i5.UserEntity>>);
 }

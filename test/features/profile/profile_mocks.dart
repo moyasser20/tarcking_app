@@ -18,40 +18,43 @@ import 'package:tarcking_app/features/profile/presentation/viewmodel/states/prof
 // Manual mocks for all required classes
 class MockGetProfileDataUseCase extends Mock implements GetProfileDataUseCase {
   @override
-  Future<ApiResult<UserEntity>> call() => super.noSuchMethod(
-        Invocation.method(#call, []),
-        returnValue: Future.value(
-          ApiSuccessResult(
-            UserEntity(
-              id: '',
-              firstName: '',
-              lastName: '',
-              email: '',
-              gender: '',
-              phone: '',
-              photo: '',
-              role: '',
+  Future<ApiResult<UserEntity>> call() =>
+      super.noSuchMethod(
+            Invocation.method(#call, []),
+            returnValue: Future.value(
+              ApiSuccessResult(
+                UserEntity(
+                  id: '',
+                  firstName: '',
+                  lastName: '',
+                  email: '',
+                  gender: '',
+                  phone: '',
+                  photo: '',
+                  role: '',
+                ),
+              ),
             ),
-          ),
-        ),
-        returnValueForMissingStub: Future.value(
-          ApiSuccessResult(
-            UserEntity(
-              id: '',
-              firstName: '',
-              lastName: '',
-              email: '',
-              gender: '',
-              phone: '',
-              photo: '',
-              role: '',
+            returnValueForMissingStub: Future.value(
+              ApiSuccessResult(
+                UserEntity(
+                  id: '',
+                  firstName: '',
+                  lastName: '',
+                  email: '',
+                  gender: '',
+                  phone: '',
+                  photo: '',
+                  role: '',
+                ),
+              ),
             ),
-          ),
-        ),
-      ) as Future<ApiResult<UserEntity>>;
+          )
+          as Future<ApiResult<UserEntity>>;
 }
 
-class MockEditProfileDataUseCase extends Mock implements EditProfileDataUseCase {}
+class MockEditProfileDataUseCase extends Mock
+    implements EditProfileDataUseCase {}
 
 class MockUploadPhotoUseCase extends Mock implements UploadPhotoUseCase {}
 
