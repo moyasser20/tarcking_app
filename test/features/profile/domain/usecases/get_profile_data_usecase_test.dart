@@ -25,6 +25,11 @@ void main() {
           phone: "0000000000",
           photo: "",
           role: "test",
+          vehicleType: 'car',
+          vehicleNumber: '1234',
+          vehicleLicense: '',
+          nid: '12345678912345',
+          nidImg: '',
         ),
       ),
     );
@@ -49,6 +54,11 @@ void main() {
           phone: "01000000000",
           photo: "https://example.com/photo.jpg",
           role: "customer",
+          vehicleType: 'car',
+          vehicleNumber: '1234',
+          vehicleLicense: 'https://example.com/license.jpg',
+          nid: '12345678912345',
+          nidImg: 'https://example.com/nid.jpg',
         );
 
         when(
@@ -56,7 +66,7 @@ void main() {
         ).thenAnswer((_) async => ApiSuccessResult(fakeUser));
 
         // act
-        final result = getProfileDataUseCase;
+        final result = await getProfileDataUseCase();
 
         // assert
         expect(result, isA<ApiSuccessResult<UserEntity>>());
@@ -75,7 +85,7 @@ void main() {
       ).thenAnswer((_) async => ApiErrorResult("Unauthorized"));
 
       // act
-      final result = getProfileDataUseCase;
+      final result = await getProfileDataUseCase();
 
       // assert
       expect(result, isA<ApiErrorResult>());
