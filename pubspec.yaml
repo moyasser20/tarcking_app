@@ -37,7 +37,7 @@ dependencies:
   country_flags: ^4.0.1
   file_picker: ^8.1.2
   shared_preferences: ^2.5.3
-  mockito: ^5.4.5
+  mockito:
   image_picker: ^1.2.0
 
 
