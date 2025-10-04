@@ -27,8 +27,13 @@ import 'package:tarcking_app/features/auth/domain/usecases/forget_password_useca
 
 class _FakeAuthResponse_0<T> extends _i1.SmartFake
     implements _i2.AuthResponse<T> {
-  _FakeAuthResponse_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeAuthResponse_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [ForgetPasswordUseCase].
@@ -43,13 +48,17 @@ class MockForgetPasswordUseCase extends _i1.Mock
   @override
   _i4.Future<_i2.AuthResponse<String>> call(String? email) =>
       (super.noSuchMethod(
-            Invocation.method(#call, [email]),
-            returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
-              _FakeAuthResponse_0<String>(
-                this,
-                Invocation.method(#call, [email]),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.AuthResponse<String>>);
+        Invocation.method(
+          #call,
+          [email],
+        ),
+        returnValue: _i4.Future<_i2.AuthResponse<String>>.value(
+            _FakeAuthResponse_0<String>(
+          this,
+          Invocation.method(
+            #call,
+            [email],
+          ),
+        )),
+      ) as _i4.Future<_i2.AuthResponse<String>>);
 }

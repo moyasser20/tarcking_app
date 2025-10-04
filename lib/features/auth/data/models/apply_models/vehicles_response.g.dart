@@ -9,10 +9,9 @@ part of 'vehicles_response.dart';
 VehiclesResponse _$VehiclesResponseFromJson(Map<String, dynamic> json) =>
     VehiclesResponse(
       message: json['message'] as String?,
-      vehicles:
-          (json['vehicles'] as List<dynamic>?)
-              ?.map((e) => Vehicles.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      vehicles: (json['vehicles'] as List<dynamic>?)
+          ?.map((e) => Vehicles.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$VehiclesResponseToJson(VehiclesResponse instance) =>

@@ -7,12 +7,15 @@ part of 'edit_profile_response_model.dart';
 // **************************************************************************
 
 EditProfileResponseModel _$EditProfileResponseModelFromJson(
-  Map<String, dynamic> json,
-) => EditProfileResponseModel(
-  message: json['message'] as String,
-  driver: User.fromJson(json['driver'] as Map<String, dynamic>),
-);
+        Map<String, dynamic> json) =>
+    EditProfileResponseModel(
+      message: json['message'] as String,
+      driver: User.fromJson(json['driver'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$EditProfileResponseModelToJson(
-  EditProfileResponseModel instance,
-) => <String, dynamic>{'message': instance.message, 'driver': instance.driver};
+        EditProfileResponseModel instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'driver': instance.driver,
+    };

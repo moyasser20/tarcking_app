@@ -27,8 +27,13 @@ import 'package:tarcking_app/features/homescreen/domain/repositories/home_repo.d
 
 class _FakeOrdersResponseEntity_0 extends _i1.SmartFake
     implements _i2.OrdersResponseEntity {
-  _FakeOrdersResponseEntity_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeOrdersResponseEntity_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [HomeRepo].
@@ -40,15 +45,18 @@ class MockHomeRepo extends _i1.Mock implements _i3.HomeRepo {
   }
 
   @override
-  _i4.Future<_i2.OrdersResponseEntity> getOrders() =>
-      (super.noSuchMethod(
-            Invocation.method(#getOrders, []),
-            returnValue: _i4.Future<_i2.OrdersResponseEntity>.value(
-              _FakeOrdersResponseEntity_0(
-                this,
-                Invocation.method(#getOrders, []),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.OrdersResponseEntity>);
+  _i4.Future<_i2.OrdersResponseEntity> getOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getOrders,
+          [],
+        ),
+        returnValue: _i4.Future<_i2.OrdersResponseEntity>.value(
+            _FakeOrdersResponseEntity_0(
+          this,
+          Invocation.method(
+            #getOrders,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.OrdersResponseEntity>);
 }
