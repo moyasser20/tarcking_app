@@ -69,6 +69,6 @@ abstract class ApiClient {
 
   @GET(ApiEndPoints.orders)
   Future<OrdersListResponse> getOrders(
-      @Header("Authorization") String bearerToken,
-      );
+    @Header("Authorization") String bearerToken,
+  );
 }

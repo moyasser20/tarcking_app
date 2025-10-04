@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/features/auth/domain/services/auth_services.dart';
-import '../../../features/auth/domain/services/auth_services.dart';
 import '../../api/api_constants/api_constants.dart';
 import '../../api/api_constants/api_end_points.dart';
 
@@ -33,7 +32,7 @@ abstract class DioModule {
           final requiresAuth = options.extra['auth'] == true;
 
           if (requiresAuth) {
-            if (options.path.contains(EndPoints.orders)) {
+            if (options.path.contains(ApiEndPoints.orders)) {
               final driverToken = await AuthService.getDriverTestToken();
               options.headers['Authorization'] = 'Bearer $driverToken';
             } else {

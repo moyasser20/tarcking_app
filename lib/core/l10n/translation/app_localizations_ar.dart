@@ -375,4 +375,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get errorLoadingTerms => 'خطأ في تحميل الشروط';
+
+  @override
+  String get orderRejectedSuccessfully => 'تم رفض الطلب بنجاح';
+
+  @override
+  String get orderAcceptedSuccessfully => 'تم قبول الطلب بنجاح';
+
+  @override
+  String get orderDetails => 'تفاصيل الطلب';
+
+  @override
+  String get unknownAddress => 'عنوان غير معروف';
+
+  @override
+  String get flowerOrder => 'طلب ورد';
+
+  @override
+  String get pickupAddress => 'عنوان الاستلام';
+
+  @override
+  String get userAddress => 'عنوان المستخدم';
+
+  @override
+  String get floweryStore => 'متجر فلاوري';
+
+  @override
+  String get sampleAddress => 'شارع 20، الشيخ زايد، الجيزة';
+
+  @override
+  String get userNameSample => 'نور محمد';
+
+  @override
+  String get orderPrice => '٣٠٠٠ جنيه';
+
+  @override
+  String get reject => 'رفض';
+
+  @override
+  String get accept => 'قبول';
 }
