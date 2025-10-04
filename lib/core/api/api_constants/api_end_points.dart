@@ -9,4 +9,5 @@ class ApiEndPoints {
   static const String changePassword = 'change-password';
   static const String editProfile = 'editProfile';
   static const String uploadPhoto = 'upload-photo';
+  static const String orders = 'orders/driver-orders';
 }

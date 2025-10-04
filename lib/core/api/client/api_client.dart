@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -15,6 +14,7 @@ import '../../../features/profile/data/models/edit_profile_response_model.dart';
 import '../../../features/profile/data/models/profile_response.dart';
 import '../../../features/profile/data/models/upload_photo_response.dart';
 import '../api_constants/api_end_points.dart';
+import '../../../features/homescreen/data/models/orders_list_response.dart';
 
 part 'api_client.g.dart';
 
@@ -66,4 +66,9 @@ abstract class ApiClient {
   @MultiPart()
   @Extra({'auth': true})
   Future<UploadPhotoResponse> uploadPhoto(@Part(name: "photo") File photo);
+
+  @GET(ApiEndPoints.orders)
+  Future<OrdersListResponse> getOrders(
+      @Header("Authorization") String bearerToken,
+      );
 }
