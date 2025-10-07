@@ -33,7 +33,6 @@ class LoginCubit extends Cubit<LoginStates> {
       await AuthService.saveAuthToken(response.data?.token ?? "");
       if (rememberMe) {
         await AuthService.saveRememberMe(rememberMe);
-        await AuthService.saveToken(response.data?.token ?? "");
       }
       emit(LoginSuccessState());
     } else {
