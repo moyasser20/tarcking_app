@@ -90,7 +90,7 @@ Future<String> _getInitialRoute() async {
   if (isLoggedIn) {
     return AppRoutes.dashboard;
   } else {
-    AuthService.logout();
+    await AuthService.logout();
     return AppRoutes.login;
   }
 }

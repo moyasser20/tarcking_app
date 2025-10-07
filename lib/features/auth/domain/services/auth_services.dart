@@ -3,9 +3,14 @@ import '../../../../core/contants/secure_storage.dart';
 class AuthService {
   static const String tokenKey = 'auth_token';
   static const String rememberMeKey = 'remember_me';
+  static const String userIdKey = 'user_id';
 
   static Future<void> saveAuthToken(String token) async {
     await SecureStorage.write(key: tokenKey, value: token);
+  }
+
+  static Future<void> saveToken(String userId) async {
+    await SecureStorage.write(key: userIdKey, value: userId);
   }
 
   static Future<void> saveRememberMe(bool rememberMe) async {
@@ -13,11 +18,9 @@ class AuthService {
   }
 
   static Future<bool> isUserAuthenticated() async {
-    if (await AuthService.isLoggedIn() &&
-        await AuthService.getRememberMe() == true) {
-      return true;
-    }
-    return false;
+    final loggedIn = await AuthService.isLoggedIn();
+    final remembered = await AuthService.getRememberMe();
+    return loggedIn && remembered;
   }
 
   static Future<bool> isLoggedIn() async {
@@ -25,14 +28,10 @@ class AuthService {
     return token != null && token.isNotEmpty;
   }
 
-  static Future<bool?> getRememberMe() async {
+  static Future<bool> getRememberMe() async {
     final value = await SecureStorage.read(rememberMeKey);
-    if (value == null) return null;
-    if (value == "true") {
-      return true;
-    } else {
-      return false;
-    }
+    if (value == null) return false;
+    return value == "true";
   }
 
   static Future<String?> getToken() async {
@@ -42,6 +41,7 @@ class AuthService {
   static Future<void> logout() async {
     await SecureStorage.delete(tokenKey);
     await SecureStorage.delete(rememberMeKey);
+    await SecureStorage.delete(userIdKey);
   }
 
   //HardCoded Token

@@ -4,33 +4,46 @@ import 'package:tarcking_app/core/l10n/translation/app_localizations.dart'; // A
 import 'package:tarcking_app/core/routes/on_generate_route.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
 import 'package:tarcking_app/core/contants/secure_storage.dart';
+import 'package:tarcking_app/features/auth/domain/services/auth_services.dart';
+import 'package:tarcking_app/features/profile/presentation/viewmodel/edit_profile_viewmodel.dart';
 import 'core/config/di.dart';
 import 'features/localization/data/localization_preference.dart';
 import 'features/localization/localization_controller/localization_cubit.dart';
 import 'features/localization/localization_controller/localization_state.dart';
 import 'core/theme/app_theme.dart';
+import 'features/profile/presentation/viewmodel/profile_viewmodel.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
   await SecureStorage.initialize();
   String languageValue = await LocalizationPreference.getLanguage();
+  final bool isAuthenticated = await AuthService.isUserAuthenticated();
+  final String resolvedInitialRoute =
+      isAuthenticated ? AppRoutes.dashboard : AppRoutes.initial;
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider<ProfileViewModel>(
+          create: (_) => getIt<ProfileViewModel>()..getProfile(),
+        ),
+        BlocProvider<EditProfileViewModel>(
+          create: (_) => getIt<EditProfileViewModel>(),
+        ),
         BlocProvider<LocalizationCubit>(
           create:
               (BuildContext context) =>
                   LocalizationCubit(language: languageValue),
         ),
       ],
-      child: const MyApp(),
+      child: MyApp(initialRoute: resolvedInitialRoute),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required this.initialRoute});
+  final String initialRoute;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +54,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Tracking App',
           theme: AppTheme.lightTheme,
-          initialRoute: AppRoutes.initial,
+          initialRoute: initialRoute,
           onGenerateRoute: Routes.onGenerateRoute,
           supportedLocales: AppLocalizations.supportedLocales,
           localizationsDelegates: AppLocalizations.localizationsDelegates,

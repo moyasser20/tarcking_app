@@ -103,4 +103,9 @@ class AuthRepoImpl implements AuthRepo {
     );
     return await _authRemoteDatasource.resetPassword(model);
   }
+
+  @override
+  Future<String> logout() {
+    return _authRemoteDatasource.logout();
+  }
 }
