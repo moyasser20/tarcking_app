@@ -27,8 +27,13 @@ import 'package:tarcking_app/features/homescreen/data/models/orders_list_respons
 
 class _FakeOrdersListResponse_0 extends _i1.SmartFake
     implements _i2.OrdersListResponse {
-  _FakeOrdersListResponse_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeOrdersListResponse_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [HomeRemoteDataSource].
@@ -41,15 +46,18 @@ class MockHomeRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.OrdersListResponse> getOrders() =>
-      (super.noSuchMethod(
-            Invocation.method(#getOrders, []),
-            returnValue: _i4.Future<_i2.OrdersListResponse>.value(
-              _FakeOrdersListResponse_0(
-                this,
-                Invocation.method(#getOrders, []),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.OrdersListResponse>);
+  _i4.Future<_i2.OrdersListResponse> getOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getOrders,
+          [],
+        ),
+        returnValue:
+            _i4.Future<_i2.OrdersListResponse>.value(_FakeOrdersListResponse_0(
+          this,
+          Invocation.method(
+            #getOrders,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.OrdersListResponse>);
 }

@@ -33,7 +33,7 @@ abstract class DioModule {
           final requiresAuth = options.extra['auth'] == true;
 
           if (requiresAuth) {
-            if (options.path.contains(EndPoints.orders)) {
+            if (options.path.contains(ApiEndPoints.orders)) {
               final driverToken = await AuthService.getDriverTestToken();
               options.headers['Authorization'] = 'Bearer $driverToken';
             } else {

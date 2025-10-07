@@ -66,13 +66,13 @@ void main() {
 
   group('ProfileScreen', () {
     testWidgets('should show loading indicator when loading profile data', (
-      WidgetTester tester,
-    ) async {
+        WidgetTester tester,
+        ) async {
       // Arrange
       when(mockGetProfileDataUseCase()).thenAnswer(
-        (_) async => Future.delayed(
+            (_) async => Future.delayed(
           const Duration(milliseconds: 100),
-          () => ApiSuccessResult(testUser),
+              () => ApiSuccessResult(testUser),
         ),
       );
 
@@ -85,8 +85,8 @@ void main() {
     });
 
     testWidgets('should show profile data when loaded successfully', (
-      WidgetTester tester,
-    ) async {
+        WidgetTester tester,
+        ) async {
       // Arrange
       when(
         mockGetProfileDataUseCase(),
@@ -103,8 +103,8 @@ void main() {
     });
 
     testWidgets('should show error message when profile loading fails', (
-      WidgetTester tester,
-    ) async {
+        WidgetTester tester,
+        ) async {
       // Arrange
       when(
         mockGetProfileDataUseCase(),
@@ -124,8 +124,8 @@ void main() {
     });
 
     testWidgets('should call getProfile on initialization', (
-      WidgetTester tester,
-    ) async {
+        WidgetTester tester,
+        ) async {
       // Arrange
       when(
         mockGetProfileDataUseCase(),
@@ -141,7 +141,7 @@ void main() {
 
     testWidgets(
       'should navigate to edit profile screen when edit button is tapped',
-      (WidgetTester tester) async {
+          (WidgetTester tester) async {
         // Arrange
         when(
           mockGetProfileDataUseCase(),
