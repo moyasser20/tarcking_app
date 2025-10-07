@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/contants/app_icons.dart';
-import 'package:tarcking_app/core/contants/app_images.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
