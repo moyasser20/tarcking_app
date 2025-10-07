@@ -12,4 +12,5 @@ abstract class AppRoutes {
   static const String changePasswordScreen = "/changePasswordScreen";
   static const String editProfile = "/editProfile";
   static const String notification = "/notificationScreen";
+  static const String myOrderScreen = "/myOrdersScreen";
 }

@@ -132,5 +132,7 @@
   "orderRejectedSuccessfully": "تم رفض الطلب بنجاح",
   "orderAcceptedSuccessfully": "تم قبول الطلب بنجاح",
   "orderDetails": "تفاصيل الطلب",
-  "unknownAddress": "عنوان غير معروف"
+  "unknownAddress": "عنوان غير معروف",
+  "recentOrder": "الطلبات الأخيرة"
+
 }

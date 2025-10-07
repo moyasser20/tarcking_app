@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
+import 'package:tarcking_app/core/routes/route_names.dart';
 import 'package:tarcking_app/features/profile/presentation/view/widgets/menu_item_widget.dart';
 import 'package:tarcking_app/features/profile/presentation/view/widgets/profile_card_widget.dart';
 import 'package:tarcking_app/features/profile/presentation/view/widgets/vehicle_info_widget.dart';
@@ -276,6 +277,27 @@ class ProfileScreen extends StatelessWidget {
                               ),
                         );
                       },
+                    ),
+                    const SizedBox(height: 10,),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.pushNamed(context, AppRoutes.myOrderScreen);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(Icons.shopping_cart_outlined),
+                          const SizedBox(width: 15,),
+                          Text("My Orders",style: TextStyle(
+                            fontFamily: "Inter",
+                            fontSize: 15
+                          ),),
+                          const SizedBox(width: 208,),
+                          Icon(Icons.shopping_cart_outlined),
+
+
+                        ],
+                      ).setHorizontalPadding(context, 0.036),
                     ),
                     const Spacer(),
                     Center(

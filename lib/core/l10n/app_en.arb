@@ -132,5 +132,6 @@
   "userNameSample": "Nour Mohamed",
   "orderPrice": "EGP 3000",
   "reject": "Reject",
-  "accept": "Accept"
+  "accept": "Accept",
+  "recentOrder": "Recent orders"
 }

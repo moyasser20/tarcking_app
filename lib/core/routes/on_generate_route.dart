@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
+import 'package:tarcking_app/features/myorders/presentation/view/my_orders_screen.dart';
 import 'package:tarcking_app/features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart';
 import '../../features/auth/presentation/apply/view/apply_screen.dart';
 import '../../features/auth/presentation/apply/view/application_approved_screen.dart';
@@ -109,6 +110,8 @@ class Routes {
 
       case AppRoutes.orderDetails:
         return MaterialPageRoute(builder: (_) => const OrderDetailsScreen());
+      case AppRoutes.myOrderScreen:
+        return MaterialPageRoute(builder: (_) => const MyOrdersScreen());
 
       default:
         return MaterialPageRoute(builder: (_) => const DashboardScreen());
