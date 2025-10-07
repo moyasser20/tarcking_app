@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
 import 'package:tarcking_app/features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart';
 import '../../features/auth/presentation/apply/view/apply_screen.dart';
+import '../../features/auth/presentation/apply/view/application_approved_screen.dart';
+import '../../features/homescreen/presentation/view/home_screen.dart';
+import '../../features/homescreen/presentation/viewmodel/home_cubit.dart';
+import '../../features/onboarding/presentation/view/onboarding_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/config/di.dart';
 import 'package:tarcking_app/features/auth/presentation/login/cubit/login_cubit.dart';
@@ -19,17 +23,18 @@ import '../../features/profile/change_password/presentation/views/screens/change
 import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
 
+import '../../features/orderdetailes/presentation/view/order_details_screen.dart';
+
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case AppRoutes.applicationApproved:
+        return MaterialPageRoute(
+          builder: (context) => const ApplicationApprovedScreen(),
+          settings: settings,
+        );
+
       case AppRoutes.initial:
-        {
-          return MaterialPageRoute(
-            builder: (context) => const OnBoardingScreen(),
-            settings: settings,
-          );
-        }
-      case AppRoutes.onboarding:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
 
       case AppRoutes.login:
@@ -92,6 +97,18 @@ class Routes {
                 child: ResetPasswordScreen(email: email),
               ),
         );
+
+      case AppRoutes.homeScreen:
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create: (context) => getIt<HomeCubit>()..getOrders(),
+                child: const HomeScreen(),
+              ),
+        );
+
+      case AppRoutes.orderDetails:
+        return MaterialPageRoute(builder: (_) => const OrderDetailsScreen());
 
       default:
         return MaterialPageRoute(builder: (_) => const DashboardScreen());

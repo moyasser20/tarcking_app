@@ -10,19 +10,19 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i9;
 import 'package:tarcking_app/core/errors/api_result.dart' as _i7;
 import 'package:tarcking_app/features/auth/domain/usecases/logout_usecase/logout_usecase.dart'
-    as _i2;
+as _i2;
 import 'package:tarcking_app/features/localization/localization_controller/localization_cubit.dart'
-    as _i12;
+as _i12;
 import 'package:tarcking_app/features/localization/localization_controller/localization_state.dart'
-    as _i4;
+as _i4;
 import 'package:tarcking_app/features/logout/viewmodel/logout_states.dart'
-    as _i3;
+as _i3;
 import 'package:tarcking_app/features/logout/viewmodel/logout_viewmodel.dart'
-    as _i10;
+as _i10;
 import 'package:tarcking_app/features/profile/domain/entity/user_entity.dart'
-    as _i8;
+as _i8;
 import 'package:tarcking_app/features/profile/domain/usecases/get_profile_data_usecase.dart'
-    as _i5;
+as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -39,18 +39,18 @@ import 'package:tarcking_app/features/profile/domain/usecases/get_profile_data_u
 
 class _FakeLogoutUseCase_0 extends _i1.SmartFake implements _i2.LogoutUseCase {
   _FakeLogoutUseCase_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 class _FakeLogoutStates_1 extends _i1.SmartFake implements _i3.LogoutStates {
   _FakeLogoutStates_1(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 class _FakeLocalizationState_2 extends _i1.SmartFake
     implements _i4.LocalizationState {
   _FakeLocalizationState_2(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 /// A class which mocks [GetProfileDataUseCase].
@@ -65,15 +65,15 @@ class MockGetProfileDataUseCase extends _i1.Mock
   @override
   _i6.Future<_i7.ApiResult<_i8.UserEntity>> call() =>
       (super.noSuchMethod(
+        Invocation.method(#call, []),
+        returnValue: _i6.Future<_i7.ApiResult<_i8.UserEntity>>.value(
+          _i9.dummyValue<_i7.ApiResult<_i8.UserEntity>>(
+            this,
             Invocation.method(#call, []),
-            returnValue: _i6.Future<_i7.ApiResult<_i8.UserEntity>>.value(
-              _i9.dummyValue<_i7.ApiResult<_i8.UserEntity>>(
-                this,
-                Invocation.method(#call, []),
-              ),
-            ),
-          )
-          as _i6.Future<_i7.ApiResult<_i8.UserEntity>>);
+          ),
+        ),
+      )
+      as _i6.Future<_i7.ApiResult<_i8.UserEntity>>);
 }
 
 /// A class which mocks [LogoutViewModel].
@@ -87,43 +87,43 @@ class MockLogoutViewModel extends _i1.Mock implements _i10.LogoutViewModel {
   @override
   _i2.LogoutUseCase get logoutUseCase =>
       (super.noSuchMethod(
-            Invocation.getter(#logoutUseCase),
-            returnValue: _FakeLogoutUseCase_0(
-              this,
-              Invocation.getter(#logoutUseCase),
-            ),
-          )
-          as _i2.LogoutUseCase);
+        Invocation.getter(#logoutUseCase),
+        returnValue: _FakeLogoutUseCase_0(
+          this,
+          Invocation.getter(#logoutUseCase),
+        ),
+      )
+      as _i2.LogoutUseCase);
 
   @override
   _i3.LogoutStates get state =>
       (super.noSuchMethod(
-            Invocation.getter(#state),
-            returnValue: _FakeLogoutStates_1(this, Invocation.getter(#state)),
-          )
-          as _i3.LogoutStates);
+        Invocation.getter(#state),
+        returnValue: _FakeLogoutStates_1(this, Invocation.getter(#state)),
+      )
+      as _i3.LogoutStates);
 
   @override
   _i6.Stream<_i3.LogoutStates> get stream =>
       (super.noSuchMethod(
-            Invocation.getter(#stream),
-            returnValue: _i6.Stream<_i3.LogoutStates>.empty(),
-          )
-          as _i6.Stream<_i3.LogoutStates>);
+        Invocation.getter(#stream),
+        returnValue: _i6.Stream<_i3.LogoutStates>.empty(),
+      )
+      as _i6.Stream<_i3.LogoutStates>);
 
   @override
   bool get isClosed =>
       (super.noSuchMethod(Invocation.getter(#isClosed), returnValue: false)
-          as bool);
+      as bool);
 
   @override
   _i6.Future<void> logout() =>
       (super.noSuchMethod(
-            Invocation.method(#logout, []),
-            returnValue: _i6.Future<void>.value(),
-            returnValueForMissingStub: _i6.Future<void>.value(),
-          )
-          as _i6.Future<void>);
+        Invocation.method(#logout, []),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      )
+      as _i6.Future<void>);
 
   @override
   void emit(_i3.LogoutStates? state) => super.noSuchMethod(
@@ -152,11 +152,11 @@ class MockLogoutViewModel extends _i1.Mock implements _i10.LogoutViewModel {
   @override
   _i6.Future<void> close() =>
       (super.noSuchMethod(
-            Invocation.method(#close, []),
-            returnValue: _i6.Future<void>.value(),
-            returnValueForMissingStub: _i6.Future<void>.value(),
-          )
-          as _i6.Future<void>);
+        Invocation.method(#close, []),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      )
+      as _i6.Future<void>);
 }
 
 /// A class which mocks [LocalizationCubit].
@@ -170,13 +170,13 @@ class MockLocalizationCubit extends _i1.Mock implements _i12.LocalizationCubit {
   @override
   String get language =>
       (super.noSuchMethod(
-            Invocation.getter(#language),
-            returnValue: _i9.dummyValue<String>(
-              this,
-              Invocation.getter(#language),
-            ),
-          )
-          as String);
+        Invocation.getter(#language),
+        returnValue: _i9.dummyValue<String>(
+          this,
+          Invocation.getter(#language),
+        ),
+      )
+      as String);
 
   @override
   set language(String? _language) => super.noSuchMethod(
@@ -187,13 +187,13 @@ class MockLocalizationCubit extends _i1.Mock implements _i12.LocalizationCubit {
   @override
   String get selectedLanguage =>
       (super.noSuchMethod(
-            Invocation.getter(#selectedLanguage),
-            returnValue: _i9.dummyValue<String>(
-              this,
-              Invocation.getter(#selectedLanguage),
-            ),
-          )
-          as String);
+        Invocation.getter(#selectedLanguage),
+        returnValue: _i9.dummyValue<String>(
+          this,
+          Invocation.getter(#selectedLanguage),
+        ),
+      )
+      as String);
 
   @override
   set selectedLanguage(String? _selectedLanguage) => super.noSuchMethod(
@@ -204,26 +204,26 @@ class MockLocalizationCubit extends _i1.Mock implements _i12.LocalizationCubit {
   @override
   _i4.LocalizationState get state =>
       (super.noSuchMethod(
-            Invocation.getter(#state),
-            returnValue: _FakeLocalizationState_2(
-              this,
-              Invocation.getter(#state),
-            ),
-          )
-          as _i4.LocalizationState);
+        Invocation.getter(#state),
+        returnValue: _FakeLocalizationState_2(
+          this,
+          Invocation.getter(#state),
+        ),
+      )
+      as _i4.LocalizationState);
 
   @override
   _i6.Stream<_i4.LocalizationState> get stream =>
       (super.noSuchMethod(
-            Invocation.getter(#stream),
-            returnValue: _i6.Stream<_i4.LocalizationState>.empty(),
-          )
-          as _i6.Stream<_i4.LocalizationState>);
+        Invocation.getter(#stream),
+        returnValue: _i6.Stream<_i4.LocalizationState>.empty(),
+      )
+      as _i6.Stream<_i4.LocalizationState>);
 
   @override
   bool get isClosed =>
       (super.noSuchMethod(Invocation.getter(#isClosed), returnValue: false)
-          as bool);
+      as bool);
 
   @override
   void selectLanguage(String? lang) => super.noSuchMethod(
@@ -234,10 +234,10 @@ class MockLocalizationCubit extends _i1.Mock implements _i12.LocalizationCubit {
   @override
   bool isSelected(String? lang) =>
       (super.noSuchMethod(
-            Invocation.method(#isSelected, [lang]),
-            returnValue: false,
-          )
-          as bool);
+        Invocation.method(#isSelected, [lang]),
+        returnValue: false,
+      )
+      as bool);
 
   @override
   void emit(_i4.LocalizationState? state) => super.noSuchMethod(
@@ -267,9 +267,9 @@ class MockLocalizationCubit extends _i1.Mock implements _i12.LocalizationCubit {
   @override
   _i6.Future<void> close() =>
       (super.noSuchMethod(
-            Invocation.method(#close, []),
-            returnValue: _i6.Future<void>.value(),
-            returnValueForMissingStub: _i6.Future<void>.value(),
-          )
-          as _i6.Future<void>);
+        Invocation.method(#close, []),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      )
+      as _i6.Future<void>);
 }

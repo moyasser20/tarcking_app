@@ -823,6 +823,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error loading terms'**
   String get errorLoadingTerms;
+
+  /// No description provided for @orderRejectedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Order rejected successfully'**
+  String get orderRejectedSuccessfully;
+
+  /// No description provided for @orderAcceptedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Order accepted successfully'**
+  String get orderAcceptedSuccessfully;
+
+  /// No description provided for @orderDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Details'**
+  String get orderDetails;
+
+  /// No description provided for @unknownAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown Address'**
+  String get unknownAddress;
+
+  /// No description provided for @flowerOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Flower Order'**
+  String get flowerOrder;
+
+  /// No description provided for @pickupAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup address'**
+  String get pickupAddress;
+
+  /// No description provided for @userAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'User address'**
+  String get userAddress;
+
+  /// No description provided for @floweryStore.
+  ///
+  /// In en, this message translates to:
+  /// **'Flowery Store'**
+  String get floweryStore;
+
+  /// No description provided for @sampleAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'20th st, Sheikh Zayed, Giza'**
+  String get sampleAddress;
+
+  /// No description provided for @userNameSample.
+  ///
+  /// In en, this message translates to:
+  /// **'Nour Mohamed'**
+  String get userNameSample;
+
+  /// No description provided for @orderPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP 3000'**
+  String get orderPrice;
+
+  /// No description provided for @reject.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get reject;
+
+  /// No description provided for @accept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get accept;
 }
 
 class _AppLocalizationsDelegate

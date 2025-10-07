@@ -376,4 +376,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorLoadingTerms => 'Error loading terms';
+
+  @override
+  String get orderRejectedSuccessfully => 'Order rejected successfully';
+
+  @override
+  String get orderAcceptedSuccessfully => 'Order accepted successfully';
+
+  @override
+  String get orderDetails => 'Order Details';
+
+  @override
+  String get unknownAddress => 'Unknown Address';
+
+  @override
+  String get flowerOrder => 'Flower Order';
+
+  @override
+  String get pickupAddress => 'Pickup address';
+
+  @override
+  String get userAddress => 'User address';
+
+  @override
+  String get floweryStore => 'Flowery Store';
+
+  @override
+  String get sampleAddress => '20th st, Sheikh Zayed, Giza';
+
+  @override
+  String get userNameSample => 'Nour Mohamed';
+
+  @override
+  String get orderPrice => 'EGP 3000';
+
+  @override
+  String get reject => 'Reject';
+
+  @override
+  String get accept => 'Accept';
 }

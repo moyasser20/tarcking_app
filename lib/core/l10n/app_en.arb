@@ -119,5 +119,18 @@
   "noAboutInfoFound": "No about info found",
   "notificationDelete": "Notification deleted",
   "noTermsFound": "No terms found",
-  "errorLoadingTerms": "Error loading terms"
+  "errorLoadingTerms": "Error loading terms",
+  "orderRejectedSuccessfully": "Order rejected successfully",
+  "orderAcceptedSuccessfully": "Order accepted successfully",
+  "orderDetails": "Order Details",
+  "unknownAddress": "Unknown Address",
+  "flowerOrder": "Flower Order",
+  "pickupAddress": "Pickup address",
+  "userAddress": "User address",
+  "floweryStore": "Flowery Store",
+  "sampleAddress": "20th st, Sheikh Zayed, Giza",
+  "userNameSample": "Nour Mohamed",
+  "orderPrice": "EGP 3000",
+  "reject": "Reject",
+  "accept": "Accept"
 }
