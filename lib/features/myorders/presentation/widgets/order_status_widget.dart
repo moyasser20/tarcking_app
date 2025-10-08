@@ -6,44 +6,64 @@ class OrderStatusWidget extends StatelessWidget {
   final String ordersNumber;
   final String icon;
   final String status;
+  final Color? backgroundColor;
+  final Color? iconColor;
+
   const OrderStatusWidget({
     super.key,
     required this.ordersNumber,
     required this.icon,
     required this.status,
+    this.backgroundColor,
+    this.iconColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 175,
-      height: 75,
+      width: 165,
+      height: 85,
       decoration: BoxDecoration(
-        color: AppColors.lightPink,
-        borderRadius: BorderRadius.circular(10)
+        color: backgroundColor ?? AppColors.lightPink,
+        borderRadius: BorderRadius.circular(12),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 6,),
-          Text(ordersNumber, style: TextStyle(
-            fontSize: 18,
-          ),).setHorizontalPadding(context, 0.025),
-          const SizedBox(height: 10,),
-          Row(
-            children: [
-              Image.asset(icon),
-              const SizedBox(width: 8,),
-              Text(status, style: TextStyle(
-                fontSize: 16,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              ordersNumber,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
                 fontFamily: "Inter",
-
-              ),)
-            ],
-          ).setHorizontalPadding(context, 0.03)
-
-        ],
+                color: AppColors.black,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Image.asset(
+                  icon,
+                  height: 20,
+                  //color: iconColor,
+                ),
+                const SizedBox(width: 6),
+                Text(
+                  status,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontFamily: "Inter",
+                    color: iconColor ?? AppColors.black,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
-    );
+    ).setHorizontalPadding(context, 0.01);
   }
 }

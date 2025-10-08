@@ -5,31 +5,59 @@ import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../homescreen/presentation/widgets/address_widget.dart';
 
-
 class MyOrderContainerWidget extends StatelessWidget {
-
+  final String orderState;
+  final String orderNumber;
+  final String storeName;
+  final String storeAddress;
+  final String storeImage;
+  final String userName;
+  final String userImage;
+  final String userAddress;
 
   const MyOrderContainerWidget({
     super.key,
-
+    required this.orderState,
+    required this.orderNumber,
+    required this.storeName,
+    required this.storeAddress,
+    required this.storeImage,
+    required this.userName,
+    required this.userImage,
+    required this.userAddress,
   });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final local = AppLocalizations.of(context)!;
 
+    final state = orderState.toLowerCase().trim();
+
+    String icon;
+    Color color;
+
+    if (state == "completed") {
+      icon = AppIcons.acceptedIcon;
+      color = AppColors.green;
+    } else if (state == "cancelled" || state == "canceled") {
+      icon = AppIcons.cancelledIcon;
+      color = AppColors.red;
+    } else if (state == "inprogress" || state == "in progress") {
+      icon = AppIcons.inProgressIcon;
+      color = Colors.orange;
+    } else {
+      icon = AppIcons.inProgressIcon;
+      color = AppColors.grey;
+    }
 
     return Container(
-      width: size.width * 0.9,
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
             color: AppColors.grey.withOpacity(0.3),
-            spreadRadius: 0.5,
-            blurRadius: 4,
+            blurRadius: 6,
             offset: const Offset(0, 3),
           ),
         ],
@@ -38,6 +66,7 @@ class MyOrderContainerWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Header
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -50,24 +79,8 @@ class MyOrderContainerWidget extends StatelessWidget {
                   fontFamily: "Inter",
                 ),
               ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Row(
-            children: [
-              Image.asset(AppIcons.acceptedIcon),
-              const SizedBox(width: 6),
               Text(
-                "Completed",
-                style: const TextStyle(
-                  color: Colors.green,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(width: 130),
-              Text(
-                "#123456",
+                "$orderNumber",
                 style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
@@ -75,25 +88,45 @@ class MyOrderContainerWidget extends StatelessWidget {
                 ),
               ),
             ],
-          ).setHorizontalPadding(context, 0.02),
+          ),
+          const SizedBox(height: 15),
 
+          // Order status row
+          Row(
+            children: [
+              Image.asset(
+                icon,
+                height: 20,
+                color: color,
+              ),
+              const SizedBox(width: 6),
+              Text(
+                orderState,
+                style: TextStyle(
+                  color: color,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ).setHorizontalPadding(context, 0.02),
 
           const SizedBox(height: 20),
 
           AddressWidget(
             titleAddress: local.pickupAddress,
-            image: "assets/images/yasser.jpg",
-            storeName: "Flowery Store",
-            address: "20th st, Sheikh Zayed, Giza",
+            image: storeImage,
+            storeName: storeName,
+            address: storeAddress,
           ),
 
           const SizedBox(height: 20),
 
           AddressWidget(
             titleAddress: local.userAddress,
-            image: "assets/images/yasser.jpg",
-            storeName: "Flowery Store",
-            address: "20th st, Sheikh Zayed, Giza",
+            image: userImage,
+            storeName: userName,
+            address: userAddress,
           ),
         ],
       ),

@@ -133,6 +133,11 @@
   "orderAcceptedSuccessfully": "تم قبول الطلب بنجاح",
   "orderDetails": "تفاصيل الطلب",
   "unknownAddress": "عنوان غير معروف",
-  "recentOrder": "الطلبات الأخيرة"
-
+  "recentOrder": "الطلبات الأخيرة",
+  "myOrdersTitle": "طلباتي",
+  "inProgressStatus": "قيد التنفيذ",
+  "completedStatus": "مكتمل",
+  "cancelledStatus": "ملغي",
+  "noOrdersFound": "لا توجد طلبات",
+  "recentOrdersTitle": "الطلبات الأخيرة"
 }

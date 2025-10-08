@@ -133,5 +133,11 @@
   "orderPrice": "EGP 3000",
   "reject": "Reject",
   "accept": "Accept",
-  "recentOrder": "Recent orders"
+  "recentOrder": "Recent orders",
+  "myOrdersTitle": "My Orders",
+  "inProgressStatus": "In Progress",
+  "completedStatus": "Completed",
+  "cancelledStatus": "Cancelled",
+  "noOrdersFound": "No orders found",
+  "recentOrdersTitle": "Recent Orders"
 }

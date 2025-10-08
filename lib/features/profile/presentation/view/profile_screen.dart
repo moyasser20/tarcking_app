@@ -266,7 +266,7 @@ class ProfileScreen extends StatelessWidget {
                         height: 24,
                       ),
                       title: local.logout,
-                      trailing: const Icon(Icons.logout),
+                      trailing: const Icon(Icons.logout, color: AppColors.pink,),
                       onTap: () {
                         showDialog(
                           context: context,
@@ -279,25 +279,21 @@ class ProfileScreen extends StatelessWidget {
                       },
                     ),
                     const SizedBox(height: 10,),
-                    GestureDetector(
-                      onTap: (){
+                    MenuItemWidget(
+                      leading: Icon(
+                        Icons.shopping_cart_outlined,
+                        color: AppColors.black,
+                        size: 24,
+                      ),
+                      title: local.myOrdersTitle,
+                      trailing: const Icon(
+                        Icons.shopping_cart_outlined,
+                        size: 18,
+                        color: AppColors.pink,
+                      ),
+                      onTap: () {
                         Navigator.pushNamed(context, AppRoutes.myOrderScreen);
                       },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(Icons.shopping_cart_outlined),
-                          const SizedBox(width: 15,),
-                          Text("My Orders",style: TextStyle(
-                            fontFamily: "Inter",
-                            fontSize: 15
-                          ),),
-                          const SizedBox(width: 208,),
-                          Icon(Icons.shopping_cart_outlined),
-
-
-                        ],
-                      ).setHorizontalPadding(context, 0.036),
                     ),
                     const Spacer(),
                     Center(
