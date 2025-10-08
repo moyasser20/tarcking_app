@@ -132,5 +132,9 @@
   "userNameSample": "Nour Mohamed",
   "orderPrice": "EGP 3000",
   "reject": "Reject",
-  "accept": "Accept"
+  "accept": "Accept",
+  "thankYou": "Thank you!!",
+  "orderDeliveredSuccessfully": "The order delivered\nsuccessfully",
+  "done": "Done"
+
 }

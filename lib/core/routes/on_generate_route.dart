@@ -24,6 +24,7 @@ import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
 
 import '../../features/orderdetailes/presentation/view/order_details_screen.dart';
+import '../../features/successpage/presentation/view/success_page.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -109,6 +110,8 @@ class Routes {
 
       case AppRoutes.orderDetails:
         return MaterialPageRoute(builder: (_) => const OrderDetailsScreen());
+      case AppRoutes.successPage:
+        return MaterialPageRoute(builder: (_) => const SuccessPage());
 
       default:
         return MaterialPageRoute(builder: (_) => const DashboardScreen());
