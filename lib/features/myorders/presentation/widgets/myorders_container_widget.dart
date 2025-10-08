@@ -14,6 +14,8 @@ class MyOrderContainerWidget extends StatelessWidget {
   final String userName;
   final String userImage;
   final String userAddress;
+  final int fallbackIndex;
+
 
   const MyOrderContainerWidget({
     super.key,
@@ -25,6 +27,7 @@ class MyOrderContainerWidget extends StatelessWidget {
     required this.userName,
     required this.userImage,
     required this.userAddress,
+    required this.fallbackIndex,
   });
 
   @override
@@ -118,6 +121,7 @@ class MyOrderContainerWidget extends StatelessWidget {
             image: storeImage,
             storeName: storeName,
             address: storeAddress,
+            fallbackIndex: fallbackIndex,
           ),
 
           const SizedBox(height: 20),
@@ -127,6 +131,7 @@ class MyOrderContainerWidget extends StatelessWidget {
             image: userImage,
             storeName: userName,
             address: userAddress,
+            fallbackIndex: fallbackIndex + 1,
           ),
         ],
       ),

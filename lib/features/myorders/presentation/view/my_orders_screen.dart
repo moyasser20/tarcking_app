@@ -74,73 +74,78 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                   .where((o) => o.state.toLowerCase().trim() == "inprogress")
                   .length;
 
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 30),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // ✅ Order status row
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Row(
-                          children: [
-                            OrderStatusWidget(
-                              ordersNumber: inProgressOrders.toString(),
-                              icon: AppIcons.inProgressIcon,
-                              status: local.inProgressStatus,
-                              backgroundColor:
-                              Colors.orange.withOpacity(0.15),
-                              iconColor: Colors.orange,
-                            ),
-                            const SizedBox(width: 20),
-                            OrderStatusWidget(
-                              ordersNumber: completedOrders.toString(),
-                              icon: AppIcons.acceptedIcon,
-                              status: local.completedStatus,
-                              backgroundColor:
-                              AppColors.green.withOpacity(0.15),
-                              iconColor: AppColors.green,
-                            ),
-                            const SizedBox(width: 20),
-                            OrderStatusWidget(
-                              ordersNumber: cancelledOrders.toString(),
-                              icon: AppIcons.cancelledIcon,
-                              status: local.cancelledStatus,
-                              backgroundColor:
-                              AppColors.red.withOpacity(0.15),
-                              iconColor: AppColors.red,
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      const SizedBox(height: 30),
-
-                      // ✅ Recent orders section
-                      Text(
-                        local.recentOrder,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: "Inter",
-                        ),
-                      ).setHorizontalPadding(context, 0.015),
-
-                      const SizedBox(height: 30),
-
-                      if (orders.isEmpty)
-                        Center(
-                          child: Text(
-                            local.noOrdersFound,
-                            style: const TextStyle(
-                                fontSize: 16, color: Colors.grey),
+              return RefreshIndicator(
+                onRefresh: () async {
+                  await context.read<HomeCubit>().getOrders();
+                },
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Row(
+                            children: [
+                              OrderStatusWidget(
+                                ordersNumber: inProgressOrders.toString(),
+                                icon: AppIcons.inProgressIcon,
+                                status: local.inProgressStatus,
+                                backgroundColor:
+                                Colors.orange.withOpacity(0.15),
+                                iconColor: Colors.orange,
+                              ),
+                              const SizedBox(width: 20),
+                              OrderStatusWidget(
+                                ordersNumber: completedOrders.toString(),
+                                icon: AppIcons.acceptedIcon,
+                                status: local.completedStatus,
+                                backgroundColor:
+                                AppColors.green.withOpacity(0.15),
+                                iconColor: AppColors.green,
+                              ),
+                              const SizedBox(width: 20),
+                              OrderStatusWidget(
+                                ordersNumber: cancelledOrders.toString(),
+                                icon: AppIcons.cancelledIcon,
+                                status: local.cancelledStatus,
+                                backgroundColor:
+                                AppColors.red.withOpacity(0.15),
+                                iconColor: AppColors.red,
+                              ),
+                            ],
                           ),
-                        )
-                      else
-                        Column(
-                          children: orders.map((order) {
+                        ),
+
+                        const SizedBox(height: 30),
+
+                        Text(
+                          local.recentOrder,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Inter",
+                          ),
+                        ).setHorizontalPadding(context, 0.015),
+
+                        const SizedBox(height: 30),
+
+                        if (orders.isEmpty)
+                          Center(
+                            child: Text(
+                              local.noOrdersFound,
+                              style: const TextStyle(
+                                  fontSize: 16, color: Colors.grey),
+                            ),
+                          )
+                        else
+                          Column(
+                          children: orders.asMap().entries.map((entry) {
+                            final index = entry.key;
+                            final order = entry.value;
+
                             final userAddress = context
                                 .read<HomeCubit>()
                                 .orderAddressMap[order.wrapperId] ??
@@ -154,16 +159,18 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                 storeName: order.store.name,
                                 storeAddress: order.store.address,
                                 storeImage: order.store.image,
-                                userName:
-                                "${order.user.firstName} ${order.user.lastName}",
+                                userName: "${order.user.firstName} ${order.user.lastName}",
                                 userImage: order.user.photo,
                                 userAddress: userAddress,
+                                fallbackIndex: index,
                               ),
                             );
                           }).toList(),
                         ),
-                    ],
-                  ).setHorizontalPadding(context, 0.04),
+
+                      ],
+                    ).setHorizontalPadding(context, 0.04),
+                  ),
                 ),
               );
             } else if (state is HomeErrorState) {
