@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tarcking_app/core/contants/app_icons.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
 
 import '../../../../core/Widgets/Custom_Elevated_Button.dart';
@@ -23,9 +25,8 @@ class OrderContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var local = AppLocalizations.of(context)!;
-
+    final size = MediaQuery.of(context).size;
+    final local = AppLocalizations.of(context)!;
     final homeCubit = context.read<HomeCubit>();
     final address =
         homeCubit.orderAddressMap[orderEntity.wrapperId] ??
@@ -33,13 +34,13 @@ class OrderContainerWidget extends StatelessWidget {
 
     return Container(
       width: size.width * 0.9,
-      height: size.height * 0.43,
+      padding: EdgeInsets.all(size.width * 0.04),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: AppColors.grey.withOpacity(0.3),
+            color: AppColors.grey.withValues(alpha: 0.3),
             spreadRadius: 0.5,
             blurRadius: 4,
             offset: const Offset(0, 3),
@@ -49,7 +50,7 @@ class OrderContainerWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 25),
+          SizedBox(height: size.height * 0.02),
           Text(
             local.flowerOrder,
             style: const TextStyle(
@@ -59,7 +60,7 @@ class OrderContainerWidget extends StatelessWidget {
               fontFamily: "Inter",
             ),
           ),
-          const SizedBox(height: 15),
+          SizedBox(height: size.height * 0.02),
 
           // Store info
           AddressWidget(
@@ -70,7 +71,7 @@ class OrderContainerWidget extends StatelessWidget {
             fallbackIndex: orderEntity.wrapperId.hashCode,
           ),
 
-          const SizedBox(height: 25),
+          SizedBox(height: size.height * 0.03),
 
           // User info with address from cubit
           AddressWidget(
@@ -82,7 +83,9 @@ class OrderContainerWidget extends StatelessWidget {
             fallbackIndex: orderEntity.wrapperId.hashCode,
           ),
 
-          const SizedBox(height: 25),
+          SizedBox(height: size.height * 0.03),
+
+          // Price and Buttons
           Row(
             children: [
               Text(
@@ -95,46 +98,54 @@ class OrderContainerWidget extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              CustomElevatedButton(
-                text: local.reject,
-                onPressed: () {
-                  context.read<HomeCubit>().rejectOrderLocally(
-                    orderEntity.wrapperId,
-                  );
-                  showCustomSnackBar(
-                    context,
-                    local.orderRejectedSuccessfully,
-                    isError: true,
-                  );
-                },
-                width: size.width * 0.27,
-                height: size.height * 0.05,
-                color: AppColors.white,
-                textColor: AppColors.pink,
-                borderColor: AppColors.pink,
+              Flexible(
+                flex: 1,
+                child: CustomElevatedButton(
+                  text: local.reject,
+                  onPressed: () {
+                    context.read<HomeCubit>().rejectOrderLocally(
+                      orderEntity.wrapperId,
+                    );
+                    showCustomSnackBar(
+                      context,
+                      local.orderRejectedSuccessfully,
+                      isError: false,
+                    );
+                  },
+                  color: AppColors.white,
+                  textColor: AppColors.pink,
+                  borderColor: AppColors.pink,
+                  height: size.height * 0.05,
+                ),
               ),
-              const SizedBox(width: 5),
-              CustomElevatedButton(
-                text: local.accept,
-                onPressed: () {
-                  showCustomSnackBar(
-                    context,
-                    local.orderAcceptedSuccessfully,
-                    isError: false,
-                  );
-                  Future.delayed(const Duration(milliseconds: 800), () {
-                    Navigator.pushNamed(context, AppRoutes.orderDetails);
-                  });
-                },
-                width: size.width * 0.27,
-                height: size.height * 0.05,
-                color: AppColors.pink,
-                textColor: AppColors.white,
+              SizedBox(width: size.width * 0.02),
+              Flexible(
+                flex: 1,
+                child: CustomElevatedButton(
+                  text: local.accept,
+                  onPressed: () {
+                    showCustomSnackBar(
+                      context,
+                      local.orderAcceptedSuccessfully,
+                      isError: false,
+                    );
+                    Future.delayed(const Duration(milliseconds: 800), () {
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.orderDetails,
+                        arguments: orderEntity,
+                      );
+                    });
+                  },
+                  color: AppColors.pink,
+                  textColor: AppColors.white,
+                  height: size.height * 0.05,
+                ),
               ),
             ],
           ),
         ],
-      ).setHorizontalPadding(context, 0.05),
+      ),
     ).setHorizontalPadding(context, 0.015);
   }
 }
