@@ -3,6 +3,7 @@ import 'package:tarcking_app/core/routes/route_names.dart';
 import 'package:tarcking_app/features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart';
 import '../../features/auth/presentation/apply/view/apply_screen.dart';
 import '../../features/auth/presentation/apply/view/application_approved_screen.dart';
+import '../../features/homescreen/domain/entities/order_entity.dart';
 import '../../features/homescreen/presentation/view/home_screen.dart';
 import '../../features/homescreen/presentation/viewmodel/home_cubit.dart';
 import '../../features/onboarding/presentation/view/onboarding_screen.dart';
@@ -19,11 +20,10 @@ import 'package:tarcking_app/features/auth/presentation/forget_password/presenta
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/verify_code_viewmodel.dart';
 import 'package:tarcking_app/features/auth/presentation/forget_password/presentation/viewmodel/reset_password_viewmodel.dart';
 import '../../features/onboarding/presentation/view/onboarding_screen.dart';
+import '../../features/order_details/presentation/views/order_details_screen.dart';
 import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
 import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
-
-import '../../features/orderdetailes/presentation/view/order_details_screen.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -51,11 +51,6 @@ class Routes {
 
       case AppRoutes.apply:
         return MaterialPageRoute(builder: (_) => const ApplyScreen());
-
-      case AppRoutes.applicationApproved:
-        return MaterialPageRoute(
-          builder: (_) => const ApplicationApprovedScreen(),
-        );
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(
@@ -108,7 +103,13 @@ class Routes {
         );
 
       case AppRoutes.orderDetails:
-        return MaterialPageRoute(builder: (_) => const OrderDetailsScreen());
+        return MaterialPageRoute(
+          builder:
+              (context) => OrderDetailsScreen(
+                orderEntity: settings.arguments as OrderEntity,
+
+              ),
+        );
 
       default:
         return MaterialPageRoute(builder: (_) => const DashboardScreen());

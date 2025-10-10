@@ -39,6 +39,11 @@ dependencies:
   shared_preferences: ^2.5.3
   mockito:
   image_picker: ^1.2.0
+  step_progress_indicator: ^1.0.2
+  url_launcher: ^6.3.2
+
+
+
   firebase_core:
   firebase_auth: 
   cloud_firestore:
