@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:1026712385703:android:8d0b63a893bba979f0c382",
+        "android_client_info": {
+          "package_name": "com.example.flower_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyMZhfhdKmTOa5HqAOgPscFIkJXOSSEp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:1026712385703:android:a29f0f463bc44e81f0c382",
         "android_client_info": {
           "package_name": "com.example.tarcking_app"

@@ -104,11 +104,12 @@ class Routes {
 
       case AppRoutes.orderDetails:
         return MaterialPageRoute(
-          builder:
-              (context) => OrderDetailsScreen(
-                orderEntity: settings.arguments as OrderEntity,
-
-              ),
+          builder: (context) => OrderDetailsScreen(
+            orderEntity: settings.arguments as OrderEntity,
+            onOrderUpdated: () {
+              getIt<HomeCubit>().getOrders();
+            },
+          ),
         );
 
       default:

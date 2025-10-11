@@ -13,14 +13,14 @@ class OrdersResponseEntity {
   });
 
   OrdersResponseEntity copyWith({
-    String? message,
-    Metadata? metadata,
     List<OrderEntity>? orders,
+    Metadata? metadata,
+    String? message,
   }) {
     return OrdersResponseEntity(
-      message: message ?? this.message,
-      metadata: metadata ?? this.metadata,
       orders: orders ?? this.orders,
+      metadata: metadata ?? this.metadata,
+      message: message ?? this.message,
     );
   }
 }

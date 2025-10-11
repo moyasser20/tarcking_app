@@ -14,7 +14,6 @@ class OrderEntity {
   final String state;
   final String orderNumber;
   final StoreEntity store;
-
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -33,4 +32,36 @@ class OrderEntity {
     required this.createdAt,
     required this.updatedAt,
   });
+
+  OrderEntity copyWith({
+    String? wrapperId,
+    String? id,
+    UserEntity? user,
+    List<OrderItemEntity>? orderItems,
+    int? totalPrice,
+    String? paymentType,
+    bool? isPaid,
+    bool? isDelivered,
+    String? state,
+    String? orderNumber,
+    StoreEntity? store,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) {
+    return OrderEntity(
+      wrapperId: wrapperId ?? this.wrapperId,
+      id: id ?? this.id,
+      user: user ?? this.user,
+      orderItems: orderItems ?? this.orderItems,
+      totalPrice: totalPrice ?? this.totalPrice,
+      paymentType: paymentType ?? this.paymentType,
+      isPaid: isPaid ?? this.isPaid,
+      isDelivered: isDelivered ?? this.isDelivered,
+      state: state ?? this.state,
+      orderNumber: orderNumber ?? this.orderNumber,
+      store: store ?? this.store,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
 }

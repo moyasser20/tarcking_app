@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,6 +12,7 @@ import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/order_entity.dart';
 import '../viewmodel/home_cubit.dart';
+import '../viewmodel/home_states.dart';
 import 'address_widget.dart';
 
 class OrderContainerWidget extends StatelessWidget {
@@ -30,7 +32,7 @@ class OrderContainerWidget extends StatelessWidget {
     final homeCubit = context.read<HomeCubit>();
     final address =
         homeCubit.orderAddressMap[orderEntity.wrapperId] ??
-        local.unknownAddress;
+            local.unknownAddress;
 
     return Container(
       width: size.width * 0.9,
@@ -78,7 +80,7 @@ class OrderContainerWidget extends StatelessWidget {
             titleAddress: local.userAddress,
             image: orderEntity.user.photo,
             storeName:
-                "${orderEntity.user.firstName} ${orderEntity.user.lastName}",
+            "${orderEntity.user.firstName} ${orderEntity.user.lastName}",
             address: address,
             fallbackIndex: orderEntity.wrapperId.hashCode,
           ),
@@ -123,6 +125,8 @@ class OrderContainerWidget extends StatelessWidget {
                 flex: 1,
                 child: CustomElevatedButton(
                   text: local.accept,
+                  // In OrderContainerWidget - update the accept button
+                  // In OrderContainerWidget - simple approach
                   onPressed: () {
                     showCustomSnackBar(
                       context,
@@ -130,11 +134,25 @@ class OrderContainerWidget extends StatelessWidget {
                       isError: false,
                     );
                     Future.delayed(const Duration(milliseconds: 800), () {
+                      final homeCubit = context.read<HomeCubit>();
+                      final currentState = homeCubit.state;
+
+                      OrderEntity orderToPass;
+                      if (currentState is HomeSuccessState) {
+                        orderToPass = currentState.ordersResponseEntity.orders
+                            .firstWhere((o) => o.id == orderEntity.id);
+                      } else {
+                        orderToPass = orderEntity;
+                      }
+
                       Navigator.pushNamed(
                         context,
                         AppRoutes.orderDetails,
-                        arguments: orderEntity,
-                      );
+                        arguments: orderToPass,
+                      ).then((_) {
+                        log('Refreshing orders after returning from details');
+                        homeCubit.getOrders();
+                      });
                     });
                   },
                   color: AppColors.pink,

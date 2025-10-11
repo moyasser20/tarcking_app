@@ -21,8 +21,7 @@ class DashboardScreen extends StatelessWidget {
         create: (context) => getIt<HomeCubit>()..getOrders(),
         child: const HomeScreen(),
       ),
-
-      OrderDetailsScreen(),
+      Container(),
       const ProfileScreen(),
     ];
 

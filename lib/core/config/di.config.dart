@@ -8,6 +8,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -53,6 +54,14 @@ import '../../features/homescreen/domain/use_cases/get_order_usecase.dart'
 import '../../features/homescreen/presentation/viewmodel/home_cubit.dart'
     as _i39;
 import '../../features/logout/viewmodel/logout_viewmodel.dart' as _i624;
+import '../../features/order_details/data/repos/order_details_repo_impl.dart'
+    as _i1054;
+import '../../features/order_details/domain/repos/order_details_repo.dart'
+    as _i428;
+import '../../features/order_details/domain/use_cases/update_order_state_usecase.dart'
+    as _i1034;
+import '../../features/order_details/presentation/cubit/order_details_cubit.dart'
+    as _i319;
 import '../../features/profile/api/datasource_impl/profile_remote_datasource_impl.dart'
     as _i121;
 import '../../features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart'
@@ -73,7 +82,9 @@ import '../../features/profile/domain/usecases/upload_photo_usecase.dart'
     as _i971;
 import '../../features/profile/presentation/viewmodel/profile_viewmodel.dart'
     as _i351;
+import '../../firebase_module.dart' as _i1008;
 import '../api/client/api_client.dart' as _i364;
+import '../firebase/firebase_service.dart' as _i842;
 import 'dio_module/dio_module.dart' as _i484;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -87,11 +98,15 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    final firebaseModule = _$FirebaseModule();
     final dioModule = _$DioModule();
+    gh.lazySingleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
     gh.factory<String>(
       () => dioModule.baseUrl,
       instanceName: 'baseurl',
     );
+    gh.lazySingleton<_i842.FirestoreService>(
+        () => _i842.FirestoreService(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i361.Dio>(
         () => dioModule.dio(gh<String>(instanceName: 'baseurl')));
     gh.lazySingleton<_i901.ApplyApiClient>(
@@ -100,8 +115,14 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseurl'),
         ));
+    gh.factory<_i319.OrderDetailsCubit>(() => _i319.OrderDetailsCubit(
+          gh<_i364.ApiClient>(),
+          gh<_i842.FirestoreService>(),
+        ));
     gh.factory<_i508.ResetPasswordCubit>(
         () => _i508.ResetPasswordCubit(gh<_i364.ApiClient>()));
+    gh.lazySingleton<_i428.OrderDetailsRepo>(
+        () => _i1054.OrderDetailsRepoImpl(gh<_i364.ApiClient>()));
     gh.lazySingleton<_i1031.ProfileRemoteDatasource>(() =>
         _i121.ProfileRemoteDatasourceImpl(apiClient: gh<_i364.ApiClient>()));
     gh.lazySingleton<_i24.AuthRemoteDatasource>(
@@ -111,6 +132,8 @@ extension GetItInjectableX on _i174.GetIt {
             ));
     gh.lazySingleton<_i1063.HomeRemoteDataSource>(
         () => _i730.HomeRemoteDataSourceImpl(gh<_i364.ApiClient>()));
+    gh.factory<_i1034.UpdateOrderStateUseCase>(
+        () => _i1034.UpdateOrderStateUseCase(gh<_i428.OrderDetailsRepo>()));
     gh.lazySingleton<_i894.ProfileRepository>(() =>
         _i357.ProfileRepositoryImpl(gh<_i1031.ProfileRemoteDatasource>()));
     gh.factory<_i691.EditProfileDataUseCase>(
@@ -164,5 +187,7 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$FirebaseModule extends _i1008.FirebaseModule {}
 
 class _$DioModule extends _i484.DioModule {}

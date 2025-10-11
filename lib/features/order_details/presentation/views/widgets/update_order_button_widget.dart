@@ -8,18 +8,27 @@ import '../../cubit/order_details_cubit.dart';
 class UpdateOrderButtonWidget extends StatelessWidget {
   final OrderDetails order;
   final bool isUpdating;
+  final Function(String buttonText)? onButtonClicked;
 
-  const UpdateOrderButtonWidget({super.key, required this.order, required this.isUpdating});
+  const UpdateOrderButtonWidget({
+    super.key,
+    required this.order,
+    required this.isUpdating,
+    this.onButtonClicked,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final buttonText = _getButtonText(order.state);
+
     return CustomElevatedButton(
       width: double.infinity,
-      text: _getButtonText(order.state),
+      text: buttonText,
       onPressed:
       isUpdating || order.state == 'canceled' || order.state == 'completed'
           ? null
           : () {
+        onButtonClicked?.call(buttonText);
         context.read<OrderDetailsCubit>().updateOrderStatus();
       },
     );
@@ -28,21 +37,15 @@ class UpdateOrderButtonWidget extends StatelessWidget {
   String _getButtonText(String state) {
     switch (state) {
       case 'pending':
-        return 'Arrived at Pickup point';
+        return 'Start Order';
       case 'inProgress':
-        return 'Start deliver';
-      case 'Out for delivery':
-        return 'Arrived to the user';
-      case 'Arrived':
-        return 'Delivered to the user';
-      case 'Delivered':
-        return 'Delivered to the user';
+        return 'Complete Order';
       case 'canceled':
-        return 'canceled';
+        return 'Canceled';
       case 'completed':
-        return 'completed';
+        return 'Completed';
       default:
-        return 'inProgress';
+        return 'Update Order';
     }
   }
 }

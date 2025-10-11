@@ -25,12 +25,11 @@ class HomeCubit extends Cubit<HomeStates> {
     emit(HomeLoadingState());
     try {
       final ordersResponse = await _getOrdersUseCase();
+      orderAddressMap.clear();
 
       for (int i = 0; i < ordersResponse.orders.length; i++) {
         final order = ordersResponse.orders[i];
-        orderAddressMap.putIfAbsent(order.wrapperId, () {
-          return addresses[i % addresses.length];
-        });
+        orderAddressMap[order.wrapperId] = addresses[i % addresses.length];
       }
 
       emit(HomeSuccessState(ordersResponse));
