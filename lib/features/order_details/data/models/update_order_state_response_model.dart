@@ -4,10 +4,7 @@ class UpdateOrderStateResponse {
   final String message;
   final OrderResponse order;
 
-  UpdateOrderStateResponse({
-    required this.message,
-    required this.order,
-  });
+  UpdateOrderStateResponse({required this.message, required this.order});
 
   factory UpdateOrderStateResponse.fromJson(Map<String, dynamic> json) {
     return UpdateOrderStateResponse(

@@ -25,30 +25,31 @@ class HomeRepoImpl implements HomeRepo {
           final orderDto = orderWrapper.order;
           final storeDto = orderWrapper.store;
 
-          final orderItems = (orderDto?.orderItems ?? []).map((itemDto) {
-            return OrderItemEntity(
-              id: itemDto.id ?? "",
-              product: ProductEntity(
-                id: itemDto.product?.id ?? "",
-                title: itemDto.product?.title ?? "Unknown Product",
-                slug: "",
-                description: "",
-                imgCover: "",
-                images: [],
-                price: itemDto.product?.price ?? 0,
-                quantity: 0,
-                sold: 0,
-                category: "",
-                occasion: "",
-                rateAvg: 0.0,
-                rateCount: 0,
-                createdAt: DateTime.now(),
-                updatedAt: DateTime.now(),
-              ),
-              price: itemDto.price ?? 0,
-              quantity: itemDto.quantity ?? 0,
-            );
-          }).toList();
+          final orderItems =
+              (orderDto?.orderItems ?? []).map((itemDto) {
+                return OrderItemEntity(
+                  id: itemDto.id ?? "",
+                  product: ProductEntity(
+                    id: itemDto.product?.id ?? "",
+                    title: itemDto.product?.title ?? "Unknown Product",
+                    slug: "",
+                    description: "",
+                    imgCover: "",
+                    images: [],
+                    price: itemDto.product?.price ?? 0,
+                    quantity: 0,
+                    sold: 0,
+                    category: "",
+                    occasion: "",
+                    rateAvg: 0.0,
+                    rateCount: 0,
+                    createdAt: DateTime.now(),
+                    updatedAt: DateTime.now(),
+                  ),
+                  price: itemDto.price ?? 0,
+                  quantity: itemDto.quantity ?? 0,
+                );
+              }).toList();
 
           return OrderEntity(
             wrapperId: orderWrapper.id ?? "",

@@ -13,11 +13,7 @@ class ProductResponse {
   @JsonKey(name: "price")
   final int? price;
 
-  ProductResponse({
-    this.id,
-    this.title,
-    this.price,
-  });
+  ProductResponse({this.id, this.title, this.price});
 
   factory ProductResponse.fromJson(Map<String, dynamic> json) =>
       _$ProductResponseFromJson(json);

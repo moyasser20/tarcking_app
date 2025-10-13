@@ -41,19 +41,21 @@ class OrderDetails {
         address: "Heliopolis, Cairo",
         phoneNumber: orderEntity.user.phone,
       ),
-      items: orderEntity.orderItems.map((item) {
-        final productName = item.product.title;
-        return OrderItem(
-          name: productName,
-          quantity: item.quantity,
-          price: item.price.toDouble(),
-          productId: item.product.id,
-        );
-      }).toList(),
+      items:
+          orderEntity.orderItems.map((item) {
+            final productName = item.product.title;
+            return OrderItem(
+              name: productName,
+              quantity: item.quantity,
+              price: item.price.toDouble(),
+              productId: item.product.id,
+            );
+          }).toList(),
       total: orderEntity.totalPrice.toDouble(),
-      paymentMethod: orderEntity.paymentType == "cash"
-          ? "Cash on delivery"
-          : orderEntity.paymentType,
+      paymentMethod:
+          orderEntity.paymentType == "cash"
+              ? "Cash on delivery"
+              : orderEntity.paymentType,
       arrivedAtPickup: false,
     );
   }

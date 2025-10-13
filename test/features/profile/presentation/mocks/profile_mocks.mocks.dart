@@ -50,23 +50,13 @@ import 'package:tarcking_app/features/profile/presentation/viewmodel/states/prof
 
 class _FakeChangePasswordResponseModel_0 extends _i1.SmartFake
     implements _i2.ChangePasswordResponseModel {
-  _FakeChangePasswordResponseModel_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeChangePasswordResponseModel_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeProfileStates_1 extends _i1.SmartFake implements _i3.ProfileStates {
-  _FakeProfileStates_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeProfileStates_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [GetProfileDataUseCase].
@@ -79,20 +69,17 @@ class MockGetProfileDataUseCase extends _i1.Mock
   }
 
   @override
-  _i5.Future<_i6.ApiResult<_i7.UserEntity>> call() => (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [],
-        ),
-        returnValue: _i5.Future<_i6.ApiResult<_i7.UserEntity>>.value(
-            _i8.dummyValue<_i6.ApiResult<_i7.UserEntity>>(
-          this,
-          Invocation.method(
-            #call,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i6.ApiResult<_i7.UserEntity>>);
+  _i5.Future<_i6.ApiResult<_i7.UserEntity>> call() =>
+      (super.noSuchMethod(
+            Invocation.method(#call, []),
+            returnValue: _i5.Future<_i6.ApiResult<_i7.UserEntity>>.value(
+              _i8.dummyValue<_i6.ApiResult<_i7.UserEntity>>(
+                this,
+                Invocation.method(#call, []),
+              ),
+            ),
+          )
+          as _i5.Future<_i6.ApiResult<_i7.UserEntity>>);
 }
 
 /// A class which mocks [EditProfileDataUseCase].
@@ -106,22 +93,19 @@ class MockEditProfileDataUseCase extends _i1.Mock
 
   @override
   _i5.Future<_i6.ApiResult<_i10.EditProfileResponseModel>> call(
-          _i11.EditProfileRequestModel? model) =>
+    _i11.EditProfileRequestModel? model,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [model],
-        ),
-        returnValue:
-            _i5.Future<_i6.ApiResult<_i10.EditProfileResponseModel>>.value(
-                _i8.dummyValue<_i6.ApiResult<_i10.EditProfileResponseModel>>(
-          this,
-          Invocation.method(
-            #call,
-            [model],
-          ),
-        )),
-      ) as _i5.Future<_i6.ApiResult<_i10.EditProfileResponseModel>>);
+            Invocation.method(#call, [model]),
+            returnValue:
+                _i5.Future<_i6.ApiResult<_i10.EditProfileResponseModel>>.value(
+                  _i8.dummyValue<_i6.ApiResult<_i10.EditProfileResponseModel>>(
+                    this,
+                    Invocation.method(#call, [model]),
+                  ),
+                ),
+          )
+          as _i5.Future<_i6.ApiResult<_i10.EditProfileResponseModel>>);
 }
 
 /// A class which mocks [UploadPhotoUseCase].
@@ -136,19 +120,16 @@ class MockUploadPhotoUseCase extends _i1.Mock
   @override
   _i5.Future<_i6.ApiResult<_i13.UploadPhotoResponse>> call(_i14.File? photo) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [photo],
-        ),
-        returnValue: _i5.Future<_i6.ApiResult<_i13.UploadPhotoResponse>>.value(
-            _i8.dummyValue<_i6.ApiResult<_i13.UploadPhotoResponse>>(
-          this,
-          Invocation.method(
-            #call,
-            [photo],
-          ),
-        )),
-      ) as _i5.Future<_i6.ApiResult<_i13.UploadPhotoResponse>>);
+            Invocation.method(#call, [photo]),
+            returnValue:
+                _i5.Future<_i6.ApiResult<_i13.UploadPhotoResponse>>.value(
+                  _i8.dummyValue<_i6.ApiResult<_i13.UploadPhotoResponse>>(
+                    this,
+                    Invocation.method(#call, [photo]),
+                  ),
+                ),
+          )
+          as _i5.Future<_i6.ApiResult<_i13.UploadPhotoResponse>>);
 }
 
 /// A class which mocks [ProfileRepository].
@@ -160,75 +141,66 @@ class MockProfileRepository extends _i1.Mock implements _i15.ProfileRepository {
   }
 
   @override
-  _i5.Future<_i6.ApiResult<_i7.UserEntity>> getProfile() => (super.noSuchMethod(
-        Invocation.method(
-          #getProfile,
-          [],
-        ),
-        returnValue: _i5.Future<_i6.ApiResult<_i7.UserEntity>>.value(
-            _i8.dummyValue<_i6.ApiResult<_i7.UserEntity>>(
-          this,
-          Invocation.method(
-            #getProfile,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i6.ApiResult<_i7.UserEntity>>);
+  _i5.Future<_i6.ApiResult<_i7.UserEntity>> getProfile() =>
+      (super.noSuchMethod(
+            Invocation.method(#getProfile, []),
+            returnValue: _i5.Future<_i6.ApiResult<_i7.UserEntity>>.value(
+              _i8.dummyValue<_i6.ApiResult<_i7.UserEntity>>(
+                this,
+                Invocation.method(#getProfile, []),
+              ),
+            ),
+          )
+          as _i5.Future<_i6.ApiResult<_i7.UserEntity>>);
 
   @override
   _i5.Future<_i2.ChangePasswordResponseModel> changePassword(
-          _i16.ChangePasswordRequestModel? changePasswordRequestModel) =>
+    _i16.ChangePasswordRequestModel? changePasswordRequestModel,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #changePassword,
-          [changePasswordRequestModel],
-        ),
-        returnValue: _i5.Future<_i2.ChangePasswordResponseModel>.value(
-            _FakeChangePasswordResponseModel_0(
-          this,
-          Invocation.method(
-            #changePassword,
-            [changePasswordRequestModel],
-          ),
-        )),
-      ) as _i5.Future<_i2.ChangePasswordResponseModel>);
+            Invocation.method(#changePassword, [changePasswordRequestModel]),
+            returnValue: _i5.Future<_i2.ChangePasswordResponseModel>.value(
+              _FakeChangePasswordResponseModel_0(
+                this,
+                Invocation.method(#changePassword, [
+                  changePasswordRequestModel,
+                ]),
+              ),
+            ),
+          )
+          as _i5.Future<_i2.ChangePasswordResponseModel>);
 
   @override
   _i5.Future<_i6.ApiResult<_i10.EditProfileResponseModel>> editProfile(
-          _i11.EditProfileRequestModel? model) =>
+    _i11.EditProfileRequestModel? model,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #editProfile,
-          [model],
-        ),
-        returnValue:
-            _i5.Future<_i6.ApiResult<_i10.EditProfileResponseModel>>.value(
-                _i8.dummyValue<_i6.ApiResult<_i10.EditProfileResponseModel>>(
-          this,
-          Invocation.method(
-            #editProfile,
-            [model],
-          ),
-        )),
-      ) as _i5.Future<_i6.ApiResult<_i10.EditProfileResponseModel>>);
+            Invocation.method(#editProfile, [model]),
+            returnValue:
+                _i5.Future<_i6.ApiResult<_i10.EditProfileResponseModel>>.value(
+                  _i8.dummyValue<_i6.ApiResult<_i10.EditProfileResponseModel>>(
+                    this,
+                    Invocation.method(#editProfile, [model]),
+                  ),
+                ),
+          )
+          as _i5.Future<_i6.ApiResult<_i10.EditProfileResponseModel>>);
 
   @override
   _i5.Future<_i6.ApiResult<_i13.UploadPhotoResponse>> uploadPhoto(
-          _i14.File? photo) =>
+    _i14.File? photo,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #uploadPhoto,
-          [photo],
-        ),
-        returnValue: _i5.Future<_i6.ApiResult<_i13.UploadPhotoResponse>>.value(
-            _i8.dummyValue<_i6.ApiResult<_i13.UploadPhotoResponse>>(
-          this,
-          Invocation.method(
-            #uploadPhoto,
-            [photo],
-          ),
-        )),
-      ) as _i5.Future<_i6.ApiResult<_i13.UploadPhotoResponse>>);
+            Invocation.method(#uploadPhoto, [photo]),
+            returnValue:
+                _i5.Future<_i6.ApiResult<_i13.UploadPhotoResponse>>.value(
+                  _i8.dummyValue<_i6.ApiResult<_i13.UploadPhotoResponse>>(
+                    this,
+                    Invocation.method(#uploadPhoto, [photo]),
+                  ),
+                ),
+          )
+          as _i5.Future<_i6.ApiResult<_i13.UploadPhotoResponse>>);
 }
 
 /// A class which mocks [ProfileViewModel].
@@ -241,110 +213,76 @@ class MockProfileViewModel extends _i1.Mock implements _i17.ProfileViewModel {
 
   @override
   set user(_i7.UserEntity? _user) => super.noSuchMethod(
-        Invocation.setter(
-          #user,
-          _user,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#user, _user),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  _i3.ProfileStates get state => (super.noSuchMethod(
-        Invocation.getter(#state),
-        returnValue: _FakeProfileStates_1(
-          this,
-          Invocation.getter(#state),
-        ),
-      ) as _i3.ProfileStates);
+  _i3.ProfileStates get state =>
+      (super.noSuchMethod(
+            Invocation.getter(#state),
+            returnValue: _FakeProfileStates_1(this, Invocation.getter(#state)),
+          )
+          as _i3.ProfileStates);
 
   @override
-  _i5.Stream<_i3.ProfileStates> get stream => (super.noSuchMethod(
-        Invocation.getter(#stream),
-        returnValue: _i5.Stream<_i3.ProfileStates>.empty(),
-      ) as _i5.Stream<_i3.ProfileStates>);
+  _i5.Stream<_i3.ProfileStates> get stream =>
+      (super.noSuchMethod(
+            Invocation.getter(#stream),
+            returnValue: _i5.Stream<_i3.ProfileStates>.empty(),
+          )
+          as _i5.Stream<_i3.ProfileStates>);
 
   @override
-  bool get isClosed => (super.noSuchMethod(
-        Invocation.getter(#isClosed),
-        returnValue: false,
-      ) as bool);
+  bool get isClosed =>
+      (super.noSuchMethod(Invocation.getter(#isClosed), returnValue: false)
+          as bool);
 
   @override
-  _i5.Future<void> getProfile() => (super.noSuchMethod(
-        Invocation.method(
-          #getProfile,
-          [],
-        ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+  _i5.Future<void> getProfile() =>
+      (super.noSuchMethod(
+            Invocation.method(#getProfile, []),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
+          )
+          as _i5.Future<void>);
 
   @override
   void clearProfileCache() => super.noSuchMethod(
-        Invocation.method(
-          #clearProfileCache,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#clearProfileCache, []),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void emit(_i3.ProfileStates? state) => super.noSuchMethod(
-        Invocation.method(
-          #emit,
-          [state],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#emit, [state]),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void onChange(_i18.Change<_i3.ProfileStates>? change) => super.noSuchMethod(
-        Invocation.method(
-          #onChange,
-          [change],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#onChange, [change]),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  void addError(
-    Object? error, [
-    StackTrace? stackTrace,
-  ]) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #addError,
-          [
-            error,
-            stackTrace,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void addError(Object? error, [StackTrace? stackTrace]) => super.noSuchMethod(
+    Invocation.method(#addError, [error, stackTrace]),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  void onError(
-    Object? error,
-    StackTrace? stackTrace,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #onError,
-          [
-            error,
-            stackTrace,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void onError(Object? error, StackTrace? stackTrace) => super.noSuchMethod(
+    Invocation.method(#onError, [error, stackTrace]),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  _i5.Future<void> close() => (super.noSuchMethod(
-        Invocation.method(
-          #close,
-          [],
-        ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+  _i5.Future<void> close() =>
+      (super.noSuchMethod(
+            Invocation.method(#close, []),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
+          )
+          as _i5.Future<void>);
 }

@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
-import 'package:tarcking_app/core/Widgets/Custom_Elevated_Button.dart';
-import 'package:tarcking_app/core/contants/app_icons.dart';
-import 'package:tarcking_app/core/contants/app_images.dart';
-import 'package:tarcking_app/core/theme/app_colors.dart';
 import 'package:tarcking_app/features/homescreen/domain/entities/order_entity.dart';
 import 'package:tarcking_app/features/order_details/data/models/order_details_model.dart';
 import 'package:tarcking_app/features/order_details/presentation/views/widgets/order_details_bottom_section.dart';
 import 'package:tarcking_app/features/order_details/presentation/views/widgets/order_details_top_section.dart';
 import 'package:tarcking_app/features/order_details/presentation/views/widgets/update_order_button_widget.dart';
-
 import '../../../../core/api/client/api_client.dart';
 import '../../../../core/config/di.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
-import '../../../../core/utils/date_converter.dart';
 import '../cubit/order_details_cubit.dart';
 
 class OrderDetailsScreen extends StatelessWidget {

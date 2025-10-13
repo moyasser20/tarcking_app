@@ -9,7 +9,11 @@ class UpdateOrderButtonWidget extends StatelessWidget {
   final OrderDetails order;
   final bool isUpdating;
 
-  const UpdateOrderButtonWidget({super.key, required this.order, required this.isUpdating});
+  const UpdateOrderButtonWidget({
+    super.key,
+    required this.order,
+    required this.isUpdating,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +21,11 @@ class UpdateOrderButtonWidget extends StatelessWidget {
       width: double.infinity,
       text: _getButtonText(order.state),
       onPressed:
-      isUpdating || order.state == 'canceled' || order.state == 'completed'
-          ? null
-          : () {
-        context.read<OrderDetailsCubit>().updateOrderStatus();
-      },
+          isUpdating || order.state == 'canceled' || order.state == 'completed'
+              ? null
+              : () {
+                context.read<OrderDetailsCubit>().updateOrderStatus();
+              },
     );
   }
 

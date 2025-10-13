@@ -17,12 +17,7 @@ class OrderItemResponse {
   @JsonKey(name: "quantity")
   final int? quantity;
 
-  OrderItemResponse({
-    this.id,
-    this.product,
-    this.price,
-    this.quantity,
-  });
+  OrderItemResponse({this.id, this.product, this.price, this.quantity});
 
   factory OrderItemResponse.fromJson(Map<String, dynamic> json) =>
       _$OrderItemResponseFromJson(json);

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-
 import '../../../../../core/contants/app_icons.dart';
 import '../../../../../core/contants/app_images.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/date_converter.dart';
+import '../../../../order_location/presentation/view/pickup_location_screen.dart';
 import '../../../data/models/order_details_model.dart';
 import '../../cubit/order_details_cubit.dart';
 
@@ -45,7 +45,7 @@ class OrderDetailsTopSection extends StatelessWidget {
             );
           },
         ),
-        SizedBox(height: 16,),
+        SizedBox(height: 16),
 
         Container(
           width: double.infinity,
@@ -81,15 +81,31 @@ class OrderDetailsTopSection extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 12,),
-        _AddressSection(
-          title: 'Pickup address',
-          address: order.pickupAddress,
-        ),
-        SizedBox(height: 8,),
-        _AddressSection(title: 'User Address', address: address),
-        SizedBox(height: 8,),
+        SizedBox(height: 12),
 
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PickupLocationScreen()),
+            );
+          },
+          child: _AddressSection(
+            title: 'Pickup address',
+            address: order.pickupAddress,
+          ),
+        ),
+        SizedBox(height: 8),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PickupLocationScreen()),
+            );
+          },
+          child: _AddressSection(title: 'User Address', address: address),
+        ),
+        SizedBox(height: 8),
       ],
     );
   }
@@ -121,10 +137,7 @@ class OrderDetailsTopSection extends StatelessWidget {
 }
 
 class _AddressSection extends StatelessWidget {
-  const _AddressSection({
-    required this.title,
-    required this.address,
-  });
+  const _AddressSection({required this.title, required this.address});
 
   final String title;
   final Address address;

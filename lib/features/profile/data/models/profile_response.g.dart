@@ -13,7 +13,4 @@ ProfileResponse _$ProfileResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ProfileResponseToJson(ProfileResponse instance) =>
-    <String, dynamic>{
-      'message': instance.message,
-      'driver': instance.driver,
-    };
+    <String, dynamic>{'message': instance.message, 'driver': instance.driver};

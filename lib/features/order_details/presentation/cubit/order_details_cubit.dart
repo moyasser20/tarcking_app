@@ -33,7 +33,8 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
       final currentState = state as OrderDetailsLoaded;
       final currentOrder = currentState.order;
       final nextState = getNextState(currentOrder.state);
-      if (currentOrder.state == 'canceled' || currentOrder.state == 'completed') {
+      if (currentOrder.state == 'canceled' ||
+          currentOrder.state == 'completed') {
         return;
       }
 
@@ -45,13 +46,13 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
 
         final updatedOrder = currentOrder.copyWith(state: nextState);
         emit(OrderDetailsLoaded(updatedOrder));
-
       } catch (e) {
         emit(OrderDetailsError('Failed to update order status: $e'));
         emit(OrderDetailsLoaded(currentOrder));
       }
     }
   }
+
   String getNextState(String currentState) {
     switch (currentState) {
       case 'pending':
@@ -64,26 +65,29 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
         return currentState;
     }
   }
- void call( String phoneNumber) async{
+
+  void call(String phoneNumber) async {
     final url = Uri.parse("tel:$phoneNumber");
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     } else {
       log("Phone is not installed");
     }
- }
-  void shareViaWhatsApp(String phoneNumber) async {
-      final cleanedPhone = phoneNumber.replaceAll(RegExp(r'[^\d+]'), '');
-      final phone = cleanedPhone.startsWith('+') ? cleanedPhone : '+$cleanedPhone';
-      final url = Uri.parse("https://wa.me/$phone");
+  }
 
-      if (await canLaunchUrl(url)) {
-        await launchUrl(url, mode: LaunchMode.externalApplication);
-      } else {
-        final phoneUrl = Uri.parse("tel:$phone");
-        if (await canLaunchUrl(phoneUrl)) {
-          await launchUrl(phoneUrl);
-        }
+  void shareViaWhatsApp(String phoneNumber) async {
+    final cleanedPhone = phoneNumber.replaceAll(RegExp(r'[^\d+]'), '');
+    final phone =
+        cleanedPhone.startsWith('+') ? cleanedPhone : '+$cleanedPhone';
+    final url = Uri.parse("https://wa.me/$phone");
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    } else {
+      final phoneUrl = Uri.parse("tel:$phone");
+      if (await canLaunchUrl(phoneUrl)) {
+        await launchUrl(phoneUrl);
       }
+    }
   }
 }

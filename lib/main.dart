@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tarcking_app/core/l10n/translation/app_localizations.dart'; 
+import 'package:tarcking_app/core/l10n/translation/app_localizations.dart';
 import 'package:tarcking_app/core/routes/on_generate_route.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
 import 'package:tarcking_app/core/contants/secure_storage.dart';
