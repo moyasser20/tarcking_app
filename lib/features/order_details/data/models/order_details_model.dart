@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../../homescreen/domain/entities/order_entity.dart';
 
 class OrderDetails {
@@ -85,7 +87,37 @@ class OrderDetails {
       arrivedAtPickup: arrivedAtPickup ?? this.arrivedAtPickup,
     );
   }
-}
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'createdAt': createdAt.millisecondsSinceEpoch,
+      'state': state,
+      'orderNumber': orderNumber,
+      'pickupAddress': {
+        'name': pickupAddress.name,
+        'address': pickupAddress.address,
+        'phoneNumber': pickupAddress.phoneNumber,
+      },
+      'userAddress': {
+        'name': userAddress.name,
+        'address': userAddress.address,
+        'phoneNumber': userAddress.phoneNumber,
+      },
+      'items': items.map((item) => {
+        'name': item.name,
+        'quantity': item.quantity,
+        'price': item.price,
+        'productId': item.productId,
+      }).toList(),
+      'total': total,
+      'paymentMethod': paymentMethod,
+      'arrivedAtPickup': arrivedAtPickup,
+      'update_order_button': state,
+      'driverId': 'current_driver_id',
+      'lastUpdated': FieldValue.serverTimestamp(),
+    };
+  }}
 
 class Address {
   final String name;

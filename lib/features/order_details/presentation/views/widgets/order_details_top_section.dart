@@ -28,6 +28,7 @@ class OrderDetailsTopSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if (order.state != 'canceled' && order.state != 'completed')...[
         StepProgressIndicator(
           totalSteps: totalSteps,
           currentStep: currentStep,
@@ -45,8 +46,8 @@ class OrderDetailsTopSection extends StatelessWidget {
             );
           },
         ),
-        SizedBox(height: 16),
-
+        SizedBox(height: 16,),
+],
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16),

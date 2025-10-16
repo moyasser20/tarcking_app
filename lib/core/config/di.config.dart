@@ -8,6 +8,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -81,7 +82,9 @@ import '../../features/profile/domain/usecases/upload_photo_usecase.dart'
     as _i971;
 import '../../features/profile/presentation/viewmodel/profile_viewmodel.dart'
     as _i351;
+import '../../firebase_module.dart' as _i1008;
 import '../api/client/api_client.dart' as _i364;
+import '../firebase/firebase_service.dart' as _i842;
 import 'dio_module/dio_module.dart' as _i484;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -90,13 +93,35 @@ extension GetItInjectableX on _i174.GetIt {
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
+    final gh = _i526.GetItHelper(
+      this,
+      environment,
+      environmentFilter,
+    );
+    final firebaseModule = _$FirebaseModule();
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
+    gh.lazySingleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
+    gh.factory<String>(
+      () => dioModule.baseUrl,
+      instanceName: 'baseurl',
+    );
+    gh.lazySingleton<_i842.FirestoreService>(
+        () => _i842.FirestoreService(gh<_i974.FirebaseFirestore>()));
     gh.factory<String>(() => dioModule.baseUrl, instanceName: 'baseurl');
     gh.lazySingleton<_i361.Dio>(
       () => dioModule.dio(gh<String>(instanceName: 'baseurl')),
     );
     gh.lazySingleton<_i901.ApplyApiClient>(
+        () => _i901.ApplyApiClient(gh<_i361.Dio>()));
+    gh.factory<_i364.ApiClient>(() => _i364.ApiClient(
+          gh<_i361.Dio>(),
+          baseUrl: gh<String>(instanceName: 'baseurl'),
+        ));
+    gh.factory<_i319.OrderDetailsCubit>(() => _i319.OrderDetailsCubit(
+          gh<_i364.ApiClient>(),
+          gh<_i842.FirestoreService>(),
+        ));
       () => _i901.ApplyApiClient(gh<_i361.Dio>()),
     );
     gh.factory<_i364.ApiClient>(
@@ -106,6 +131,11 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.factory<_i508.ResetPasswordCubit>(
+        () => _i508.ResetPasswordCubit(gh<_i364.ApiClient>()));
+    gh.lazySingleton<_i428.OrderDetailsRepo>(
+        () => _i1054.OrderDetailsRepoImpl(gh<_i364.ApiClient>()));
+    gh.lazySingleton<_i1031.ProfileRemoteDatasource>(() =>
+        _i121.ProfileRemoteDatasourceImpl(apiClient: gh<_i364.ApiClient>()));
       () => _i508.ResetPasswordCubit(gh<_i364.ApiClient>()),
     );
     gh.factory<_i319.OrderDetailsCubit>(
@@ -124,6 +154,11 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.lazySingleton<_i1063.HomeRemoteDataSource>(
+        () => _i730.HomeRemoteDataSourceImpl(gh<_i364.ApiClient>()));
+    gh.factory<_i1034.UpdateOrderStateUseCase>(
+        () => _i1034.UpdateOrderStateUseCase(gh<_i428.OrderDetailsRepo>()));
+    gh.lazySingleton<_i894.ProfileRepository>(() =>
+        _i357.ProfileRepositoryImpl(gh<_i1031.ProfileRemoteDatasource>()));
       () => _i730.HomeRemoteDataSourceImpl(gh<_i364.ApiClient>()),
     );
     gh.factory<_i1034.UpdateOrderStateUseCase>(
@@ -207,5 +242,7 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$FirebaseModule extends _i1008.FirebaseModule {}
 
 class _$DioModule extends _i484.DioModule {}
