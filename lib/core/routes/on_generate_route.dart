@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
 import 'package:tarcking_app/features/order_location/presentation/view/order_map_screen.dart';
 import 'package:tarcking_app/features/profile/change_password/presentation/viewmodel/change_password_viewmodel.dart';
@@ -23,7 +22,6 @@ import 'package:tarcking_app/features/auth/presentation/forget_password/presenta
 import '../../features/order_details/data/models/order_details_model.dart';
 import '../../features/order_details/presentation/cubit/order_details_cubit.dart';
 import '../../features/order_details/presentation/views/order_details_screen.dart';
-import '../../features/order_details/presentation/views/widgets/pickup_location_screen.dart';
 import '../../features/profile/change_password/presentation/views/screens/change_password_screen.dart';
 import '../../features/profile/domain/entity/user_entity.dart';
 import '../../features/profile/presentation/view/edit_profile_screen.dart';
@@ -106,26 +104,27 @@ class Routes {
         );
 
       case AppRoutes.orderDetails:
+        final orderEntity = settings.arguments as OrderEntity;
         return MaterialPageRoute(
-          builder:
-              (context) => OrderDetailsScreen(
-                orderEntity: settings.arguments as OrderEntity,
-                onOrderUpdated: () {
-                  getIt<HomeCubit>().getOrders();
-                },
-              ),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<OrderDetailsCubit>(),
+            child: OrderDetailsScreen(
+              orderEntity: orderEntity,
+              onOrderUpdated: () {
+                getIt<HomeCubit>().getOrders();
+              },
+            ),
+          ),
         );
+
       case AppRoutes.orderMapScreen:
         final args = settings.arguments as Map<String, dynamic>;
         final order = args['order'] as OrderDetails;
         final isFromPickup = args['isFromPickup'] as bool;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider.value(
-            value: context.read<OrderDetailsCubit>(),
-            child: OrderMapScreen(
-              order: order,
-              isFromPickupRoute: isFromPickup,
-            ),
+          builder: (context) => OrderMapScreen(
+            order: order,
+            isFromPickupRoute: isFromPickup,
           ),
         );
 

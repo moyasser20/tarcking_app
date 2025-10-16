@@ -25,8 +25,6 @@ class OrderMapScreen extends StatefulWidget {
 class _OrderMapScreenState extends State<OrderMapScreen>
     with SingleTickerProviderStateMixin {
   final MapController _mapController = MapController();
-  late AnimationController _animationController;
-
   final LatLng _userLocation = const LatLng(30.046578, 31.235374);
   final LatLng _storeLocation = const LatLng(30.048026, 31.241605);
   final List<LatLng> _routePoints = [];
@@ -234,11 +232,5 @@ class _OrderMapScreenState extends State<OrderMapScreen>
     double avgLat = (_userLocation.latitude + _storeLocation.latitude) / 2;
     double avgLng = (_userLocation.longitude + _storeLocation.longitude) / 2;
     return LatLng(avgLat, avgLng);
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
   }
 }
