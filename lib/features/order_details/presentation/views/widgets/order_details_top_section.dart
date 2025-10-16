@@ -4,9 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../../../../../core/contants/app_icons.dart';
 import '../../../../../core/contants/app_images.dart';
+import '../../../../../core/routes/route_names.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/date_converter.dart';
-import '../../../../order_location/presentation/view/pickup_location_screen.dart';
 import '../../../data/models/order_details_model.dart';
 import '../../cubit/order_details_cubit.dart';
 
@@ -28,26 +28,26 @@ class OrderDetailsTopSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (order.state != 'canceled' && order.state != 'completed')...[
-        StepProgressIndicator(
-          totalSteps: totalSteps,
-          currentStep: currentStep,
-          size: 4,
-          padding: 4,
-          selectedColor: AppColors.green,
-          unselectedColor: Colors.grey[400]!,
-          roundedEdges: const Radius.circular(10),
-          customStep: (index, color, _) {
-            return Container(
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.circular(10),
-              ),
-            );
-          },
-        ),
-        SizedBox(height: 16,),
-],
+        if (order.state != 'canceled' && order.state != 'completed') ...[
+          StepProgressIndicator(
+            totalSteps: totalSteps,
+            currentStep: currentStep,
+            size: 4,
+            padding: 4,
+            selectedColor: AppColors.green,
+            unselectedColor: Colors.grey[400]!,
+            roundedEdges: const Radius.circular(10),
+            customStep: (index, color, _) {
+              return Container(
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              );
+            },
+          ),
+          SizedBox(height: 16),
+        ],
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16),
@@ -86,9 +86,10 @@ class OrderDetailsTopSection extends StatelessWidget {
 
         GestureDetector(
           onTap: () {
-            Navigator.push(
+            Navigator.pushNamed(
               context,
-              MaterialPageRoute(builder: (context) => PickupLocationScreen()),
+              AppRoutes.orderMapScreen,
+              arguments: {'order': order, 'isFromPickup': true},
             );
           },
           child: _AddressSection(
@@ -99,9 +100,10 @@ class OrderDetailsTopSection extends StatelessWidget {
         SizedBox(height: 8),
         GestureDetector(
           onTap: () {
-            Navigator.push(
+            Navigator.pushNamed(
               context,
-              MaterialPageRoute(builder: (context) => PickupLocationScreen()),
+              AppRoutes.orderMapScreen,
+              arguments: {'order': order, 'isFromPickup': false},
             );
           },
           child: _AddressSection(title: 'User Address', address: address),
