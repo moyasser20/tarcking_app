@@ -62,35 +62,41 @@ class AddressWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    storeName,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      color: AppColors.grey,
-                      fontFamily: "Inter",
-                    ),
-                  ).setHorizontalPadding(context, 0.001),
-                  const SizedBox(height: 5),
-                  Row(
-                    children: [
-                      const Icon(Icons.location_on_outlined),
-                      const SizedBox(width: 5),
-                      Text(
-                        address,
-                        style: const TextStyle(
-                          fontSize: 13,
-                          color: AppColors.black,
-                          fontFamily: "Inter",
-                          fontWeight: FontWeight.w600,
-                        ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      storeName,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: AppColors.grey,
+                        fontFamily: "Inter",
                       ),
-                    ],
-                  ),
-                ],
+                    ).setHorizontalPadding(context, 0.001),
+                    const SizedBox(height: 5),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          const Icon(Icons.location_on_outlined),
+                          const SizedBox(width: 5),
+                          Flexible(
+                            child: Text(
+                              address,
+                              style: const TextStyle(
+                                fontSize: 13,
+                                color: AppColors.black,
+                                fontFamily: "Inter",
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

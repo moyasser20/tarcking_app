@@ -1,6 +1,8 @@
+// order_response.dart
 import 'package:json_annotation/json_annotation.dart';
 import 'package:tarcking_app/features/homescreen/data/models/store_response.dart';
 import 'package:tarcking_app/features/homescreen/data/models/user_response.dart';
+import 'package:tarcking_app/features/homescreen/data/models/order_item_response.dart';
 
 part 'order_response.g.dart';
 
@@ -22,7 +24,7 @@ class OrderResponse {
   final String? orderNumber;
 
   @JsonKey(name: "orderItems")
-  final List<dynamic>? orderItems;
+  final List<OrderItemResponse>? orderItems;
 
   @JsonKey(name: "isPaid")
   final bool? isPaid;
