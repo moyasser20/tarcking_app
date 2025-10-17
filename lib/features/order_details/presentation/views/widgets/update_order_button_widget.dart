@@ -4,6 +4,7 @@ import 'package:tarcking_app/features/order_details/data/models/order_details_mo
 
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../cubit/order_details_cubit.dart';
+import '../../../../successpage/presentation/view/success_page.dart';
 
 class UpdateOrderButtonWidget extends StatelessWidget {
   final OrderDetails order;
@@ -24,12 +25,19 @@ class UpdateOrderButtonWidget extends StatelessWidget {
     return CustomElevatedButton(
       width: double.infinity,
       text: buttonText,
-      onPressed:
-      isUpdating || order.state == 'canceled' || order.state == 'completed'
+      onPressed: isUpdating || order.state == 'canceled'
           ? null
           : () {
         onButtonClicked?.call(buttonText);
-        context.read<OrderDetailsCubit>().updateOrderStatus();
+
+        if (order.state == 'completed') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const SuccessPage()),
+          );
+        } else {
+          context.read<OrderDetailsCubit>().updateOrderStatus();
+        }
       },
     );
   }

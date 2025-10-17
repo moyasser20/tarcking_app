@@ -9,6 +9,7 @@ import 'package:tarcking_app/features/order_details/presentation/views/widgets/u
 import '../../../../core/api/client/api_client.dart';
 import '../../../../core/config/di.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../core/routes/route_names.dart';
 import '../cubit/order_details_cubit.dart';
 
 class OrderDetailsScreen extends StatefulWidget {

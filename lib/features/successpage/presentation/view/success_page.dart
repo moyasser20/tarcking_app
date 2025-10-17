@@ -40,7 +40,7 @@ class SuccessPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 70),
-            CustomElevatedButton(text: local.done, onPressed: (){Navigator.pushNamed(context, AppRoutes.dashboard);})
+            CustomElevatedButton(width : 370,text: local.done, onPressed: (){Navigator.pushNamed(context, AppRoutes.dashboard);})
 
 
           ],
