@@ -439,4 +439,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get recentOrdersTitle => 'Recent Orders';
+
+  @override
+  String get pickupLocation => 'Pickup Location';
+
+  @override
+  String get apartmentLabel => 'Apartment';
+
+  @override
+  String get storeLabel => 'Flowery';
+
+  @override
+  String get backButtonTooltip => 'Back';
+
+  @override
+  String get paymentMethod => 'Payment Method';
+
+  @override
+  String get currency => 'EGP';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get orderId => 'Order ID';
+
+  @override
+  String get noOrderData => 'No order data';
+
+  @override
+  String get total => 'Total';
 }

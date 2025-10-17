@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/contants/app_icons.dart';
+import '../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../order_details/data/models/order_details_model.dart';
-import '../../../../order_details/presentation/cubit/order_details_cubit.dart';
 
 class OrderMapBottomSheetWidget extends StatelessWidget {
   final OrderDetails order;
@@ -16,11 +15,15 @@ class OrderMapBottomSheetWidget extends StatelessWidget {
   const OrderMapBottomSheetWidget({
     super.key,
     required this.order,
-    required this.showPickupFirst, required this.onCallPressed, required this.onWhatsAppPressed,
+    required this.showPickupFirst,
+    required this.onCallPressed,
+    required this.onWhatsAppPressed,
   });
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.34,
       decoration: const BoxDecoration(color: Colors.white),
@@ -31,24 +34,27 @@ class OrderMapBottomSheetWidget extends StatelessWidget {
           children: [
             Container(
               height: 4,
+              width: 80,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: AppColors.pink,
               ),
-              width: 80,
             ),
             const SizedBox(height: 12),
-            if (showPickupFirst) ..._buildPickupFirstLayout(context),
-            if (!showPickupFirst) ..._buildUserFirstLayout(context),
+            if (showPickupFirst)
+              ..._buildPickupFirstLayout(context, local)
+            else
+              ..._buildUserFirstLayout(context, local),
           ],
         ),
       ),
     );
   }
 
-  List<Widget> _buildPickupFirstLayout(BuildContext context) {
+  List<Widget> _buildPickupFirstLayout(
+      BuildContext context, AppLocalizations local) {
     return [
-      _buildSectionHeader('Pickup Location'),
+      _buildSectionHeader(local.pickupLocation),
       const SizedBox(height: 4),
       _buildAddressSection(
         context,
@@ -56,27 +62,28 @@ class OrderMapBottomSheetWidget extends StatelessWidget {
         AppIcons.floweryIcon,
       ),
       const SizedBox(height: 16),
-      _buildSectionHeader('User address'),
+      _buildSectionHeader(local.userAddress),
       const SizedBox(height: 4),
       _buildAddressSection(
         context,
         order.userAddress,
-          AppIcons.profileIcon
+        AppIcons.profileIcon,
       ),
     ];
   }
 
-  List<Widget> _buildUserFirstLayout(BuildContext context) {
+  List<Widget> _buildUserFirstLayout(
+      BuildContext context, AppLocalizations local) {
     return [
-      _buildSectionHeader('User address'),
+      _buildSectionHeader(local.userAddress),
       const SizedBox(height: 4),
       _buildAddressSection(
         context,
         order.userAddress,
-        AppIcons.profileIcon
+        AppIcons.profileIcon,
       ),
       const SizedBox(height: 16),
-      _buildSectionHeader('Pickup Location'),
+      _buildSectionHeader(local.pickupLocation),
       const SizedBox(height: 4),
       _buildAddressSection(
         context,

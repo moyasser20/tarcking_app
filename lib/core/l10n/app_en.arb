@@ -142,5 +142,15 @@
   "completedStatus": "Completed",
   "cancelledStatus": "Cancelled",
   "noOrdersFound": "No orders found",
-  "recentOrdersTitle": "Recent Orders"
+  "recentOrdersTitle": "Recent Orders",
+  "pickupLocation": "Pickup Location",
+  "apartmentLabel": "Apartment",
+  "storeLabel": "Flowery",
+  "backButtonTooltip": "Back",
+  "paymentMethod": "Payment Method",
+  "currency": "EGP",
+  "status": "Status",
+  "orderId": "Order ID",
+  "noOrderData": "No order data",
+  "total": "Total"
 }

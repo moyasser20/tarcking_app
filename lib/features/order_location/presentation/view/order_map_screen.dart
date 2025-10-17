@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:tarcking_app/features/order_location/presentation/view/widgets/order_map_bottom_sheet_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'package:tarcking_app/features/order_location/presentation/view/widgets/order_map_bottom_sheet_widget.dart';
 import '../../../../core/contants/app_icons.dart';
+import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../order_details/data/models/order_details_model.dart';
 
@@ -15,7 +17,7 @@ class OrderMapScreen extends StatefulWidget {
   const OrderMapScreen({
     super.key,
     required this.order,
-    required this.isFromPickupRoute
+    required this.isFromPickupRoute,
   });
 
   @override
@@ -28,7 +30,6 @@ class _OrderMapScreenState extends State<OrderMapScreen>
   final LatLng _userLocation = const LatLng(30.046578, 31.235374);
   final LatLng _storeLocation = const LatLng(30.048026, 31.241605);
   final List<LatLng> _routePoints = [];
-
   final List<Marker> _markers = [];
 
   @override
@@ -54,71 +55,81 @@ class _OrderMapScreenState extends State<OrderMapScreen>
       Marker(
         width: 80.0,
         point: _userLocation,
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.pink,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: SvgPicture.asset(
-                      AppIcons.flowerHomeIcon,
-                      width: 18,
-                      height: 18,
-                    ),
+        child: Builder(
+          builder: (context) {
+            final local = AppLocalizations.of(context)!;
+            return Column(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.pink,
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  const Text(
-                    'Apartment',
-                    style: TextStyle(
-                      fontSize: 9,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.white,
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: SvgPicture.asset(
+                          AppIcons.flowerHomeIcon,
+                          width: 18,
+                          height: 18,
+                        ),
+                      ),
+                      Text(
+                        local.apartmentLabel,
+                        style: const TextStyle(
+                          fontSize: 9,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.white,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ],
+                ),
+              ],
+            );
+          },
         ),
       ),
       Marker(
         width: 70.0,
         point: _storeLocation,
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.pink,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: SvgPicture.asset(
-                      AppIcons.floweryIcon,
-                      width: 16,
-                      height: 16,
-                    ),
+        child: Builder(
+          builder: (context) {
+            final local = AppLocalizations.of(context)!;
+            return Column(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.pink,
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  const Text(
-                    'Flowery',
-                    style: TextStyle(
-                      fontSize: 8,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.white,
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: SvgPicture.asset(
+                          AppIcons.floweryIcon,
+                          width: 16,
+                          height: 16,
+                        ),
+                      ),
+                      Text(
+                        local.storeLabel,
+                        style: const TextStyle(
+                          fontSize: 8,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.white,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ],
+                ),
+              ],
+            );
+          },
         ),
       ),
     ]);
@@ -126,6 +137,8 @@ class _OrderMapScreenState extends State<OrderMapScreen>
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -173,6 +186,7 @@ class _OrderMapScreenState extends State<OrderMapScreen>
                 borderRadius: BorderRadius.circular(30.0),
               ),
               child: IconButton(
+                tooltip: local.backButtonTooltip,
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -204,12 +218,13 @@ class _OrderMapScreenState extends State<OrderMapScreen>
       ),
     );
   }
+
   void _callNumber(String phoneNumber) async {
     final url = Uri.parse("tel:$phoneNumber");
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     } else {
-      print("Could not launch phone app");
+      debugPrint("Could not launch phone app");
     }
   }
 
