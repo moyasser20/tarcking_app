@@ -898,6 +898,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Accept'**
   String get accept;
+
+  /// No description provided for @thankYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you!!'**
+  String get thankYou;
+
+  /// No description provided for @orderDeliveredSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'The order delivered\nsuccessfully'**
+  String get orderDeliveredSuccessfully;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @recentOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent orders'**
+  String get recentOrder;
+
+  /// No description provided for @myOrdersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My Orders'**
+  String get myOrdersTitle;
+
+  /// No description provided for @inProgressStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'In Progress'**
+  String get inProgressStatus;
+
+  /// No description provided for @completedStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get completedStatus;
+
+  /// No description provided for @cancelledStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get cancelledStatus;
+
+  /// No description provided for @noOrdersFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No orders found'**
+  String get noOrdersFound;
+
+  /// No description provided for @recentOrdersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Orders'**
+  String get recentOrdersTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

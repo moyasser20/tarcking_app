@@ -18,4 +18,8 @@ abstract final class AppIcons {
   static const String floweryIcon = 'assets/icons/flowery_icon.svg';
   static const String flowerHomeIcon = 'assets/icons/flower_home_icon.svg';
   static const String callIcon = 'assets/icons/call_icon.svg';
+  static const String arrowBackIcon = 'assets/icons/arrow_back_icon.png';
+  static const String acceptedIcon = 'assets/icons/accepcted_icon.png';
+  static const String cancelledIcon = 'assets/icons/cancelled_icon.png';
+  static const String inProgressIcon = 'assets/icons/inprogress_icon.png';
 }

@@ -13,4 +13,6 @@ abstract class AppRoutes {
   static const String editProfile = "/editProfile";
   static const String notification = "/notificationScreen";
   static const String orderMapScreen = "/orderMapScreen";
+  static const String successPage = "/successPage";
+  static const String myOrderScreen = "/myOrdersScreen";
 }

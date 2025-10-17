@@ -409,4 +409,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get accept => 'قبول';
+
+  @override
+  String get thankYou => 'شكراً لك!!';
+
+  @override
+  String get orderDeliveredSuccessfully => 'تم توصيل الطلب بنجاح';
+
+  @override
+  String get done => 'تم';
+
+  @override
+  String get recentOrder => 'الطلبات الأخيرة';
+
+  @override
+  String get myOrdersTitle => 'طلباتي';
+
+  @override
+  String get inProgressStatus => 'قيد التنفيذ';
+
+  @override
+  String get completedStatus => 'مكتمل';
+
+  @override
+  String get cancelledStatus => 'ملغي';
+
+  @override
+  String get noOrdersFound => 'لا توجد طلبات';
+
+  @override
+  String get recentOrdersTitle => 'الطلبات الأخيرة';
 }
