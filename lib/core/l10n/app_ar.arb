@@ -152,5 +152,7 @@
   "status": "الحالة",
   "orderId": "رقم الطلب",
   "noOrderData": "لا توجد بيانات للطلب",
-  "total": "الإجمالي"
+  "total": "الإجمالي",
+  "pendingStatus": "قيد الانتظار",
+  "unknownStatus": "غير معروف"
 }

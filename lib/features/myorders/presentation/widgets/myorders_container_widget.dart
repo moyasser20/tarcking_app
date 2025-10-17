@@ -15,7 +15,7 @@ class MyOrderContainerWidget extends StatelessWidget {
   final String userImage;
   final String userAddress;
   final int fallbackIndex;
-
+  final Color? stateColor;
 
   const MyOrderContainerWidget({
     super.key,
@@ -28,6 +28,7 @@ class MyOrderContainerWidget extends StatelessWidget {
     required this.userImage,
     required this.userAddress,
     required this.fallbackIndex,
+    this.stateColor,
   });
 
   @override
@@ -39,13 +40,22 @@ class MyOrderContainerWidget extends StatelessWidget {
     String icon;
     Color color;
 
-    if (state == "completed") {
+    if (stateColor != null) {
+      color = stateColor!;
+      if (color == AppColors.green) {
+        icon = AppIcons.acceptedIcon;
+      } else if (color == AppColors.red) {
+        icon = AppIcons.cancelledIcon;
+      } else {
+        icon = AppIcons.inProgressIcon;
+      }
+    } else if (state.contains("complete")) {
       icon = AppIcons.acceptedIcon;
       color = AppColors.green;
-    } else if (state == "cancelled" || state == "canceled") {
+    } else if (state.contains("cancel")) {
       icon = AppIcons.cancelledIcon;
       color = AppColors.red;
-    } else if (state == "inprogress" || state == "in progress") {
+    } else if (state.contains("progress") || state.contains("pending")) {
       icon = AppIcons.inProgressIcon;
       color = Colors.orange;
     } else {
@@ -83,7 +93,7 @@ class MyOrderContainerWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "$orderNumber",
+                orderNumber,
                 style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w600,

@@ -165,10 +165,7 @@ class _OrderDetailsContent extends StatelessWidget {
   }
 
   void _handleUpdateButtonClick(
-      BuildContext context,
-      OrderDetails order,
-      String buttonText,
-      ) {
+      BuildContext context, OrderDetails order, String buttonText) {
     context.read<OrderDetailsCubit>().onUpdateButtonClicked(order, buttonText);
   }
 }

@@ -469,4 +469,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get total => 'الإجمالي';
+
+  @override
+  String get pendingStatus => 'قيد الانتظار';
+
+  @override
+  String get unknownStatus => 'غير معروف';
 }

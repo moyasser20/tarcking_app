@@ -152,5 +152,7 @@
   "status": "Status",
   "orderId": "Order ID",
   "noOrderData": "No order data",
-  "total": "Total"
+  "total": "Total",
+  "pendingStatus": "Pending",
+  "unknownStatus": "Unknown"
 }
