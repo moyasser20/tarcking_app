@@ -21,12 +21,9 @@ class HomeRepoImpl implements HomeRepo {
     final dto = await remoteDataSource.getOrders();
 
     final orders =
-        (dto.orders ?? []).map((orderWrapper) {
-          final orderDto = orderWrapper.order;
-          final storeDto = orderWrapper.store;
-
+        (dto.orders ?? []).map((orderDto) {
           final orderItems =
-              (orderDto?.orderItems ?? []).map((itemDto) {
+              (orderDto.orderItems ?? []).map((itemDto) {
                 return OrderItemEntity(
                   id: itemDto.id ?? "",
                   product: ProductEntity(
@@ -52,33 +49,33 @@ class HomeRepoImpl implements HomeRepo {
               }).toList();
 
           return OrderEntity(
-            wrapperId: orderWrapper.id ?? "",
-            id: orderDto?.id ?? "",
+            wrapperId: orderDto.id ?? "",
+            id: orderDto.id ?? "",
             user: UserEntity(
-              id: orderDto?.user?.id ?? "",
-              firstName: orderDto?.user?.firstName ?? "",
-              lastName: orderDto?.user?.lastName ?? "",
-              email: orderDto?.user?.email ?? "",
-              gender: orderDto?.user?.gender ?? "",
-              phone: orderDto?.user?.phone ?? "",
-              photo: orderDto?.user?.photo ?? "",
+              id: orderDto.user?.id ?? "",
+              firstName: orderDto.user?.firstName ?? "",
+              lastName: orderDto.user?.lastName ?? "",
+              email: orderDto.user?.email ?? "",
+              gender: orderDto.user?.gender ?? "",
+              phone: orderDto.user?.phone ?? "",
+              photo: orderDto.user?.photo ?? "",
             ),
             orderItems: orderItems,
-            totalPrice: orderDto?.totalPrice ?? 0,
-            paymentType: orderDto?.paymentType ?? "",
-            isPaid: orderDto?.isPaid ?? false,
-            isDelivered: orderDto?.isDelivered ?? false,
-            state: orderDto?.state ?? "",
-            orderNumber: orderDto?.orderNumber ?? "",
+            totalPrice: orderDto.totalPrice ?? 0,
+            paymentType: orderDto.paymentType ?? "",
+            isPaid: orderDto.isPaid ?? false,
+            isDelivered: orderDto.isDelivered ?? false,
+            state: orderDto.state ?? "",
+            orderNumber: orderDto.orderNumber ?? "",
             store: StoreEntity(
-              name: storeDto?.name ?? "",
-              image: storeDto?.image ?? "",
-              address: storeDto?.address ?? "",
-              phoneNumber: storeDto?.phoneNumber ?? "",
-              latLong: storeDto?.latLong ?? "",
+              name: orderDto.store?.name ?? "",
+              image: orderDto.store?.image ?? "",
+              address: orderDto.store?.address ?? "",
+              phoneNumber: orderDto.store?.phoneNumber ?? "",
+              latLong: orderDto.store?.latLong ?? "",
             ),
-            createdAt: _safeParseDate(orderDto?.createdAt),
-            updatedAt: _safeParseDate(orderDto?.updatedAt),
+            createdAt: _safeParseDate(orderDto.createdAt),
+            updatedAt: _safeParseDate(orderDto.updatedAt),
           );
         }).toList();
 

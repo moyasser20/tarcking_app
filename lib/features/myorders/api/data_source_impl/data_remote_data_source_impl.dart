@@ -1,17 +1,16 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:tarcking_app/features/homescreen/data/models/orders_list_response.dart';
 import '../../../../core/api/client/api_client.dart';
 import '../../../../core/errors/failure.dart';
-import '../../data/data_sources/home_remote_datasource.dart';
+import '../../data/datasource/my_orders_remote_data_source.dart';
+import '../../data/models/my_order_list_response.dart';
 
-@LazySingleton(as: HomeRemoteDataSource)
-class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
+@LazySingleton(as: MyOrdersRemoteDataSource)
+class MyOrdersRemoteDataSourceImpl implements MyOrdersRemoteDataSource {
   final ApiClient apiClient;
 
-  HomeRemoteDataSourceImpl(this.apiClient);
+  MyOrdersRemoteDataSourceImpl(this.apiClient);
 
   String _extractApiMessage(DioException e) {
     final data = e.response?.data;
@@ -34,12 +33,11 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   }
 
   @override
-  Future<OrdersListResponse> getOrders() async {
+  Future<MyOrdersListResponse> getAllOrders() async {
     try {
-      return await apiClient.getOrders(
+      return await apiClient.getAllOrders(
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOiI2NzhhNTlmYTNjMzc5NzQ5Mjc0N2M4ZDQiLCJpYXQiOjE3MzcxMjAyNTB9.f-A1rvElymvDhEQM9bjqGl56O4c5Z8mhh7MkevnpqVQ",
-        10,
-        1,
+
       );
     } on DioException catch (e) {
       throw ServerFailure(errorMessage: _extractApiMessage(e));
@@ -47,4 +45,5 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
       throw ServerFailure(errorMessage: e.toString());
     }
   }
+
 }

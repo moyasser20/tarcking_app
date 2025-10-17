@@ -3,7 +3,7 @@ import 'package:tarcking_app/features/homescreen/data/models/store_response.dart
 import 'package:tarcking_app/features/homescreen/data/models/user_response.dart';
 import 'package:tarcking_app/features/homescreen/data/models/order_item_response.dart';
 
-part 'order_response.g.dart';
+part 'my_order_response.g.dart';
 
 @JsonSerializable()
 class OrderResponse {

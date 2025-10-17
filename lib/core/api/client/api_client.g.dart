@@ -337,13 +337,54 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<OrdersListResponse> getOrders(String bearerToken) async {
+  Future<OrdersListResponse> getOrders(
+    String bearerToken,
+    int limit, [
+    int page = 1,
+  ]) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'limit': limit,
+      r'page': page,
+    };
+    final _headers = <String, dynamic>{r'Authorization': bearerToken};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<OrdersListResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'orders/pending-orders',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late OrdersListResponse _value;
+    try {
+      _value = OrdersListResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<MyOrdersListResponse> getAllOrders(String bearerToken) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': bearerToken};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<OrdersListResponse>(Options(
+    final _options = _setStreamType<MyOrdersListResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -360,9 +401,9 @@ class _ApiClient implements ApiClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late OrdersListResponse _value;
+    late MyOrdersListResponse _value;
     try {
-      _value = OrdersListResponse.fromJson(_result.data!);
+      _value = MyOrdersListResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

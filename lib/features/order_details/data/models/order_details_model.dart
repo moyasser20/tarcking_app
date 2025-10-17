@@ -13,8 +13,10 @@ class OrderDetails {
   final double total;
   final String paymentMethod;
   final bool arrivedAtPickup;
+  final String userId;
 
   const OrderDetails({
+    required this.userId,
     required this.id,
     required this.createdAt,
     required this.state,
@@ -29,6 +31,7 @@ class OrderDetails {
 
   factory OrderDetails.fromOrderEntity(OrderEntity orderEntity) {
     return OrderDetails(
+      userId: orderEntity.user.id,
       id: orderEntity.id,
       createdAt: orderEntity.createdAt,
       state: orderEntity.state,
@@ -75,6 +78,7 @@ class OrderDetails {
     bool? arrivedAtPickup,
   }) {
     return OrderDetails(
+      userId: userId,
       id: id ?? this.id,
       createdAt: createdAt ?? this.createdAt,
       state: state ?? this.state,

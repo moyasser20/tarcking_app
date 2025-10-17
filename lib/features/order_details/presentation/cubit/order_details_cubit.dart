@@ -128,7 +128,7 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
   }
 
   String _getUserIdFromOrder(OrderDetails order) {
-    return order.userAddress.phoneNumber;
+    return order.userId;
   }
 
   String getNextState(String currentState) {

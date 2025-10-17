@@ -26,6 +26,7 @@ class AddressWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height: 10),
         Text(
           titleAddress,
           style: const TextStyle(
@@ -34,7 +35,7 @@ class AddressWidget extends StatelessWidget {
             fontFamily: "Inter",
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         Container(
           width: size.width * 0.95,
           height: size.height * 0.082,
@@ -67,6 +68,7 @@ class AddressWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(height: 10),
                     Text(
                       storeName,
                       style: const TextStyle(

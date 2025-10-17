@@ -24,6 +24,7 @@ class OrderDetailsScreen extends StatefulWidget {
 class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   late final OrderDetailsCubit _cubit;
   String? _lastParentState;
+  bool shouldRefresh = false;
 
   @override
   void initState() {
@@ -44,15 +45,13 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final local = AppLocalizations.of(context)!;
-
+    var locale = AppLocalizations.of(context);
     if (widget.orderEntity == null) return const SizedBox();
-
     return BlocProvider(
       create: (context) => _cubit,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(local.orderDetails),
+          title: Text(locale?.orderDetails ?? ""),
           backgroundColor: Colors.white,
           centerTitle: false,
           foregroundColor: Colors.black,
@@ -74,17 +73,17 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
               return Center(child: Text(state.message));
             } else if (state is OrderDetailsLoaded ||
                 state is OrderDetailsUpdating) {
-              final order = state is OrderDetailsLoaded
+              final order =
+              state is OrderDetailsLoaded
                   ? state.order
                   : (state as OrderDetailsUpdating).order;
-
               return _OrderDetailsContent(
                 order: order,
                 isUpdating: state is OrderDetailsUpdating,
                 onOrderUpdated: widget.onOrderUpdated,
               );
             } else {
-              return Center(child: Text(local.noOrderData));
+              return const Center(child: Text('No order data'));
             }
           },
         ),
@@ -106,14 +105,13 @@ class _OrderDetailsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final local = AppLocalizations.of(context)!;
-
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           OrderDetailsTopSection(order: order, address: order.userAddress),
+
           OrderDetailsBottomSection(
             items: order.items,
             paymentMethod: order.paymentMethod,
@@ -135,23 +133,22 @@ class _OrderDetailsContent extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  local.total,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium
-                      ?.copyWith(fontWeight: FontWeight.bold),
+                  'Total',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Text(
-                  '${local.currency} ${order.total}',
+                  'EGP ${order.total}',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ],
             ),
           ),
-          if (order.state != 'canceled' && order.state != 'completed') ...[
+          if (order.state != 'canceled' && order.state != 'completed')...[
             const SizedBox(height: 8),
           ],
-          const SizedBox(height: 16),
+          SizedBox(height: 16,),
           UpdateOrderButtonWidget(
             order: order,
             isUpdating: isUpdating,
@@ -165,7 +162,10 @@ class _OrderDetailsContent extends StatelessWidget {
   }
 
   void _handleUpdateButtonClick(
-      BuildContext context, OrderDetails order, String buttonText) {
+      BuildContext context,
+      OrderDetails order,
+      String buttonText,
+      ) {
     context.read<OrderDetailsCubit>().onUpdateButtonClicked(order, buttonText);
   }
 }
