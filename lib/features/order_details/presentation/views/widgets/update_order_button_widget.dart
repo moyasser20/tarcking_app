@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/features/order_details/data/models/order_details_model.dart';
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
+import '../../../../successpage/presentation/view/success_page.dart';
 import '../../cubit/order_details_cubit.dart';
 import '../../../../../core/l10n/translation/app_localizations.dart';
 
@@ -26,12 +27,21 @@ class UpdateOrderButtonWidget extends StatelessWidget {
       width: double.infinity,
       text: buttonText,
       onPressed: isUpdating ||
-          order.state == 'canceled' ||
-          order.state == 'completed'
+          order.state == 'canceled'
           ? null
           : () {
         onButtonClicked?.call(buttonText);
-        context.read<OrderDetailsCubit>().updateOrderStatus();
+
+        // If the order is completed, navigate to SuccessPage
+        if (order.state == 'completed') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const SuccessPage()),
+          );
+        } else {
+          // Otherwise, update order status normally
+          context.read<OrderDetailsCubit>().updateOrderStatus();
+        }
       },
     );
   }

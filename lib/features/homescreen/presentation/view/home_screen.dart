@@ -42,11 +42,6 @@ class HomeScreen extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset(AppImages.floweryRider),
-                        InkWell(
-                          onTap: (){
-                            Navigator.pushNamed(context, AppRoutes.successPage);
-                          },
-                            child: Icon(Icons.add))
                       ],
                     ),
                     const SizedBox(height: 40),

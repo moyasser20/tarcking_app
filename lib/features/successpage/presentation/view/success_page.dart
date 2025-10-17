@@ -3,6 +3,7 @@ import 'package:tarcking_app/core/Widgets/Custom_Elevated_Button.dart';
 
 import '../../../../core/contants/app_images.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class SuccessPage extends StatelessWidget {
@@ -39,8 +40,9 @@ class SuccessPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 70),
-            CustomElevatedButton(text: local.done, onPressed: (){})
-
+            CustomElevatedButton(text: local.done, onPressed: (){
+              Navigator.pushNamed(context, AppRoutes.homeScreen);
+            }, width: 360,)
 
           ],
         ),
