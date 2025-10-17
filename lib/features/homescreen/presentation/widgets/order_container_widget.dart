@@ -62,7 +62,6 @@ class OrderContainerWidget extends StatelessWidget {
           ),
           SizedBox(height: size.height * 0.02),
 
-          // Store info
           AddressWidget(
             titleAddress: local.pickupAddress,
             image: orderEntity.store.image,
@@ -73,7 +72,6 @@ class OrderContainerWidget extends StatelessWidget {
 
           SizedBox(height: size.height * 0.03),
 
-          // User info with address from cubit
           AddressWidget(
             titleAddress: local.userAddress,
             image: orderEntity.user.photo,
@@ -85,7 +83,6 @@ class OrderContainerWidget extends StatelessWidget {
 
           SizedBox(height: size.height * 0.03),
 
-          // Price and Buttons
           Row(
             children: [
               Text(
@@ -123,8 +120,6 @@ class OrderContainerWidget extends StatelessWidget {
                 flex: 1,
                 child: CustomElevatedButton(
                   text: local.accept,
-                  // In OrderContainerWidget - update the accept button
-                  // In OrderContainerWidget - simple approach
                   onPressed: () {
                     showCustomSnackBar(
                       context,

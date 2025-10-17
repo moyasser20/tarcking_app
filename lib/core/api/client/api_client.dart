@@ -71,9 +71,11 @@ abstract class ApiClient {
   @Extra({'auth': true})
   Future<UploadPhotoResponse> uploadPhoto(@Part(name: "photo") File photo);
 
-  @GET(ApiEndPoints.orders)
+  @GET(ApiEndPoints.pendingOrders)
   Future<OrdersListResponse> getOrders(
     @Header("Authorization") String bearerToken,
+    @Query("limit") int limit,
+    [@Query("page") int page = 1]
   );
 
   @PUT('${ApiEndPoints.updateOrderState}/{orderId}')

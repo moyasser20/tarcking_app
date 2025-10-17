@@ -337,9 +337,16 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<OrdersListResponse> getOrders(String bearerToken) async {
+  Future<OrdersListResponse> getOrders(
+    String bearerToken,
+    int limit, [
+    int page = 1,
+  ]) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'limit': limit,
+      r'page': page,
+    };
     final _headers = <String, dynamic>{r'Authorization': bearerToken};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
@@ -350,7 +357,7 @@ class _ApiClient implements ApiClient {
     )
         .compose(
           _dio.options,
-          'orders/driver-orders',
+          'orders/pending-orders',
           queryParameters: queryParameters,
           data: _data,
         )
