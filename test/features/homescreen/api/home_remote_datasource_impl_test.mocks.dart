@@ -317,6 +317,23 @@ class MockApiClient extends _i1.Mock implements _i9.ApiClient {
       ) as _i10.Future<_i7.OrdersListResponse>);
 
   @override
+  _i10.Future<_i7.OrdersListResponse> getAllOrders(String? bearerToken) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllOrders,
+          [bearerToken],
+        ),
+        returnValue:
+            _i10.Future<_i7.OrdersListResponse>.value(_FakeOrdersListResponse_5(
+          this,
+          Invocation.method(
+            #getAllOrders,
+            [bearerToken],
+          ),
+        )),
+      ) as _i10.Future<_i7.OrdersListResponse>);
+
+  @override
   _i10.Future<_i8.UpdateOrderStateResponse> updateOrderState(
     String? orderId,
     _i19.UpdateOrderStateRequest? request,

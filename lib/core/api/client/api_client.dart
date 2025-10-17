@@ -77,6 +77,10 @@ abstract class ApiClient {
     @Query("limit") int limit,
     [@Query("page") int page = 1]
   );
+  @GET(ApiEndPoints.orders)
+  Future<OrdersListResponse> getAllOrders(
+      @Header("Authorization") String bearerToken,
+      );
 
   @PUT('${ApiEndPoints.updateOrderState}/{orderId}')
   @Extra({'auth': true})

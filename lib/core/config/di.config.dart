@@ -54,6 +54,17 @@ import '../../features/homescreen/domain/use_cases/get_order_usecase.dart'
 import '../../features/homescreen/presentation/viewmodel/home_cubit.dart'
     as _i39;
 import '../../features/logout/viewmodel/logout_viewmodel.dart' as _i624;
+import '../../features/myorders/api/data_source_impl/data_remote_data_source_impl.dart'
+    as _i125;
+import '../../features/myorders/data/datasource/my_orders_remote_data_source.dart'
+    as _i816;
+import '../../features/myorders/data/repo_impl/my_order_repo_impl.dart'
+    as _i197;
+import '../../features/myorders/domain/repo/my_orders_repo.dart' as _i440;
+import '../../features/myorders/domain/usecase/get_order_use_case.dart'
+    as _i383;
+import '../../features/myorders/presentation/view_model/my_orders_cubit.dart'
+    as _i364;
 import '../../features/order_details/data/repos/order_details_repo_impl.dart'
     as _i1054;
 import '../../features/order_details/domain/repos/order_details_repo.dart'
@@ -123,6 +134,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i508.ResetPasswordCubit(gh<_i364.ApiClient>()));
     gh.lazySingleton<_i428.OrderDetailsRepo>(
         () => _i1054.OrderDetailsRepoImpl(gh<_i364.ApiClient>()));
+    gh.lazySingleton<_i816.MyOrdersRemoteDataSource>(
+        () => _i125.MyOrdersRemoteDataSourceImpl(gh<_i364.ApiClient>()));
     gh.lazySingleton<_i1031.ProfileRemoteDatasource>(() =>
         _i121.ProfileRemoteDatasourceImpl(apiClient: gh<_i364.ApiClient>()));
     gh.lazySingleton<_i24.AuthRemoteDatasource>(
@@ -140,6 +153,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i691.EditProfileDataUseCase(gh<_i894.ProfileRepository>()));
     gh.factory<_i68.GetProfileDataUseCase>(
         () => _i68.GetProfileDataUseCase(gh<_i894.ProfileRepository>()));
+    gh.lazySingleton<_i440.MyOrdersRepo>(
+        () => _i197.MyOrderRepoImpl(gh<_i816.MyOrdersRemoteDataSource>()));
     gh.lazySingleton<_i594.HomeRepo>(
         () => _i89.HomeRepoImpl(gh<_i1063.HomeRemoteDataSource>()));
     gh.factory<_i971.UploadPhotoUseCase>(
@@ -150,6 +165,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i550.ChangePasswordUseCases(gh<_i894.ProfileRepository>()));
     gh.factory<_i351.ProfileViewModel>(
         () => _i351.ProfileViewModel(gh<_i68.GetProfileDataUseCase>()));
+    gh.factory<_i383.GetOrderUseCase>(
+        () => _i383.GetOrderUseCase(gh<_i440.MyOrdersRepo>()));
+    gh.factory<_i364.MyOrdersCubit>(
+        () => _i364.MyOrdersCubit(gh<_i383.GetOrderUseCase>()));
     gh.factory<_i234.GetOrderUseCase>(
         () => _i234.GetOrderUseCase(gh<_i594.HomeRepo>()));
     gh.lazySingleton<_i712.ApplyDriverUseCase>(

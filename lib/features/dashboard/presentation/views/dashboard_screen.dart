@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../homescreen/presentation/viewmodel/home_cubit.dart';
 import '../../../myorders/presentation/view/my_orders_screen.dart';
-import 'package:tarcking_app/features/order_details/presentation/views/order_details_screen.dart';
+import '../../../myorders/presentation/view_model/my_orders_cubit.dart';
 import '../../../profile/presentation/view/profile_screen.dart';
 import '../../../homescreen/presentation/view/home_screen.dart';
-import '../../../homescreen/presentation/viewmodel/home_cubit.dart';
 import '../../../../core/config/di.dart';
 import '../cubits/nav_bar_cubit.dart';
 import '../widgets/custom_nav_bar_widget.dart';
@@ -19,7 +19,7 @@ class DashboardScreen extends StatelessWidget {
         create: (context) => getIt<HomeCubit>()..getOrders(),
         child: const HomeScreen(),
       ),
-      BlocProvider(create: (context) => getIt<HomeCubit>()..getOrders(),
+      BlocProvider(create: (context) => getIt<MyOrdersCubit>()..getOrders(),
       child: const MyOrdersScreen()),
 
       const ProfileScreen(),

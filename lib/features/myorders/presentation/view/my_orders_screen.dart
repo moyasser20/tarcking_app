@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/core/contants/app_icons.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
+import 'package:tarcking_app/features/myorders/presentation/view_model/my_order_states.dart';
 import 'package:tarcking_app/features/myorders/presentation/widgets/myorders_container_widget.dart';
 import 'package:tarcking_app/features/myorders/presentation/widgets/order_status_widget.dart';
 import '../../../../core/common/widgets/custome_loading_indicator.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/get_localization_helper_function.dart';
-import '../../../homescreen/presentation/viewmodel/home_cubit.dart';
-import '../../../homescreen/presentation/viewmodel/home_states.dart';
+import '../view_model/my_orders_cubit.dart';
+
 
 class MyOrdersScreen extends StatefulWidget {
   const MyOrdersScreen({super.key});
@@ -22,7 +23,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<HomeCubit>().getOrders();
+    context.read<MyOrdersCubit>().getOrders();
   }
 
   @override
@@ -47,7 +48,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
         ),
       ),
       body: SafeArea(
-        child: BlocConsumer<HomeCubit, HomeStates>(
+        child: BlocConsumer<MyOrdersCubit, MyOrderStates>(
           listener: (context, state) {
             if (state is HomeErrorState) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -77,7 +78,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
 
               return RefreshIndicator(
                 onRefresh: () async {
-                  await context.read<HomeCubit>().getOrders();
+                  await context.read<MyOrdersCubit>().getOrders();
                 },
                 child: SingleChildScrollView(
                   child: Padding(
@@ -148,7 +149,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                               final order = entry.value;
 
                               final userAddress = context
-                                  .read<HomeCubit>()
+                                  .read<MyOrdersCubit>()
                                   .orderAddressMap[order.wrapperId] ??
                                   local.unknownAddress;
 
