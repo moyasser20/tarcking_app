@@ -142,5 +142,17 @@
   "completedStatus": "مكتمل",
   "cancelledStatus": "ملغي",
   "noOrdersFound": "لا توجد طلبات",
-  "recentOrdersTitle": "الطلبات الأخيرة"
+  "recentOrdersTitle": "الطلبات الأخيرة",
+  "pickupLocation": "موقع الاستلام",
+  "apartmentLabel": "الشقة",
+  "storeLabel": "محل الزهور",
+  "backButtonTooltip": "رجوع",
+  "paymentMethod": "طريقة الدفع",
+  "currency": "ج.م",
+  "status": "الحالة",
+  "orderId": "رقم الطلب",
+  "noOrderData": "لا توجد بيانات للطلب",
+  "total": "الإجمالي",
+  "pendingStatus": "قيد الانتظار",
+  "unknownStatus": "غير معروف"
 }

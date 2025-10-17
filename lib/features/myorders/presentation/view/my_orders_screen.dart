@@ -7,6 +7,7 @@ import 'package:tarcking_app/features/myorders/presentation/widgets/order_status
 import '../../../../core/common/widgets/custome_loading_indicator.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/utils/get_localization_helper_function.dart';
 import '../../../homescreen/presentation/viewmodel/home_cubit.dart';
 import '../../../homescreen/presentation/viewmodel/home_states.dart';
 
@@ -142,32 +143,39 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                           )
                         else
                           Column(
-                          children: orders.asMap().entries.map((entry) {
-                            final index = entry.key;
-                            final order = entry.value;
+                            children: orders.asMap().entries.map((entry) {
+                              final index = entry.key;
+                              final order = entry.value;
 
-                            final userAddress = context
-                                .read<HomeCubit>()
-                                .orderAddressMap[order.wrapperId] ??
-                                local.unknownAddress;
+                              final userAddress = context
+                                  .read<HomeCubit>()
+                                  .orderAddressMap[order.wrapperId] ??
+                                  local.unknownAddress;
 
-                            return Padding(
-                              padding: const EdgeInsets.only(bottom: 25),
-                              child: MyOrderContainerWidget(
-                                orderState: order.state,
-                                orderNumber: order.orderNumber,
-                                storeName: order.store.name,
-                                storeAddress: order.store.address,
-                                storeImage: order.store.image,
-                                userName: "${order.user.firstName} ${order.user.lastName}",
-                                userImage: order.user.photo,
-                                userAddress: userAddress,
-                                fallbackIndex: index,
-                              ),
-                            );
-                          }).toList(),
-                        ),
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 25),
+                                child: Builder(
+                                  builder: (context) {
+                                    final localizedState = getLocalizedOrderState(context, order.state);
 
+                                    return MyOrderContainerWidget(
+                                      orderState: localizedState.label,
+                                      stateColor: localizedState.color,
+                                      orderNumber: order.orderNumber,
+                                      storeName: order.store.name,
+                                      storeAddress: order.store.address,
+                                      storeImage: order.store.image,
+                                      userName: "${order.user.firstName} ${order.user.lastName}",
+                                      userImage: order.user.photo,
+                                      userAddress: userAddress,
+                                      fallbackIndex: index,
+                                    );
+
+                                  },
+                                ),
+                              );
+                            }).toList(),
+                          ),
                       ],
                     ).setHorizontalPadding(context, 0.04),
                   ),

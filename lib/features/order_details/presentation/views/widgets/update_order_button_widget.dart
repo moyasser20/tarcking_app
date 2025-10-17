@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tarcking_app/features/order_details/data/models/order_details_model.dart';
-
 import '../../../../../core/Widgets/Custom_Elevated_Button.dart';
 import '../../cubit/order_details_cubit.dart';
+import '../../../../../core/l10n/translation/app_localizations.dart';
 
 class UpdateOrderButtonWidget extends StatelessWidget {
   final OrderDetails order;
@@ -19,13 +19,15 @@ class UpdateOrderButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final buttonText = _getButtonText(order.state);
+    final local = AppLocalizations.of(context)!;
+    final buttonText = _getButtonText(local, order.state);
 
     return CustomElevatedButton(
       width: double.infinity,
       text: buttonText,
-      onPressed:
-      isUpdating || order.state == 'canceled' || order.state == 'completed'
+      onPressed: isUpdating ||
+          order.state == 'canceled' ||
+          order.state == 'completed'
           ? null
           : () {
         onButtonClicked?.call(buttonText);
@@ -34,18 +36,18 @@ class UpdateOrderButtonWidget extends StatelessWidget {
     );
   }
 
-  String _getButtonText(String state) {
+  String _getButtonText(AppLocalizations local, String state) {
     switch (state) {
       case 'pending':
-        return 'Start Order';
+        return local.pendingStatus;
       case 'inProgress':
-        return 'Complete Order';
+        return local.inProgressStatus;
       case 'canceled':
-        return 'Canceled';
+        return local.cancelledStatus;
       case 'completed':
-        return 'Completed';
+        return local.completedStatus;
       default:
-        return 'Update Order';
+        return local.updateText;
     }
   }
 }

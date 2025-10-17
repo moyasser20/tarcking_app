@@ -7,6 +7,8 @@ import '../../../../../core/contants/app_images.dart';
 import '../../../../../core/routes/route_names.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/date_converter.dart';
+import '../../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../../core/utils/get_localization_helper_function.dart';
 import '../../../data/models/order_details_model.dart';
 import '../../cubit/order_details_cubit.dart';
 
@@ -23,7 +25,11 @@ class OrderDetailsTopSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentStep = _getCurrentStep(order.state);
-    final totalSteps = 5;
+    const totalSteps = 5;
+    final local = AppLocalizations.of(context)!;
+
+    // ✅ Use helper to get localized state and color
+    final localizedState = getLocalizedOrderState(context, order.state);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,16 +43,8 @@ class OrderDetailsTopSection extends StatelessWidget {
             selectedColor: AppColors.green,
             unselectedColor: Colors.grey[400]!,
             roundedEdges: const Radius.circular(10),
-            customStep: (index, color, _) {
-              return Container(
-                decoration: BoxDecoration(
-                  color: color,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              );
-            },
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
         ],
         Container(
           width: double.infinity,
@@ -58,32 +56,34 @@ class OrderDetailsTopSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // ✅ Localized order state with color
               Text(
-                'Status : ${order.state}',
+                '${local.status}: ${localizedState.label}',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: AppColors.green,
+                  color: localizedState.color,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
-                'Order ID : ${order.orderNumber}',
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+                '${local.orderId}: ${order.orderNumber}',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 4),
               Text(
                 _formatDate(order.createdAt),
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyMedium?.copyWith(color: Colors.grey[800]),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(color: Colors.grey[800]),
               ),
             ],
           ),
         ),
-        SizedBox(height: 12),
-
+        const SizedBox(height: 12),
         GestureDetector(
           onTap: () {
             Navigator.pushNamed(
@@ -93,11 +93,11 @@ class OrderDetailsTopSection extends StatelessWidget {
             );
           },
           child: _AddressSection(
-            title: 'Pickup address',
+            title: local.pickupAddress,
             address: order.pickupAddress,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         GestureDetector(
           onTap: () {
             Navigator.pushNamed(
@@ -106,9 +106,12 @@ class OrderDetailsTopSection extends StatelessWidget {
               arguments: {'order': order, 'isFromPickup': false},
             );
           },
-          child: _AddressSection(title: 'User Address', address: address),
+          child: _AddressSection(
+            title: local.userAddress,
+            address: address,
+          ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
       ],
     );
   }
@@ -147,6 +150,8 @@ class _AddressSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -158,7 +163,6 @@ class _AddressSection extends StatelessWidget {
             border: Border.all(
               color: Colors.grey.withValues(alpha: 0.2),
               width: 2,
-              style: BorderStyle.solid,
             ),
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),
@@ -210,7 +214,7 @@ class _AddressSection extends StatelessWidget {
                 onTap: () {
                   context.read<OrderDetailsCubit>().call(address.phoneNumber);
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.local_phone_outlined,
                   color: AppColors.pink,
                   size: 20,
@@ -219,9 +223,9 @@ class _AddressSection extends StatelessWidget {
               const SizedBox(width: 16),
               InkWell(
                 onTap: () {
-                  context.read<OrderDetailsCubit>().shareViaWhatsApp(
-                    address.phoneNumber,
-                  );
+                  context
+                      .read<OrderDetailsCubit>()
+                      .shareViaWhatsApp(address.phoneNumber);
                 },
                 child: SvgPicture.asset(
                   AppIcons.whatsappIcon,

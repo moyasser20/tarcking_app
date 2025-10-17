@@ -439,4 +439,40 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get recentOrdersTitle => 'الطلبات الأخيرة';
+
+  @override
+  String get pickupLocation => 'موقع الاستلام';
+
+  @override
+  String get apartmentLabel => 'الشقة';
+
+  @override
+  String get storeLabel => 'محل الزهور';
+
+  @override
+  String get backButtonTooltip => 'رجوع';
+
+  @override
+  String get paymentMethod => 'طريقة الدفع';
+
+  @override
+  String get currency => 'ج.م';
+
+  @override
+  String get status => 'الحالة';
+
+  @override
+  String get orderId => 'رقم الطلب';
+
+  @override
+  String get noOrderData => 'لا توجد بيانات للطلب';
+
+  @override
+  String get total => 'الإجمالي';
+
+  @override
+  String get pendingStatus => 'قيد الانتظار';
+
+  @override
+  String get unknownStatus => 'غير معروف';
 }
