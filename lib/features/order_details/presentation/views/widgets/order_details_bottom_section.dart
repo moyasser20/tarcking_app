@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tarcking_app/core/l10n/translation/app_localizations.dart';
+
 import '../../../../../core/contants/app_images.dart';
 import '../../../data/models/order_details_model.dart';
 
@@ -17,24 +18,24 @@ class OrderDetailsBottomSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final local = AppLocalizations.of(context)!;
-
+    var local = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          local.orderDetails,
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
+        Text(local.orderDetails, style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 8),
-        ListView.builder(
-          itemBuilder: (context, index) =>
-              _OrderItemRow(item: items[index], total: total),
-          itemCount: items.length,
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
+        Column(
+          children: [
+            ListView.builder(
+              itemBuilder:
+                  (context, index) =>
+                  _OrderItemRow(item: items[index], total: total),
+              itemCount: items.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+            ),
+          ],
         ),
-        const SizedBox(height: 12),
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
@@ -50,24 +51,22 @@ class OrderDetailsBottomSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                local.paymentMethod,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium
-                    ?.copyWith(fontWeight: FontWeight.bold),
+                'Payment method',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
               ),
               const Spacer(),
               Text(
                 paymentMethod,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(fontWeight: FontWeight.w500),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
               ),
             ],
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
       ],
     );
   }
@@ -81,11 +80,8 @@ class _OrderItemRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final local = AppLocalizations.of(context)!;
-
     return Container(
-      padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.only(bottom: 8),
+      padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.grey.withValues(alpha: 0.2),
@@ -122,15 +118,15 @@ class _OrderItemRow extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'x${item.quantity}',
+                      'X${item.quantity}',
                       style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '${local.currency} ${item.price}',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  'EGP ${item.price}',
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),

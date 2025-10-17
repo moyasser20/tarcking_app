@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+
 import '../../../../../core/contants/app_icons.dart';
 import '../../../../../core/contants/app_images.dart';
-import '../../../../../core/routes/route_names.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/utils/date_converter.dart';
-import '../../../../../core/l10n/translation/app_localizations.dart';
-import '../../../../../core/utils/get_localization_helper_function.dart';
 import '../../../data/models/order_details_model.dart';
 import '../../cubit/order_details_cubit.dart';
 
@@ -25,16 +23,12 @@ class OrderDetailsTopSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentStep = _getCurrentStep(order.state);
-    const totalSteps = 5;
-    final local = AppLocalizations.of(context)!;
-
-    // ✅ Use helper to get localized state and color
-    final localizedState = getLocalizedOrderState(context, order.state);
+    final totalSteps = 5;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (order.state != 'canceled' && order.state != 'completed') ...[
+        if (order.state != 'canceled' && order.state != 'completed')...[
           StepProgressIndicator(
             totalSteps: totalSteps,
             currentStep: currentStep,
@@ -43,8 +37,16 @@ class OrderDetailsTopSection extends StatelessWidget {
             selectedColor: AppColors.green,
             unselectedColor: Colors.grey[400]!,
             roundedEdges: const Radius.circular(10),
+            customStep: (index, color, _) {
+              return Container(
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              );
+            },
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16,),
         ],
         Container(
           width: double.infinity,
@@ -56,62 +58,39 @@ class OrderDetailsTopSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ✅ Localized order state with color
               Text(
-                '${local.status}: ${localizedState.label}',
+                'Status : ${order.state}',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: localizedState.color,
+                  color: AppColors.green,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
-                '${local.orderId}: ${order.orderNumber}',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge
-                    ?.copyWith(fontWeight: FontWeight.bold),
+                'Order ID : ${order.orderNumber}',
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 4),
               Text(
                 _formatDate(order.createdAt),
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(color: Colors.grey[800]),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: Colors.grey[800]),
               ),
             ],
           ),
         ),
-        const SizedBox(height: 12),
-        GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(
-              context,
-              AppRoutes.orderMapScreen,
-              arguments: {'order': order, 'isFromPickup': true},
-            );
-          },
-          child: _AddressSection(
-            title: local.pickupAddress,
-            address: order.pickupAddress,
-          ),
+        SizedBox(height: 12,),
+        _AddressSection(
+          title: 'Pickup address',
+          address: order.pickupAddress,
         ),
-        const SizedBox(height: 8),
-        GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(
-              context,
-              AppRoutes.orderMapScreen,
-              arguments: {'order': order, 'isFromPickup': false},
-            );
-          },
-          child: _AddressSection(
-            title: local.userAddress,
-            address: address,
-          ),
-        ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8,),
+        _AddressSection(title: 'User Address', address: address),
+        SizedBox(height: 8,),
+
       ],
     );
   }
@@ -143,15 +122,16 @@ class OrderDetailsTopSection extends StatelessWidget {
 }
 
 class _AddressSection extends StatelessWidget {
-  const _AddressSection({required this.title, required this.address});
+  const _AddressSection({
+    required this.title,
+    required this.address,
+  });
 
   final String title;
   final Address address;
 
   @override
   Widget build(BuildContext context) {
-    final local = AppLocalizations.of(context)!;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -163,6 +143,7 @@ class _AddressSection extends StatelessWidget {
             border: Border.all(
               color: Colors.grey.withValues(alpha: 0.2),
               width: 2,
+              style: BorderStyle.solid,
             ),
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),
@@ -214,7 +195,7 @@ class _AddressSection extends StatelessWidget {
                 onTap: () {
                   context.read<OrderDetailsCubit>().call(address.phoneNumber);
                 },
-                child: const Icon(
+                child: Icon(
                   Icons.local_phone_outlined,
                   color: AppColors.pink,
                   size: 20,
@@ -223,9 +204,9 @@ class _AddressSection extends StatelessWidget {
               const SizedBox(width: 16),
               InkWell(
                 onTap: () {
-                  context
-                      .read<OrderDetailsCubit>()
-                      .shareViaWhatsApp(address.phoneNumber);
+                  context.read<OrderDetailsCubit>().shareViaWhatsApp(
+                    address.phoneNumber,
+                  );
                 },
                 child: SvgPicture.asset(
                   AppIcons.whatsappIcon,
