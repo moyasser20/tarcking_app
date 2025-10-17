@@ -135,6 +135,12 @@
   "accept": "Accept",
   "thankYou": "Thank you!!",
   "orderDeliveredSuccessfully": "The order delivered\nsuccessfully",
-  "done": "Done"
-
+  "done": "Done",
+  "recentOrder": "Recent orders",
+  "myOrdersTitle": "My Orders",
+  "inProgressStatus": "In Progress",
+  "completedStatus": "Completed",
+  "cancelledStatus": "Cancelled",
+  "noOrdersFound": "No orders found",
+  "recentOrdersTitle": "Recent Orders"
 }

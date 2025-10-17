@@ -411,11 +411,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accept => 'Accept';
 
   @override
-  String get thankYou => 'Thank you!!';
+  String get recentOrder => 'Recent orders';
 
   @override
-  String get orderDeliveredSuccessfully => 'The order delivered\nsuccessfully';
+  String get myOrdersTitle => 'My Orders';
 
   @override
-  String get done => 'Done';
+  String get inProgressStatus => 'In Progress';
+
+  @override
+  String get completedStatus => 'Completed';
+
+  @override
+  String get cancelledStatus => 'Cancelled';
+
+  @override
+  String get noOrdersFound => 'No orders found';
+
+  @override
+  String get recentOrdersTitle => 'Recent Orders';
 }

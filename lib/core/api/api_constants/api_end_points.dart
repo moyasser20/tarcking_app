@@ -10,4 +10,5 @@ abstract class ApiEndPoints {
   static const String editProfile = 'drivers/editProfile';
   static const String uploadPhoto = 'drivers/upload-photo';
   static const String orders = 'orders/driver-orders';
+  static const String updateOrderState = 'orders/state';
 }

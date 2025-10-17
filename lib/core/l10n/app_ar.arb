@@ -136,4 +136,12 @@
   "thankYou": "شكراً لك!!",
   "orderDeliveredSuccessfully": "تم توصيل الطلب بنجاح",
   "done": "تم"
+  "unknownAddress": "عنوان غير معروف",
+  "recentOrder": "الطلبات الأخيرة",
+  "myOrdersTitle": "طلباتي",
+  "inProgressStatus": "قيد التنفيذ",
+  "completedStatus": "مكتمل",
+  "cancelledStatus": "ملغي",
+  "noOrdersFound": "لا توجد طلبات",
+  "recentOrdersTitle": "الطلبات الأخيرة"
 }

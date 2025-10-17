@@ -8,6 +8,8 @@ import 'package:tarcking_app/features/auth/data/models/login/login_response.dart
 import '../../../features/auth/data/models/forget_password_models/forget_password_request.dart';
 import '../../../features/auth/data/models/forget_password_models/reset_password_request_model.dart';
 import '../../../features/auth/data/models/forget_password_models/verify_code_request_model.dart';
+import '../../../features/order_details/data/models/update_order_state_request_model.dart';
+import '../../../features/order_details/data/models/update_order_state_response_model.dart';
 import '../../../features/profile/data/models/change_password_request_model.dart';
 import '../../../features/profile/data/models/change_password_response_model.dart';
 import '../../../features/profile/data/models/edit_profile_request_model.dart';
@@ -71,6 +73,13 @@ abstract class ApiClient {
 
   @GET(ApiEndPoints.orders)
   Future<OrdersListResponse> getOrders(
-      @Header("Authorization") String bearerToken,
-      );
+    @Header("Authorization") String bearerToken,
+  );
+
+  @PUT('${ApiEndPoints.updateOrderState}/{orderId}')
+  @Extra({'auth': true})
+  Future<UpdateOrderStateResponse> updateOrderState(
+    @Path('orderId') String orderId,
+    @Body() UpdateOrderStateRequest request,
+  );
 }
