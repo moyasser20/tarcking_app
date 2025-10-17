@@ -279,22 +279,6 @@ class ProfileScreen extends StatelessWidget {
                       },
                     ),
                     const SizedBox(height: 10,),
-                    MenuItemWidget(
-                      leading: Icon(
-                        Icons.shopping_cart_outlined,
-                        color: AppColors.black,
-                        size: 24,
-                      ),
-                      title: local.myOrdersTitle,
-                      trailing: const Icon(
-                        Icons.shopping_cart_outlined,
-                        size: 18,
-                        color: AppColors.pink,
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, AppRoutes.myOrderScreen);
-                      },
-                    ),
                     const Spacer(),
                     Center(
                       child: Text(

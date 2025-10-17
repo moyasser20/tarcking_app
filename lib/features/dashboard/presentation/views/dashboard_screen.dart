@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../myorders/presentation/view/my_orders_screen.dart';
 import '../../../profile/presentation/view/profile_screen.dart';
 import '../../../../core/routes/route_names.dart';
 import '../../../../core/widgets/custom_Elevated_Button.dart';
@@ -20,8 +21,9 @@ class DashboardScreen extends StatelessWidget {
         create: (context) => getIt<HomeCubit>()..getOrders(),
         child: const HomeScreen(),
       ),
+      BlocProvider(create: (context) => getIt<HomeCubit>()..getOrders(),
+      child: const MyOrdersScreen()),
 
-      const Center(child: Text("orders")),
       const ProfileScreen(),
     ];
 
