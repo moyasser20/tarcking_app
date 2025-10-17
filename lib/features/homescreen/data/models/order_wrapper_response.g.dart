@@ -7,25 +7,23 @@ part of 'order_wrapper_response.dart';
 // **************************************************************************
 
 OrderWrapperResponse _$OrderWrapperResponseFromJson(
-  Map<String, dynamic> json,
-) => OrderWrapperResponse(
-  id: json['_id'] as String?,
-  driver: json['driver'] as String?,
-  order:
-      json['order'] == null
+        Map<String, dynamic> json) =>
+    OrderWrapperResponse(
+      id: json['_id'] as String?,
+      driver: json['driver'] as String?,
+      order: json['order'] == null
           ? null
           : OrderResponse.fromJson(json['order'] as Map<String, dynamic>),
-  store:
-      json['store'] == null
+      store: json['store'] == null
           ? null
           : StoreResponse.fromJson(json['store'] as Map<String, dynamic>),
-);
+    );
 
 Map<String, dynamic> _$OrderWrapperResponseToJson(
-  OrderWrapperResponse instance,
-) => <String, dynamic>{
-  '_id': instance.id,
-  'driver': instance.driver,
-  'order': instance.order,
-  'store': instance.store,
-};
+        OrderWrapperResponse instance) =>
+    <String, dynamic>{
+      '_id': instance.id,
+      'driver': instance.driver,
+      'order': instance.order,
+      'store': instance.store,
+    };
