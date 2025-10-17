@@ -152,10 +152,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i351.ProfileViewModel(gh<_i68.GetProfileDataUseCase>()));
     gh.factory<_i234.GetOrderUseCase>(
         () => _i234.GetOrderUseCase(gh<_i594.HomeRepo>()));
-    gh.lazySingleton<_i770.GetVehiclesUseCase>(
-        () => _i770.GetVehiclesUseCase(gh<_i170.AuthRepo>()));
     gh.lazySingleton<_i712.ApplyDriverUseCase>(
         () => _i712.ApplyDriverUseCase(gh<_i170.AuthRepo>()));
+    gh.lazySingleton<_i770.GetVehiclesUseCase>(
+        () => _i770.GetVehiclesUseCase(gh<_i170.AuthRepo>()));
     gh.factory<_i616.ApplyCubit>(() => _i616.ApplyCubit(
           gh<_i712.ApplyDriverUseCase>(),
           gh<_i770.GetVehiclesUseCase>(),
@@ -166,12 +166,12 @@ extension GetItInjectableX on _i174.GetIt {
         _i729.ChangePasswordViewModel(gh<_i550.ChangePasswordUseCases>()));
     gh.factory<_i948.ForgetPasswordUseCase>(
         () => _i948.ForgetPasswordUseCase(gh<_i170.AuthRepo>()));
-    gh.factory<_i294.VerifyCodeUseCase>(
-        () => _i294.VerifyCodeUseCase(gh<_i170.AuthRepo>()));
-    gh.factory<_i474.ResetPasswordUseCase>(
-        () => _i474.ResetPasswordUseCase(gh<_i170.AuthRepo>()));
     gh.factory<_i8.LogoutUseCase>(
         () => _i8.LogoutUseCase(gh<_i170.AuthRepo>()));
+    gh.factory<_i474.ResetPasswordUseCase>(
+        () => _i474.ResetPasswordUseCase(gh<_i170.AuthRepo>()));
+    gh.factory<_i294.VerifyCodeUseCase>(
+        () => _i294.VerifyCodeUseCase(gh<_i170.AuthRepo>()));
     gh.factory<_i39.HomeCubit>(
         () => _i39.HomeCubit(gh<_i234.GetOrderUseCase>()));
     gh.factory<_i530.ForgetPasswordCubit>(

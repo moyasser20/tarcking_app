@@ -19,7 +19,9 @@ OrderResponse _$OrderResponseFromJson(Map<String, dynamic> json) =>
       user: json['user'] == null
           ? null
           : UserResponse.fromJson(json['user'] as Map<String, dynamic>),
-      orderItems: json['orderItems'] as List<dynamic>?,
+      orderItems: (json['orderItems'] as List<dynamic>?)
+          ?.map((e) => OrderItemResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
       isPaid: json['isPaid'] as bool?,
       isDelivered: json['isDelivered'] as bool?,
       createdAt: json['createdAt'] as String?,
