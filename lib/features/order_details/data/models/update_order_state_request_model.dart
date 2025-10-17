@@ -3,7 +3,5 @@ class UpdateOrderStateRequest {
 
   UpdateOrderStateRequest({required this.state});
 
-  Map<String, dynamic> toJson() => {
-    'state': state,
-  };
+  Map<String, dynamic> toJson() => {'state': state};
 }

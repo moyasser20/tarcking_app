@@ -15,6 +15,9 @@ abstract final class AppIcons {
   static const String deleteIcon = 'assets/icons/delete_icon.svg';
   static const String notificationsIcon = 'assets/icons/notification_icon.svg';
   static const String whatsappIcon = 'assets/icons/whatsapp_icon.svg';
+  static const String floweryIcon = 'assets/icons/flowery_icon.svg';
+  static const String flowerHomeIcon = 'assets/icons/flower_home_icon.svg';
+  static const String callIcon = 'assets/icons/call_icon.svg';
   static const String arrowBackIcon = 'assets/icons/arrow_back_icon.png';
   static const String acceptedIcon = 'assets/icons/accepcted_icon.png';
   static const String cancelledIcon = 'assets/icons/cancelled_icon.png';
