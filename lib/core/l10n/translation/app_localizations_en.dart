@@ -411,6 +411,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accept => 'Accept';
 
   @override
+  String get thankYou => 'Thank you!!';
+
+  @override
+  String get orderDeliveredSuccessfully => 'The order delivered\nsuccessfully';
+
+  @override
+  String get done => 'Done';
+
+  @override
   String get recentOrder => 'Recent orders';
 
   @override
