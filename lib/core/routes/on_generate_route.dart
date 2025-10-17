@@ -31,6 +31,7 @@ import '../../features/homescreen/domain/entities/order_entity.dart';
 
 import '../../features/order_details/presentation/views/order_details_screen.dart';
 
+import '../../features/successpage/presentation/view/success_page.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -59,6 +60,7 @@ class Routes {
       case AppRoutes.apply:
         return MaterialPageRoute(builder: (_) => const ApplyScreen());
 
+
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(
           builder:
@@ -75,8 +77,6 @@ class Routes {
                 child: const ChangePasswordScreen(),
               ),
         );
-
-
 
       case AppRoutes.editProfile:
         final user = settings.arguments as UserEntity;
