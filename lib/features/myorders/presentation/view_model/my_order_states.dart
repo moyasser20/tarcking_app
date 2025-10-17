@@ -1,4 +1,4 @@
-import '../../../homescreen/domain/entities/order_response_entity.dart';
+import '../../domain/entities/order_reponse_entity.dart';
 
 abstract class MyOrderStates {}
 

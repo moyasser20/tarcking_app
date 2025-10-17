@@ -1,4 +1,4 @@
-import '../../../homescreen/domain/entities/order_response_entity.dart';
+import '../entities/order_reponse_entity.dart';
 
 abstract class MyOrdersRepo {
   Future<OrdersResponseEntity> getAllOrders();

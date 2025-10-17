@@ -1,12 +1,12 @@
 import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/features/myorders/data/datasource/my_orders_remote_data_source.dart';
-
-import '../../../homescreen/domain/entities/meta_data_entity.dart';
-import '../../../homescreen/domain/entities/order_entity.dart';
-import '../../../homescreen/domain/entities/order_item_entity.dart';
-import '../../../homescreen/domain/entities/order_response_entity.dart';
-import '../../../homescreen/domain/entities/product_entity.dart';
-import '../../../homescreen/domain/entities/user_entity.dart';
+import '../../domain/entities/meta_data_entity.dart';
+import '../../domain/entities/order_entity.dart';
+import '../../domain/entities/order_item_entity.dart';
+import '../../domain/entities/order_reponse_entity.dart';
+import '../../domain/entities/product_entity.dart';
+import '../../domain/entities/store_entity.dart';
+import '../../domain/entities/user_entity.dart';
 import '../../domain/repo/my_orders_repo.dart';
 
 

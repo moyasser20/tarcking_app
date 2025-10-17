@@ -61,10 +61,13 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
               return const AppLoadingIndicator();
             } else if (state is HomeSuccessState) {
               final orders = state.ordersResponseEntity.orders;
+              print("=============================================== ${orders[1].state}");
 
               final completedOrders = orders
                   .where((o) => o.state.toLowerCase().trim() == "completed")
                   .length;
+              print("=============================================== ${completedOrders}");
+
 
               final cancelledOrders = orders
                   .where((o) =>

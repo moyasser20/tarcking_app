@@ -1,9 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:tarcking_app/features/myorders/domain/repo/my_orders_repo.dart';
-
-import '../../../homescreen/domain/entities/order_response_entity.dart';
-
-
+import '../entities/order_reponse_entity.dart';
 
 @injectable
 class GetOrderUseCase {

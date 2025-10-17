@@ -378,13 +378,13 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<OrdersListResponse> getAllOrders(String bearerToken) async {
+  Future<MyOrdersListResponse> getAllOrders(String bearerToken) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': bearerToken};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<OrdersListResponse>(Options(
+    final _options = _setStreamType<MyOrdersListResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -401,9 +401,9 @@ class _ApiClient implements ApiClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late OrdersListResponse _value;
+    late MyOrdersListResponse _value;
     try {
-      _value = OrdersListResponse.fromJson(_result.data!);
+      _value = MyOrdersListResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

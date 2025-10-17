@@ -1,11 +1,10 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:tarcking_app/features/homescreen/data/models/orders_list_response.dart';
 import '../../../../core/api/client/api_client.dart';
 import '../../../../core/errors/failure.dart';
 import '../../data/datasource/my_orders_remote_data_source.dart';
+import '../../data/models/my_order_list_response.dart';
 
 @LazySingleton(as: MyOrdersRemoteDataSource)
 class MyOrdersRemoteDataSourceImpl implements MyOrdersRemoteDataSource {
@@ -34,7 +33,7 @@ class MyOrdersRemoteDataSourceImpl implements MyOrdersRemoteDataSource {
   }
 
   @override
-  Future<OrdersListResponse> getAllOrders() async {
+  Future<MyOrdersListResponse> getAllOrders() async {
     try {
       return await apiClient.getAllOrders(
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOiI2NzhhNTlmYTNjMzc5NzQ5Mjc0N2M4ZDQiLCJpYXQiOjE3MzcxMjAyNTB9.f-A1rvElymvDhEQM9bjqGl56O4c5Z8mhh7MkevnpqVQ",

@@ -25,7 +25,6 @@ void main() async {
   await configureDependencies();
   await SecureStorage.initialize();
   String languageValue = await LocalizationPreference.getLanguage();
-  final bool isAuthenticated = await AuthService.isUserAuthenticated();
   final String resolvedInitialRoute = AppRoutes.initial;
 
   runApp(

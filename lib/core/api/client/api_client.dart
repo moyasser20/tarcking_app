@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -8,6 +7,8 @@ import 'package:tarcking_app/features/auth/data/models/login/login_response.dart
 import '../../../features/auth/data/models/forget_password_models/forget_password_request.dart';
 import '../../../features/auth/data/models/forget_password_models/reset_password_request_model.dart';
 import '../../../features/auth/data/models/forget_password_models/verify_code_request_model.dart';
+import '../../../features/homescreen/data/models/orders_list_response.dart';
+import '../../../features/myorders/data/models/my_order_list_response.dart';
 import '../../../features/order_details/data/models/update_order_state_request_model.dart';
 import '../../../features/order_details/data/models/update_order_state_response_model.dart';
 import '../../../features/profile/data/models/change_password_request_model.dart';
@@ -17,8 +18,6 @@ import '../../../features/profile/data/models/edit_profile_response_model.dart';
 import '../../../features/profile/data/models/profile_response.dart';
 import '../../../features/profile/data/models/upload_photo_response.dart';
 import '../api_constants/api_end_points.dart';
-
-import '../../../features/homescreen/data/models/orders_list_response.dart';
 
 part 'api_client.g.dart';
 
@@ -78,7 +77,7 @@ abstract class ApiClient {
     [@Query("page") int page = 1]
   );
   @GET(ApiEndPoints.orders)
-  Future<OrdersListResponse> getAllOrders(
+  Future<MyOrdersListResponse> getAllOrders(
       @Header("Authorization") String bearerToken,
       );
 

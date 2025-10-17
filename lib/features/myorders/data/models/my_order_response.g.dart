@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'order_response.dart';
+part of 'my_order_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

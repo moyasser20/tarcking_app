@@ -1,5 +1,5 @@
-import 'package:tarcking_app/features/homescreen/data/models/orders_list_response.dart';
+import '../models/my_order_list_response.dart';
 
 abstract class MyOrdersRemoteDataSource {
-  Future<OrdersListResponse> getAllOrders();
+  Future<MyOrdersListResponse> getAllOrders();
 }

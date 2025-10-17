@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'order_wrapper_model.dart';
+part of 'my_order_wrapper_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

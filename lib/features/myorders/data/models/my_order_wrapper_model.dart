@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
-import '../../../homescreen/data/models/store_response.dart';
-import 'order_response.dart';
+import 'package:tarcking_app/features/homescreen/data/models/store_response.dart';
 
+import 'my_order_response.dart';
 
-part 'order_wrapper_response.g.dart';
+part 'my_order_wrapper_model.g.dart';
 
 @JsonSerializable()
 class OrderWrapperResponse {

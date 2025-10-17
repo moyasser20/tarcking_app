@@ -93,7 +93,7 @@ class OnBoardingScreen extends StatelessWidget {
 Future<String> _getInitialRoute() async {
   final isLoggedIn = await AuthService.isUserAuthenticated();
   if (isLoggedIn) {
-    return AppRoutes.login;
+    return AppRoutes.dashboard;
   } else {
     await AuthService.logout();
     return AppRoutes.login;
