@@ -23,6 +23,26 @@ void main() {
 
   group('AuthRepoImpl', () {
     group('applyDriver', () {
+      setUp(() async {
+        // Create test files before running tests
+        final licenseFile = File('test/files/fake_license.png');
+        final nidFile = File('test/files/fake_nid.png');
+        await licenseFile.create(recursive: true);
+        await nidFile.create(recursive: true);
+        await licenseFile.writeAsBytes([0, 1, 2]);
+        await nidFile.writeAsBytes([0, 1, 2]);
+      });
+
+      tearDown(() async {
+        // Clean up test files after each test
+        try {
+          await File('test/files/fake_license.png').delete();
+          await File('test/files/fake_nid.png').delete();
+        } catch (e) {
+          // Ignore errors if files don't exist
+        }
+      });
+
       test('should return DriverEntity when successful', () async {
         // Arrange
         final driver = Driver(
@@ -42,9 +62,6 @@ void main() {
           role: 'driver',
           createdAt: '2024-01-01T00:00:00.000Z',
         );
-
-        final mockLicense = MultipartFile.fromString('license');
-        final mockNidImg = MultipartFile.fromString('nid');
 
         when(
           () => remote.applyDriver(
@@ -71,9 +88,9 @@ void main() {
           lastName: "Naser",
           vehicleType: "Car",
           vehicleNumber: "ABC123",
-          vehicleLicensePath: "fake_license.png",
+          vehicleLicensePath: "test/files/fake_license.png",
           nid: "12345678901234",
-          nidImgPath: "fake_nid.png",
+          nidImgPath: "test/files/fake_nid.png",
           email: "ahmed@example.com",
           password: "SecurePassword123!",
           rePassword: "SecurePassword123!",
@@ -86,15 +103,6 @@ void main() {
         expect(result.id, "507f1f77bcf86cd799439011");
         expect(result.firstName, "Ahmed");
         expect(result.lastName, "Naser");
-      });
-
-      setUp(() async {
-        final licenseFile = File('test/files/fake_license.png');
-        final nidFile = File('test/files/fake_nid.png');
-        await licenseFile.create(recursive: true);
-        await nidFile.create(recursive: true);
-        await licenseFile.writeAsBytes([0, 1, 2]);
-        await nidFile.writeAsBytes([0, 1, 2]);
       });
     });
   });

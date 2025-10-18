@@ -86,9 +86,10 @@ class OrderDetailsTopSection extends StatelessWidget {
         _AddressSection(
           title: 'Pickup address',
           address: order.pickupAddress,
+          isUser: false,
         ),
         SizedBox(height: 8,),
-        _AddressSection(title: 'User Address', address: address),
+        _AddressSection(title: 'User Address', address: address, isUser: true),
         SizedBox(height: 8,),
 
       ],
@@ -125,10 +126,12 @@ class _AddressSection extends StatelessWidget {
   const _AddressSection({
     required this.title,
     required this.address,
+    required this.isUser
   });
 
   final String title;
   final Address address;
+  final bool isUser;
 
   @override
   Widget build(BuildContext context) {
@@ -154,7 +157,7 @@ class _AddressSection extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
-                  AppImages.OnboardingImage,
+                  isUser? "assets/images/edo.png":AppImages.flowerImage,
                   width: 50,
                   height: 50,
                   fit: BoxFit.cover,

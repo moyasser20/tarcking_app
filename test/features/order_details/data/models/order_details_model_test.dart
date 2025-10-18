@@ -94,7 +94,7 @@ void main() {
         items: [],
         total: 100.0,
         paymentMethod: 'cash',
-        arrivedAtPickup: false,
+        arrivedAtPickup: false, userId: '',
       );
 
       final copied = original.copyWith(state: 'completed', total: 150.0);

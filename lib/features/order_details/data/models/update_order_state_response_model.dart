@@ -1,4 +1,3 @@
-import '../../../homescreen/data/models/order_response.dart';
 
 class UpdateOrderStateResponse {
   final String message;

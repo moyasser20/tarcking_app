@@ -22,6 +22,11 @@ class MockGetProfileDataUseCase extends Mock implements GetProfileDataUseCase {
           phone: '',
           photo: '',
           role: '',
+          vehicleType: '',
+          vehicleNumber: '',
+          vehicleLicense: '',
+          nid: '',
+          nidImg: '',
         ),
       ),
     ),
@@ -46,6 +51,11 @@ void main() {
       phone: '1234567890',
       photo: 'https://example.com/photo.jpg',
       role: 'driver',
+      vehicleType: '',
+      vehicleNumber: '',
+      vehicleLicense: '',
+      nid: '',
+      nidImg: '',
     );
   });
 

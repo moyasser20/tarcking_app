@@ -111,7 +111,6 @@ class _OrderDetailsContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           OrderDetailsTopSection(order: order, address: order.userAddress),
-
           OrderDetailsBottomSection(
             items: order.items,
             paymentMethod: order.paymentMethod,

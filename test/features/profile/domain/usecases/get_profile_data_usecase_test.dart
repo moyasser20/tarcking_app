@@ -24,7 +24,7 @@ void main() {
           gender: "unknown",
           phone: "0000000000",
           photo: "",
-          role: "test",
+          role: "test", vehicleType: '', vehicleNumber: '', vehicleLicense: '', nid: '', nidImg: '',
         ),
       ),
     );
@@ -48,7 +48,7 @@ void main() {
           gender: "male",
           phone: "01000000000",
           photo: "https://example.com/photo.jpg",
-          role: "customer",
+          role: "customer", vehicleType: '', vehicleNumber: '', vehicleLicense: '', nid: '', nidImg: '',
         );
 
         when(

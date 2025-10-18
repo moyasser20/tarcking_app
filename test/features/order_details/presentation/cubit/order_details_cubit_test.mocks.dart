@@ -6,9 +6,11 @@
 import 'dart:async' as _i11;
 import 'dart:io' as _i19;
 
+import 'package:cloud_firestore/cloud_firestore.dart' as _i22;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i13;
 import 'package:tarcking_app/core/api/client/api_client.dart' as _i10;
+import 'package:tarcking_app/core/firebase/firebase_service.dart' as _i21;
 import 'package:tarcking_app/features/auth/data/models/forget_password_models/forget_password_request.dart'
     as _i12;
 import 'package:tarcking_app/features/auth/data/models/forget_password_models/reset_password_request_model.dart'
@@ -371,4 +373,89 @@ class MockApiClient extends _i1.Mock implements _i10.ApiClient {
           ),
         )),
       ) as _i11.Future<_i9.UpdateOrderStateResponse>);
+}
+
+/// A class which mocks [FirestoreService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFirestoreService extends _i1.Mock implements _i21.FirestoreService {
+  MockFirestoreService() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i11.Future<void> sendOrderToUser({
+    required String? orderId,
+    required String? userId,
+    required Map<String, dynamic>? orderData,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #sendOrderToUser,
+          [],
+          {
+            #orderId: orderId,
+            #userId: userId,
+            #orderData: orderData,
+          },
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+
+  @override
+  _i11.Future<void> updateOrderStatusForUser({
+    required String? orderId,
+    required String? userId,
+    required String? status,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateOrderStatusForUser,
+          [],
+          {
+            #orderId: orderId,
+            #userId: userId,
+            #status: status,
+          },
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+
+  @override
+  _i11.Stream<_i22.DocumentSnapshot<Object?>> getOrderStream(
+    String? userId,
+    String? orderId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getOrderStream,
+          [
+            userId,
+            orderId,
+          ],
+        ),
+        returnValue: _i11.Stream<_i22.DocumentSnapshot<Object?>>.empty(),
+      ) as _i11.Stream<_i22.DocumentSnapshot<Object?>>);
+
+  @override
+  _i11.Future<void> updateOrderButtonCallback({
+    required String? orderId,
+    required String? userId,
+    required String? currentState,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateOrderButtonCallback,
+          [],
+          {
+            #orderId: orderId,
+            #userId: userId,
+            #currentState: currentState,
+          },
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
 }

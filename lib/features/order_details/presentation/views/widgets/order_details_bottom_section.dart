@@ -96,7 +96,7 @@ class _OrderItemRow extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Image.asset(
-              AppImages.OnboardingImage,
+              AppImages.orderItemImage,
               width: 50,
               height: 50,
               fit: BoxFit.cover,

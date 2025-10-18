@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:tarcking_app/core/extensions/extensions.dart';
-import 'package:tarcking_app/core/routes/route_names.dart';
 import 'package:tarcking_app/features/profile/presentation/view/widgets/menu_item_widget.dart';
 import 'package:tarcking_app/features/profile/presentation/view/widgets/profile_card_widget.dart';
 import 'package:tarcking_app/features/profile/presentation/view/widgets/vehicle_info_widget.dart';
@@ -17,6 +16,7 @@ import '../../../localization/localization_controller/localization_cubit.dart';
 import '../../../logout/viewmodel/logout_viewmodel.dart';
 import '../../../logout/views/logout_widget.dart';
 import '../viewmodel/states/profile_states.dart';
+import 'edit_vehicle_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -103,8 +103,21 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox(height: 16),
 
                     GestureDetector(
-                      child: VehicleInfoWidget(local: local, theme: theme),
-                      onTap: () {},
+                      child: VehicleInfoWidget(
+                        local: local,
+                        theme: theme,
+                        vehicle: state.user,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) =>
+                                    EditVehicleScreen(vehicle: state.user),
+                          ),
+                        );
+                      },
                     ),
 
                     const SizedBox(height: 24),

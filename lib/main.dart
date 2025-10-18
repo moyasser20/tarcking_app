@@ -5,7 +5,6 @@ import 'package:tarcking_app/core/l10n/translation/app_localizations.dart';
 import 'package:tarcking_app/core/routes/on_generate_route.dart';
 import 'package:tarcking_app/core/routes/route_names.dart';
 import 'package:tarcking_app/core/contants/secure_storage.dart';
-import 'package:tarcking_app/features/auth/domain/services/auth_services.dart';
 import 'package:tarcking_app/features/profile/presentation/viewmodel/edit_profile_viewmodel.dart';
 import 'package:tarcking_app/firebase_options.dart';
 import 'core/config/di.dart';

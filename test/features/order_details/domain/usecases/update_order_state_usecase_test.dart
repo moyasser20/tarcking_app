@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:tarcking_app/features/homescreen/data/models/order_response.dart';
 import 'package:tarcking_app/features/order_details/domain/repos/order_details_repo.dart';
 import 'package:tarcking_app/features/order_details/domain/use_cases/update_order_state_usecase.dart';
 import 'package:tarcking_app/features/order_details/data/models/update_order_state_response_model.dart';
@@ -23,15 +22,15 @@ void main() {
     const state = 'completed';
     final response = UpdateOrderStateResponse(
       message: 'Order updated successfully',
-      order: OrderResponse(),
+      orderId: '',
+      state: '',
     );
 
     test('should call repository with correct parameters', () async {
       // Arrange
-      when(mockOrderDetailsRepo.updateOrderState(
-        orderId: orderId,
-        state: state,
-      )).thenAnswer((_) async => response);
+      when(
+        mockOrderDetailsRepo.updateOrderState(orderId: orderId, state: state),
+      ).thenAnswer((_) async => response);
 
       // Act
       final result = await updateOrderStateUseCase(
@@ -41,25 +40,21 @@ void main() {
 
       // Assert
       expect(result, response);
-      verify(mockOrderDetailsRepo.updateOrderState(
-        orderId: orderId,
-        state: state,
-      )).called(1);
+      verify(
+        mockOrderDetailsRepo.updateOrderState(orderId: orderId, state: state),
+      ).called(1);
     });
 
     test('should propagate exceptions from repository', () async {
       // Arrange
-      when(mockOrderDetailsRepo.updateOrderState(
-        orderId: orderId,
-        state: state,
-      )).thenThrow(Exception('Repository error'));
+      when(
+        mockOrderDetailsRepo.updateOrderState(orderId: orderId, state: state),
+      ).thenThrow(Exception('Repository error'));
 
       // Act & Assert
       expect(
-            () async => await updateOrderStateUseCase(
-          orderId: orderId,
-          state: state,
-        ),
+        () async =>
+            await updateOrderStateUseCase(orderId: orderId, state: state),
         throwsA(isA<Exception>()),
       );
     });

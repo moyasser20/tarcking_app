@@ -5,7 +5,6 @@ import 'package:tarcking_app/core/theme/app_colors.dart';
 
 import '../../../../core/common/widgets/custome_loading_indicator.dart';
 import '../../../../core/contants/app_images.dart';
-import '../../../../core/routes/route_names.dart';
 import '../viewmodel/home_cubit.dart';
 import '../viewmodel/home_states.dart';
 import '../widgets/order_container_widget.dart';
@@ -42,11 +41,6 @@ class HomeScreen extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset(AppImages.floweryRider),
-                        InkWell(
-                          onTap: (){
-                            Navigator.pushNamed(context, AppRoutes.successPage);
-                          },
-                            child: Icon(Icons.add))
                       ],
                     ),
                     const SizedBox(height: 40),

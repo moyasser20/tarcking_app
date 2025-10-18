@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tarcking_app/core/api/client/api_client.dart';
-import 'package:tarcking_app/features/homescreen/data/models/order_response.dart';
 import 'package:tarcking_app/features/order_details/data/repos/order_details_repo_impl.dart';
 import 'package:tarcking_app/features/order_details/data/models/update_order_state_request_model.dart';
 import 'package:tarcking_app/features/order_details/data/models/update_order_state_response_model.dart';
@@ -24,12 +23,13 @@ void main() {
     const state = 'inProgress';
     final response = UpdateOrderStateResponse(
       message: 'Success',
-      order: OrderResponse(),
+      orderId: '',
+      state: '',
     );
 
     test(
       'updateOrderState should call api client with correct parameters',
-          () async {
+      () async {
         // Arrange
         when(
           mockApiClient.updateOrderState(
@@ -39,7 +39,8 @@ void main() {
         ).thenAnswer((invocation) async {
           // You can also verify the arguments here if needed
           final calledOrderId = invocation.positionalArguments[0] as String;
-          final request = invocation.positionalArguments[1] as UpdateOrderStateRequest;
+          final request =
+              invocation.positionalArguments[1] as UpdateOrderStateRequest;
 
           expect(calledOrderId, orderId);
           expect(request.state, state);
@@ -67,7 +68,7 @@ void main() {
 
       // Act & Assert
       expect(
-            () async => await orderDetailsRepo.updateOrderState(
+        () async => await orderDetailsRepo.updateOrderState(
           orderId: orderId,
           state: state,
         ),
@@ -77,18 +78,14 @@ void main() {
 
     test('updateOrderState should handle different order states', () async {
       // Test with different states
-      const testCases = [
-        'pending',
-        'inProgress',
-        'completed',
-        'canceled',
-      ];
+      const testCases = ['pending', 'inProgress', 'completed', 'canceled'];
 
       for (final testState in testCases) {
         // Arrange
         final testResponse = UpdateOrderStateResponse(
           message: 'Updated to $testState',
-          order: OrderResponse(),
+          orderId: '',
+          state: '',
         );
 
         when(

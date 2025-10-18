@@ -43,7 +43,7 @@ void main() {
 
       // Assert
       expect(response.message, 'Order updated successfully');
-      expect(response.order, isNotNull);
+      expect(response.orderId, isNotNull);
     });
 
     test('fromJson should handle null message', () {
@@ -60,7 +60,7 @@ void main() {
 
       // Assert
       expect(response.message, '');
-      expect(response.order, isNotNull);
+      expect(response.orderId, isNotNull);
     });
   });
 }

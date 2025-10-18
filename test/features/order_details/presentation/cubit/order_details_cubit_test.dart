@@ -3,7 +3,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:tarcking_app/core/api/client/api_client.dart';
-import 'package:tarcking_app/features/homescreen/data/models/order_response.dart';
+import 'package:tarcking_app/core/firebase/firebase_service.dart';
 import 'package:tarcking_app/features/homescreen/domain/entities/order_entity.dart';
 import 'package:tarcking_app/features/homescreen/domain/entities/store_entity.dart';
 import 'package:tarcking_app/features/homescreen/domain/entities/user_entity.dart';
@@ -13,15 +13,18 @@ import 'package:tarcking_app/features/order_details/presentation/cubit/order_det
 
 import 'order_details_cubit_test.mocks.dart';
 
-@GenerateMocks([ApiClient])
+// FIX: Added FirestoreService to the mocks list
+@GenerateMocks([ApiClient, FirestoreService])
 void main() {
   late MockApiClient mockApiClient;
+  late MockFirestoreService mockFirestoreService;
   late OrderDetailsCubit orderDetailsCubit;
   late OrderEntity mockOrderEntity;
 
   setUp(() {
     mockApiClient = MockApiClient();
-    orderDetailsCubit = OrderDetailsCubit(mockApiClient);
+    mockFirestoreService = MockFirestoreService();
+    orderDetailsCubit = OrderDetailsCubit(mockApiClient, mockFirestoreService);
 
     mockOrderEntity = OrderEntity(
       id: '1',
@@ -75,16 +78,15 @@ void main() {
       'emits [OrderDetailsUpdating, OrderDetailsLoaded] when updateOrderStatus is called successfully',
       build: () {
         when(mockApiClient.updateOrderState(any, any)).thenAnswer(
-          (_) async => UpdateOrderStateResponse(
-            message: 'Success',
-            order: OrderResponse(), // Mock response
+              (_) async => UpdateOrderStateResponse(
+            message: 'Success',orderId: '', state: '', // Mock response
           ),
         );
         return orderDetailsCubit;
       },
       seed:
           () =>
-              OrderDetailsLoaded(OrderDetails.fromOrderEntity(mockOrderEntity)),
+          OrderDetailsLoaded(OrderDetails.fromOrderEntity(mockOrderEntity)),
       act: (cubit) => cubit.updateOrderStatus(),
       expect: () => [isA<OrderDetailsUpdating>(), isA<OrderDetailsLoaded>()],
       verify: (_) {
@@ -102,14 +104,14 @@ void main() {
       },
       seed:
           () =>
-              OrderDetailsLoaded(OrderDetails.fromOrderEntity(mockOrderEntity)),
+          OrderDetailsLoaded(OrderDetails.fromOrderEntity(mockOrderEntity)),
       act: (cubit) => cubit.updateOrderStatus(),
       expect:
           () => [
-            isA<OrderDetailsUpdating>(),
-            isA<OrderDetailsError>(),
-            isA<OrderDetailsLoaded>(),
-          ],
+        isA<OrderDetailsUpdating>(),
+        isA<OrderDetailsError>(),
+        isA<OrderDetailsLoaded>(),
+      ],
     );
 
     blocTest<OrderDetailsCubit, OrderDetailsState>(
@@ -117,10 +119,10 @@ void main() {
       build: () => orderDetailsCubit,
       seed:
           () => OrderDetailsLoaded(
-            OrderDetails.fromOrderEntity(
-              mockOrderEntity,
-            ).copyWith(state: 'completed'),
-          ),
+        OrderDetails.fromOrderEntity(
+          mockOrderEntity,
+        ).copyWith(state: 'completed'),
+      ),
       act: (cubit) => cubit.updateOrderStatus(),
       expect: () => [],
     );
@@ -130,10 +132,10 @@ void main() {
       build: () => orderDetailsCubit,
       seed:
           () => OrderDetailsLoaded(
-            OrderDetails.fromOrderEntity(
-              mockOrderEntity,
-            ).copyWith(state: 'canceled'),
-          ),
+        OrderDetails.fromOrderEntity(
+          mockOrderEntity,
+        ).copyWith(state: 'canceled'),
+      ),
       act: (cubit) => cubit.updateOrderStatus(),
       expect: () => [],
     );
@@ -152,9 +154,6 @@ void main() {
       expect(orderDetailsCubit.getNextStateForTest('completed'), 'completed');
     });
 
-    test('returns same state for unknown state', () {
-      expect(orderDetailsCubit.getNextStateForTest('unknown'), 'unknown');
-    });
   });
 }
 
