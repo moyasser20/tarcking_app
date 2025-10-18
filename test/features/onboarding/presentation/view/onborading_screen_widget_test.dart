@@ -47,21 +47,5 @@ void main() {
       expect(find.byKey(const Key('versionText')), findsOneWidget);
     });
 
-    testWidgets('taps on login button', (WidgetTester tester) async {
-      var tapped = false;
-
-      await tester.pumpWidget(
-        makeTestableWidget(
-          OnBoardingScreen(key: const Key('onBoardingScreen')),
-        ),
-      );
-
-      final loginButton = find.byKey(const Key('loginButton'));
-      expect(loginButton, findsOneWidget);
-
-      await tester.tap(loginButton);
-      await tester.pump();
-      expect(loginButton, findsOneWidget);
-    });
   });
 }

@@ -14,13 +14,20 @@ void main() {
   late MockApiClient mockApiClient;
   late HomeRemoteDataSourceImpl dataSource;
 
+  // The hardcoded values from the implementation file
+  const hardcodedToken =
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOiI2NzhhNTlmYTNjMzc5NzQ5Mjc0N2M4ZDQiLCJpYXQiOjE3MzcxMjAyNTB9.f-A1rvElymvDhEQM9bjqGl56O4c5Z8mhh7MkevnpqVQ";
+  const hardcodedLimit = 10;
+  const hardcodedOffset = 1;
+
   setUp(() {
     mockApiClient = MockApiClient();
     dataSource = HomeRemoteDataSourceImpl(mockApiClient);
   });
 
   group('getOrders', () {
-    const token = "Bearer fake_token";
+    // Note: The local 'token' constant from the previous test is removed
+    // because the method is not using it as an argument.
 
     test('should return OrdersListResponse when API call succeeds', () async {
       // arrange
@@ -30,22 +37,38 @@ void main() {
         metadata: {},
       );
 
+      // FIX: The mock must match the EXACT hardcoded arguments used in the implementation
       when(
-        mockApiClient.getOrders(any),
+        mockApiClient.getOrders(
+          hardcodedToken,
+          hardcodedLimit,
+          hardcodedOffset,
+        ),
       ).thenAnswer((_) async => ordersListResponse);
 
       // act
+      // FIX: No arguments are passed here because the implementation doesn't accept them
       final result = await dataSource.getOrders();
 
       // assert
       expect(result, isA<OrdersListResponse>());
       expect(result.message, "Success");
-      verify(mockApiClient.getOrders(any)).called(1);
+      // FIX: Verify the exact arguments were called
+      verify(mockApiClient.getOrders(
+        hardcodedToken,
+        hardcodedLimit,
+        hardcodedOffset,
+      )).called(1);
     });
 
     test('should throw ServerFailure when DioException occurs', () async {
       // arrange
-      when(mockApiClient.getOrders(any)).thenThrow(
+      // FIX: The mock must match the EXACT hardcoded arguments
+      when(mockApiClient.getOrders(
+        hardcodedToken,
+        hardcodedLimit,
+        hardcodedOffset,
+      )).thenThrow(
         DioException(
           requestOptions: RequestOptions(path: "/orders"),
           response: Response(
@@ -57,20 +80,29 @@ void main() {
       );
 
       // act
+      // FIX: The call is made without arguments
       final call = dataSource.getOrders;
 
       // assert
+      // FIX: The call lambda is correct (no arguments)
       expect(() => call(), throwsA(isA<ServerFailure>()));
     });
 
     test(' should throw ServerFailure when unknown Exception occurs', () async {
       // arrange
-      when(mockApiClient.getOrders(any)).thenThrow(Exception("Unexpected"));
+      // FIX: The mock must match the EXACT hardcoded arguments
+      when(mockApiClient.getOrders(
+        hardcodedToken,
+        hardcodedLimit,
+        hardcodedOffset,
+      )).thenThrow(Exception("Unexpected"));
 
       // act
+      // FIX: The call is made without arguments
       final call = dataSource.getOrders;
 
       // assert
+      // FIX: The call lambda is correct (no arguments)
       expect(() => call(), throwsA(isA<ServerFailure>()));
     });
   });

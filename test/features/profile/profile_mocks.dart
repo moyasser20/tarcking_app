@@ -14,6 +14,8 @@ import 'package:tarcking_app/features/profile/presentation/viewmodel/edit_profil
 import 'package:tarcking_app/features/profile/presentation/viewmodel/profile_viewmodel.dart';
 import 'package:tarcking_app/features/profile/presentation/viewmodel/states/edit_profile_states.dart';
 import 'package:tarcking_app/features/profile/presentation/viewmodel/states/profile_states.dart';
+import 'package:tarcking_app/features/logout/viewmodel/logout_viewmodel.dart';
+import 'package:tarcking_app/features/localization/localization_controller/localization_cubit.dart';
 
 // Manual mocks for all required classes
 class MockGetProfileDataUseCase extends Mock implements GetProfileDataUseCase {
@@ -32,6 +34,11 @@ class MockGetProfileDataUseCase extends Mock implements GetProfileDataUseCase {
                   phone: '',
                   photo: '',
                   role: '',
+                  vehicleType: '',
+                  vehicleNumber: '',
+                  vehicleLicense: '',
+                  nid: '',
+                  nidImg: '',
                 ),
               ),
             ),
@@ -46,6 +53,11 @@ class MockGetProfileDataUseCase extends Mock implements GetProfileDataUseCase {
                   phone: '',
                   photo: '',
                   role: '',
+                  vehicleType: '',
+                  vehicleNumber: '',
+                  vehicleLicense: '',
+                  nid: '',
+                  nidImg: '',
                 ),
               ),
             ),
@@ -112,6 +124,11 @@ UserEntity createMockUserEntity() {
     phone: '1234567890',
     photo: 'https://example.com/photo.jpg',
     role: 'driver',
+    vehicleType: '',
+    vehicleNumber: '',
+    vehicleLicense: '',
+    nid: '',
+    nidImg: '',
   );
 }
 
@@ -136,3 +153,8 @@ EditProfileResponseModel createMockEditProfileResponse() {
 UploadPhotoResponse createMockUploadPhotoResponse() {
   return UploadPhotoResponse(message: 'Photo uploaded successfully');
 }
+
+// Additional mock classes for testing
+class MockLogoutViewModel extends Mock implements LogoutViewModel {}
+
+class MockLocalizationCubit extends Mock implements LocalizationCubit {}

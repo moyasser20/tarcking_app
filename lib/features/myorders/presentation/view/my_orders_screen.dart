@@ -7,9 +7,16 @@ import 'package:tarcking_app/features/myorders/presentation/widgets/myorders_con
 import 'package:tarcking_app/features/myorders/presentation/widgets/order_status_widget.dart';
 import '../../../../core/common/widgets/custome_loading_indicator.dart';
 import '../../../../core/l10n/translation/app_localizations.dart';
+import '../../../../core/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/get_localization_helper_function.dart';
 import '../view_model/my_orders_cubit.dart';
+import 'package:tarcking_app/features/homescreen/domain/entities/order_entity.dart' as HomeOrderEntity;
+import 'package:tarcking_app/features/homescreen/domain/entities/user_entity.dart' as HomeUserEntity;
+import 'package:tarcking_app/features/homescreen/domain/entities/store_entity.dart' as HomeStoreEntity;
+import 'package:tarcking_app/features/homescreen/domain/entities/order_item_entity.dart' as HomeOrderItemEntity;
+import 'package:tarcking_app/features/homescreen/domain/entities/product_entity.dart' as HomeProductEntity;
+import 'package:tarcking_app/features/myorders/domain/entities/order_entity.dart' as MyOrderEntity;
 
 
 class MyOrdersScreen extends StatefulWidget {
@@ -24,6 +31,62 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
   void initState() {
     super.initState();
     context.read<MyOrdersCubit>().getOrders();
+  }
+
+  // Conversion method to convert myorders OrderEntity to homescreen OrderEntity
+  HomeOrderEntity.OrderEntity _convertToHomeOrderEntity(
+      MyOrderEntity.OrderEntity myOrderEntity) {
+    return HomeOrderEntity.OrderEntity(
+      wrapperId: myOrderEntity.wrapperId,
+      id: myOrderEntity.id,
+      user: HomeUserEntity.UserEntity(
+        id: myOrderEntity.user.id,
+        firstName: myOrderEntity.user.firstName,
+        lastName: myOrderEntity.user.lastName,
+        email: myOrderEntity.user.email,
+        gender: myOrderEntity.user.gender,
+        phone: myOrderEntity.user.phone,
+        photo: myOrderEntity.user.photo,
+      ),
+      orderItems: myOrderEntity.orderItems.map((item) => HomeOrderItemEntity.OrderItemEntity(
+        id: item.id,
+        product: HomeProductEntity.ProductEntity(
+          id: item.product.id,
+          title: item.product.title,
+          slug: item.product.slug,
+          description: item.product.description,
+          imgCover: item.product.imgCover,
+          images: item.product.images,
+          price: item.product.price,
+          priceAfterDiscount: item.product.priceAfterDiscount,
+          quantity: item.product.quantity,
+          sold: item.product.sold,
+          category: item.product.category,
+          occasion: item.product.occasion,
+          rateAvg: item.product.rateAvg,
+          rateCount: item.product.rateCount,
+          createdAt: item.product.createdAt,
+          updatedAt: item.product.updatedAt,
+        ),
+        price: item.price,
+        quantity: item.quantity,
+      )).toList(),
+      totalPrice: myOrderEntity.totalPrice,
+      paymentType: myOrderEntity.paymentType,
+      isPaid: myOrderEntity.isPaid,
+      isDelivered: myOrderEntity.isDelivered,
+      state: myOrderEntity.state,
+      orderNumber: myOrderEntity.orderNumber,
+      store: HomeStoreEntity.StoreEntity(
+        name: myOrderEntity.store.name,
+        image: myOrderEntity.store.image,
+        address: myOrderEntity.store.address,
+        phoneNumber: myOrderEntity.store.phoneNumber,
+        latLong: myOrderEntity.store.latLong,
+      ),
+      createdAt: myOrderEntity.createdAt,
+      updatedAt: myOrderEntity.updatedAt,
+    );
   }
 
   @override
@@ -61,12 +124,9 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
               return const AppLoadingIndicator();
             } else if (state is HomeSuccessState) {
               final orders = state.ordersResponseEntity.orders;
-              print("=============================================== ${orders[1].state}");
-
               final completedOrders = orders
                   .where((o) => o.state.toLowerCase().trim() == "completed")
                   .length;
-              print("=============================================== ${completedOrders}");
 
 
               final cancelledOrders = orders
@@ -162,17 +222,27 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                   builder: (context) {
                                     final localizedState = getLocalizedOrderState(context, order.state);
 
-                                    return MyOrderContainerWidget(
-                                      orderState: localizedState.label,
-                                      stateColor: localizedState.color,
-                                      orderNumber: order.orderNumber,
-                                      storeName: order.store.name,
-                                      storeAddress: order.store.address,
-                                      storeImage: order.store.image,
-                                      userName: "${order.user.firstName} ${order.user.lastName}",
-                                      userImage: order.user.photo,
-                                      userAddress: userAddress,
-                                      fallbackIndex: index,
+                                    return GestureDetector(
+                                      onTap: (){
+                                        final homeOrderEntity = _convertToHomeOrderEntity(order);
+                                        Navigator.pushNamed(
+                                          context,
+                                          AppRoutes.orderDetails,
+                                          arguments: homeOrderEntity,
+                                        );
+                                      },
+                                      child: MyOrderContainerWidget(
+                                        orderState: localizedState.label,
+                                        stateColor: localizedState.color,
+                                        orderNumber: order.orderNumber,
+                                        storeName: order.store.name,
+                                        storeAddress: order.store.address,
+                                        storeImage: order.store.image,
+                                        userName: "${order.user.firstName} ${order.user.lastName}",
+                                        userImage: order.user.photo,
+                                        userAddress: userAddress,
+                                        fallbackIndex: index,
+                                      ),
                                     );
 
                                   },

@@ -10,7 +10,7 @@ class FirestoreTestScreen extends StatefulWidget {
 
 class _FirestoreTestScreenState extends State<FirestoreTestScreen> {
   String _status = 'Testing...';
-  List<String> _logs = [];
+  final List<String> _logs = [];
 
   void _addLog(String message) {
     setState(() {
