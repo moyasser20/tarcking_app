@@ -17,6 +17,7 @@ import '../../../localization/localization_controller/localization_cubit.dart';
 import '../../../logout/viewmodel/logout_viewmodel.dart';
 import '../../../logout/views/logout_widget.dart';
 import '../viewmodel/states/profile_states.dart';
+import 'edit_vehicle_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -103,8 +104,21 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox(height: 16),
 
                     GestureDetector(
-                      child: VehicleInfoWidget(local: local, theme: theme),
-                      onTap: () {},
+                      child: VehicleInfoWidget(
+                        local: local,
+                        theme: theme,
+                        vehicle: state.user,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) =>
+                                    EditVehicleScreen(vehicle: state.user),
+                          ),
+                        );
+                      },
                     ),
 
                     const SizedBox(height: 24),

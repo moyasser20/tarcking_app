@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../core/l10n/translation/app_localizations.dart';
 import '../../../../../core/theme/app_colors.dart';
+import '../../../domain/entity/user_entity.dart';
+import '../../../domain/entity/vehicle_helper.dart';
 
 class VehicleInfoWidget extends StatelessWidget {
   const VehicleInfoWidget({
     super.key,
     required this.local,
     required this.theme,
+    required this.vehicle,
   });
 
   final AppLocalizations local;
   final ThemeData theme;
+  final UserEntity vehicle;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,9 @@ class VehicleInfoWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Bike',
+                    VehicleHelper.getVehicleTypeById(
+                      "676b64349f3884b3405c14cd",
+                    )!,
                     style: theme.textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -54,7 +59,7 @@ class VehicleInfoWidget extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'UP16DL0007',
+                vehicle.vehicleNumber,
                 style: theme.textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),

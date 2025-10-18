@@ -142,6 +142,7 @@ class ApplyScreen extends StatelessWidget {
                                   },
                                 ),
                                 CustomTextFormField(
+                                  showUploadIcon: true,
                                   label: local.vehicleLicense,
                                   hint: local.vehicleLicenseHint,
                                   controller: cubit.vehicleLicenseController,
@@ -198,6 +199,7 @@ class ApplyScreen extends StatelessWidget {
                                   },
                                 ),
                                 CustomTextFormField(
+                                  showUploadIcon: true,
                                   label: local.idImage,
                                   hint: local.idImageHint,
                                   controller: cubit.nidImgController,
